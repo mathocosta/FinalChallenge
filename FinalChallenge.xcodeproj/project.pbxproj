@@ -9,21 +9,29 @@
 /* Begin PBXBuildFile section */
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE865231D3664001695D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE864231D3664001695D2 /* ViewController.swift */; };
-		275FE868231D3664001695D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275FE866231D3664001695D2 /* Main.storyboard */; };
 		275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
 		275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86E231D3666001695D2 /* LaunchScreen.storyboard */; };
+		275FE87B231D3D46001695D2 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87A231D3D46001695D2 /* CodeView.swift */; };
+		275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87C231D3D6D001695D2 /* Coordinator.swift */; };
+		275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87F231D3DD2001695D2 /* AppCoordinator.swift */; };
+		275FE884231D3E80001695D2 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE883231D3E80001695D2 /* FirstView.swift */; };
+		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		275FE85F231D3664001695D2 /* FinalChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		275FE864231D3664001695D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		275FE867231D3664001695D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		275FE86A231D3664001695D2 /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
 		275FE86C231D3666001695D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		275FE86F231D3666001695D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		275FE871231D3666001695D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275FE87A231D3D46001695D2 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		275FE87C231D3D6D001695D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		275FE87F231D3DD2001695D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		275FE883231D3E80001695D2 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
+		275FE885231D3ECE001695D2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,51 @@
 		275FE861231D3664001695D2 /* FinalChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				275FE878231D3D33001695D2 /* Shared */,
+				275FE882231D3E66001695D2 /* Views */,
+				275FE881231D3E53001695D2 /* ViewControllers */,
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
-				275FE864231D3664001695D2 /* ViewController.swift */,
-				275FE866231D3664001695D2 /* Main.storyboard */,
+				275FE87F231D3DD2001695D2 /* AppCoordinator.swift */,
 				275FE86C231D3666001695D2 /* Assets.xcassets */,
 				275FE86E231D3666001695D2 /* LaunchScreen.storyboard */,
 				275FE871231D3666001695D2 /* Info.plist */,
 				275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */,
 			);
 			path = FinalChallenge;
+			sourceTree = "<group>";
+		};
+		275FE878231D3D33001695D2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				275FE879231D3D39001695D2 /* Protocols */,
+				275FE885231D3ECE001695D2 /* CoreDataManager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		275FE879231D3D39001695D2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				275FE87A231D3D46001695D2 /* CodeView.swift */,
+				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		275FE881231D3E53001695D2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				275FE864231D3664001695D2 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		275FE882231D3E66001695D2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				275FE883231D3E80001695D2 /* FirstView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +121,7 @@
 				275FE85B231D3664001695D2 /* Sources */,
 				275FE85C231D3664001695D2 /* Frameworks */,
 				275FE85D231D3664001695D2 /* Resources */,
+				275FE877231D3BDE001695D2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -127,34 +172,50 @@
 			files = (
 				275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */,
 				275FE86D231D3666001695D2 /* Assets.xcassets in Resources */,
-				275FE868231D3664001695D2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		275FE877231D3BDE001695D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		275FE85B231D3664001695D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
+				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				275FE865231D3664001695D2 /* ViewController.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
+				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
+				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
+				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		275FE866231D3664001695D2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				275FE867231D3664001695D2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		275FE86E231D3666001695D2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
