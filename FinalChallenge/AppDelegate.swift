@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+
+        let healthStoreManager = HealthStoreManager()
+        healthStoreManager.requestAuthorization { (success) in
+            print("HealthKit authored: \(success)")
+        }
 
         let navigationController = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigationController)
