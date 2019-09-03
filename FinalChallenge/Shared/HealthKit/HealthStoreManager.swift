@@ -18,6 +18,7 @@ final class HealthStoreManager {
 
     /// Solicita autorização do usuário para leitura dos dados necessários para o app.
     /// É necessário ser executado antes de buscar os dados na `HKHealthStore`.
+    ///
     /// - Parameter completion: Executado ao final do método, tem como parâmentro "true" em caso de sucesso e
     /// "false" em caso de fracasso.
     func requestAuthorization(completion: @escaping(ResultHandler<Bool>)) {
@@ -26,10 +27,7 @@ final class HealthStoreManager {
                 return completion(.success(false))
         }
 
-        HealthStoreManager.healthStore.requestAuthorization(
-            toShare: [],
-            read: [stepCountType]
-        ) { (success, error) in
+        HealthStoreManager.healthStore.requestAuthorization(toShare: [], read: [stepCountType]) { (success, error) in
             if let error = error {
                 completion(.failure(error))
             }
@@ -40,9 +38,12 @@ final class HealthStoreManager {
 
     /// Executa uma query na `HKHealthStore` pelos samples do tipo passado como parâmetro e retorna o
     /// resultado do somatório das quantidades desde o intervalo de 1 hora.
-    /// - Parameter sampleType: Tipo do sample a ser buscado
-    /// - Parameter completion: Callback para ser executado após a consulta
-    func quantitySum(of sampleType: HKQuantityType, completion: @escaping(ResultHandler<HKStatistics>)) {
+    ///
+    /// - Parameters:
+    ///   - service: Case do `HealthStoreService` para configurar a query
+    ///   - completion: Callback para ser executado após a consulta
+    func quantitySum(of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
+        guard let sampleType = service.type as? HKQuantityType else { return }
 
         let calendar = Calendar.current
         let now = Date()
@@ -73,13 +74,16 @@ final class HealthStoreManager {
     }
 
     /// Executa uma query para obter os samples de um determinado tipo passado como parâmetro.
-    /// - Parameter sampleType: Tipo do sample a ser buscado
-    /// - Parameter completion: Callback para ser executado após a consulta
-    func samples(of sampleType: HKSampleType, completion: @escaping(ResultHandler<[HKSample]>)) {
+    ///
+    /// - Parameters:
+    ///   - service: Case do `HealthStoreService` para configurar a query
+    ///   - completion: Callback para ser executado após a consulta
+    func samples(of service: HealthStoreService, completion: @escaping(ResultHandler<[HKSample]>)) {
+        guard let sampleType = service.type as? HKSampleType else { return }
 
         let sampleQuery = HKSampleQuery(
             sampleType: sampleType,
-            predicate: nil,
+            predicate: service.queryPredicate,
             limit: HKObjectQueryNoLimit,
             sortDescriptors: nil
         ) { (_, samples, error) in
