@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
+
+        let healthStoreManager = HealthStoreManager()
+        healthStoreManager.requestAuthorization { (success) in
+            print("HealthKit authored: \(success)")
+        }
+
+        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return true }
+        healthStoreManager.quantitySum(of: stepCountType) { (result) in
+            switch result {
+            case .success(let statistics):
+                if let quantity = statistics.sumQuantity() {
+                    print(quantity.doubleValue(for: HKUnit.count()))
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
 
         let navigationController = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigationController)
