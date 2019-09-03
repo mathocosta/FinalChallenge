@@ -11,7 +11,7 @@ import HealthKit
 
 final class HealthStoreManager {
 
-    // FIXME: Remover essa variável estática e usar outra coisa
+    // FIXME: Remover essa variável estática e fazer de outra forma
     static var healthStore = HKHealthStore()
 
     /// Solicita autorização do usuário para leitura dos dados necessários para o app.
@@ -34,7 +34,6 @@ final class HealthStoreManager {
         }
     }
 
-
     /// Executa uma query na `HKHealthStore` pelos samples do tipo passado como parâmetro e retorna o
     /// resultado do somatório das quantidades desde o intervalo de 1 hora.
     /// - Parameter sampleType: Tipo do sample a ser buscado
@@ -45,7 +44,7 @@ final class HealthStoreManager {
         let calendar = Calendar.current
         let now = Date()
         let lastHour = calendar.date(byAdding: .hour, value: -1, to: now)
-        
+
         let predicate = HKQuery.predicateForSamples(
             withStart: lastHour, end: now, options: .strictStartDate)
 
@@ -65,9 +64,35 @@ final class HealthStoreManager {
 
             completion(.success(result))
         }
-        
+
         // Executa a query na store
         HealthStoreManager.healthStore.execute(statisticsQuery)
+    }
+
+    /// Executa uma query para obter os samples de um determinado tipo passado como parâmetro.
+    /// - Parameter sampleType: Tipo do sample a ser buscado
+    /// - Parameter completion: Callback para ser executado após a consulta
+    func samples(
+        of sampleType: HKSampleType, completion: @escaping((Result<[HKSample], Error>) -> Void)) {
+
+        let sampleQuery = HKSampleQuery(
+            sampleType: sampleType,
+            predicate: nil,
+            limit: HKObjectQueryNoLimit,
+            sortDescriptors: nil
+        ) { (_, samples, error) in
+            guard let actualSamples = samples, error == nil else {
+                if let error = error {
+                    completion(.failure(error))
+                }
+                return
+            }
+
+            completion(.success(actualSamples))
+        }
+
+        // Executa a query na store
+        HealthStoreManager.healthStore.execute(sampleQuery)
     }
 
 }
