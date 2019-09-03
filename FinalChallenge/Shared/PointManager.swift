@@ -9,7 +9,9 @@
 import Foundation
 
 class PointManager: NSObject {
+    static let stepsForPoint: Int = 100
+    
     static func points(forSteps steps: Double) -> Int {
-        return Int(steps)/100
+        return Int(steps)/stepsForPoint
     }
 }

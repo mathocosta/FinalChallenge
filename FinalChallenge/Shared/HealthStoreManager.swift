@@ -40,18 +40,15 @@ final class HealthStoreManager {
 
 
     /// Executa uma query na `HKHealthStore` pelos samples do tipo passado como parâmetro e retorna o
-    /// resultado do somatório das quantidades desde o intervalo de 1 hora.
+    /// resultado do somatório das quantidades desde o último intervalo capturado.
+    /// - Parameter from: Data de início da consulta
     /// - Parameter sampleType: Tipo do sample a ser buscado
     /// - Parameter completion: Callback para ser executado após a consulta
-    func quantitySum(
+    func quantitySum(from: Date?,
         of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
-
-        let calendar = Calendar.current
         let now = Date()
-        let lastHour = calendar.date(byAdding: .hour, value: -1, to: now)
-        
         let predicate = HKQuery.predicateForSamples(
-            withStart: lastHour, end: now, options: .strictStartDate)
+            withStart: from, end: now, options: .strictStartDate)
 
         // Constrói uma HKStatisticsQuery que busca os samples do tipo definido no `quantityType`,
         // filtra baseado no predicate e executa a operação definida nas `options`
@@ -69,36 +66,22 @@ final class HealthStoreManager {
 
             completion(.success(result))
         }
-        
         // Executa a query na store
         HealthStoreManager.healthStore.execute(statisticsQuery)
     }
-    
-    func quantitySumAll(
+
+    func quantitySumSinceLastHour(
+        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+        let calendar = Calendar.current
+        let now = Date()
+        let lastHour = calendar.date(byAdding: .hour, value: -1, to: now)
+        quantitySum(from: lastHour, of: sampleType, completion: completion)
+    }
+
+    func quantitySumSinceLastUpdate(
         of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
         let now = Date()
-        let predicate = HKQuery.predicateForSamples(
-            withStart: self.lastUpdateTime, end: now, options: .strictStartDate)
-        
-        // Constrói uma HKStatisticsQuery que busca os samples do tipo definido no `quantityType`,
-        // filtra baseado no predicate e executa a operação definida nas `options`
-        let statisticsQuery = HKStatisticsQuery(
-            quantityType: sampleType,
-            quantitySamplePredicate: predicate,
-            options: .cumulativeSum
-        ) { (_, result, error) in
-            guard let result = result, error == nil else {
-                if let error = error {
-                    completion(.failure(error))
-                }
-                return
-            }
-            
-            completion(.success(result))
-        }
-        
-        // Executa a query na store
-        HealthStoreManager.healthStore.execute(statisticsQuery)
+        quantitySum(from: self.lastUpdateTime, of: sampleType, completion: completion)
         self.lastUpdateTime = now
     }
 

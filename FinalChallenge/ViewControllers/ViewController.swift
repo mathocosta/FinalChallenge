@@ -27,7 +27,7 @@ class ViewController: UIViewController {
                 guard let type = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
                     return
                 }
-                manager.quantitySumAll(of: type) { (result) in
+                manager.quantitySumSinceLastUpdate(of: type) { (result) in
                     switch result {
                     case .success(let statistics):
                         if let quantity = statistics.sumQuantity() {
