@@ -17,7 +17,7 @@ extension Calendar {
         }
         return lastUpdateTime
     }
-    
+
     func getNextUpdateTime(from: Date) -> Date? {
         guard let nextSunday = date(bySetting: .weekday, value: 1, of: from),
             let nextUpdateTime = date(bySetting: .hour, value: 3, of: nextSunday) else {
@@ -26,4 +26,3 @@ extension Calendar {
         return nextUpdateTime
     }
 }
-

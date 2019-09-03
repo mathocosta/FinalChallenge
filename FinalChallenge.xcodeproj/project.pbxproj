@@ -19,6 +19,7 @@
 		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
+		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		275FE885231D3ECE001695D2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
+		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				275FE879231D3D39001695D2 /* Protocols */,
 				275FE885231D3ECE001695D2 /* CoreDataManager.swift */,
 				303F5A8E231D619F0054587C /* PointManager.swift */,
+				303F5A96231E93AA0054587C /* UserManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
+				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
