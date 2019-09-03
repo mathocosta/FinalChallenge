@@ -85,4 +85,11 @@ final class HealthStoreManager {
         self.lastUpdateTime = now
     }
 
+    func quantitySumSinceLastSunday(
+        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+        let calendar = Calendar.current
+        let now = Date()
+        let lastSunday = calendar.getLastUpdateTime(from: now)
+        quantitySum(from: self.lastUpdateTime, of: sampleType, completion: completion)
+    }
 }
