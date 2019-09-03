@@ -11,6 +11,8 @@ import HealthKit
 
 final class HealthStoreManager {
 
+    typealias ResultHandler<T> = (Result<T, Error>) -> Void
+
     // FIXME: Remover essa variável estática e fazer de outra forma
     static var healthStore = HKHealthStore()
 
@@ -18,19 +20,21 @@ final class HealthStoreManager {
     /// É necessário ser executado antes de buscar os dados na `HKHealthStore`.
     /// - Parameter completion: Executado ao final do método, tem como parâmentro "true" em caso de sucesso e
     /// "false" em caso de fracasso.
-    func requestAuthorization(completion: @escaping ((Bool) -> Void)) {
-        guard HKHealthStore.isHealthDataAvailable() else { return completion(false) }
-        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return }
+    func requestAuthorization(completion: @escaping(ResultHandler<Bool>)) {
+        guard HKHealthStore.isHealthDataAvailable(),
+            let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+                return completion(.success(false))
+        }
 
         HealthStoreManager.healthStore.requestAuthorization(
             toShare: [],
             read: [stepCountType]
         ) { (success, error) in
             if let error = error {
-                fatalError(error.localizedDescription)
+                completion(.failure(error))
             }
 
-            completion(success)
+            completion(.success(success))
         }
     }
 
@@ -38,8 +42,7 @@ final class HealthStoreManager {
     /// resultado do somatório das quantidades desde o intervalo de 1 hora.
     /// - Parameter sampleType: Tipo do sample a ser buscado
     /// - Parameter completion: Callback para ser executado após a consulta
-    func quantitySum(
-        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+    func quantitySum(of sampleType: HKQuantityType, completion: @escaping(ResultHandler<HKStatistics>)) {
 
         let calendar = Calendar.current
         let now = Date()
@@ -72,8 +75,7 @@ final class HealthStoreManager {
     /// Executa uma query para obter os samples de um determinado tipo passado como parâmetro.
     /// - Parameter sampleType: Tipo do sample a ser buscado
     /// - Parameter completion: Callback para ser executado após a consulta
-    func samples(
-        of sampleType: HKSampleType, completion: @escaping((Result<[HKSample], Error>) -> Void)) {
+    func samples(of sampleType: HKSampleType, completion: @escaping(ResultHandler<[HKSample]>)) {
 
         let sampleQuery = HKSampleQuery(
             sampleType: sampleType,
