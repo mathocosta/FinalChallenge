@@ -27,6 +27,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("HealthKit authored: \(success)")
         }
 
+        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return true }
+        healthStoreManager.quantitySum(of: stepCountType) { (result) in
+            switch result {
+            case .success(let statistics):
+                if let quantity = statistics.sumQuantity() {
+                    print(quantity.doubleValue(for: HKUnit.count()))
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+
         let navigationController = UINavigationController()
         appCoordinator = AppCoordinator(navigationController: navigationController)
 
