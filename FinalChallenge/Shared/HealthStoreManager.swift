@@ -10,7 +10,11 @@ import Foundation
 import HealthKit
 
 final class HealthStoreManager {
-
+    var lastUpdateTime: Date! = AppDelegate.defaults.value(forKey: "LastUpdate") as? Date {
+        didSet {
+            AppDelegate.defaults.setValue(self.lastUpdateTime, forKey: "LastUpdate")
+        }
+    }
     // FIXME: Remover essa variável estática e usar outra coisa
     static var healthStore = HKHealthStore()
 
@@ -68,6 +72,34 @@ final class HealthStoreManager {
         
         // Executa a query na store
         HealthStoreManager.healthStore.execute(statisticsQuery)
+    }
+    
+    func quantitySumAll(
+        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+        let now = Date()
+        let predicate = HKQuery.predicateForSamples(
+            withStart: self.lastUpdateTime, end: now, options: .strictStartDate)
+        
+        // Constrói uma HKStatisticsQuery que busca os samples do tipo definido no `quantityType`,
+        // filtra baseado no predicate e executa a operação definida nas `options`
+        let statisticsQuery = HKStatisticsQuery(
+            quantityType: sampleType,
+            quantitySamplePredicate: predicate,
+            options: .cumulativeSum
+        ) { (_, result, error) in
+            guard let result = result, error == nil else {
+                if let error = error {
+                    completion(.failure(error))
+                }
+                return
+            }
+            
+            completion(.success(result))
+        }
+        
+        // Executa a query na store
+        HealthStoreManager.healthStore.execute(statisticsQuery)
+        self.lastUpdateTime = now
     }
 
 }

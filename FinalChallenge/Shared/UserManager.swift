@@ -18,6 +18,8 @@ class UserManager: NSObject {
         self.loggedUser = UserManager.getLoggedUser()
     }
 
+
+    // Function needs refactoring later
     static func getLoggedUser() -> User? {
         let request = NSFetchRequest<User>(entityName: "User")
         let users = CoreDataManager.fetch(request)
@@ -29,14 +31,9 @@ class UserManager: NSObject {
         return user
     }
 
-    func displayAmountOfPoints() {
-        print(loggedUser.points)
-    }
-
-    func update(_ user: User, addPoints points: Int) {
+    static func update(_ user: User, addPoints points: Int) {
         user.points += Int32(points)
         CoreDataManager.saveContext()
-        displayAmountOfPoints()
     }
 
     static func createNewUser(name: String, email: String) -> User {
@@ -58,6 +55,6 @@ class UserManager: NSObject {
     func simulateAppInteraction() {
         let steps = Int.random(in: 0...1000)
         let points = PointManager.points(forSteps: Double(steps))
-        update(UserManager.current.loggedUser, addPoints: points)
+        UserManager.update(UserManager.current.loggedUser, addPoints: points)
     }
 }

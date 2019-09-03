@@ -12,7 +12,7 @@ import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    static let defaults = UserDefaults()
     var window: UIWindow?
 
     private var appCoordinator: AppCoordinator?
