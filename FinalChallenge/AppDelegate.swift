@@ -12,7 +12,7 @@ import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    static let defaults = UserDefaults()
+
     var window: UIWindow?
 
     private var appCoordinator: AppCoordinator?
@@ -23,19 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
 
         let healthStoreManager = HealthStoreManager()
-        healthStoreManager.requestAuthorization { (success) in
-            print("HealthKit authored: \(success)")
-        }
-
-        guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return true }
-        healthStoreManager.quantitySumSinceLastHour(of: stepCountType) { (result) in
+        healthStoreManager.requestAuthorization { (result) in
             switch result {
-            case .success(let statistics):
-                if let quantity = statistics.sumQuantity() {
-                    print(quantity.doubleValue(for: HKUnit.count()))
-                }
+            case .success(let isAuthorized):
+                print("HealthKit authored: \(isAuthorized)")
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
 
