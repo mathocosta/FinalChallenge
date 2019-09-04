@@ -22,12 +22,9 @@ final class HealthStoreManager {
     /// - Parameter completion: Executado ao final do método, tem como parâmentro "true" em caso de sucesso e
     /// "false" em caso de fracasso.
     func requestAuthorization(completion: @escaping(ResultHandler<Bool>)) {
-        guard HKHealthStore.isHealthDataAvailable(),
-            let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
-                return completion(.success(false))
-        }
+        let readTypes = HealthStoreService.allTypes
 
-        HealthStoreManager.healthStore.requestAuthorization(toShare: [], read: [stepCountType]) { (success, error) in
+        HealthStoreManager.healthStore.requestAuthorization(toShare: [], read: readTypes) { (success, error) in
             if let error = error {
                 completion(.failure(error))
             }
