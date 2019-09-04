@@ -12,7 +12,7 @@ import HealthKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    static let defaults = UserDefaults()
     var window: UIWindow?
 
     private var appCoordinator: AppCoordinator?
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         guard let stepCountType = HKObjectType.quantityType(forIdentifier: .stepCount) else { return true }
-        healthStoreManager.quantitySum(of: stepCountType) { (result) in
+        healthStoreManager.quantitySumSinceLastHour(of: stepCountType) { (result) in
             switch result {
             case .success(let statistics):
                 if let quantity = statistics.sumQuantity() {

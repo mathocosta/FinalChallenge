@@ -10,7 +10,11 @@ import Foundation
 import HealthKit
 
 final class HealthStoreManager {
-
+    var lastUpdateTime: Date! = AppDelegate.defaults.value(forKey: "LastUpdate") as? Date {
+        didSet {
+            AppDelegate.defaults.setValue(self.lastUpdateTime, forKey: "LastUpdate")
+        }
+    }
     // FIXME: Remover essa variável estática e usar outra coisa
     static var healthStore = HKHealthStore()
 
@@ -36,18 +40,15 @@ final class HealthStoreManager {
 
 
     /// Executa uma query na `HKHealthStore` pelos samples do tipo passado como parâmetro e retorna o
-    /// resultado do somatório das quantidades desde o intervalo de 1 hora.
+    /// resultado do somatório das quantidades desde o último intervalo capturado.
+    /// - Parameter from: Data de início da consulta
     /// - Parameter sampleType: Tipo do sample a ser buscado
     /// - Parameter completion: Callback para ser executado após a consulta
-    func quantitySum(
+    func quantitySum(from: Date?,
         of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
-
-        let calendar = Calendar.current
         let now = Date()
-        let lastHour = calendar.date(byAdding: .hour, value: -1, to: now)
-        
         let predicate = HKQuery.predicateForSamples(
-            withStart: lastHour, end: now, options: .strictStartDate)
+            withStart: from, end: now, options: .strictStartDate)
 
         // Constrói uma HKStatisticsQuery que busca os samples do tipo definido no `quantityType`,
         // filtra baseado no predicate e executa a operação definida nas `options`
@@ -65,9 +66,30 @@ final class HealthStoreManager {
 
             completion(.success(result))
         }
-        
         // Executa a query na store
         HealthStoreManager.healthStore.execute(statisticsQuery)
     }
 
+    func quantitySumSinceLastHour(
+        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+        let calendar = Calendar.current
+        let now = Date()
+        let lastHour = calendar.date(byAdding: .hour, value: -1, to: now)
+        quantitySum(from: lastHour, of: sampleType, completion: completion)
+    }
+
+    func quantitySumSinceLastUpdate(
+        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+        let now = Date()
+        quantitySum(from: self.lastUpdateTime, of: sampleType, completion: completion)
+        self.lastUpdateTime = now
+    }
+
+    func quantitySumSinceLastSunday(
+        of sampleType: HKQuantityType, completion: @escaping((Result<HKStatistics, Error>) -> Void)) {
+        let calendar = Calendar.current
+        let now = Date()
+        let lastSunday = calendar.getLastUpdateTime(from: now)
+        quantitySum(from: self.lastUpdateTime, of: sampleType, completion: completion)
+    }
 }
