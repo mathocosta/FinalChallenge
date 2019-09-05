@@ -32,8 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
-        let navigationController = UINavigationController()
-        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
