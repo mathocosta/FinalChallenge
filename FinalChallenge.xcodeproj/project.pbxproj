@@ -19,6 +19,11 @@
 		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
 		275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE887231D4CBD001695D2 /* HealthStoreManager.swift */; };
 		275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275FE88B231D55CC001695D2 /* HealthKit.framework */; };
+		278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F823207D7900A2A481 /* TeamTabCoordinator.swift */; };
+		278717FB23207FC300A2A481 /* TeamPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */; };
+		278717FF23207FEA00A2A481 /* TeamPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamPresentationView.swift */; };
+		278718052320849900A2A481 /* TeamEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278718042320849900A2A481 /* TeamEntranceView.swift */; };
+		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
@@ -42,6 +47,11 @@
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		275FE889231D55CC001695D2 /* FinalChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallenge.entitlements; sourceTree = "<group>"; };
 		275FE88B231D55CC001695D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		278717F823207D7900A2A481 /* TeamTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTabCoordinator.swift; sourceTree = "<group>"; };
+		278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPresentationViewController.swift; sourceTree = "<group>"; };
+		278717FE23207FEA00A2A481 /* TeamPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPresentationView.swift; sourceTree = "<group>"; };
+		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
+		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
@@ -82,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				275FE878231D3D33001695D2 /* Shared */,
+				278717F723207CF700A2A481 /* TeamTab */,
 				275FE882231D3E66001695D2 /* Views */,
 				275FE881231D3E53001695D2 /* ViewControllers */,
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
@@ -139,6 +150,34 @@
 				275FE88B231D55CC001695D2 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		278717F723207CF700A2A481 /* TeamTab */ = {
+			isa = PBXGroup;
+			children = (
+				278717FD23207FD200A2A481 /* Views */,
+				278717FC23207FC800A2A481 /* ViewControllers */,
+				278717F823207D7900A2A481 /* TeamTabCoordinator.swift */,
+			);
+			path = TeamTab;
+			sourceTree = "<group>";
+		};
+		278717FC23207FC800A2A481 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */,
+				27871806232084A900A2A481 /* TeamEntranceViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		278717FD23207FD200A2A481 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				278717FE23207FEA00A2A481 /* TeamPresentationView.swift */,
+				278718042320849900A2A481 /* TeamEntranceView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		27C56E5D231EB5DF009CCAAB /* HealthKit */ = {
@@ -256,14 +295,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
+				278717FF23207FEA00A2A481 /* TeamPresentationView.swift in Sources */,
+				278717FB23207FC300A2A481 /* TeamPresentationViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				275FE865231D3664001695D2 /* ViewController.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
+				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
+				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
+				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
