@@ -20,13 +20,20 @@ final class TeamTabCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+        self.navigationController.navigationBar.isTranslucent = false
     }
 
     func start() {
         guard navigationController.topViewController == nil else { return }
 
-        let viewController = TeamEntranceViewController()
+        let viewController = TeamListViewController()
         viewController.coordinator = self
+
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func showEntrance(of team: Team) {
+        let viewController = TeamEntranceViewController(team: team)
 
         navigationController.pushViewController(viewController, animated: true)
     }

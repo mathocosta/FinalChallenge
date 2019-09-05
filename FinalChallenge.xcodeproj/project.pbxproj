@@ -19,6 +19,8 @@
 		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
 		275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE887231D4CBD001695D2 /* HealthStoreManager.swift */; };
 		275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275FE88B231D55CC001695D2 /* HealthKit.framework */; };
+		276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47323219D6A00EA75C6 /* TeamListViewController.swift */; };
+		276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47523219D7B00EA75C6 /* TeamListView.swift */; };
 		278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F823207D7900A2A481 /* TeamTabCoordinator.swift */; };
 		278717FB23207FC300A2A481 /* TeamPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */; };
 		278717FF23207FEA00A2A481 /* TeamPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamPresentationView.swift */; };
@@ -47,6 +49,8 @@
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		275FE889231D55CC001695D2 /* FinalChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallenge.entitlements; sourceTree = "<group>"; };
 		275FE88B231D55CC001695D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		276FD47323219D6A00EA75C6 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
+		276FD47523219D7B00EA75C6 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		278717F823207D7900A2A481 /* TeamTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTabCoordinator.swift; sourceTree = "<group>"; };
 		278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPresentationViewController.swift; sourceTree = "<group>"; };
 		278717FE23207FEA00A2A481 /* TeamPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPresentationView.swift; sourceTree = "<group>"; };
@@ -167,6 +171,7 @@
 			children = (
 				278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */,
 				27871806232084A900A2A481 /* TeamEntranceViewController.swift */,
+				276FD47323219D6A00EA75C6 /* TeamListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			children = (
 				278717FE23207FEA00A2A481 /* TeamPresentationView.swift */,
 				278718042320849900A2A481 /* TeamEntranceView.swift */,
+				276FD47523219D7B00EA75C6 /* TeamListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -307,8 +313,10 @@
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
+				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
+				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
