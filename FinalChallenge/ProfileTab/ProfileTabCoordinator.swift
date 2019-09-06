@@ -30,4 +30,11 @@ final class ProfileTabCoordinator: Coordinator {
         
         navigationController.pushViewController(viewController, animated: true)
     }
+    
+    func showProfileEditViewController() {
+        let viewController = ProfileEditViewController()
+        viewController.coordinator = self
+        
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

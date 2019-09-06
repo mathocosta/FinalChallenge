@@ -14,7 +14,11 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = ProfileView()
+        
+        let profileView = ProfileView()
+        profileView.coordinator = coordinator
+        
+        self.view = profileView
     }
     
 }

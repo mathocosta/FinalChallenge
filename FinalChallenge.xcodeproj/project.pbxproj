@@ -25,8 +25,11 @@
 		278718052320849900A2A481 /* TeamEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278718042320849900A2A481 /* TeamEntranceView.swift */; };
 		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
+		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
+		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
 		2B417FA02320006F002AD09D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9F2320006F002AD09D /* ProfileView.swift */; };
+		2B6E354123229C520092A481 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E354023229C520092A481 /* Input.swift */; };
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
 		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
@@ -59,8 +62,11 @@
 		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
 		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
+		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
+		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2B417F9F2320006F002AD09D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2B6E354023229C520092A481 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
@@ -203,6 +209,14 @@
 			path = HealthKit;
 			sourceTree = "<group>";
 		};
+		2B6E353F23229C080092A481 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				2B6E354023229C520092A481 /* Input.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
 		2B7DC2AD23228813009C3F54 /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				2B417F9F2320006F002AD09D /* ProfileView.swift */,
+				2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				2B417F9D23200052002AD09D /* ProfileViewController.swift */,
+				2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */,
 			);
 			path = ViewsControllers;
 			sourceTree = "<group>";
@@ -249,6 +265,7 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B6E353F23229C080092A481 /* Input */,
 				2B7DC2B3232291C8009C3F54 /* ProgressBarsView */,
 				2BB4741A232001550099D4EB /* ProfileDetailsView */,
 			);
@@ -371,6 +388,7 @@
 				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				278717FF23207FEA00A2A481 /* TeamPresentationView.swift in Sources */,
+				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				278717FB23207FC300A2A481 /* TeamPresentationViewController.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
@@ -381,7 +399,9 @@
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
+				2B6E354123229C520092A481 /* Input.swift in Sources */,
 				2B417FA02320006F002AD09D /* ProfileView.swift in Sources */,
+				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,

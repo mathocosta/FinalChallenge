@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileView: UIView {
     
+    weak var coordinator: ProfileTabCoordinator?
+    
     lazy var profileDetailsView: ProfileDetailsView = {
         let view = ProfileDetailsView(frame: CGRect(x: 0, y: 0, width: 119, height: 130), name: "Paulo", level: 12)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +32,11 @@ class ProfileView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil ) {
+        guard let coordinator = coordinator else { return }
+        coordinator.showProfileEditViewController()
     }
     
 }
@@ -53,7 +60,8 @@ extension ProfileView: CodeView {
     }
     
     func setupAdditionalConfiguration() {
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileDetailsTap(_:)))
+        profileDetailsView.addGestureRecognizer(tapGesture)
     }
     
     
