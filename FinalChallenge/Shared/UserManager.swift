@@ -18,9 +18,8 @@ class UserManager: NSObject {
         self.loggedUser = UserManager.getLoggedUser()
     }
 
-
     // Function needs refactoring later
-    static func getLoggedUser() -> User? {
+    static func getLoggedUser() -> User {
         let request = NSFetchRequest<User>(entityName: "User")
         let users = CoreDataManager.fetch(request)
         guard let user = users.first else {
