@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TeamPresentationView: UIView {
+class TeamDetailsView: UIView {
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)

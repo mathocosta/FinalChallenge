@@ -25,8 +25,6 @@ class TeamEntranceView: UIView {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 28, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
-        // TODO: Remover
-        label.text = "Teste"
 
         return label
     }()

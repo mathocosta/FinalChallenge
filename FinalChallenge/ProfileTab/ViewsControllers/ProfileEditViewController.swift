@@ -9,15 +9,14 @@
 import UIKit
 
 class ProfileEditViewController: UIViewController {
-    
+
     weak var coordinator: ProfileTabCoordinator?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = ProfileEditView()
         // Do any additional setup after loading the view.
     }
-    
 
     /*
     // MARK: - Navigation
