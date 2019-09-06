@@ -42,8 +42,8 @@ class ProgressBarsView: UIView {
 extension ProgressBarsView: CodeView {
     func buildViewHierarchy() {
         addSubview(firstBar)
-        addSubview(secondBar)
-        addSubview(thirdBar)
+//        addSubview(secondBar)
+//        addSubview(thirdBar)
     }
 
     func setupConstraints() {
@@ -52,15 +52,15 @@ extension ProgressBarsView: CodeView {
         firstBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         firstBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
 
-        secondBar.topAnchor.constraint(equalTo: firstBar.bottomAnchor, constant: 31).isActive = true
-        secondBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        secondBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        secondBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
-
-        thirdBar.topAnchor.constraint(equalTo: secondBar.bottomAnchor, constant: 31).isActive = true
-        thirdBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        thirdBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        thirdBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
+//        secondBar.topAnchor.constraint(equalTo: firstBar.bottomAnchor, constant: 31).isActive = true
+//        secondBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//        secondBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+//        secondBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
+//
+//        thirdBar.topAnchor.constraint(equalTo: secondBar.bottomAnchor, constant: 31).isActive = true
+//        thirdBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//        thirdBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+//        thirdBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
     }
 
     func setupAdditionalConfiguration() {

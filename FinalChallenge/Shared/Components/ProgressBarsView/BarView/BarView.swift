@@ -12,7 +12,13 @@ class BarView: UIView {
 
     static let height: CGFloat = 15.0
 
-    let progress: CGFloat
+    var progressBarConstraint: NSLayoutConstraint?
+
+    var progress: CGFloat {
+        didSet {
+            progressBarConstraint?.constant = -(self.frame.width * (1 - progress))
+        }
+    }
 
     lazy var progressBar: UIView = {
         let view = UIView()
@@ -21,7 +27,7 @@ class BarView: UIView {
         return view
     }()
 
-    init(frame: CGRect, progress: CGFloat) {
+    init(frame: CGRect, progress: CGFloat = 0.5) {
         self.progress = progress
         super.init(frame: frame)
 
@@ -37,8 +43,17 @@ class BarView: UIView {
     }
 
     override func layoutSubviews() {
-        progressBar.rightAnchor.constraint(
-            equalTo: self.rightAnchor, constant: -(self.frame.width * progress)).isActive = true
+        // Essa checagem é necessária pois esse método é chamado mais de uma vez (por algum motivo
+        // obscuro do SDK do iOS), portanto são criadas constraints iguais mais uma vez para os mesmos
+        // elementos. Dessa forma, se tentar atualizar o progresso na barra, somente a última constraint
+        // será atualizada, pois foi salva na propriedade `progressBarConstraint`. Isso causa o erro "Unable
+        // to simultaneously satisfy constraints". Assim, é checado se a propriedade já foi inicializada,
+        // para não adicionar mais de uma vez.
+        if progressBarConstraint == nil {
+            progressBarConstraint = progressBar.rightAnchor.constraint(
+                equalTo: self.rightAnchor, constant: -(self.frame.width * (1 - progress)))
+            progressBarConstraint?.isActive = true
+        }
     }
 
 }

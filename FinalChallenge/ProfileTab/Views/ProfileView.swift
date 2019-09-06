@@ -12,8 +12,15 @@ class ProfileView: UIView {
 
     weak var coordinator: ProfileTabCoordinator?
 
+    var firstBarProgress: Float {
+        didSet {
+            progressBars.firstBar.progress = CGFloat(firstBarProgress)
+        }
+    }
+
     lazy var profileDetailsView: ProfileDetailsView = {
-        let view = ProfileDetailsView(frame: CGRect(x: 0, y: 0, width: 119, height: 130), name: "Paulo", level: 12)
+        let view = ProfileDetailsView(
+            frame: CGRect(x: 0, y: 0, width: 119, height: 130), name: "Paulo", level: 12)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -25,6 +32,7 @@ class ProfileView: UIView {
     }()
 
     override init(frame: CGRect) {
+        self.firstBarProgress = 0.1
         super.init(frame: frame)
         backgroundColor = .white
         setupView()
@@ -54,7 +62,8 @@ extension ProfileView: CodeView {
         profileDetailsView.heightAnchor.constraint(equalToConstant: 130).isActive = true
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        progressBars.topAnchor.constraint(equalTo: profileDetailsView.bottomAnchor, constant: 60).isActive = true
+        progressBars.topAnchor.constraint(
+            equalTo: profileDetailsView.bottomAnchor, constant: 60).isActive = true
         progressBars.heightAnchor.constraint(equalToConstant: BarView.height * 3 + 31 * 2).isActive = true
         progressBars.widthAnchor.constraint(equalToConstant: 195).isActive = true
     }
