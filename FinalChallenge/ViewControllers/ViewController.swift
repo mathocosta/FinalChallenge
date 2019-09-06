@@ -16,6 +16,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var pile = [Int]()
+        print("\(GoalsManager.amountOfGoals()) goals")
+        for _ in 0...10 {
+            let newGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
+            print(newGoals)
+            //GoalsManager.removeTimedGoals(timedGoals: &newGoals, sendToPile: &pile)
+        }
     }
 
 }
