@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    
+    weak var coordinator: ProfileTabCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()

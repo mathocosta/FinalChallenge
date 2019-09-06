@@ -11,13 +11,14 @@ import UIKit
 class ProfileView: UIView {
     
     lazy var profileDetailsView: ProfileDetailsView = {
-        let view = ProfileDetailsView(frame: .zero, name: "Paulo", level: 12)
+        let view = ProfileDetailsView(frame: CGRect(x: 0, y: 0, width: 119, height: 130), name: "Paulo", level: 12)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .white
         setupView()
     }
     
@@ -29,11 +30,14 @@ class ProfileView: UIView {
 
 extension ProfileView: CodeView {
     func buildViewHierarchy() {
-        
+        addSubview(profileDetailsView)
     }
     
     func setupConstraints() {
-        
+        profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        profileDetailsView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
+        profileDetailsView.heightAnchor.constraint(equalToConstant: 130).isActive = true
     }
     
     func setupAdditionalConfiguration() {

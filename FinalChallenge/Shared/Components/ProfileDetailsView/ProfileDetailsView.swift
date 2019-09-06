@@ -24,6 +24,7 @@ class ProfileDetailsView: UIView {
     
     lazy var imageView: UIView = { //Trocar para UIImageView quando
         let view = UIView()
+        view.backgroundColor = .blue
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -32,6 +33,7 @@ class ProfileDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.text = self.name
         return label
     }()
     
@@ -39,6 +41,7 @@ class ProfileDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.text = "Nível \(level)"
         return label
     }()
     
@@ -67,7 +70,8 @@ extension ProfileDetailsView: CodeView {
         imageView.widthAnchor.constraint(equalToConstant: 119).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 119).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        imageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        imageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 13).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
