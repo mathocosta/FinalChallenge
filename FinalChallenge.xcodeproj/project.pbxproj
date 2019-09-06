@@ -22,8 +22,8 @@
 		276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47323219D6A00EA75C6 /* TeamListViewController.swift */; };
 		276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47523219D7B00EA75C6 /* TeamListView.swift */; };
 		278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F823207D7900A2A481 /* TeamTabCoordinator.swift */; };
-		278717FB23207FC300A2A481 /* TeamPresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */; };
-		278717FF23207FEA00A2A481 /* TeamPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamPresentationView.swift */; };
+		278717FB23207FC300A2A481 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */; };
+		278717FF23207FEA00A2A481 /* TeamDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamDetailsView.swift */; };
 		278718052320849900A2A481 /* TeamEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278718042320849900A2A481 /* TeamEntranceView.swift */; };
 		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
@@ -52,8 +52,8 @@
 		276FD47323219D6A00EA75C6 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		276FD47523219D7B00EA75C6 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		278717F823207D7900A2A481 /* TeamTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTabCoordinator.swift; sourceTree = "<group>"; };
-		278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPresentationViewController.swift; sourceTree = "<group>"; };
-		278717FE23207FEA00A2A481 /* TeamPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamPresentationView.swift; sourceTree = "<group>"; };
+		278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
+		278717FE23207FEA00A2A481 /* TeamDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsView.swift; sourceTree = "<group>"; };
 		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
 		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		278717FC23207FC800A2A481 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				278717FA23207FC300A2A481 /* TeamPresentationViewController.swift */,
+				278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */,
 				27871806232084A900A2A481 /* TeamEntranceViewController.swift */,
 				276FD47323219D6A00EA75C6 /* TeamListViewController.swift */,
 			);
@@ -179,7 +179,7 @@
 		278717FD23207FD200A2A481 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				278717FE23207FEA00A2A481 /* TeamPresentationView.swift */,
+				278717FE23207FEA00A2A481 /* TeamDetailsView.swift */,
 				278718042320849900A2A481 /* TeamEntranceView.swift */,
 				276FD47523219D7B00EA75C6 /* TeamListView.swift */,
 			);
@@ -301,8 +301,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
-				278717FF23207FEA00A2A481 /* TeamPresentationView.swift in Sources */,
-				278717FB23207FC300A2A481 /* TeamPresentationViewController.swift in Sources */,
+				278717FF23207FEA00A2A481 /* TeamDetailsView.swift in Sources */,
+				278717FB23207FC300A2A481 /* TeamDetailsViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				275FE865231D3664001695D2 /* ViewController.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
