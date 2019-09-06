@@ -15,6 +15,12 @@ class ProfileView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    lazy var progressBars: ProgressBarsView = {
+        let view = ProgressBarsView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,13 +37,19 @@ class ProfileView: UIView {
 extension ProfileView: CodeView {
     func buildViewHierarchy() {
         addSubview(profileDetailsView)
+        addSubview(progressBars)
     }
     
     func setupConstraints() {
         profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileDetailsView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200).isActive = true
         profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
         profileDetailsView.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        
+        progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        progressBars.topAnchor.constraint(equalTo: profileDetailsView.bottomAnchor, constant: 60).isActive = true
+        progressBars.heightAnchor.constraint(equalToConstant: BarView.height * 3 + 31 * 2).isActive = true
+        progressBars.widthAnchor.constraint(equalToConstant: 195).isActive = true
     }
     
     func setupAdditionalConfiguration() {
