@@ -20,6 +20,7 @@ final class AppCoordinator: NSObject, Coordinator {
     init(tabBarController: UITabBarController) {
         self.tabBarController = tabBarController
         self.childCoordinators = [
+            ProfileTabCoordinator(navigationController: UINavigationController()),
             TeamTabCoordinator(navigationController: UINavigationController())
         ]
 
