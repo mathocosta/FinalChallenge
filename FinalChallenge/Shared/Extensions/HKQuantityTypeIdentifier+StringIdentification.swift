@@ -20,7 +20,7 @@ extension HKQuantityTypeIdentifier {
             return 1.0
         }
     }
-    
+
     static func type(forTag tag: String) -> HKQuantityTypeIdentifier {
         switch tag {
         case "stepCount":

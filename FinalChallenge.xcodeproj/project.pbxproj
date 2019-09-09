@@ -22,6 +22,7 @@
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
 		304398A3231FD2E80024568D /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304398A2231FD2E80024568D /* GoalsManager.swift */; };
+		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		30A20F7D23228135005003A8 /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30A20F7C23228135005003A8 /* Goals.plist */; };
 		30A20F7F23228326005003A8 /* HKQuantityTypeIdentifier+StringIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F7E23228326005003A8 /* HKQuantityTypeIdentifier+StringIdentification.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
@@ -46,6 +47,7 @@
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
 		304398A2231FD2E80024568D /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
+		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		30A20F7C23228135005003A8 /* Goals.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Goals.plist; sourceTree = "<group>"; };
 		30A20F7E23228326005003A8 /* HKQuantityTypeIdentifier+StringIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKQuantityTypeIdentifier+StringIdentification.swift"; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				303F5A8E231D619F0054587C /* PointManager.swift */,
 				304398A2231FD2E80024568D /* GoalsManager.swift */,
 				30A20F7C23228135005003A8 /* Goals.plist */,
+				309A2DCC23267675002C5371 /* Goal.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
+				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

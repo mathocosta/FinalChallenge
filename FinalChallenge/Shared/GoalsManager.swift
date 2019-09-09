@@ -24,13 +24,16 @@ class GoalsManager: NSObject {
     static func getCurrentTimedGoals(of user: User) -> [Goal] {
         guard let currentGoals = user.currentGoals
             else { return [] }
-        let resultsData = GoalsManager.getGoals(withIDs: currentGoals)
+        let goals = getGoals(withIDs: currentGoals)
+        return goals
+    }
+
+    static func getGoals(withIDs ids: [Int]) -> [Goal] {
+        let resultsData = GoalsManager.getGoalData(withIDs: ids)
         let goals: [Goal] = resultsData.map { (arg) -> Goal in
             let (key, value) = arg
             return Goal(id: Int(key) ?? -1, goalInfo: value, userAmount: 1)
         }
-        //request.predicate = NSPredicate(format: "%goal.id IN", currentGoals)
-        //let results = CoreDataManager.fetch(request)
         return goals
     }
 
@@ -39,11 +42,15 @@ class GoalsManager: NSObject {
         GoalsManager.removeTimedGoals(timedGoals: &goals, sendToPile: &user.goalPile)
     }
 
-    static func removeTimedGoals( timedGoals goals: inout [Goal], sendToPile pile: inout [Int]?) {
-        goals = []
+    static func removeTimedGoals(timedGoals goals: inout [Goal], sendToPile pile: inout [Int]?) {
+        let amountOfGoals = GoalsManager.amountOfGoals()
+        if let pileAmount = pile?.count, pileAmount + goals.count >= amountOfGoals {
+            pile?.removeAll()
+        }
         for goal in goals {
             pile?.append(goal.id)
         }
+        goals = []
     }
 
     static func getAllGoalInfo() -> [String: [String: Any]] {
@@ -53,7 +60,7 @@ class GoalsManager: NSObject {
         return data
     }
 
-    static func getGoals(withIDs ids: [Int]) -> [String: [String: Any]] {
+    static func getGoalData(withIDs ids: [Int]) -> [String: [String: Any]] {
         return GoalsManager.getAllGoalInfo().filter { (arg) -> Bool in
             let (key, _) = arg
             return ids.contains(Int(key) ?? -1)
@@ -70,25 +77,31 @@ class GoalsManager: NSObject {
         let data = Bundle.main.contentsOfPList(fileName: "Goals")
         return data.count
     }
-    
+
     static func selectNewTimedGoals(fromPile goalPile: [Int]) -> [Int] {
         var chosenGoals: [Int] = []
         var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
-        
-        for index in 0..<randomPile.count {
-            let item = randomPile[index]
+        let copyPile = randomPile
+        for index in 0..<copyPile.count {
+            let item = copyPile[index]
             if !goalPile.contains(item) {
                 chosenGoals.append(item)
+                randomPile.removeAll { (ri) -> Bool in
+                    return ri == item
+                }
             }
-            
+
             // If all 3 weekly goals were selected
             if chosenGoals.count == 3 {
                 return chosenGoals
             }
         }
-        
+        randomPile = randomPile.filter({ (ri) -> Bool in
+            return !chosenGoals.contains(ri)
+        })
+        let newGoals = chosenGoals + randomPile[chosenGoals.count...2]
         // If is unable to get all goals, reset the pile and grab some new ones
-        return chosenGoals + randomPile[chosenGoals.count...2]
+        return newGoals
     }
 
     @discardableResult
@@ -100,64 +113,5 @@ class GoalsManager: NSObject {
         let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: goalPile)
         user.goalPile?.append(contentsOf: chosenGoals)
         return chosenGoals
-    }
-}
-
-// MARK: Classes and enums below ONLY for test purposes
-
-struct Goal {
-    let id: Int
-    let title: String
-    let difficulty: Difficulty
-    let rewardAmount: Int
-    let activityCoeficient: Double
-    let dailyReset: Bool
-    let amountOfUsers: Int
-
-    init(id: Int, goalInfo: [String: Any], userAmount: Int) {
-        self.id = id
-        self.title = goalInfo["title"] as? String ?? "Sem título"
-        self.difficulty = Difficulty(rawValue: goalInfo["difficulty"] as? Int ?? 0) ?? .easy
-        self.rewardAmount = goalInfo["rewardAmount"] as? Int ?? 0
-        self.activityCoeficient = HKQuantityTypeIdentifier.type(forTag:
-            goalInfo["parameter"] as? String ?? "").balanceValue()
-        self.dailyReset = goalInfo["dailyReset"] as? Bool ?? false
-        self.amountOfUsers = userAmount
-    }
-
-    init(id: Int, forAmountofPeople amount: Int) {
-        let goalInfo = GoalsManager.getGoalInfo(withID: id)
-        self.init(id: id, goalInfo: goalInfo, userAmount: amount)
-    }
-
-    init(id: Int, title: String, difficulty: Difficulty, rewardAmount: Int,
-         activityCoeficient: Double, dailyReset: Bool, amountOfUsers: Int = 1) {
-        self.id = id
-        self.title = title
-        self.difficulty = difficulty
-        self.rewardAmount = rewardAmount
-        self.activityCoeficient = activityCoeficient
-        self.dailyReset = dailyReset
-        self.amountOfUsers = amountOfUsers
-    }
-
-    func requiredAmount() -> Int {
-        let activityRewardAmount = activityCoeficient * Double(rewardAmount * amountOfUsers)
-        return Int(activityRewardAmount/Double((dailyReset ? 10.0 : 1.0)*difficulty.value()))
-    }
-}
-
-enum Difficulty: Int {
-    case easy = 0, medium, hard
-
-    func value() -> Double {
-        switch self {
-        case .easy:
-            return 0.7
-        case .medium:
-            return 1.0
-        case .hard:
-            return 1.3
-        }
     }
 }

@@ -16,12 +16,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var pile = [Int]()
+        var pile: [Int]? = [Int]()
         print("\(GoalsManager.amountOfGoals()) goals")
         for _ in 0...10 {
-            let newGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
-            print(newGoals)
-            //GoalsManager.removeTimedGoals(timedGoals: &newGoals, sendToPile: &pile)
+            var newGoals = GoalsManager.getGoals(withIDs: (GoalsManager.selectNewTimedGoals(fromPile: pile!)))
+            var txt = "Shuffle: "
+            for goal in newGoals {
+                txt += "\(goal.id) "
+            }
+            print(txt)
+            GoalsManager.removeTimedGoals(timedGoals: &newGoals, sendToPile: &pile)
         }
     }
 
