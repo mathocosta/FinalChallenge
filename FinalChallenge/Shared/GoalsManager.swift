@@ -12,11 +12,13 @@ import HealthKit
 
 class GoalsManager: NSObject {
     static func add(goal: Goal, to: User) {
-        guard let amountTimedGoals = to.goalPile?.count else {
+        guard let amountTimedGoals = to.goalPile?.value.count else {
             return
         }
         if amountTimedGoals < 3 {
-            to.goalPile?.append(Int(goal.id))
+            guard var goalPile = to.goalPile?.value else { return }
+            goalPile.append(Int(goal.id))
+            to.goalPile = GoalPile(value: goalPile)
         }
         CoreDataManager.saveContext()
     }
@@ -24,7 +26,7 @@ class GoalsManager: NSObject {
     static func getCurrentTimedGoals(of user: User) -> [Goal] {
         guard let currentGoals = user.currentGoals
             else { return [] }
-        let goals = getGoals(withIDs: currentGoals)
+        let goals = getGoals(withIDs: currentGoals.value)
         return goals
     }
 
@@ -42,14 +44,17 @@ class GoalsManager: NSObject {
         GoalsManager.removeTimedGoals(timedGoals: &goals, sendToPile: &user.goalPile)
     }
 
-    static func removeTimedGoals(timedGoals goals: inout [Goal], sendToPile pile: inout [Int]?) {
+    static func removeTimedGoals(timedGoals goals: inout [Goal], sendToPile pile: inout GoalPile?) {
         let amountOfGoals = GoalsManager.amountOfGoals()
-        if let pileAmount = pile?.count, pileAmount + goals.count >= amountOfGoals {
-            pile?.removeAll()
+        guard var pileIDs = pile?.value else { return }
+        let pileAmount = pileIDs.count
+        if pileAmount + goals.count >= amountOfGoals {
+            pileIDs.removeAll()
         }
         for goal in goals {
-            pile?.append(goal.id)
+            pileIDs.append(goal.id)
         }
+        pile = GoalPile(value: pileIDs)
         goals = []
     }
 
@@ -78,13 +83,13 @@ class GoalsManager: NSObject {
         return data.count
     }
 
-    static func selectNewTimedGoals(fromPile goalPile: [Int]) -> [Int] {
+    static func selectNewTimedGoals(fromPile goalPile: GoalPile) -> [Int] {
         var chosenGoals: [Int] = []
         var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
         let copyPile = randomPile
         for index in 0..<copyPile.count {
             let item = copyPile[index]
-            if !goalPile.contains(item) {
+            if !goalPile.value.contains(item) {
                 chosenGoals.append(item)
                 randomPile.removeAll { (ri) -> Bool in
                     return ri == item
@@ -106,12 +111,13 @@ class GoalsManager: NSObject {
 
     @discardableResult
     static func setNewTimedGoals(for user: User) -> [Int] {
-        guard let goalPile = user.goalPile else {
-            user.goalPile = []
+        guard let pile = user.goalPile else {
+            user.goalPile = GoalPile(value: [])
             return Array(0...2)
         }
-        let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: goalPile)
-        user.goalPile?.append(contentsOf: chosenGoals)
+        let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
+        user.currentGoals = GoalPile(value: chosenGoals)
+        user.goalPile = GoalPile(value: pile.value + chosenGoals)
         return chosenGoals
     }
 }
