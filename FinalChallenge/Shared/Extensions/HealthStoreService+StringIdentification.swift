@@ -1,5 +1,5 @@
 //
-//  HKQuantityTypeIdentifier+StringIdentification.swift
+//  HealthStoreService+StringIdentification.swift
 //  FinalChallenge
 //
 //  Created by Martônio Júnior on 06/09/19.
@@ -9,19 +9,17 @@
 import Foundation
 import HealthKit
 
-extension HKQuantityTypeIdentifier {
+extension HealthStoreService {
     func balanceValue() -> Double {
         switch self {
         case .stepCount:
             return 50.0
         case .distanceWalkingRunning:
             return 20.0
-        default:
-            return 1.0
         }
     }
 
-    static func type(forTag tag: String) -> HKQuantityTypeIdentifier {
+    static func type(forTag tag: String) -> HealthStoreService {
         switch tag {
         case "stepCount":
             return .stepCount
@@ -29,6 +27,15 @@ extension HKQuantityTypeIdentifier {
             return .distanceWalkingRunning
         default:
             return .stepCount
+        }
+    }
+    
+    func unit() -> HKUnit {
+        switch self {
+        case .stepCount:
+            return HKUnit.count()
+        case .distanceWalkingRunning:
+            return HKUnit(from: .meter)
         }
     }
 }

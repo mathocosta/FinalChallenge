@@ -30,6 +30,7 @@ struct Goal {
     let difficulty: Goal.Difficulty
     let rewardAmount: Int
     let activityCoeficient: Double
+    let activityType: String
     let dailyReset: Bool
     let amountOfUsers: Int
 
@@ -38,8 +39,8 @@ struct Goal {
         self.title = goalInfo["title"] as? String ?? "Sem título"
         self.difficulty = Difficulty(rawValue: goalInfo["difficulty"] as? Int ?? 0) ?? .easy
         self.rewardAmount = goalInfo["rewardAmount"] as? Int ?? 0
-        self.activityCoeficient = HKQuantityTypeIdentifier.type(forTag:
-            goalInfo["parameter"] as? String ?? "").balanceValue()
+        self.activityType = goalInfo["parameter"] as? String ?? ""
+        self.activityCoeficient = HealthStoreService.type(forTag: activityType).balanceValue()
         self.dailyReset = goalInfo["dailyReset"] as? Bool ?? false
         self.amountOfUsers = userAmount
     }
@@ -49,12 +50,13 @@ struct Goal {
         self.init(id: id, goalInfo: goalInfo, userAmount: amount)
     }
 
-    init(id: Int, title: String, difficulty: Difficulty, rewardAmount: Int,
+    init(id: Int, title: String, difficulty: Difficulty, rewardAmount: Int, activityType: String,
          activityCoeficient: Double, dailyReset: Bool, amountOfUsers: Int = 1) {
         self.id = id
         self.title = title
         self.difficulty = difficulty
         self.rewardAmount = rewardAmount
+        self.activityType = activityType
         self.activityCoeficient = activityCoeficient
         self.dailyReset = dailyReset
         self.amountOfUsers = amountOfUsers

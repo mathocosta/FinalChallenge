@@ -83,6 +83,14 @@ final class HealthStoreManager {
         HealthStoreManager.healthStore.execute(statisticsQuery)
     }
 
+    func quantitySumToday(
+        of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
+        let calendar = Calendar.current
+        let now = Date()
+        let startOfDay = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: now)
+        quantitySum(from: startOfDay, of: service, completion: completion)
+    }
+
     func quantitySumSinceLastHour(
         of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
         let calendar = Calendar.current

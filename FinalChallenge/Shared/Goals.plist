@@ -24,7 +24,7 @@
 		<key>difficulty</key>
 		<integer>1</integer>
 		<key>rewardAmount</key>
-		<integer>2000</integer>
+		<real>1000</real>
 		<key>dailyReset</key>
 		<false/>
 	</dict>

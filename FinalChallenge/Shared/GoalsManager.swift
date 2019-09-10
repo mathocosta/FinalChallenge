@@ -11,22 +11,35 @@ import CoreData
 import HealthKit
 
 class GoalsManager: NSObject {
-    static func add(goal: Goal, to: User) {
-        guard let amountTimedGoals = to.goalPile?.value.count else {
+    static func add(goal: Goal, to user: User) {
+        guard let amountTimedGoals = user.currentGoals?.value.count else {
             return
         }
         if amountTimedGoals < 3 {
-            guard var goalPile = to.goalPile?.value else { return }
-            goalPile.append(Int(goal.id))
-            to.goalPile = GoalPile(value: goalPile)
+            guard let currentGoals = user.currentGoals else { return }
+            user.currentGoals = currentGoals.add(Int(goal.id))
         }
         CoreDataManager.saveContext()
     }
 
-    static func getCurrentTimedGoals(of user: User) -> [Goal] {
+    static func currentTimedGoals(of user: User) -> [Goal] {
         guard let currentGoals = user.currentGoals
             else { return [] }
         let goals = getGoals(withIDs: currentGoals.value)
+        return goals
+    }
+
+    static func completedGoals(of user: User) -> [Goal] {
+        guard let currentGoals = user.currentGoals?.markedValues
+            else { return [] }
+        let goals = getGoals(withIDs: currentGoals)
+        return goals
+    }
+
+    static func inProgressGoals(of user: User) -> [Goal] {
+        guard let currentGoals = user.currentGoals?.unmarkedGoals()
+            else { return [] }
+        let goals = getGoals(withIDs: currentGoals)
         return goals
     }
 
@@ -39,22 +52,29 @@ class GoalsManager: NSObject {
         return goals
     }
 
-    static func removeTimedGoals(from user: User) {
-        var goals = GoalsManager.getCurrentTimedGoals(of: user)
-        GoalsManager.removeTimedGoals(timedGoals: &goals, sendToPile: &user.goalPile)
+    static func markCompleted(goal: Goal, from user: User) {
+        guard let currentGoals = user.currentGoals, !currentGoals.markedValues.contains(goal.id) else {
+            return
+        }
+        user.currentGoals = currentGoals.mark(goal.id)
+        UserManager.update(user, addPoints: goal.rewardAmount)
+        
     }
 
-    static func removeTimedGoals(timedGoals goals: inout [Goal], sendToPile pile: inout GoalPile?) {
+    static func removeAllTimedGoals(from user: User) {
+        var goals = GoalsManager.currentTimedGoals(of: user)
+        GoalsManager.remove(timedGoals: &goals, sendToPile: &user.goalPile)
+    }
+
+    static func remove(timedGoals goals: inout [Goal], sendToPile pile: inout GoalPile?) {
         let amountOfGoals = GoalsManager.amountOfGoals()
-        guard var pileIDs = pile?.value else { return }
-        let pileAmount = pileIDs.count
+        guard let pileAmount = pile?.value.count else { return }
         if pileAmount + goals.count >= amountOfGoals {
-            pileIDs.removeAll()
+            pile = GoalPile(value: [])
         }
         for goal in goals {
-            pileIDs.append(goal.id)
+            pile = pile?.add(goal.id)
         }
-        pile = GoalPile(value: pileIDs)
         goals = []
     }
 
@@ -117,7 +137,9 @@ class GoalsManager: NSObject {
         }
         let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
         user.currentGoals = GoalPile(value: chosenGoals)
-        user.goalPile = GoalPile(value: pile.value + chosenGoals)
+        for goal in chosenGoals {
+            user.goalPile = user.goalPile?.add(goal)
+        }
         return chosenGoals
     }
 }
