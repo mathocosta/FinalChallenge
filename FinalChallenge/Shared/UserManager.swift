@@ -16,6 +16,9 @@ class UserManager: NSObject {
     override init() {
         super.init()
         self.loggedUser = UserManager.getLoggedUser()
+        if self.loggedUser.goalPile == nil || self.loggedUser.goalPile?.isEmpty == true {
+            GoalsManager.setNewTimedGoals(for: self.loggedUser)
+        }
     }
 
     // Function needs refactoring later
@@ -35,13 +38,21 @@ class UserManager: NSObject {
         CoreDataManager.saveContext()
     }
 
+    static func changeGoals(for user: User, at date: Date = Date()) {
+        GoalsManager.removeAllTimedGoals(from: user)
+        GoalsManager.setNewTimedGoals(for: user)
+        UserDefaults.standard.set(date, forKey: "GoalUpdateTime")
+        CoreDataManager.saveContext()
+    }
+
     static func createNewUser(name: String, email: String) -> User {
         let user = User(context: CoreDataManager.context)
         user.id = UUID()
         user.name = name
         user.email = email
         user.points = 0
-        user.goalPile = []
+        user.goalPile = GoalPile(value: [])
+        user.currentGoals = GoalPile(value: [])
         return user
     }
 

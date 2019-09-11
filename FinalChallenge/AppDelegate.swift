@@ -48,6 +48,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationWillResignActive(_ application: UIApplication) {
+        CoreDataManager.saveContext()
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        let now = Date()
+        let calendar = Calendar(identifier: .gregorian)
+        guard let user = UserManager.current.loggedUser else {
+            return
+        }
+
+        guard let lastUpdateTime = UserDefaults.standard.value(forKey: "GoalUpdateTime") as? Date,
+            let nextUpdateTime = calendar.getNextUpdateTime(from: lastUpdateTime) else {
+                UserManager.changeGoals(for: user)
+                return
+        }
+        if nextUpdateTime.compare(now) == .orderedAscending {
+            UserManager.changeGoals(for: user, at: now)
+        }
+    }
+
     func applicationWillTerminate(_ application: UIApplication) {
         CoreDataManager.saveContext()
     }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>0</key>
+	<dict>
+		<key>title</key>
+		<string>Ande 5.000 passos em 1 dia</string>
+		<key>parameter</key>
+		<string>stepCount</string>
+		<key>difficulty</key>
+		<integer>1</integer>
+		<key>rewardAmount</key>
+		<integer>1000</integer>
+		<key>dailyReset</key>
+		<true/>
+	</dict>
+	<key>1</key>
+	<dict>
+		<key>title</key>
+		<string>Ande 20.000 metros</string>
+		<key>parameter</key>
+		<string>distanceWalkingRunning</string>
+		<key>difficulty</key>
+		<integer>1</integer>
+		<key>rewardAmount</key>
+		<real>1000</real>
+		<key>dailyReset</key>
+		<false/>
+	</dict>
+	<key>2</key>
+	<dict>
+		<key>title</key>
+		<string>Ande 11.100 passos em 1 dia</string>
+		<key>parameter</key>
+		<string>stepCount</string>
+		<key>difficulty</key>
+		<integer>2</integer>
+		<key>rewardAmount</key>
+		<real>2886</real>
+		<key>dailyReset</key>
+		<true/>
+	</dict>
+	<key>3</key>
+	<dict>
+		<key>title</key>
+		<string>Ande 8.000 metros em 1 dia</string>
+		<key>parameter</key>
+		<string>distanceWalkingRunning</string>
+		<key>difficulty</key>
+		<integer>0</integer>
+		<key>rewardAmount</key>
+		<integer>2800</integer>
+		<key>dailyReset</key>
+		<true/>
+	</dict>
+	<key>4</key>
+	<dict>
+		<key>title</key>
+		<string>Ande 75.000 passos</string>
+		<key>parameter</key>
+		<string>stepCount</string>
+		<key>difficulty</key>
+		<integer>2</integer>
+		<key>rewardAmount</key>
+		<integer>1950</integer>
+		<key>dailyReset</key>
+		<false/>
+	</dict>
+</dict>
+</plist>
