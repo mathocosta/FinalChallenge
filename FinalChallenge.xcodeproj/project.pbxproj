@@ -44,6 +44,7 @@
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
+		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F7D23228135005003A8 /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30A20F7C23228135005003A8 /* Goals.plist */; };
 		30A20F7F23228326005003A8 /* HealthStoreService+StringIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F7E23228326005003A8 /* HealthStoreService+StringIdentification.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
@@ -90,6 +91,7 @@
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
+		309A2DD42329177E002C5371 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		30A20F7C23228135005003A8 /* Goals.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Goals.plist; sourceTree = "<group>"; };
 		30A20F7E23228326005003A8 /* HealthStoreService+StringIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthStoreService+StringIdentification.swift"; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				309A2DCE23268E27002C5371 /* GoalPile.swift */,
 				309A2DCC23267675002C5371 /* Goal.swift */,
 				303F5A96231E93AA0054587C /* UserManager.swift */,
+				309A2DD42329177E002C5371 /* TeamManager.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
+				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
 				27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */,
 			);

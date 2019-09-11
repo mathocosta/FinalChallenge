@@ -17,7 +17,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let user = UserManager.current.loggedUser else { return }
+        if user.team == nil, let team = TeamManager.allTeams().first {
+            TeamManager.add(user, to: team)
+            seedUsers(into: team)
+        }
         GoalsManager.checkForCompletedGoals(for: user)
+    }
+    
+    func seedUsers(into team: Team) {
+        let userNames = ["marcos","juliana","luiz","andré","paula"]
+        for name in userNames {
+            let user = UserManager.createNewUser(name: name, email: name+"@gmail.com")
+            user.points = Int32.random(in: 0...500)
+            TeamManager.add(user, to: team)
+            CoreDataManager.saveContext()
+        }
     }
 
     func displayOKAlert(title: String, message: String) {

@@ -35,6 +35,9 @@ class UserManager: NSObject {
 
     static func update(_ user: User, addPoints points: Int) {
         user.points += Int32(points)
+        if let team = user.team {
+            TeamManager.updateAmountOfPoints(for: team)
+        }
         CoreDataManager.saveContext()
     }
 
