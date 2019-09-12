@@ -23,6 +23,12 @@ class ProfileEditView: UIView {
         return input
     }()
 
+    lazy var emailInput: Input = {
+        let input = Input(frame: .zero, label: "Email")
+        input.translatesAutoresizingMaskIntoConstraints = false
+        return input
+    }()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -39,6 +45,7 @@ extension ProfileEditView: CodeView {
     func buildViewHierarchy() {
         addSubview(profileImage)
         addSubview(nameInput)
+        addSubview(emailInput)
     }
 
     func setupConstraints() {
@@ -51,6 +58,11 @@ extension ProfileEditView: CodeView {
         nameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         nameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         nameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
+
+        emailInput.topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 31).isActive = true
+        emailInput.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
+        emailInput.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
+        emailInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
     }
 
     func setupAdditionalConfiguration() {
