@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 class TeamManager: NSObject {
+    @discardableResult
     static func newTeam(named name: String, createdBy user: User) -> Team {
         let team = Team(context: CoreDataManager.context)
         team.id = UUID()
@@ -27,10 +28,10 @@ class TeamManager: NSObject {
     
     static func remove(_ user: User, from team: Team) {
         team.removeFromMembers(user)
-        guard TeamManager.checkValid(team) else {
-            TeamManager.remove(team)
-            return
-        }
+//        guard TeamManager.checkValid(team) else {
+//            TeamManager.remove(team)
+//            return
+//        }
         TeamManager.updateAmountOfPoints(for: team)
         
     }

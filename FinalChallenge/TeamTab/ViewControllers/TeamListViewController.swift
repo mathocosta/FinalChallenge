@@ -43,11 +43,30 @@ class TeamListViewController: UIViewController {
 
         title = "Grupos"
 
+        let createTeamBarButton = UIBarButtonItem(
+            barButtonSystemItem: .add, target: self, action: #selector(createTeamBarButtonTapped(_:)))
+        navigationItem.rightBarButtonItem = createTeamBarButton
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        defer {
+            if let teamListView = view as? TeamListView {
+                teamListView.resultsTableView.reloadData()
+            }
+        }
+
         do {
             try fetchedResultsController.performFetch()
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+
+    // MARK: - Actions
+    @objc func createTeamBarButtonTapped(_ sender: UIBarButtonItem) {
+        coordinator?.showCreateTeam()
     }
 
 }

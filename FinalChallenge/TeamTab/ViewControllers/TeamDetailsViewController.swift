@@ -37,6 +37,19 @@ class TeamDetailsViewController: UIViewController {
 
         title = team.name
         teamDetailsView.profileDetailsView.name = team.name ?? ""
+
+        let quitTeamBarButton = UIBarButtonItem(
+            title: "Sair", style: .plain, target: self, action: #selector(quitTeamTapped(_:)))
+        quitTeamBarButton.tintColor = .systemRed
+        navigationItem.rightBarButtonItem = quitTeamBarButton
+    }
+
+    // MARK: - Actions
+    @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
+        guard let loggedUser = UserManager.getLoggedUser() else { return }
+        TeamManager.remove(loggedUser, from: team)
+        CoreDataManager.saveContext()
+        coordinator?.showTeamList()
     }
 
 }

@@ -38,7 +38,11 @@ final class TeamTabCoordinator: Coordinator {
         let viewController = TeamListViewController()
         viewController.coordinator = self
 
-        navigationController.pushViewController(viewController, animated: true)
+        if navigationController.visibleViewController is TeamDetailsViewController {
+            navigationController.setViewControllers([viewController], animated: true)
+        } else {
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
 
     func showEntrance(of team: Team) {
@@ -48,11 +52,21 @@ final class TeamTabCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
+    func showCreateTeam() {
+        let viewController = CreateTeamViewController()
+        viewController.coordinator = self
+
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
     func showDetails(of team: Team) {
         let viewController = TeamDetailsViewController(team: team)
-        // É necessário dar o pop para não deixar a view controller de entrada no grupo
-        // na pilha de views controllers da navigation controller.
-        if navigationController.visibleViewController is TeamEntranceViewController {
+        viewController.coordinator = self
+
+        // É preciso resetar as view controllers quando fizer a criação ou entrar num novo time
+        let visibleViewController = navigationController.visibleViewController
+        if (visibleViewController is TeamEntranceViewController) ||
+            (visibleViewController is CreateTeamViewController) {
             navigationController.setViewControllers([viewController], animated: true)
         } else {
             navigationController.pushViewController(viewController, animated: true)
