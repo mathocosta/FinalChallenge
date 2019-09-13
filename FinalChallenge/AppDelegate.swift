@@ -32,6 +32,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
 
+        // Usuário não está logado
+        // NOTE: Futuramente, isso deve ser substituído pela função que obtém o nome
+        // do usuário no iCloud. Assim, é possível criar um usuário automaticamente
+        if UserManager.getLoggedUser() == nil {
+            UserManager.createNewUser(name: "Thalia")
+            UserDefaults.standard.isFirstLogin = true
+        }
+
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -55,15 +63,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         let now = Date()
         let calendar = Calendar(identifier: .gregorian)
-        guard let user = UserManager.current.loggedUser else {
-            return
-        }
+        guard let user = UserManager.current.loggedUser else { return }
 
         guard let lastUpdateTime = UserDefaults.standard.value(forKey: "GoalUpdateTime") as? Date,
             let nextUpdateTime = calendar.getNextUpdateTime(from: lastUpdateTime) else {
                 UserManager.changeGoals(for: user)
                 return
         }
+
         if nextUpdateTime.compare(now) == .orderedAscending {
             UserManager.changeGoals(for: user, at: now)
         }

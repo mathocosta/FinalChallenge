@@ -22,14 +22,12 @@ class UserManager: NSObject {
     }
 
     // Function needs refactoring later
-    static func getLoggedUser() -> User {
+    static func getLoggedUser() -> User? {
         let request = NSFetchRequest<User>(entityName: "User")
         let users = CoreDataManager.fetch(request)
-        guard let user = users.first else {
-            let dummyUser = UserManager.createDummyUser()
-            CoreDataManager.saveContext()
-            return dummyUser
-        }
+
+        guard let user = users.first else { return nil }
+
         return user
     }
 
@@ -48,22 +46,28 @@ class UserManager: NSObject {
         CoreDataManager.saveContext()
     }
 
-    static func createNewUser(name: String, email: String) -> User {
+    @discardableResult
+    static func createNewUser(name: String) -> User {
         let user = User(context: CoreDataManager.context)
         user.id = UUID()
         user.name = name
-        user.email = email
+        user.email = ""
         user.points = 0
         user.goalPile = GoalPile(value: [])
         user.currentGoals = GoalPile(value: [])
         return user
     }
 
+    static func logout(user: User) {
+        CoreDataManager.context.delete(user)
+        CoreDataManager.saveContext()
+    }
+
     // Use these functions below ONLY for tests
 
-    static func createDummyUser() -> User {
-        return createNewUser(name: "User", email: "user@app.com")
-    }
+//    static func createDummyUser() -> User {
+//        return createNewUser(name: "User", email: "user@app.com")
+//    }
 
     func simulateAppInteraction() {
         let steps = Int.random(in: 0...1000)

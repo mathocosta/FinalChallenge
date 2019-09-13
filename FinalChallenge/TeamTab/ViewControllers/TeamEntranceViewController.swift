@@ -42,11 +42,12 @@ class TeamEntranceViewController: UIViewController {
     // MARK: - Actions
     func selectTeamForLoggedUser() {
         // Adicionar time ao usuário
-        let loggedUser = UserManager.getLoggedUser()
-        loggedUser.team = team
-        CoreDataManager.saveContext()
-        // Retorna para a tela de abertura do time
-        coordinator?.showDetails(of: team)
+        if let loggedUser = UserManager.getLoggedUser() {
+            loggedUser.team = team
+            CoreDataManager.saveContext()
+            // Retorna para a tela de abertura do time
+            coordinator?.showDetails(of: team)
+        }
     }
 
 }

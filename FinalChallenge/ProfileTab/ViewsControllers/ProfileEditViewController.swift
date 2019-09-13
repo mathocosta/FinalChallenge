@@ -10,22 +10,80 @@ import UIKit
 
 class ProfileEditViewController: UIViewController {
 
+    // MARK: - Properties
+    private let user: User
+    private let profileEditView: ProfileEditView
+
+    private var imagePicker: ImagePicker!
+
     weak var coordinator: ProfileTabCoordinator?
+
+    // MARK: - Lifecycle
+    init(user: User) {
+        self.user = user
+        self.profileEditView = ProfileEditView()
+        super.init(nibName: nil, bundle: nil)
+
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = ProfileEditView()
+        self.view = profileEditView
         title = "Perfil"
+
+        profileEditView.nameInput.inputTextField.text = user.name
+        profileEditView.emailInput.inputTextField.text = user.email
+        if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
+            profileEditView.profileImage.image = profileImage
+        }
+        profileEditView.onLogout = logoutUser
+        profileEditView.onEditProfileImage = showImagePicker
+
+        let saveBarButton = UIBarButtonItem(
+            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
+
+        navigationItem.rightBarButtonItem = saveBarButton
     }
 
-    /*
-    // MARK: - Navigation
+    // MARK: - Actions
+    @objc func saveBarButtonTapped(_ sender: UIBarButtonItem) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let profileImage = profileEditView.profileImage.image,
+            let imageData = profileImage.pngData() {
+            user.photo = imageData
+        }
+
+        if let nameText = profileEditView.nameInput.inputTextField.text {
+            user.name = nameText
+        }
+
+        if let emailText = profileEditView.emailInput.inputTextField.text {
+            user.email = emailText
+        }
+
+        CoreDataManager.saveContext()
+        coordinator?.showProfileViewController(for: user)
     }
-    */
 
+    private func logoutUser() {
+        UserManager.logout(user: user)
+    }
+
+    private func showImagePicker(sender: UIButton) {
+        imagePicker.present(from: sender)
+    }
+
+}
+
+// MARK: - ImagePickerDelegate
+extension ProfileEditViewController: ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        guard let image = image else { return }
+        profileEditView.profileImage.image = image
+    }
 }

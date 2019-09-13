@@ -24,18 +24,29 @@ final class ProfileTabCoordinator: Coordinator {
     }
 
     func start() {
-        guard navigationController.topViewController == nil else { return }
+        guard navigationController.topViewController == nil,
+            let loggedUser = UserManager.getLoggedUser() else { return }
+        showProfileViewController(for: loggedUser)
+    }
 
-        let viewController = ProfileViewController()
+    func showProfileViewController(for user: User) {
+        let viewController = ProfileViewController(user: user)
+        viewController.coordinator = self
+
+        // Essa checagem é para atualizar a view do perfil após alguma mudança na view de editar
+        if navigationController.topViewController is ProfileEditViewController {
+            navigationController.popViewController(animated: true)
+            navigationController.setViewControllers([viewController], animated: false)
+        } else {
+            navigationController.pushViewController(viewController, animated: true)
+        }
+    }
+
+    func showProfileEditViewController(for user: User) {
+        let viewController = ProfileEditViewController(user: user)
         viewController.coordinator = self
 
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func showProfileEditViewController() {
-        let viewController = ProfileEditViewController()
-        viewController.coordinator = self
-
-        navigationController.pushViewController(viewController, animated: true)
-    }
 }

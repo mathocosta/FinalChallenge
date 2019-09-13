@@ -10,8 +10,6 @@ import UIKit
 
 class ProfileView: UIView {
 
-    weak var coordinator: ProfileTabCoordinator?
-
     var firstBarProgress: Float {
         didSet {
             progressBars.firstBar.progress = CGFloat(firstBarProgress)
@@ -42,9 +40,10 @@ class ProfileView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil ) {
-        guard let coordinator = coordinator else { return }
-        coordinator.showProfileEditViewController()
+    var onProfileDetails: (() -> Void)?
+    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil) {
+        guard let onProfileDetails = onProfileDetails else { return }
+        onProfileDetails()
     }
 
 }

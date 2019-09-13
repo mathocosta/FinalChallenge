@@ -8,14 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
-		275FE865231D3664001695D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE864231D3664001695D2 /* ViewController.swift */; };
 		275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
 		275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86E231D3666001695D2 /* LaunchScreen.storyboard */; };
 		275FE87B231D3D46001695D2 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87A231D3D46001695D2 /* CodeView.swift */; };
 		275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87C231D3D6D001695D2 /* Coordinator.swift */; };
 		275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87F231D3DD2001695D2 /* AppCoordinator.swift */; };
-		275FE884231D3E80001695D2 /* FirstView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE883231D3E80001695D2 /* FirstView.swift */; };
 		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
 		275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE887231D4CBD001695D2 /* HealthStoreManager.swift */; };
 		275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275FE88B231D55CC001695D2 /* HealthKit.framework */; };
@@ -26,6 +24,8 @@
 		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
 		278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */; };
 		278F829A2322A67200F55372 /* TeamDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamDetailsView.swift */; };
+		2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D615232B1A8800A33470 /* UserDefaults+keys.swift */; };
+		2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D617232B29EA00A33470 /* ImagePicker.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
@@ -53,7 +53,6 @@
 /* Begin PBXFileReference section */
 		275FE85F231D3664001695D2 /* FinalChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		275FE864231D3664001695D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		275FE86A231D3664001695D2 /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
 		275FE86C231D3666001695D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		275FE86F231D3666001695D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,7 +60,6 @@
 		275FE87A231D3D46001695D2 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		275FE87C231D3D6D001695D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		275FE87F231D3DD2001695D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		275FE883231D3E80001695D2 /* FirstView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstView.swift; sourceTree = "<group>"; };
 		275FE885231D3ECE001695D2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		275FE889231D55CC001695D2 /* FinalChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallenge.entitlements; sourceTree = "<group>"; };
@@ -73,6 +71,8 @@
 		278717FE23207FEA00A2A481 /* TeamDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsView.swift; sourceTree = "<group>"; };
 		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
 		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
+		2797D615232B1A8800A33470 /* UserDefaults+keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+keys.swift"; sourceTree = "<group>"; };
+		2797D617232B29EA00A33470 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
@@ -129,18 +129,15 @@
 		275FE861231D3664001695D2 /* FinalChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				2797D619232B2F6C00A33470 /* Resources */,
 				275FE878231D3D33001695D2 /* Shared */,
 				2B7DC2AD23228813009C3F54 /* ProfileTab */,
 				278717F723207CF700A2A481 /* TeamTab */,
-				275FE882231D3E66001695D2 /* Views */,
-				275FE881231D3E53001695D2 /* ViewControllers */,
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
 				275FE87F231D3DD2001695D2 /* AppCoordinator.swift */,
-				275FE86C231D3666001695D2 /* Assets.xcassets */,
-				275FE86E231D3666001695D2 /* LaunchScreen.storyboard */,
 				275FE871231D3666001695D2 /* Info.plist */,
-				275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */,
 				275FE889231D55CC001695D2 /* FinalChallenge.entitlements */,
+				275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */,
 			);
 			path = FinalChallenge;
 			sourceTree = "<group>";
@@ -155,7 +152,6 @@
 				275FE885231D3ECE001695D2 /* CoreDataManager.swift */,
 				303F5A8E231D619F0054587C /* PointManager.swift */,
 				304398A2231FD2E80024568D /* GoalsManager.swift */,
-				30A20F7C23228135005003A8 /* Goals.plist */,
 				309A2DCE23268E27002C5371 /* GoalPile.swift */,
 				309A2DCC23267675002C5371 /* Goal.swift */,
 				303F5A96231E93AA0054587C /* UserManager.swift */,
@@ -171,22 +167,6 @@
 				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		275FE881231D3E53001695D2 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				275FE864231D3664001695D2 /* ViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		275FE882231D3E66001695D2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				275FE883231D3E80001695D2 /* FirstView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		275FE88A231D55CC001695D2 /* Frameworks */ = {
@@ -225,6 +205,16 @@
 				276FD47523219D7B00EA75C6 /* TeamListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2797D619232B2F6C00A33470 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				275FE86E231D3666001695D2 /* LaunchScreen.storyboard */,
+				275FE86C231D3666001695D2 /* Assets.xcassets */,
+				30A20F7C23228135005003A8 /* Goals.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		27C56E5D231EB5DF009CCAAB /* HealthKit */ = {
@@ -295,6 +285,7 @@
 				2B6E353F23229C080092A481 /* Input */,
 				2B7DC2B3232291C8009C3F54 /* ProgressBarsView */,
 				2BB4741A232001550099D4EB /* ProfileDetailsView */,
+				2797D617232B29EA00A33470 /* ImagePicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -315,6 +306,7 @@
 				30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */,
 				303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */,
 				309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */,
+				2797D615232B1A8800A33470 /* UserDefaults+keys.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,14 +410,13 @@
 			files = (
 				30A20F7F23228326005003A8 /* HealthStoreService+StringIdentification.swift in Sources */,
 				309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */,
-				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
 				278F829A2322A67200F55372 /* TeamDetailsView.swift in Sources */,
 				278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
-				275FE865231D3664001695D2 /* ViewController.swift in Sources */,
+				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */,
@@ -444,6 +435,7 @@
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
+				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
@@ -592,6 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallenge/FinalChallenge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = FinalChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -612,6 +605,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = FinalChallenge/FinalChallenge.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = FinalChallenge/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;

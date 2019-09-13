@@ -12,6 +12,7 @@ import CoreData
 class TeamDetailsViewController: UIViewController {
 
     // MARK: - Properties
+    private let teamDetailsView: TeamDetailsView
     private let team: Team
 
     weak var coordinator: TeamTabCoordinator?
@@ -19,6 +20,7 @@ class TeamDetailsViewController: UIViewController {
     // MARK: - Lifecycle
     init(team: Team) {
         self.team = team
+        self.teamDetailsView = TeamDetailsView()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -27,13 +29,14 @@ class TeamDetailsViewController: UIViewController {
     }
 
     override func loadView() {
-        view = TeamDetailsView()
+        view = teamDetailsView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Clube da luluzinha"
+        title = team.name
+        teamDetailsView.profileDetailsView.name = team.name ?? ""
     }
 
 }

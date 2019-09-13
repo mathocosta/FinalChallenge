@@ -24,9 +24,8 @@ final class TeamTabCoordinator: Coordinator {
     }
 
     func start() {
-        guard navigationController.topViewController == nil else { return }
-
-        let loggedUser = UserManager.getLoggedUser()
+        guard navigationController.topViewController == nil,
+            let loggedUser = UserManager.getLoggedUser() else { return }
 
         if let team = loggedUser.team {
             showDetails(of: team)
@@ -50,13 +49,13 @@ final class TeamTabCoordinator: Coordinator {
     }
 
     func showDetails(of team: Team) {
+        let viewController = TeamDetailsViewController(team: team)
         // É necessário dar o pop para não deixar a view controller de entrada no grupo
         // na pilha de views controllers da navigation controller.
         if navigationController.visibleViewController is TeamEntranceViewController {
-            navigationController.popViewController(animated: false)
+            navigationController.setViewControllers([viewController], animated: true)
+        } else {
+            navigationController.pushViewController(viewController, animated: true)
         }
-
-        let viewController = TeamDetailsViewController(team: team)
-        navigationController.pushViewController(viewController, animated: true)
     }
 }

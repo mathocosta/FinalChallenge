@@ -22,11 +22,12 @@ class ProfileDetailsView: UIView {
         }
     }
 
-    lazy var imageView: UIView = { //Trocar para UIImageView quando
-        let view = UIView()
-        view.backgroundColor = .blue
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "avatar-placeholder")
+        imageView.contentMode = .scaleAspectFill
+        return imageView
     }()
 
     lazy var nameLabel: UILabel = {
