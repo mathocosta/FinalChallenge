@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273D233F2327E0AC003147DF /* StorageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* StorageGateway.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
@@ -38,6 +39,11 @@
 		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
 		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
+		276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */; };
+		278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717ED231F0AD200A2A481 /* CoreDataGateway.swift */; };
+		278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717EF231F224F00A2A481 /* CloudKitGateway.swift */; };
+		278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F3232001D600A2A481 /* CKManagedObject.swift */; };
+		278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F52320027F00A2A481 /* User+CKManagedObject.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
@@ -53,6 +59,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273D233E2327E0AC003147DF /* StorageGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGateway.swift; sourceTree = "<group>"; };
 		275FE85F231D3664001695D2 /* FinalChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		275FE86A231D3664001695D2 /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
@@ -87,6 +94,11 @@
 		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CKManagedObject.swift"; sourceTree = "<group>"; };
+		278717ED231F0AD200A2A481 /* CoreDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataGateway.swift; sourceTree = "<group>"; };
+		278717EF231F224F00A2A481 /* CloudKitGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitGateway.swift; sourceTree = "<group>"; };
+		278717F3232001D600A2A481 /* CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManagedObject.swift; sourceTree = "<group>"; };
+		278717F52320027F00A2A481 /* User+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CKManagedObject.swift"; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -151,6 +163,7 @@
 			children = (
 				2BB47419232001470099D4EB /* Components */,
 				27C56E5D231EB5DF009CCAAB /* HealthKit */,
+				278717E9231F029700A2A481 /* Persistence */,
 				303F5A8B231D61640054587C /* Extensions */,
 				275FE879231D3D39001695D2 /* Protocols */,
 				275FE885231D3ECE001695D2 /* CoreDataManager.swift */,
@@ -169,6 +182,7 @@
 			children = (
 				275FE87A231D3D46001695D2 /* CodeView.swift */,
 				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
+				278717F3232001D600A2A481 /* CKManagedObject.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -304,6 +318,26 @@
 			path = ProfileDetailsView;
 			sourceTree = "<group>";
 		};
+		278717E9231F029700A2A481 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				278F829B2326881000F55372 /* Models */,
+				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
+				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
+				273D233E2327E0AC003147DF /* StorageGateway.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		278F829B2326881000F55372 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				278717F52320027F00A2A481 /* User+CKManagedObject.swift */,
+				276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		303F5A8B231D61640054587C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -422,12 +456,18 @@
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
+				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
+				273D233F2327E0AC003147DF /* StorageGateway.swift in Sources */,
+				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
+				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
+				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
 				2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */,
+				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
@@ -437,6 +477,7 @@
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
+				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
