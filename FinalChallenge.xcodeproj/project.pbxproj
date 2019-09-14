@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273D233F2327E0AC003147DF /* StorageGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* StorageGateway.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE865231D3664001695D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE864231D3664001695D2 /* ViewController.swift */; };
 		275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */; };
@@ -19,11 +20,17 @@
 		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
 		275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE887231D4CBD001695D2 /* HealthStoreManager.swift */; };
 		275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275FE88B231D55CC001695D2 /* HealthKit.framework */; };
+		276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */; };
+		278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717ED231F0AD200A2A481 /* CoreDataGateway.swift */; };
+		278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717EF231F224F00A2A481 /* CloudKitGateway.swift */; };
+		278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F3232001D600A2A481 /* CKManagedObject.swift */; };
+		278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F52320027F00A2A481 /* User+CKManagedObject.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		273D233E2327E0AC003147DF /* StorageGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageGateway.swift; sourceTree = "<group>"; };
 		275FE85F231D3664001695D2 /* FinalChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		275FE864231D3664001695D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +46,11 @@
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		275FE889231D55CC001695D2 /* FinalChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallenge.entitlements; sourceTree = "<group>"; };
 		275FE88B231D55CC001695D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CKManagedObject.swift"; sourceTree = "<group>"; };
+		278717ED231F0AD200A2A481 /* CoreDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataGateway.swift; sourceTree = "<group>"; };
+		278717EF231F224F00A2A481 /* CloudKitGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitGateway.swift; sourceTree = "<group>"; };
+		278717F3232001D600A2A481 /* CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManagedObject.swift; sourceTree = "<group>"; };
+		278717F52320027F00A2A481 /* User+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CKManagedObject.swift"; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +104,7 @@
 		275FE878231D3D33001695D2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				278717E9231F029700A2A481 /* Persistence */,
 				303F5A8B231D61640054587C /* Extensions */,
 				275FE879231D3D39001695D2 /* Protocols */,
 				275FE885231D3ECE001695D2 /* CoreDataManager.swift */,
@@ -106,6 +119,7 @@
 			children = (
 				275FE87A231D3D46001695D2 /* CodeView.swift */,
 				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
+				278717F3232001D600A2A481 /* CKManagedObject.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -132,6 +146,26 @@
 				275FE88B231D55CC001695D2 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		278717E9231F029700A2A481 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				278F829B2326881000F55372 /* Models */,
+				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
+				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
+				273D233E2327E0AC003147DF /* StorageGateway.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		278F829B2326881000F55372 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				278717F52320027F00A2A481 /* User+CKManagedObject.swift */,
+				276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		303F5A8B231D61640054587C /* Extensions */ = {
@@ -239,12 +273,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
+				273D233F2327E0AC003147DF /* StorageGateway.swift in Sources */,
+				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
+				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
+				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				275FE865231D3664001695D2 /* ViewController.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
+				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
+				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
