@@ -57,7 +57,7 @@ class GoalsManager: NSObject {
             return
         }
         user.currentGoals = currentGoals.mark(goal.id)
-        UserManager.update(user, addPoints: goal.rewardAmount)
+        UserManager.add(points: goal.rewardAmount, to: user)
         
     }
 

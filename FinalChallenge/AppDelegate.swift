@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let calendar = Calendar(identifier: .gregorian)
         guard let user = UserManager.current.loggedUser else { return }
 
-        guard let lastUpdateTime = UserDefaults.standard.value(forKey: "GoalUpdateTime") as? Date,
+        guard let lastUpdateTime = UserDefaults.standard.goalUpdateTime,
             let nextUpdateTime = calendar.getNextUpdateTime(from: lastUpdateTime) else {
                 UserManager.changeGoals(for: user)
                 return

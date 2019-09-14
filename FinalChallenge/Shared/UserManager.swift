@@ -21,7 +21,8 @@ class UserManager: NSObject {
         }
     }
 
-    // Function needs refactoring later
+
+    /// Retorna o usuário logado no app. Caso não exista, retorna "nil"
     static func getLoggedUser() -> User? {
         let request = NSFetchRequest<User>(entityName: "User")
         let users = CoreDataManager.fetch(request)
@@ -31,7 +32,7 @@ class UserManager: NSObject {
         return user
     }
 
-    static func update(_ user: User, addPoints points: Int) {
+    static func add(points: Int, to user: User) {
         user.points += Int32(points)
         if let team = user.team {
             TeamManager.updateAmountOfPoints(for: team)
@@ -42,7 +43,7 @@ class UserManager: NSObject {
     static func changeGoals(for user: User, at date: Date = Date()) {
         GoalsManager.removeAllTimedGoals(from: user)
         GoalsManager.setNewTimedGoals(for: user)
-        UserDefaults.standard.set(date, forKey: "GoalUpdateTime")
+        UserDefaults.standard.goalUpdateTime = date
         CoreDataManager.saveContext()
     }
 
@@ -63,15 +64,9 @@ class UserManager: NSObject {
         CoreDataManager.saveContext()
     }
 
-    // Use these functions below ONLY for tests
-
-//    static func createDummyUser() -> User {
-//        return createNewUser(name: "User", email: "user@app.com")
-//    }
-
     func simulateAppInteraction() {
         let steps = Int.random(in: 0...1000)
         let points = PointManager.points(forSteps: Double(steps))
-        UserManager.update(UserManager.current.loggedUser, addPoints: points)
+        UserManager.add(points: points, to: UserManager.current.loggedUser)
     }
 }

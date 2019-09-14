@@ -15,4 +15,16 @@ extension UserDefaults {
         get { return bool(forKey: #function) }
         set { set(newValue, forKey: #function) }
     }
+
+    /// Último tempo de atualização das metas
+    var goalUpdateTime: Date? {
+        get { return value(forKey: #function) as? Date }
+        set { set(newValue, forKey: #function) }
+    }
+
+    /// Último tempo de atualização dos dados do HealthKit
+    var healthKitUpdateTime: Date? {
+        get { return value(forKey: #function) as? Date }
+        set { set(newValue, forKey: #function) }
+    }
 }

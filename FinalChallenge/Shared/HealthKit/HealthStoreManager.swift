@@ -19,15 +19,11 @@ final class HealthStoreManager {
     /// Propriedade para salvar o último instante que os dados do usuário foram atualizados.
     private var lastUpdateTime: Date {
         get {
-            if let date = UserDefaults.standard.value(forKey: "LastUpdateTime") as? Date {
-                return date
-            } else {
-                return Date()
-            }
+            return UserDefaults.standard.healthKitUpdateTime ?? Date()
         }
 
-        set(newUpdateTime) {
-            UserDefaults.standard.set(newUpdateTime, forKey: "LastUpdateTime")
+        set {
+            UserDefaults.standard.healthKitUpdateTime = newValue
         }
     }
 
