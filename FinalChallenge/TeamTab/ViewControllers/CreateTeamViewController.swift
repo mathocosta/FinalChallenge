@@ -56,7 +56,7 @@ class CreateTeamViewController: UIViewController {
             let loggedUser = UserManager.getLoggedUser() else { return }
 
         let newTeam = TeamManager.newTeam(named: nameText, createdBy: loggedUser)
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
         coordinator?.showDetails(of: newTeam)
     }
 

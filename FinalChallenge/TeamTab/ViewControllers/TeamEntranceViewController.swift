@@ -44,7 +44,7 @@ class TeamEntranceViewController: UIViewController {
         // Adicionar time ao usuário
         if let loggedUser = UserManager.getLoggedUser() {
             loggedUser.team = team
-            CoreDataManager.saveContext()
+            CoreStataStore.saveContext()
             // Retorna para a tela de abertura do time
             coordinator?.showDetails(of: team)
         }

@@ -13,12 +13,12 @@ final class CoreDataGateway {
 
     private let viewContext: NSManagedObjectContext
 
-    init(viewContext: NSManagedObjectContext = CoreDataManager.context) {
+    init(viewContext: NSManagedObjectContext = CoreStataStore.context) {
         self.viewContext = viewContext
     }
 
     // MARK: - Métodos genéricos
-    
+
     /// Salva um objeto no Core Data, basicamente salva o contexto.
     /// 
     /// - Parameter entity: Objeto a ser salvo

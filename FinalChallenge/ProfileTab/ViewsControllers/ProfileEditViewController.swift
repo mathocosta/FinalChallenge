@@ -66,7 +66,7 @@ class ProfileEditViewController: UIViewController {
             user.email = emailText
         }
 
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
         coordinator?.showProfileViewController(for: user)
     }
 

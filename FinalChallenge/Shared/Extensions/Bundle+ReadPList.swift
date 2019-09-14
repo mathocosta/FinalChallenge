@@ -9,9 +9,9 @@
 import Foundation
 
 extension Bundle {
-    func contentsOfPList(fileName: String) -> [String:AnyObject] {
+    func contentsOfPList(fileName: String) -> [String: AnyObject] {
         guard let path = Bundle.main.path(forResource: fileName, ofType: "plist"),
-            let contents = NSDictionary(contentsOfFile: path) as? [String:AnyObject]
+            let contents = NSDictionary(contentsOfFile: path) as? [String: AnyObject]
             else { return [:] }
         return contents
     }

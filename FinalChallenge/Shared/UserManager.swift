@@ -21,11 +21,10 @@ class UserManager: NSObject {
         }
     }
 
-
     /// Retorna o usuário logado no app. Caso não exista, retorna "nil"
     static func getLoggedUser() -> User? {
         let request = NSFetchRequest<User>(entityName: "User")
-        let users = CoreDataManager.fetch(request)
+        let users = CoreStataStore.fetch(request)
 
         guard let user = users.first else { return nil }
 
@@ -37,19 +36,19 @@ class UserManager: NSObject {
         if let team = user.team {
             TeamManager.updateAmountOfPoints(for: team)
         }
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
     }
 
     static func changeGoals(for user: User, at date: Date = Date()) {
         GoalsManager.removeAllTimedGoals(from: user)
         GoalsManager.setNewTimedGoals(for: user)
         UserDefaults.standard.goalUpdateTime = date
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
     }
 
     @discardableResult
     static func createNewUser(name: String) -> User {
-        let user = User(context: CoreDataManager.context)
+        let user = User(context: CoreStataStore.context)
         user.id = UUID()
         user.name = name
         user.email = ""
@@ -60,8 +59,8 @@ class UserManager: NSObject {
     }
 
     static func logout(user: User) {
-        CoreDataManager.context.delete(user)
-        CoreDataManager.saveContext()
+        CoreStataStore.context.delete(user)
+        CoreStataStore.saveContext()
     }
 
     func simulateAppInteraction() {

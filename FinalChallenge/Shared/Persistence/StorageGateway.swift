@@ -19,7 +19,7 @@ class StorageGateway {
     init() {
         self.cloudKitGateway = CloudKitGateway(container:
             CKContainer(identifier: "iCloud.academy.the-rest-of-us.FinalChallenge"))
-        self.coreDataGateway = CoreDataGateway(viewContext: CoreDataManager.context)
+        self.coreDataGateway = CoreDataGateway(viewContext: CoreStataStore.context)
     }
 
     func startRegistration(completion: @escaping (ResultHandler<[String: String]>)) {

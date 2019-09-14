@@ -15,11 +15,16 @@
 		275FE87B231D3D46001695D2 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87A231D3D46001695D2 /* CodeView.swift */; };
 		275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87C231D3D6D001695D2 /* Coordinator.swift */; };
 		275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87F231D3DD2001695D2 /* AppCoordinator.swift */; };
-		275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataManager.swift */; };
+		275FE886231D3ECE001695D2 /* CoreStataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreStataStore.swift */; };
 		275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE887231D4CBD001695D2 /* HealthStoreManager.swift */; };
 		275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275FE88B231D55CC001695D2 /* HealthKit.framework */; };
+		276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */; };
 		276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47323219D6A00EA75C6 /* TeamListViewController.swift */; };
 		276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47523219D7B00EA75C6 /* TeamListView.swift */; };
+		278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717ED231F0AD200A2A481 /* CoreDataGateway.swift */; };
+		278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717EF231F224F00A2A481 /* CloudKitGateway.swift */; };
+		278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F3232001D600A2A481 /* CKManagedObject.swift */; };
+		278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F52320027F00A2A481 /* User+CKManagedObject.swift */; };
 		278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F823207D7900A2A481 /* TeamTabCoordinator.swift */; };
 		278718052320849900A2A481 /* TeamEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278718042320849900A2A481 /* TeamEntranceView.swift */; };
 		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
@@ -39,11 +44,6 @@
 		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
 		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
-		276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */; };
-		278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717ED231F0AD200A2A481 /* CoreDataGateway.swift */; };
-		278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717EF231F224F00A2A481 /* CloudKitGateway.swift */; };
-		278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F3232001D600A2A481 /* CKManagedObject.swift */; };
-		278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F52320027F00A2A481 /* User+CKManagedObject.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
@@ -69,12 +69,17 @@
 		275FE87A231D3D46001695D2 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		275FE87C231D3D6D001695D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		275FE87F231D3DD2001695D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		275FE885231D3ECE001695D2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		275FE885231D3ECE001695D2 /* CoreStataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStataStore.swift; sourceTree = "<group>"; };
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		275FE889231D55CC001695D2 /* FinalChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallenge.entitlements; sourceTree = "<group>"; };
 		275FE88B231D55CC001695D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CKManagedObject.swift"; sourceTree = "<group>"; };
 		276FD47323219D6A00EA75C6 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		276FD47523219D7B00EA75C6 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
+		278717ED231F0AD200A2A481 /* CoreDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataGateway.swift; sourceTree = "<group>"; };
+		278717EF231F224F00A2A481 /* CloudKitGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitGateway.swift; sourceTree = "<group>"; };
+		278717F3232001D600A2A481 /* CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManagedObject.swift; sourceTree = "<group>"; };
+		278717F52320027F00A2A481 /* User+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CKManagedObject.swift"; sourceTree = "<group>"; };
 		278717F823207D7900A2A481 /* TeamTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTabCoordinator.swift; sourceTree = "<group>"; };
 		278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsViewController.swift; sourceTree = "<group>"; };
 		278717FE23207FEA00A2A481 /* TeamDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsView.swift; sourceTree = "<group>"; };
@@ -94,11 +99,6 @@
 		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
-		276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CKManagedObject.swift"; sourceTree = "<group>"; };
-		278717ED231F0AD200A2A481 /* CoreDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataGateway.swift; sourceTree = "<group>"; };
-		278717EF231F224F00A2A481 /* CloudKitGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitGateway.swift; sourceTree = "<group>"; };
-		278717F3232001D600A2A481 /* CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManagedObject.swift; sourceTree = "<group>"; };
-		278717F52320027F00A2A481 /* User+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CKManagedObject.swift"; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 				278717E9231F029700A2A481 /* Persistence */,
 				303F5A8B231D61640054587C /* Extensions */,
 				275FE879231D3D39001695D2 /* Protocols */,
-				275FE885231D3ECE001695D2 /* CoreDataManager.swift */,
+				275FE885231D3ECE001695D2 /* CoreStataStore.swift */,
 				303F5A8E231D619F0054587C /* PointManager.swift */,
 				304398A2231FD2E80024568D /* GoalsManager.swift */,
 				309A2DCE23268E27002C5371 /* GoalPile.swift */,
@@ -193,6 +193,17 @@
 				275FE88B231D55CC001695D2 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		278717E9231F029700A2A481 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				278F829B2326881000F55372 /* Models */,
+				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
+				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
+				273D233E2327E0AC003147DF /* StorageGateway.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		278717F723207CF700A2A481 /* TeamTab */ = {
@@ -225,6 +236,15 @@
 				2797D61C232BBDE300A33470 /* CreateTeamView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		278F829B2326881000F55372 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				278717F52320027F00A2A481 /* User+CKManagedObject.swift */,
+				276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2797D619232B2F6C00A33470 /* Resources */ = {
@@ -316,26 +336,6 @@
 				2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */,
 			);
 			path = ProfileDetailsView;
-			sourceTree = "<group>";
-		};
-		278717E9231F029700A2A481 /* Persistence */ = {
-			isa = PBXGroup;
-			children = (
-				278F829B2326881000F55372 /* Models */,
-				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
-				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
-				273D233E2327E0AC003147DF /* StorageGateway.swift */,
-			);
-			path = Persistence;
-			sourceTree = "<group>";
-		};
-		278F829B2326881000F55372 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				278717F52320027F00A2A481 /* User+CKManagedObject.swift */,
-				276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		303F5A8B231D61640054587C /* Extensions */ = {
@@ -456,7 +456,6 @@
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
-				275FE884231D3E80001695D2 /* FirstView.swift in Sources */,
 				273D233F2327E0AC003147DF /* StorageGateway.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
@@ -486,7 +485,7 @@
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
-				275FE886231D3ECE001695D2 /* CoreDataManager.swift in Sources */,
+				275FE886231D3ECE001695D2 /* CoreStataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,

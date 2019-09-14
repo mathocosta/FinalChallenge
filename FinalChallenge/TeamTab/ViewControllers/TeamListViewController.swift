@@ -21,7 +21,7 @@ class TeamListViewController: UIViewController {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         let resultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
-            managedObjectContext: CoreDataManager.context,
+            managedObjectContext: CoreStataStore.context,
             sectionNameKeyPath: nil,
             cacheName: nil
         )

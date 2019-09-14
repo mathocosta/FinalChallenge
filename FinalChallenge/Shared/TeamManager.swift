@@ -12,20 +12,20 @@ import CoreData
 class TeamManager: NSObject {
     @discardableResult
     static func newTeam(named name: String, createdBy user: User) -> Team {
-        let team = Team(context: CoreDataManager.context)
+        let team = Team(context: CoreStataStore.context)
         team.id = UUID()
         team.name = name
         team.points = 0
         TeamManager.add(user, to: team)
         return team
     }
-    
+
     static func add(_ user: User, to team: Team) {
         team.addToMembers(user)
         TeamManager.updateAmountOfPoints(for: team)
-        
+
     }
-    
+
     static func remove(_ user: User, from team: Team) {
         team.removeFromMembers(user)
 //        guard TeamManager.checkValid(team) else {
@@ -33,13 +33,13 @@ class TeamManager: NSObject {
 //            return
 //        }
         TeamManager.updateAmountOfPoints(for: team)
-        
+
     }
-    
+
     static func remove(_ team: Team) {
-        CoreDataManager.context.delete(team)
+        CoreStataStore.context.delete(team)
     }
-    
+
     static func validateAllTeams() {
         for team in TeamManager.allTeams() {
             if !TeamManager.checkValid(team) {
@@ -47,12 +47,12 @@ class TeamManager: NSObject {
             }
         }
     }
-    
+
     static func checkValid(_ team: Team) -> Bool {
         guard let members = team.members else { return false }
         return members.count > 0
     }
-    
+
     @discardableResult
     static func updateAmountOfPoints(for team: Team) -> Int {
         guard let set = team.members, let members = Array(set) as? [User] else { return 0 }
@@ -60,13 +60,13 @@ class TeamManager: NSObject {
             x + Int(y.points)
         })
         team.points = Int32(teamPoints)
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
         return teamPoints
     }
-    
+
     static func allTeams() -> [Team] {
         let request = NSFetchRequest<Team>(entityName: "Team")
-        let teams = CoreDataManager.fetch(request)
+        let teams = CoreStataStore.fetch(request)
         return teams
     }
 }

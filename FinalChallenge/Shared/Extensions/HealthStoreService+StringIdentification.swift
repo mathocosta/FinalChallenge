@@ -29,7 +29,7 @@ extension HealthStoreService {
             return .stepCount
         }
     }
-    
+
     func unit() -> HKUnit {
         switch self {
         case .stepCount:

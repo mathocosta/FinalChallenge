@@ -48,7 +48,7 @@ class TeamDetailsViewController: UIViewController {
     @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
         guard let loggedUser = UserManager.getLoggedUser() else { return }
         TeamManager.remove(loggedUser, from: team)
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
         coordinator?.showTeamList()
     }
 

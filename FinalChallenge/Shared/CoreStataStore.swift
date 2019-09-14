@@ -1,5 +1,5 @@
 //
-//  CoreDataManager.swift
+//  CoreStataStore.swift
 //  FinalChallenge
 //
 //  Created by Matheus Oliveira Costa on 02/09/19.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class CoreDataManager: NSObject {
+class CoreStataStore: NSObject {
     static var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FinalChallenge")
         container.loadPersistentStores(completionHandler: { (_, error) in

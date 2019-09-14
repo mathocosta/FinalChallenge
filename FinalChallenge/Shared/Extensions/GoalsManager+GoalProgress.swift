@@ -19,7 +19,7 @@ extension GoalsManager {
                 }
             }
         }
-        CoreDataManager.saveContext()
+        CoreStataStore.saveContext()
     }
 
     static func progress(for user: User, on goal: Goal, completion: @escaping ((Double, Double) -> Void)) {

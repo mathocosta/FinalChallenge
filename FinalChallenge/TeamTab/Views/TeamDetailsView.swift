@@ -60,5 +60,4 @@ extension TeamDetailsView: CodeView {
     func setupAdditionalConfiguration() {
     }
 
-
 }
