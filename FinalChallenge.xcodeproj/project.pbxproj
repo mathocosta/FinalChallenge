@@ -180,7 +180,6 @@
 				275FE879231D3D39001695D2 /* Protocols */,
 				303F5A8E231D619F0054587C /* PointManager.swift */,
 				304398A2231FD2E80024568D /* GoalsManager.swift */,
-				309A2DCE23268E27002C5371 /* GoalPile.swift */,
 				309A2DCC23267675002C5371 /* Goal.swift */,
 				303F5A96231E93AA0054587C /* UserManager.swift */,
 				309A2DD42329177E002C5371 /* TeamManager.swift */,
@@ -253,6 +252,7 @@
 		278F829B2326881000F55372 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				309A2DCE23268E27002C5371 /* GoalPile.swift */,
 				278717F52320027F00A2A481 /* User+CKManagedObject.swift */,
 				276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */,
 			);
