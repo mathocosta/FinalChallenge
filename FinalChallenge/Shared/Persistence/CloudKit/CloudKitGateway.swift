@@ -93,20 +93,15 @@ final class CloudKitGateway {
 
 }
 
-// MARK: - Métodos especializados
-extension CloudKitGateway {
-
-    func create(team: Team, completion: @escaping(ResultHandler<CKRecord>)) {
-        let teamRecord = team.asCKRecord()
-        save(teamRecord, in: publicDatabase, completion: completion)
-    }
-
-}
-
 // MARK: - Gerenciamento dos dados dos usuários
 extension CloudKitGateway {
 
-    private func canUseUserData(completion: @escaping (Bool, Error?) -> Void) {
+
+    /// Esse método faz toda a checagem necessária para usar os dados do usuário
+    /// logado no device.
+    /// FIXME: Ainda não tem tratamento de erros para caso o usuário não dê acesso para usar a conta do iCloud.
+    /// - Parameter completion: Callback executado quando o processo é terminado e com os possíveis erros
+    func canUseUserData(completion: @escaping (Bool, Error?) -> Void) {
         container.accountStatus { [weak self] (accountStatus, error) in
             if error != nil {
                 completion(false, error)
@@ -126,88 +121,52 @@ extension CloudKitGateway {
         }
     }
 
-    func userRecordID(completion: @escaping (ResultHandler<CKRecord.ID>)) {
-        canUseUserData { [weak self] (success, error) in
-            guard success, error == nil else {
-                completion(.failure(error!))
-                return
+    /// Esse método obtém os dados do usuário logado na conta do iCloud do dispositivo.
+    /// Como pode ser que ele nunca tenha usado o app, é feito um processo de inicialização
+    /// do `CKRecord` antes colocando o nome que está na conta do iCloud. Mas caso já tenha usado
+    /// e o record já exista na database, é apenas retornado com os dados antigos.
+    /// - Parameter completion: Callback executado quando os dados do usuário são obtidos ou
+    /// com os erros que aconteceram
+    func fetchCurrentUser(completion: @escaping (ResultHandler<CKRecord>)) {
+        let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
+        operation.fetchRecordsCompletionBlock = { recordsByRecordID, operationError in
+            if let operationError = operationError {
+                return completion(.failure(operationError))
             }
 
-            self?.container.fetchUserRecordID { (userRecordID, error) in
-                guard let userRecordID = userRecordID, error == nil else {
-                    return completion(.failure(error!))
-                }
+            if let recordsByRecordID = recordsByRecordID,
+                let userRecord = recordsByRecordID.values.first,
+                let userRecordID = recordsByRecordID.keys.first {
 
-                completion(.success(userRecordID))
-            }
-        }
-    }
-
-    func userRecord(completion: @escaping (ResultHandler<CKRecord>)) {
-        userRecordID { [unowned self] (result) in
-            switch result {
-            case .success(let userRecordID):
-                self.object(with: userRecordID, in: self.privateDatabase, completion: completion)
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
-    func userIdentity(recordID: CKRecord.ID, completion: @escaping ((CKUserIdentity?) -> Void)) {
-        container.discoverUserIdentity(withUserRecordID: recordID) { (userIdentity, error) in
-            guard let userIdentity = userIdentity, error == nil else {
-                return completion(nil)
-            }
-
-            completion(userIdentity)
-        }
-    }
-
-    func userInfo(completion: @escaping (ResultHandler<[String: Any?]>)) {
-        let operation = CKUserInformationOperation()
-        operation.configuration.container = container
-
-        operation.userInformationCompletionBlock = { userRecord, userIdentity in
-            if let userRecord = userRecord {
-                let recordMetadata = userRecord.recordMetadata()
-
-                // Checa se uma das keys já foi iniciada
                 if userRecord.value(forKey: "name") == nil {
-                    var userFullName = ""
+                    self.container.discoverUserIdentity(withUserRecordID: userRecordID) {
+                        (userIdentity, error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
 
-                    if let userIdentity = userIdentity, let nameComponents = userIdentity.nameComponents {
-                        userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
+                        if let userIdentity = userIdentity,
+                            let nameComponents = userIdentity.nameComponents {
+                            let userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
+                            userRecord["name"] = userFullName
+                        }
+
+                        completion(.success(userRecord))
                     }
-
-                    completion(.success([
-                        "name": userFullName,
-                        "recordMetadata": recordMetadata
-                    ]))
                 } else {
-                    var photoData = Data()
-                    if let photoAsset = userRecord.value(forKey: "photo") as? CKAsset,
-                        let photoAssetURL = photoAsset.fileURL {
-                        do {
-                            photoData = try Data(contentsOf: photoAssetURL)
-                        } catch { print(error.localizedDescription) }
-                    }
-
-                    completion(.success([
-                        "id": userRecord.value(forKey: "id"),
-                        "name": userRecord.value(forKey: "name"),
-                        "recordMetadata": recordMetadata,
-                        "email": userRecord.value(forKey: "email"),
-                        "points": userRecord.value(forKey: "points"),
-                        "photo": photoData
-                    ]))
+                    completion(.success(userRecord))
                 }
+
             }
         }
-
-        container.add(operation)
+        privateDatabase.add(operation)
     }
 
+    /// Esse método atualiza o `CKRecord` de um usuário. É update pois sempre já existe o
+    /// record para o usuário quando começa a usar a aplicação.
+    /// - Parameter userRecord: Record do usuário para ser salvo
+    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
+    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
     func update(userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
         save(userRecord, in: privateDatabase, completion: completion)
     }

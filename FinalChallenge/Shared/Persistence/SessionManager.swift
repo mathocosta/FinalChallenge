@@ -24,39 +24,25 @@ class SessionManager {
         self.coreDataGateway = CoreDataGateway(viewContext: CoreStataStore.context)
     }
 
-    func startRegistration(completion: @escaping (ResultHandler<[String: Any]>)) {
-        let operation = CKUserInformationOperation()
-        operation.configuration.container = cloudKitGateway.container
-
-        operation.userInformationCompletionBlock = { userRecord, userIdentity in
-            if let userRecord = userRecord {
-                let recordMetadata = userRecord.recordMetadata()
-                var userFullName = ""
-
-                if let userIdentity = userIdentity, let nameComponents = userIdentity.nameComponents {
-                    userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
-                }
-
-                completion(.success([
-                    "fullName": userFullName,
-                    "recordMetadata": recordMetadata
-                ]))
-            }
-        }
-
-        cloudKitGateway.container.add(operation)
-    }
-
     func loginUser(completion: @escaping (ResultHandler<Bool>)) {
-        cloudKitGateway.userInfo { (result) in
-            switch result {
-            case .success(let userInfo):
-                let user = UserManager.createUser(with: userInfo)
-                self.coreDataGateway.save(user) { _ in
-                    completion(.success(true))
+        cloudKitGateway.canUseUserData { [weak self] (success, error) in
+            if let error = error {
+                return completion(.failure(error))
+            }
+
+            if success {
+                self?.cloudKitGateway.fetchCurrentUser { (result) in
+                    switch result {
+                    case .success(let record):
+                        let userRecordInfo = record.recordKeysAndValues()
+                        let newUser = UserManager.createUser(with: userRecordInfo)
+                        self?.coreDataGateway.save(newUser) { _ in
+                            completion(.success(true))
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
                 }
-            case .failure(let error):
-                completion(.failure(error))
             }
         }
     }

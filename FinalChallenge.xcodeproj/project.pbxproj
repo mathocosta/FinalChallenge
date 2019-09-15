@@ -39,8 +39,7 @@
 		2797D626232D3F3900A33470 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D625232D3F3900A33470 /* MessageViewController.swift */; };
 		2797D628232D3F6E00A33470 /* FirstLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D627232D3F6E00A33470 /* FirstLoginCoordinator.swift */; };
 		2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D629232D480600A33470 /* MessageViewContent.swift */; };
-		2797D62C232D76A100A33470 /* CKRecord+recordMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D62B232D76A100A33470 /* CKRecord+recordMetadata.swift */; };
-		2797D62E232D96C300A33470 /* CKUserInformationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D62D232D96C300A33470 /* CKUserInformationOperation.swift */; };
+		2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D62B232D76A100A33470 /* CKRecordExtension.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
@@ -61,7 +60,6 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F7D23228135005003A8 /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30A20F7C23228135005003A8 /* Goals.plist */; };
-		30A20F7F23228326005003A8 /* HealthStoreService+StringIdentification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F7E23228326005003A8 /* HealthStoreService+StringIdentification.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,8 +99,7 @@
 		2797D625232D3F3900A33470 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		2797D627232D3F6E00A33470 /* FirstLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginCoordinator.swift; sourceTree = "<group>"; };
 		2797D629232D480600A33470 /* MessageViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewContent.swift; sourceTree = "<group>"; };
-		2797D62B232D76A100A33470 /* CKRecord+recordMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKRecord+recordMetadata.swift"; sourceTree = "<group>"; };
-		2797D62D232D96C300A33470 /* CKUserInformationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKUserInformationOperation.swift; sourceTree = "<group>"; };
+		2797D62B232D76A100A33470 /* CKRecordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
@@ -123,7 +120,6 @@
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
 		309A2DD42329177E002C5371 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		30A20F7C23228135005003A8 /* Goals.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Goals.plist; sourceTree = "<group>"; };
-		30A20F7E23228326005003A8 /* HealthStoreService+StringIdentification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HealthStoreService+StringIdentification.swift"; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,7 +178,6 @@
 				278717E9231F029700A2A481 /* Persistence */,
 				303F5A8B231D61640054587C /* Extensions */,
 				275FE879231D3D39001695D2 /* Protocols */,
-				275FE885231D3ECE001695D2 /* CoreStataStore.swift */,
 				303F5A8E231D619F0054587C /* PointManager.swift */,
 				304398A2231FD2E80024568D /* GoalsManager.swift */,
 				309A2DCE23268E27002C5371 /* GoalPile.swift */,
@@ -215,11 +210,10 @@
 		278717E9231F029700A2A481 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				2797D630232E730C00A33470 /* CoreData */,
+				2797D62F232E730500A33470 /* CloudKit */,
 				278F829B2326881000F55372 /* Models */,
-				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
-				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
 				273D233E2327E0AC003147DF /* SessionManager.swift */,
-				2797D62D232D96C300A33470 /* CKUserInformationOperation.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -300,6 +294,23 @@
 				2797D625232D3F3900A33470 /* MessageViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2797D62F232E730500A33470 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
+		2797D630232E730C00A33470 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				275FE885231D3ECE001695D2 /* CoreStataStore.swift */,
+				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		27C56E5D231EB5DF009CCAAB /* HealthKit */ = {
@@ -387,12 +398,11 @@
 			isa = PBXGroup;
 			children = (
 				303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */,
-				30A20F7E23228326005003A8 /* HealthStoreService+StringIdentification.swift */,
 				30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */,
 				303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */,
 				309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */,
 				2797D615232B1A8800A33470 /* UserDefaults+keys.swift */,
-				2797D62B232D76A100A33470 /* CKRecord+recordMetadata.swift */,
+				2797D62B232D76A100A33470 /* CKRecordExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -494,7 +504,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30A20F7F23228326005003A8 /* HealthStoreService+StringIdentification.swift in Sources */,
 				309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */,
 				278F829A2322A67200F55372 /* TeamDetailsView.swift in Sources */,
 				278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */,
@@ -508,7 +517,6 @@
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
-				2797D62E232D96C300A33470 /* CKUserInformationOperation.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
@@ -517,7 +525,7 @@
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
-				2797D62C232D76A100A33470 /* CKRecord+recordMetadata.swift in Sources */,
+				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				2B6E354123229C520092A481 /* Input.swift in Sources */,

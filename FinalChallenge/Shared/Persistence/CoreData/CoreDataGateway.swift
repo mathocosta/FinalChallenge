@@ -73,12 +73,3 @@ final class CoreDataGateway {
         }
     }
 }
-
-// MARK: - Gerenciamento dos dados dos usuários
-extension CoreDataGateway {
-
-    func login(with userData: [String: Any], completion: @escaping (ResultHandler<User>)) {
-        // Pegar os dados do dicionário e transformar em dois objetos: User e Team com os relacionamentos.
-    }
-
-}
