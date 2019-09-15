@@ -11,6 +11,15 @@ import CloudKit
 
 extension CKRecord {
 
+    convenience init?(recordMetadata: Data) {
+        guard let coder = try? NSKeyedUnarchiver(forReadingFrom: recordMetadata) else {
+            return nil
+        }
+        coder.requiresSecureCoding = true
+        self.init(coder: coder)
+        coder.finishDecoding()
+    }
+
     /// Transforma as chaves padrões (metadata) de um CKRecord para Data
     func recordMetadata() -> Data {
         let coder = NSKeyedArchiver(requiringSecureCoding: true)
@@ -37,7 +46,8 @@ extension CKRecord {
         return dict
     }
 
-    func data(from ckAsset: CKAsset) -> Data {
+    /// Transforma um asset para Data
+    private func data(from ckAsset: CKAsset) -> Data {
         var assetData = Data()
         if let fileURL = ckAsset.fileURL {
             do {
