@@ -22,14 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
-        // Usuário não está logado
-        // NOTE: Futuramente, isso deve ser substituído pela função que obtém o nome
-        // do usuário no iCloud. Assim, é possível criar um usuário automaticamente
-        if UserManager.getLoggedUser() == nil {
-            UserDefaults.standard.isFirstLogin = true
-        } else {
-            UserDefaults.standard.isFirstLogin = false
-        }
+        // Checa se o usuário não está logado, por agora, isso quer dizer que é
+        // o primeiro acesso ao app
+        UserDefaults.standard.isFirstLogin = UserManager.getLoggedUser() == nil
 
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
