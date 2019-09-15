@@ -27,7 +27,9 @@ extension User: CKManagedObject {
             record["photo"] = ckAsset(of: profileImage)
         }
 
-        record["team"] = team?.id?.uuidString
+        if let teamRecord = team?.asCKRecord() {
+            record["team"] = CKRecord.Reference(record: teamRecord, action: .none)
+        }
 
         return record
     }

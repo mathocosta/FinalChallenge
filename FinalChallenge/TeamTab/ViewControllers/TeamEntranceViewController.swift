@@ -43,10 +43,17 @@ class TeamEntranceViewController: UIViewController {
     func selectTeamForLoggedUser() {
         // Adicionar time ao usuário
         if let loggedUser = UserManager.getLoggedUser() {
-            loggedUser.team = team
-            CoreStataStore.saveContext()
-            // Retorna para a tela de abertura do time
-            coordinator?.showDetails(of: team)
+            SessionManager.current.add(user: loggedUser, to: team) { (result) in
+                switch result {
+                case .success:
+                    DispatchQueue.main.async { [unowned self] in
+                        // Retorna para a tela de abertura do time
+                        self.coordinator?.showDetails(of: self.team)
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 

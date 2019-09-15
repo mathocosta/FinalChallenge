@@ -71,9 +71,14 @@ class ProfileEditViewController: UIViewController {
             user.email = emailText
         }
 
-        SessionManager.current.updateRegister(of: user) { [unowned self] _ in
-            DispatchQueue.main.async {
-                self.coordinator?.showProfileViewController(for: self.user)
+        SessionManager.current.updateRegister(of: user) { [unowned self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self.coordinator?.showProfileViewController(for: self.user)
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }

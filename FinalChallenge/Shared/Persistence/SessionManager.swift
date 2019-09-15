@@ -35,6 +35,7 @@ class SessionManager {
                     switch result {
                     case .success(let record):
                         let userRecordInfo = record.recordKeysAndValues()
+
                         let newUser = UserManager.createUser(with: userRecordInfo)
                         self?.coreDataGateway.save(newUser) { _ in
                             completion(.success(true))
@@ -47,7 +48,7 @@ class SessionManager {
         }
     }
 
-    func updateRegister(of user: User, completion: @escaping ((Bool) -> Void)) {
+    func updateRegister(of user: User, completion: @escaping (ResultHandler<Bool>)) {
         coreDataGateway.save(user) { [weak self] (result) in
             switch result {
             case .success(let user):
@@ -57,15 +58,39 @@ class SessionManager {
                     case .success(let updatedRecord):
                         let recordMetadata = updatedRecord.recordMetadata()
                         UserManager.update(recordMetadata: recordMetadata, of: user)
-                        completion(true)
+                        completion(.success(true))
                     case .failure(let error):
-                        print(error.localizedDescription)
-                        completion(false)
+                        completion(.failure(error))
                     }
                 }
             case .failure(let error):
-                print(error.localizedDescription)
-                completion(false)
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
+        user.team = team
+        updateRegister(of: user, completion: completion)
+    }
+
+    func remove(user: User, from team: Team, completion: @escaping (ResultHandler<Bool>)) {
+        team.removeFromMembers(user)
+        updateRegister(of: user, completion: completion)
+    }
+
+    func listTeams(completion: @escaping (ResultHandler<[Team]>)) {
+        cloudKitGateway.listTeams { (result) in
+            switch result {
+            case .success(_, let records):
+                var teams = [Team]()
+                for record in records {
+                    let recordInfo = record.recordKeysAndValues()
+                    teams.append(TeamManager.createTeam(with: recordInfo))
+                }
+                completion(.success(teams))
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }

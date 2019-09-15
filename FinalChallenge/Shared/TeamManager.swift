@@ -20,10 +20,23 @@ class TeamManager: NSObject {
         return team
     }
 
+    static func createTeam(with info: [String: Any?]) -> Team {
+        let team = Team(context: CoreStataStore.context)
+        team.id = (info["id"] as? UUID) ?? UUID()
+        team.recordMetadata = info["recordMetadata"] as? Data
+        team.name = info["name"] as? String
+        team.points = (info["points"] as? Int32) ?? 0
+
+        if let imageData = info["photo"] as? Data {
+            team.photo = imageData
+        }
+
+        return team
+    }
+
     static func add(_ user: User, to team: Team) {
         team.addToMembers(user)
         TeamManager.updateAmountOfPoints(for: team)
-
     }
 
     static func remove(_ user: User, from team: Team) {

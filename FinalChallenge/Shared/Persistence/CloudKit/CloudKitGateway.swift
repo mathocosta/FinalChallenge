@@ -96,7 +96,6 @@ final class CloudKitGateway {
 // MARK: - Gerenciamento dos dados dos usuários
 extension CloudKitGateway {
 
-
     /// Esse método faz toda a checagem necessária para usar os dados do usuário
     /// logado no device.
     /// FIXME: Ainda não tem tratamento de erros para caso o usuário não dê acesso para usar a conta do iCloud.
@@ -162,13 +161,81 @@ extension CloudKitGateway {
         privateDatabase.add(operation)
     }
 
+    func fetchInitialData(completion: @escaping (ResultHandler<(CKRecord, CKRecord)>)) {
+        fetchCurrentUser { (result) in
+            switch result {
+            case .success(let userRecord):
+                self.team(of: userRecord) { (result) in
+                    switch result {
+                    case .success(let teamRecord):
+                        completion(.success((userRecord, teamRecord)))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     /// Esse método atualiza o `CKRecord` de um usuário. É update pois sempre já existe o
     /// record para o usuário quando começa a usar a aplicação.
     /// - Parameter userRecord: Record do usuário para ser salvo
     /// - Parameter completion: Callback executado quando o processo termina que retorna o record
     /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
     func update(userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        save(userRecord, in: privateDatabase, completion: completion)
+        save(userRecord, in: publicDatabase, completion: completion)
+    }
+
+}
+
+// MARK: - Gerenciamento dos times
+extension CloudKitGateway {
+
+    /// Faz uma consulta pelos times salvos na database. Pode receber como parâmetro o
+    /// `CKQueryOperation.Cursor` da consulta passada para continuar caso seja necessário.
+    /// - Parameter cursor: Onde deve começar a consulta
+    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
+    /// os records obtidos, ou os errors encontrados
+    func listTeams(
+        cursor: CKQueryOperation.Cursor? = nil,
+        completion: @escaping (ResultHandler<(CKQueryOperation.Cursor?, [CKRecord])>)
+    ) {
+        var fetchedRecords = [CKRecord]()
+        var queryOperation: CKQueryOperation
+
+        if let cursor = cursor {
+            queryOperation = CKQueryOperation(cursor: cursor)
+        } else {
+            let query = CKQuery(recordType: "Teams", predicate: NSPredicate(value: true))
+            queryOperation = CKQueryOperation(query: query)
+        }
+
+        queryOperation.cursor = nil
+        queryOperation.resultsLimit = 10
+
+        queryOperation.recordFetchedBlock = { (fetchedRecord) in
+            fetchedRecords.append(fetchedRecord)
+        }
+
+        queryOperation.queryCompletionBlock = { (nextCursor, operationError) in
+            if let operationError = operationError {
+                completion(.failure(operationError))
+            }
+
+            completion(.success((nextCursor, fetchedRecords)))
+        }
+
+        publicDatabase.add(queryOperation)
+    }
+
+    func team(of userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
+        guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
+            fatalError("Não tem referencia do time")
+        }
+
+        object(with: teamReference.recordID, in: publicDatabase, completion: completion)
     }
 
 }

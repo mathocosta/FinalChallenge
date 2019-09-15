@@ -47,9 +47,16 @@ class TeamDetailsViewController: UIViewController {
     // MARK: - Actions
     @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
         guard let loggedUser = UserManager.getLoggedUser() else { return }
-        TeamManager.remove(loggedUser, from: team)
-        CoreStataStore.saveContext()
-        coordinator?.showTeamList()
+        SessionManager.current.remove(user: loggedUser, from: team) { (result) in
+            switch result {
+            case .success:
+                DispatchQueue.main.async { [unowned self] in
+                    self.coordinator?.showTeamList()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
 }

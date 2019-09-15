@@ -47,30 +47,17 @@ class UserManager: NSObject {
         CoreStataStore.saveContext()
     }
 
-    @discardableResult
-    static func createNewUser(name: String, recordMetadata: Data) -> User {
+    static func createUser(with info: [String: Any?]) -> User {
         let user = User(context: CoreStataStore.context)
-        user.id = UUID()
-        user.recordMetadata = recordMetadata
-        user.name = name
-        user.email = ""
-        user.points = 0
-        user.goalPile = GoalPile(value: [])
-        user.currentGoals = GoalPile(value: [])
-        return user
-    }
-
-    static func createUser(with userInfo: [String: Any?]) -> User {
-        let user = User(context: CoreStataStore.context)
-        user.id = (userInfo["id"] as? UUID) ?? UUID()
-        user.recordMetadata = userInfo["recordMetadata"] as? Data
-        user.name = userInfo["name"] as? String
-        user.email = userInfo["email"] as? String
-        user.points = (userInfo["points"] as? Int32) ?? 0
+        user.id = (info["id"] as? UUID) ?? UUID()
+        user.recordMetadata = info["recordMetadata"] as? Data
+        user.name = info["name"] as? String
+        user.email = info["email"] as? String
+        user.points = (info["points"] as? Int32) ?? 0
         user.goalPile = GoalPile(value: [])
         user.currentGoals = GoalPile(value: [])
 
-        if let imageData = userInfo["photo"] as? Data {
+        if let imageData = info["photo"] as? Data {
             user.photo = imageData
         }
         
