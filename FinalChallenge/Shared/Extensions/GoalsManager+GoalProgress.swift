@@ -47,7 +47,7 @@ extension GoalsManager {
         switch results {
         case .success(let statistics):
             if let quantity = statistics.sumQuantity() {
-                return quantity.doubleValue(for: service.unit())
+                return quantity.doubleValue(for: service.unit)
             }
         case .failure(let error):
             print(error.localizedDescription)

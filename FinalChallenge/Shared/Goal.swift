@@ -40,7 +40,7 @@ struct Goal {
         self.difficulty = Difficulty(rawValue: goalInfo["difficulty"] as? Int ?? 0) ?? .easy
         self.rewardAmount = goalInfo["rewardAmount"] as? Int ?? 0
         self.activityType = goalInfo["parameter"] as? String ?? ""
-        self.activityCoeficient = HealthStoreService.type(forTag: activityType).balanceValue()
+        self.activityCoeficient = HealthStoreService.type(forTag: activityType).balanceValue
         self.dailyReset = goalInfo["dailyReset"] as? Bool ?? false
         self.amountOfUsers = userAmount
     }

@@ -32,4 +32,35 @@ enum HealthStoreService: CaseIterable {
         return Set(types)
     }
 
+    var unit: HKUnit {
+        switch self {
+        case .stepCount:
+            return HKUnit.count()
+        case .distanceWalkingRunning:
+            return HKUnit(from: .meter)
+        }
+    }
+
+    var balanceValue: Double {
+        switch self {
+        case .stepCount:
+            return 50.0
+        case .distanceWalkingRunning:
+            return 20.0
+        }
+    }
+
+}
+
+extension HealthStoreService {
+    static func type(forTag tag: String) -> HealthStoreService {
+        switch tag {
+        case "stepCount":
+            return .stepCount
+        case "distanceWalkingRunning":
+            return .distanceWalkingRunning
+        default:
+            return .stepCount
+        }
+    }
 }
