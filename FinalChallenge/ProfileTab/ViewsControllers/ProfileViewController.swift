@@ -48,35 +48,36 @@ class ProfileViewController: UIViewController {
         fetchHealthStoreData()
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let userDefaults = UserDefaults.standard
-        if userDefaults.isFirstLogin {
-            showCompleteRegistrationAlert()
-        }
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        let userDefaults = UserDefaults.standard
+//        if userDefaults.isFirstLogin {
+//            showCompleteRegistrationAlert()
+//        }
+//    }
 
     // MARK: - Actions
     func showProfileEditForm() {
         coordinator?.showProfileEditViewController(for: user)
     }
 
-    func showCompleteRegistrationAlert() {
-        let alertController = UIAlertController(
-            title: "Complete seu cadastro!",
-            message: "Você foi cadastrado automaticamente usando sua conta do iCloud, não precisa fazer mais nada. No entanto, pedimos que você coloque mais informações para completar o seu perfil.",
-            preferredStyle: .alert
-        )
-
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
-            self?.showProfileEditForm()
-        })
-        alertController.addAction(UIAlertAction(title: "Agora não", style: .cancel, handler: nil))
-
-        present(alertController, animated: true, completion: {
-            UserDefaults.standard.isFirstLogin = false
-        })
-    }
+//    func showCompleteRegistrationAlert() {
+//        let alertController = UIAlertController(
+//            title: "Complete seu cadastro!",
+//            message: "Você foi cadastrado automaticamente usando sua conta do iCloud, não precisa fazer mais nada.
+    //No entanto, pedimos que você coloque mais informações para completar o seu perfil.",
+//            preferredStyle: .alert
+//        )
+//
+//        alertController.addAction(UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
+//            self?.showProfileEditForm()
+//        })
+//        alertController.addAction(UIAlertAction(title: "Agora não", style: .cancel, handler: nil))
+//
+//        present(alertController, animated: true, completion: {
+//            UserDefaults.standard.isFirstLogin = false
+//        })
+//    }
 
     // TODO: Refatorar daqui pra baixo, foi feito rápido para colocar no testflight :P
     func fetchHealthStoreData() {

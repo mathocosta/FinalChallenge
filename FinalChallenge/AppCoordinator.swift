@@ -11,6 +11,8 @@ import UIKit
 final class AppCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator]?
 
+    var firstLoginCoordinator: FirstLoginCoordinator?
+
     var rootViewController: UIViewController {
         return tabBarController
     }
@@ -32,6 +34,25 @@ final class AppCoordinator: NSObject, Coordinator {
     }
 
     func start() {
+        if UserDefaults.standard.isFirstLogin {
+            showFirstLoginFlow()
+        } else {
+            showMainFlow()
+        }
+    }
+
+    func showFirstLoginFlow() {
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .fullScreen
+        firstLoginCoordinator = FirstLoginCoordinator(navigationController: navigationController)
+        firstLoginCoordinator?.start()
+        firstLoginCoordinator?.didLoginEnded = { [weak self] in
+            self?.showMainFlow()
+        }
+        tabBarController.present(navigationController, animated: true, completion: nil)
+    }
+
+    func showMainFlow() {
         let firstCoordinator = childCoordinators?.first
         firstCoordinator?.start()
     }

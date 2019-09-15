@@ -22,22 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
-        let healthStoreManager = HealthStoreManager()
-        healthStoreManager.requestAuthorization { (result) in
-            switch result {
-            case .success(let isAuthorized):
-                print("HealthKit authored: \(isAuthorized)")
-            case .failure(let error):
-                print(error)
-            }
-        }
-
         // Usuário não está logado
         // NOTE: Futuramente, isso deve ser substituído pela função que obtém o nome
         // do usuário no iCloud. Assim, é possível criar um usuário automaticamente
         if UserManager.getLoggedUser() == nil {
-            UserManager.createNewUser(name: "Thalia")
             UserDefaults.standard.isFirstLogin = true
+        } else {
+            UserDefaults.standard.isFirstLogin = false
         }
 
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
@@ -45,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = appCoordinator?.rootViewController
+        window?.backgroundColor = .white
         appCoordinator?.start()
 
         // TODO: Remover isso depois, foi feito rápido para colocar no testflight :P

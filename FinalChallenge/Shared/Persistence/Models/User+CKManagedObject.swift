@@ -12,19 +12,30 @@ import CoreData
 
 extension User: CKManagedObject {
     func asCKRecord() -> CKRecord {
-        let recordID = CKRecord.ID(recordName: "\(entityName)__\(id!.uuidString)")
-        let record = CKRecord(recordType: entityName, recordID: recordID)
-        record["id"] = id?.uuidString
-        record["name"] = name
-        record["email"] = email
-        record["points"] = points
-
-        if let photo = photo, let profileImage = UIImage(data: photo) {
-            record["photo"] = ckAsset(of: profileImage)
+        guard let recordMetadata = recordMetadata else {
+            fatalError("Propriedade 'recordMetadata' não inicializada no user")
         }
 
-        record["team"] = team?.id?.uuidString
+        do {
+            let coder = try NSKeyedUnarchiver(forReadingFrom: recordMetadata)
+            coder.requiresSecureCoding = true
+            let record = CKRecord(coder: coder)!
+            coder.finishDecoding()
 
-        return record
+            record["id"] = id?.uuidString
+            record["name"] = name
+            record["email"] = email
+            record["points"] = points
+
+            if let photo = photo, let profileImage = UIImage(data: photo) {
+                record["photo"] = ckAsset(of: profileImage)
+            }
+
+            record["team"] = team?.id?.uuidString
+
+            return record
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
 }

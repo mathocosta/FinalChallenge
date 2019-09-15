@@ -26,7 +26,12 @@ final class ProfileTabCoordinator: Coordinator {
     func start() {
         guard navigationController.topViewController == nil,
             let loggedUser = UserManager.getLoggedUser() else { return }
-        showProfileViewController(for: loggedUser)
+
+        if !UserDefaults.standard.isRegistrationComplete {
+            showProfileEditViewController(for: loggedUser)
+        } else {
+            showProfileViewController(for: loggedUser)
+        }
     }
 
     func showProfileViewController(for user: User) {

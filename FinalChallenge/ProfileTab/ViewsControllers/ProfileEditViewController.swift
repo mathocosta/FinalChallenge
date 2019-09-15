@@ -52,6 +52,11 @@ class ProfileEditViewController: UIViewController {
 
     // MARK: - Actions
     @objc func saveBarButtonTapped(_ sender: UIBarButtonItem) {
+        let userDefaults = UserDefaults.standard
+        if !userDefaults.isRegistrationComplete {
+            userDefaults.isRegistrationComplete = true
+            userDefaults.isFirstLogin = false
+        }
 
         if let profileImage = profileEditView.profileImage.image,
             let imageData = profileImage.pngData() {
@@ -66,8 +71,11 @@ class ProfileEditViewController: UIViewController {
             user.email = emailText
         }
 
-        CoreStataStore.saveContext()
-        coordinator?.showProfileViewController(for: user)
+        SessionManager.current.updateRegister(of: user) { [unowned self] _ in
+            DispatchQueue.main.async {
+                self.coordinator?.showProfileViewController(for: self.user)
+            }
+        }
     }
 
     private func logoutUser() {

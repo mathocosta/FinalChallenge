@@ -31,28 +31,28 @@ final class CloudKitGateway {
     ///   - database: Database que deve ser salvada
     ///   - completion: Callback para ser executado quando a operação finalizar
     private func save(_ record: CKRecord, in database: CKDatabase, completion: @escaping (ResultHandler<CKRecord>)) {
-        database.save(record) { (_, error) in
-            if let error = error {
-                return completion(.failure(error))
+        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+        operation.savePolicy = .changedKeys
+        operation.modifyRecordsCompletionBlock = { (savedRecords, _, error) in
+            guard let savedRecords = savedRecords, error == nil else { return completion(.failure(error!)) }
+
+            if let savedRecord = savedRecords.first {
+                print("Records salvos")
+                completion(.success(savedRecord))
             }
-
-            return
         }
-
-        completion(.success(record))
+        database.add(operation)
     }
 
     /// Método privado para obter um objeto no CloudKit, esse método serve como base para os métodos mais específicos.
     ///
     /// - Parameters:
-    ///   - id: Identificador do objeto a ser buscado
-    ///   - entityName: Nome da entidade do objeto
+    ///   - recordId: CKRecord.ID do objeto que deve ser buscado
     ///   - database: Database onde o objeto deve estar
     ///   - completion: Callback para ser executado quando a operação finalizar
-    private func object(with id: UUID, of entityName: String,
-                        in database: CKDatabase, completion: @escaping (ResultHandler<CKRecord>)) {
+    private func object(
+        with recordID: CKRecord.ID, in database: CKDatabase, completion: @escaping (ResultHandler<CKRecord>)) {
 
-        let recordID = CKRecord.ID(recordName: "\(entityName)__\(id)")
         database.fetch(withRecordID: recordID) { (record, error) in
             guard let record = record, error == nil else {
                 if let error = error {
@@ -96,17 +96,9 @@ final class CloudKitGateway {
 // MARK: - Métodos especializados
 extension CloudKitGateway {
 
-    func create(team: Team, completion: @escaping(ResultHandler<Bool>)) {
+    func create(team: Team, completion: @escaping(ResultHandler<CKRecord>)) {
         let teamRecord = team.asCKRecord()
-
-        save(teamRecord, in: publicDatabase) { (result) in
-            switch result {
-            case .success:
-                completion(.success(true))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
+        save(teamRecord, in: publicDatabase, completion: completion)
     }
 
 }
@@ -114,27 +106,21 @@ extension CloudKitGateway {
 // MARK: - Gerenciamento dos dados dos usuários
 extension CloudKitGateway {
 
-    enum UsersDataError: Error {
-        case userNotLogged
-        case permissionNotGranted
-        case notPossibleToSignIn
-    }
-
     private func canUseUserData(completion: @escaping (Bool, Error?) -> Void) {
         container.accountStatus { [weak self] (accountStatus, error) in
             if error != nil {
-                completion(false, UsersDataError.userNotLogged)
+                completion(false, error)
             } else {
                 if case .available = accountStatus {
                     self?.container.requestApplicationPermission(.userDiscoverability) { (status, error) in
                         guard status == .granted, error == nil else {
-                            return completion(false, UsersDataError.permissionNotGranted)
+                            return completion(false, error)
                         }
 
                         completion(true, nil)
                     }
                 } else {
-                    completion(false, UsersDataError.userNotLogged)
+                    completion(false, error)
                 }
             }
         }
@@ -157,6 +143,17 @@ extension CloudKitGateway {
         }
     }
 
+    func userRecord(completion: @escaping (ResultHandler<CKRecord>)) {
+        userRecordID { [unowned self] (result) in
+            switch result {
+            case .success(let userRecordID):
+                self.object(with: userRecordID, in: self.privateDatabase, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     func userIdentity(recordID: CKRecord.ID, completion: @escaping ((CKUserIdentity?) -> Void)) {
         container.discoverUserIdentity(withUserRecordID: recordID) { (userIdentity, error) in
             guard let userIdentity = userIdentity, error == nil else {
@@ -167,20 +164,52 @@ extension CloudKitGateway {
         }
     }
 
-    func completeRegistration(of userRecord: CKRecord, completion: @escaping (ResultHandler<Bool>)) {
-        save(userRecord, in: privateDatabase) { (result) in
-            switch result {
-            case .success:
-                completion(.success(true))
-            case .failure(let error):
-                completion(.failure(error))
+    func userInfo(completion: @escaping (ResultHandler<[String: Any?]>)) {
+        let operation = CKUserInformationOperation()
+        operation.configuration.container = container
+
+        operation.userInformationCompletionBlock = { userRecord, userIdentity in
+            if let userRecord = userRecord {
+                let recordMetadata = userRecord.recordMetadata()
+
+                // Checa se uma das keys já foi iniciada
+                if userRecord.value(forKey: "name") == nil {
+                    var userFullName = ""
+
+                    if let userIdentity = userIdentity, let nameComponents = userIdentity.nameComponents {
+                        userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
+                    }
+
+                    completion(.success([
+                        "name": userFullName,
+                        "recordMetadata": recordMetadata
+                    ]))
+                } else {
+                    var photoData = Data()
+                    if let photoAsset = userRecord.value(forKey: "photo") as? CKAsset,
+                        let photoAssetURL = photoAsset.fileURL {
+                        do {
+                            photoData = try Data(contentsOf: photoAssetURL)
+                        } catch { print(error.localizedDescription) }
+                    }
+
+                    completion(.success([
+                        "id": userRecord.value(forKey: "id"),
+                        "name": userRecord.value(forKey: "name"),
+                        "recordMetadata": recordMetadata,
+                        "email": userRecord.value(forKey: "email"),
+                        "points": userRecord.value(forKey: "points"),
+                        "photo": photoData
+                    ]))
+                }
             }
         }
+
+        container.add(operation)
     }
 
-    func loginUser(with recordID: CKRecord.ID, completion: @escaping (ResultHandler<[String: Any]>)) {
-        // Operation para buscar os dados do usuário
-        // Operation para buscar os dados do time
+    func update(userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
+        save(userRecord, in: privateDatabase, completion: completion)
     }
 
 }

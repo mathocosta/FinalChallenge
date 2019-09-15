@@ -15,10 +15,11 @@ class UserManager: NSObject {
 
     override init() {
         super.init()
-        self.loggedUser = UserManager.getLoggedUser()
-        if self.loggedUser.goalPile == nil || self.loggedUser.goalPile?.isEmpty == true {
-            GoalsManager.setNewTimedGoals(for: self.loggedUser)
-        }
+        // FIXME: Isso quebra se chamar o current antes de criar um usuário, precisa ser colocado em outro lugar
+//        self.loggedUser = UserManager.getLoggedUser()
+//        if self.loggedUser.goalPile == nil || self.loggedUser.goalPile?.isEmpty == true {
+//            GoalsManager.setNewTimedGoals(for: self.loggedUser)
+//        }
     }
 
     /// Retorna o usuário logado no app. Caso não exista, retorna "nil"
@@ -47,15 +48,38 @@ class UserManager: NSObject {
     }
 
     @discardableResult
-    static func createNewUser(name: String) -> User {
+    static func createNewUser(name: String, recordMetadata: Data) -> User {
         let user = User(context: CoreStataStore.context)
         user.id = UUID()
+        user.recordMetadata = recordMetadata
         user.name = name
         user.email = ""
         user.points = 0
         user.goalPile = GoalPile(value: [])
         user.currentGoals = GoalPile(value: [])
         return user
+    }
+
+    static func createUser(with userInfo: [String: Any?]) -> User {
+        let user = User(context: CoreStataStore.context)
+        user.id = (userInfo["id"] as? UUID) ?? UUID()
+        user.recordMetadata = userInfo["recordMetadata"] as? Data
+        user.name = userInfo["name"] as? String
+        user.email = userInfo["email"] as? String
+        user.points = (userInfo["points"] as? Int32) ?? 0
+        user.goalPile = GoalPile(value: [])
+        user.currentGoals = GoalPile(value: [])
+
+        if let imageData = userInfo["photo"] as? Data {
+            user.photo = imageData
+        }
+        
+        return user
+    }
+
+    static func update(recordMetadata: Data, of user: User) {
+        user.recordMetadata = recordMetadata
+        CoreStataStore.saveContext()
     }
 
     static func logout(user: User) {
