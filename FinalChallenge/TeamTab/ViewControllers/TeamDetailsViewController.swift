@@ -40,7 +40,7 @@ class TeamDetailsViewController: UIViewController {
 
         let quitTeamBarButton = UIBarButtonItem(
             title: "Sair", style: .plain, target: self, action: #selector(quitTeamTapped(_:)))
-        quitTeamBarButton.tintColor = .systemRed
+        quitTeamBarButton.tintColor = .red
         navigationItem.rightBarButtonItem = quitTeamBarButton
     }
 

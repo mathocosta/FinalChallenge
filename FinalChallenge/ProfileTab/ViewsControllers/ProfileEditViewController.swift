@@ -48,6 +48,7 @@ class ProfileEditViewController: UIViewController {
             barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
 
         navigationItem.rightBarButtonItem = saveBarButton
+        
     }
 
     // MARK: - Actions

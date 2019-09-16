@@ -35,8 +35,14 @@ final class AppCoordinator: NSObject, Coordinator {
 
     func start() {
         if UserDefaults.standard.isFirstLogin {
-            showFirstLoginFlow()
-        } else {
+//            showFirstLoginFlow()
+            let dict = [
+                "name" : "Paulo",
+                "email": "paulocardosob@gmail.com"
+            ]
+            let user = UserManager.createUser(with: dict)
+            CoreStataStore.saveContext()
+//        } else {
             showMainFlow()
         }
     }
