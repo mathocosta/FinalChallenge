@@ -20,7 +20,7 @@ class SessionManager {
 
     init() {
         self.cloudKitGateway = CloudKitGateway(container:
-            CKContainer(identifier: "iCloud.academy.the-rest-of-us.FinalChallenge"))
+            CKContainer(identifier: "iCloud.academy.the-rest-of-us.FinalChallenge-paulo"))
         self.coreDataGateway = CoreDataGateway(viewContext: CoreStataStore.context)
     }
 

@@ -41,17 +41,6 @@ class ProfileEditView: UIView {
         return input
     }()
 
-    lazy var logoutButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Sair", for: .normal)
-        button.setTitleColor(.systemRed, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(logoutButtonTapped(_:)), for: .touchUpInside)
-
-        return button
-    }()
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -82,7 +71,6 @@ extension ProfileEditView: CodeView {
         addSubview(editProfileImageButton)
         addSubview(nameInput)
         addSubview(emailInput)
-        addSubview(logoutButton)
     }
 
     func setupConstraints() {
@@ -104,11 +92,6 @@ extension ProfileEditView: CodeView {
         emailInput.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         emailInput.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         emailInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-
-        logoutButton.bottomAnchor.constraint(
-            equalTo: layoutMarginsGuide.bottomAnchor, constant: -20).isActive = true
-        logoutButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
-        logoutButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
     }
 
     func setupAdditionalConfiguration() {
