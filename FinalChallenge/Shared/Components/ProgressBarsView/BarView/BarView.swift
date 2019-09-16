@@ -10,7 +10,7 @@ import UIKit
 
 class BarView: UIView {
 
-    static let height: CGFloat = 15.0
+    static let height: CGFloat = 30.0
 
     var progressBarConstraint: NSLayoutConstraint?
 
@@ -19,6 +19,15 @@ class BarView: UIView {
             progressBarConstraint?.constant = -(self.frame.width * (1 - progress))
         }
     }
+    
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = .black
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
 
     lazy var progressBar: UIView = {
         let view = UIView()
@@ -61,12 +70,19 @@ class BarView: UIView {
 extension BarView: CodeView {
     func buildViewHierarchy() {
         addSubview(progressBar)
+        addSubview(label)
     }
 
     func setupConstraints() {
         progressBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         progressBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         progressBar.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+//        label.heightAnchor.constraint(equalTo: progressBar.heightAnchor).isActive = true
+        label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4).isActive = true
     }
 
     func setupAdditionalConfiguration() {

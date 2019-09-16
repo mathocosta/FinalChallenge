@@ -15,6 +15,18 @@ class ProfileView: UIView {
             progressBars.firstBar.progress = CGFloat(firstBarProgress)
         }
     }
+    
+    var secondBarProgress: Float {
+        didSet {
+            progressBars.secondBar.progress = CGFloat(secondBarProgress)
+        }
+    }
+    
+    var thirdBarProgress: Float {
+        didSet {
+            progressBars.thirdBar.progress = CGFloat(thirdBarProgress)
+        }
+    }
 
     lazy var profileDetailsView: ProfileDetailsView = {
         let view = ProfileDetailsView(
@@ -30,7 +42,9 @@ class ProfileView: UIView {
     }()
 
     override init(frame: CGRect) {
-        self.firstBarProgress = 0.1
+        self.firstBarProgress = 0.0
+        self.secondBarProgress = 0.0
+        self.thirdBarProgress = 0.0
         super.init(frame: frame)
         backgroundColor = .white
         setupView()
