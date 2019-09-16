@@ -158,9 +158,14 @@ extension CloudKitGateway {
 
             }
         }
-        privateDatabase.add(operation)
+        publicDatabase.add(operation)
     }
 
+    /// Esse método obtém os dados do usuário e também os dados do time que está cadastrado na conta
+    /// do usuário. Dois métodos são usados para isso funcionar, um para buscar o record do usuário
+    /// e outro para o record do time, já que no usuário está apenas a referência.
+    /// - Parameter completion: Callback executado quando todos os dados forem baixados ou
+    /// com os erros que aconteceram
     func fetchInitialData(completion: @escaping (ResultHandler<(CKRecord, CKRecord)>)) {
         fetchCurrentUser { (result) in
             switch result {
