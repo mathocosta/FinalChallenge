@@ -42,8 +42,7 @@ class UserManager: NSObject {
 
     static func changeGoals(for user: User, at date: Date = Date()) {
         GoalsManager.removeAllTimedGoals(from: user)
-        GoalsManager.setNewTimedGoals(for: user)
-        UserDefaults.standard.goalUpdateTime = date
+        GoalsManager.setNewTimedGoals(for: user, at: date)
         CoreStataStore.saveContext()
     }
 

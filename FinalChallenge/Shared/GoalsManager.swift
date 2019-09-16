@@ -130,7 +130,7 @@ class GoalsManager: NSObject {
     }
 
     @discardableResult
-    static func setNewTimedGoals(for user: User) -> [Int] {
+    static func setNewTimedGoals(for user: User, at date: Date = Date()) -> [Int] {
         guard let pile = user.goalPile else {
             user.goalPile = GoalPile(value: [])
             return Array(0...2)
@@ -140,6 +140,7 @@ class GoalsManager: NSObject {
         for goal in chosenGoals {
             user.goalPile = user.goalPile?.add(goal)
         }
+        UserDefaults.standard.goalUpdateTime = date
         return chosenGoals
     }
 }

@@ -55,6 +55,7 @@ class ProfileEditViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         if !userDefaults.isRegistrationComplete {
             userDefaults.isRegistrationComplete = true
+            UserManager.changeGoals(for: user)
             userDefaults.isFirstLogin = false
         }
 
