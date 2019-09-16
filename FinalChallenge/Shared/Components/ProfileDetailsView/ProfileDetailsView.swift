@@ -53,6 +53,7 @@ class ProfileDetailsView: UIView {
 
         super.init(frame: frame)
         setupView()
+
     }
 
     required init?(coder aDecoder: NSCoder) {
