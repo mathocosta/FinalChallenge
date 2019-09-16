@@ -18,7 +18,7 @@ class ProfileDetailsView: UIView {
 
     var level: Int {
         didSet {
-            levelLabel.text = "Nível \(level)"
+            levelLabel.text = "\(level) pontos"
         }
     }
 
@@ -33,6 +33,7 @@ class ProfileDetailsView: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontSizeToFitWidth = true
         label.textAlignment = .center
         label.text = self.name
         return label

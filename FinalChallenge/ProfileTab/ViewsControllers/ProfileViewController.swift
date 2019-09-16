@@ -37,15 +37,33 @@ class ProfileViewController: UIViewController {
         title = "Perfil"
         profileView.onProfileDetails = showProfileEditForm
         profileView.profileDetailsView.name = user.name ?? ""
+        profileView.profileDetailsView.level = Int(user.points)
 
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileView.profileDetailsView.imageView.image = profileImage
         }
     }
+    
+    func setProgressBars() {
+        let currentGoals = GoalsManager.currentTimedGoals(of: user)
+        let barsView = profileView.progressBars
+        let progressBars = [barsView.firstBar, barsView.secondBar, barsView.thirdBar]
+        for i in 0..<currentGoals.count {
+            let goal = currentGoals[i]
+            let bar = progressBars[i]
+            GoalsManager.progress(for: user, on: goal) { (amount, required) in
+                DispatchQueue.main.async {
+                    bar.label.text = goal.title
+                    bar.progress = CGFloat(amount > required ? 1.0 : amount / required)
+                }
+            }
+        }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchHealthStoreData()
+        setProgressBars()
+        //fetchHealthStoreData()
     }
 
 //    override func viewDidAppear(_ animated: Bool) {
@@ -106,6 +124,7 @@ class ProfileViewController: UIViewController {
     }
 
     func updateView(with healthData: [String: Double]) {
+        self.setProgressBars()
         guard let stepCountValue = healthData["stepCount"] else { return }
         if let profileView = view as? ProfileView {
             profileView.firstBarProgress = Float(stepCountValue / 8000)
