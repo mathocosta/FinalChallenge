@@ -70,9 +70,9 @@ extension ProfileView: CodeView {
 
     func setupConstraints() {
         profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 200).isActive = true
+        profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150).isActive = true
         profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
-        profileDetailsView.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        profileDetailsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(
