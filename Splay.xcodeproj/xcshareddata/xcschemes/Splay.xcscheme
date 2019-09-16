@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "275FE85E231D3664001695D2"
-               BuildableName = "FinalChallenge.app"
-               BlueprintName = "FinalChallenge"
-               ReferencedContainer = "container:FinalChallenge.xcodeproj">
+               BuildableName = "Splay.app"
+               BlueprintName = "Splay"
+               ReferencedContainer = "container:Splay.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "275FE85E231D3664001695D2"
-            BuildableName = "FinalChallenge.app"
-            BlueprintName = "FinalChallenge"
-            ReferencedContainer = "container:FinalChallenge.xcodeproj">
+            BuildableName = "Splay.app"
+            BlueprintName = "Splay"
+            ReferencedContainer = "container:Splay.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -56,13 +54,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "275FE85E231D3664001695D2"
-            BuildableName = "FinalChallenge.app"
-            BlueprintName = "FinalChallenge"
-            ReferencedContainer = "container:FinalChallenge.xcodeproj">
+            BuildableName = "Splay.app"
+            BlueprintName = "Splay"
+            ReferencedContainer = "container:Splay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "275FE85E231D3664001695D2"
-            BuildableName = "FinalChallenge.app"
-            BlueprintName = "FinalChallenge"
-            ReferencedContainer = "container:FinalChallenge.xcodeproj">
+            BuildableName = "Splay.app"
+            BlueprintName = "Splay"
+            ReferencedContainer = "container:Splay.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

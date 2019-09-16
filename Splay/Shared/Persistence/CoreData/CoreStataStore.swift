@@ -11,7 +11,7 @@ import CoreData
 
 class CoreStataStore: NSObject {
     static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "FinalChallenge")
+        let container = NSPersistentContainer(name: "Splay")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")

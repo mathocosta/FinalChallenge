@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		273D233F2327E0AC003147DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* SessionManager.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
-		275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
 		275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86E231D3666001695D2 /* LaunchScreen.storyboard */; };
 		275FE87B231D3D46001695D2 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87A231D3D46001695D2 /* CodeView.swift */; };
@@ -41,6 +40,7 @@
 		2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D629232D480600A33470 /* MessageViewContent.swift */; };
 		2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D62B232D76A100A33470 /* CKRecordExtension.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
+		27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -65,9 +65,8 @@
 
 /* Begin PBXFileReference section */
 		273D233E2327E0AC003147DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		275FE85F231D3664001695D2 /* FinalChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		275FE85F231D3664001695D2 /* Splay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		275FE86A231D3664001695D2 /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
 		275FE86C231D3666001695D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		275FE86F231D3666001695D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		275FE871231D3666001695D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -76,7 +75,6 @@
 		275FE87F231D3DD2001695D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		275FE885231D3ECE001695D2 /* CoreStataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStataStore.swift; sourceTree = "<group>"; };
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
-		275FE889231D55CC001695D2 /* FinalChallenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinalChallenge.entitlements; sourceTree = "<group>"; };
 		275FE88B231D55CC001695D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CKManagedObject.swift"; sourceTree = "<group>"; };
 		276FD47323219D6A00EA75C6 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +99,8 @@
 		2797D629232D480600A33470 /* MessageViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewContent.swift; sourceTree = "<group>"; };
 		2797D62B232D76A100A33470 /* CKRecordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
+		27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
+		27EE5A49233051DB009E2D6B /* Splay.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Splay.entitlements; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 		275FE856231D3664001695D2 = {
 			isa = PBXGroup;
 			children = (
-				275FE861231D3664001695D2 /* FinalChallenge */,
+				275FE861231D3664001695D2 /* Splay */,
 				275FE860231D3664001695D2 /* Products */,
 				275FE88A231D55CC001695D2 /* Frameworks */,
 			);
@@ -148,12 +148,12 @@
 		275FE860231D3664001695D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				275FE85F231D3664001695D2 /* FinalChallenge.app */,
+				275FE85F231D3664001695D2 /* Splay.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		275FE861231D3664001695D2 /* FinalChallenge */ = {
+		275FE861231D3664001695D2 /* Splay */ = {
 			isa = PBXGroup;
 			children = (
 				2797D619232B2F6C00A33470 /* Resources */,
@@ -164,10 +164,10 @@
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
 				275FE87F231D3DD2001695D2 /* AppCoordinator.swift */,
 				275FE871231D3666001695D2 /* Info.plist */,
-				275FE889231D55CC001695D2 /* FinalChallenge.entitlements */,
-				275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */,
+				27EE5A49233051DB009E2D6B /* Splay.entitlements */,
+				27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */,
 			);
-			path = FinalChallenge;
+			path = Splay;
 			sourceTree = "<group>";
 		};
 		275FE878231D3D33001695D2 /* Shared */ = {
@@ -410,9 +410,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		275FE85E231D3664001695D2 /* FinalChallenge */ = {
+		275FE85E231D3664001695D2 /* Splay */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "FinalChallenge" */;
+			buildConfigurationList = 275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "Splay" */;
 			buildPhases = (
 				275FE85B231D3664001695D2 /* Sources */,
 				275FE85C231D3664001695D2 /* Frameworks */,
@@ -423,9 +423,9 @@
 			);
 			dependencies = (
 			);
-			name = FinalChallenge;
+			name = Splay;
 			productName = FinalChallenge;
-			productReference = 275FE85F231D3664001695D2 /* FinalChallenge.app */;
+			productReference = 275FE85F231D3664001695D2 /* Splay.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -448,7 +448,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 275FE85A231D3664001695D2 /* Build configuration list for PBXProject "FinalChallenge" */;
+			buildConfigurationList = 275FE85A231D3664001695D2 /* Build configuration list for PBXProject "Splay" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -461,7 +461,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				275FE85E231D3664001695D2 /* FinalChallenge */,
+				275FE85E231D3664001695D2 /* Splay */,
 			);
 		};
 /* End PBXProject section */
@@ -535,8 +535,8 @@
 				2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
+				27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
-				275FE86B231D3664001695D2 /* FinalChallenge.xcdatamodeld in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
@@ -690,18 +690,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FinalChallenge/FinalChallenge.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Splay/Splay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
-				INFOPLIST_FILE = FinalChallenge/Info.plist;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.FinalChallenge.paulo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -713,18 +713,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = FinalChallenge/FinalChallenge.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Splay/Splay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
-				INFOPLIST_FILE = FinalChallenge/Info.plist;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.FinalChallenge.paulo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -735,7 +735,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		275FE85A231D3664001695D2 /* Build configuration list for PBXProject "FinalChallenge" */ = {
+		275FE85A231D3664001695D2 /* Build configuration list for PBXProject "Splay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				275FE872231D3666001695D2 /* Debug */,
@@ -744,7 +744,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "FinalChallenge" */ = {
+		275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "Splay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				275FE875231D3666001695D2 /* Debug */,
@@ -756,13 +756,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		275FE869231D3664001695D2 /* FinalChallenge.xcdatamodeld */ = {
+		27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				275FE86A231D3664001695D2 /* FinalChallenge.xcdatamodel */,
+				27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */,
 			);
-			currentVersion = 275FE86A231D3664001695D2 /* FinalChallenge.xcdatamodel */;
-			path = FinalChallenge.xcdatamodeld;
+			currentVersion = 27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */;
+			path = Splay.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
