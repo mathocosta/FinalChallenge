@@ -170,13 +170,17 @@ extension CloudKitGateway {
         fetchCurrentUser { (result) in
             switch result {
             case .success(let userRecord):
-                self.team(of: userRecord) { (result) in
-                    switch result {
-                    case .success(let teamRecord):
-                        completion(.success((userRecord, teamRecord)))
-                    case .failure(let error):
-                        completion(.failure(error))
+                if userRecord.value(forKey: "team") != nil {
+                    self.team(of: userRecord) { (result) in
+                        switch result {
+                        case .success(let teamRecord):
+                            completion(.success((userRecord, teamRecord)))
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
                     }
+                } else {
+                    completion(.success((userRecord, CKRecord(recordType: "Teams"))))
                 }
             case .failure(let error):
                 completion(.failure(error))
