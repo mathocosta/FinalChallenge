@@ -9,6 +9,8 @@
 import UIKit
 
 class ProfileEditView: UIView {
+    
+    var profileImageConstrait: NSLayoutConstraint?
 
     lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
@@ -31,6 +33,7 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: "Nome")
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
+        input.inputTextField.delegate = self
         return input
     }()
 
@@ -38,6 +41,7 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: "Email")
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .emailAddress
+        input.inputTextField.delegate = self
         return input
     }()
 
@@ -45,6 +49,20 @@ class ProfileEditView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         setupView()
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillDismiss(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -63,6 +81,27 @@ class ProfileEditView: UIView {
         onEditProfileImage(sender)
     }
 
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                self.profileImageConstrait?.constant = -16
+                self.layoutSubviews()
+            }, completion: nil)
+        }
+
+    }
+
+    @objc func keyboardWillDismiss(_ notification: Notification) {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.profileImageConstrait?.constant = 38
+            self.layoutSubviews()
+        }, completion: nil)
+    }
+
 }
 
 extension ProfileEditView: CodeView {
@@ -75,7 +114,8 @@ extension ProfileEditView: CodeView {
 
     func setupConstraints() {
         profileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileImage.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 38).isActive = true
+        profileImageConstrait = profileImage.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 38)
+        profileImageConstrait?.isActive = true
         profileImage.widthAnchor.constraint(equalToConstant: 119).isActive = true
         profileImage.heightAnchor.constraint(equalToConstant: 113).isActive = true
 
@@ -98,4 +138,11 @@ extension ProfileEditView: CodeView {
 
     }
 
+}
+
+extension ProfileEditView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
