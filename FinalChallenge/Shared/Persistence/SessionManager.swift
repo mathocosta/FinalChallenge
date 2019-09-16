@@ -31,17 +31,25 @@ class SessionManager {
             }
 
             if success {
-                self?.cloudKitGateway.fetchCurrentUser { (result) in
+                self?.cloudKitGateway.fetchInitialData { (result) in
                     switch result {
-                    case .success(let record):
-                        let userRecordInfo = record.recordKeysAndValues()
+                    case .success(let userRecord, let teamRecord):
+                        let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
+                        let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
 
-                        let newUser = UserManager.createUser(with: userRecordInfo)
-                        self?.coreDataGateway.save(newUser) { _ in
-                            completion(.success(true))
+                        team.addToMembers(user)
+
+                        self?.coreDataGateway.save(user) { (result) in
+                            switch result {
+                            case .success:
+                                completion(.success(true))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
                         }
+
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        completion(.failure(error))
                     }
                 }
             }
