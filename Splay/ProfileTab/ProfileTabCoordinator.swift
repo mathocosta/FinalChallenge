@@ -20,7 +20,11 @@ final class ProfileTabCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.navigationBar.isTranslucent = false
-        self.navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+        self.navigationController.tabBarItem = UITabBarItem(
+            title: "Profile",
+            image: UIImage(named: "profile-unselected"),
+            selectedImage: UIImage(named: "profile-selected")
+        )
     }
 
     func start() {

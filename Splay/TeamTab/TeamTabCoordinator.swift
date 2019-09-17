@@ -19,7 +19,11 @@ final class TeamTabCoordinator: Coordinator {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
+        self.navigationController.tabBarItem = UITabBarItem(
+            title: "Team",
+            image: UIImage(named: "group-unselected"),
+            selectedImage: UIImage(named: "group-selected")
+        )
         self.navigationController.navigationBar.isTranslucent = false
     }
 
