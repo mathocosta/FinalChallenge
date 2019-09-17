@@ -43,6 +43,7 @@
 		27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */; };
 		27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A5B23305DB9009E2D6B /* Localizable.strings */; };
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
+		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -61,7 +62,6 @@
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
-		30A20F7D23228135005003A8 /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30A20F7C23228135005003A8 /* Goals.plist */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +106,8 @@
 		27EE5A5A23305DB9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27EE5A5C23305DD2009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		27EE5A6B23306325009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
+		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -124,7 +126,6 @@
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
 		309A2DD42329177E002C5371 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
-		30A20F7C23228135005003A8 /* Goals.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Goals.plist; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,7 +270,7 @@
 			children = (
 				275FE86E231D3666001695D2 /* LaunchScreen.storyboard */,
 				275FE86C231D3666001695D2 /* Assets.xcassets */,
-				30A20F7C23228135005003A8 /* Goals.plist */,
+				27EE5A7223306590009E2D6B /* Goals.plist */,
 				27EE5A5B23305DB9009E2D6B /* Localizable.strings */,
 				27EE5A6C23306325009E2D6B /* InfoPlist.strings */,
 			);
@@ -482,7 +483,7 @@
 				275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */,
 				27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */,
 				275FE86D231D3666001695D2 /* Assets.xcassets in Resources */,
-				30A20F7D23228135005003A8 /* Goals.plist in Resources */,
+				27EE5A7023306590009E2D6B /* Goals.plist in Resources */,
 				27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +593,15 @@
 				27EE5A6B23306325009E2D6B /* pt-BR */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		27EE5A7223306590009E2D6B /* Goals.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27EE5A732330659E009E2D6B /* pt-BR */,
+				27EE5A74233065A9009E2D6B /* en */,
+			);
+			name = Goals.plist;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
