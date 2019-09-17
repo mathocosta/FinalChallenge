@@ -42,7 +42,7 @@ class TeamEntranceView: UIView {
 
     let joinTeamButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Entrar no time", for: .normal)
+        button.setTitle(NSLocalizedString("Join Team", comment: ""), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
         button.layer.cornerRadius = 5

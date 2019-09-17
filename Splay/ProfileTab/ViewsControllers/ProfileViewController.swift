@@ -34,7 +34,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Perfil"
+        title = NSLocalizedString("Profile", comment: "")
         profileView.onProfileDetails = showProfileEditForm
         profileView.profileDetailsView.name = user.name ?? ""
         profileView.profileDetailsView.level = Int(user.points)
@@ -48,9 +48,8 @@ class ProfileViewController: UIViewController {
         let currentGoals = GoalsManager.currentTimedGoals(of: user)
         let barsView = profileView.progressBars
         let progressBars = [barsView.firstBar, barsView.secondBar, barsView.thirdBar]
-        for i in 0..<currentGoals.count {
-            let goal = currentGoals[i]
-            let bar = progressBars[i]
+        for (index, goal) in currentGoals.enumerated() {
+            let bar = progressBars[index]
             GoalsManager.progress(for: user, on: goal) { (amount, required) in
                 DispatchQueue.main.async {
                     bar.label.text = goal.title
@@ -63,72 +62,11 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setProgressBars()
-        //fetchHealthStoreData()
     }
-
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        let userDefaults = UserDefaults.standard
-//        if userDefaults.isFirstLogin {
-//            showCompleteRegistrationAlert()
-//        }
-//    }
 
     // MARK: - Actions
     func showProfileEditForm() {
         coordinator?.showProfileEditViewController(for: user)
-    }
-
-//    func showCompleteRegistrationAlert() {
-//        let alertController = UIAlertController(
-//            title: "Complete seu cadastro!",
-//            message: "Você foi cadastrado automaticamente usando sua conta do iCloud, não precisa fazer mais nada.
-    //No entanto, pedimos que você coloque mais informações para completar o seu perfil.",
-//            preferredStyle: .alert
-//        )
-//
-//        alertController.addAction(UIAlertAction(title: "Ok", style: .default) { [weak self] _ in
-//            self?.showProfileEditForm()
-//        })
-//        alertController.addAction(UIAlertAction(title: "Agora não", style: .cancel, handler: nil))
-//
-//        present(alertController, animated: true, completion: {
-//            UserDefaults.standard.isFirstLogin = false
-//        })
-//    }
-
-    // TODO: Refatorar daqui pra baixo, foi feito rápido para colocar no testflight :P
-    func fetchHealthStoreData() {
-        let healthStoreManager = HealthStoreManager()
-
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: Date())
-        let startDate = calendar.date(from: components)!
-        healthStoreManager.quantitySum(from: startDate, of: .stepCount) { [weak self] (result) in
-            switch result {
-            case .success(let statistics):
-                if let quantity = statistics.sumQuantity() {
-                    let numberOfSteps = quantity.doubleValue(for: HKUnit.count())
-                    let healthData = [
-                        "stepCount": numberOfSteps
-                    ]
-
-                    DispatchQueue.main.async {
-                        self?.updateView(with: healthData)
-                    }
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-
-    func updateView(with healthData: [String: Double]) {
-        self.setProgressBars()
-        guard let stepCountValue = healthData["stepCount"] else { return }
-        if let profileView = view as? ProfileView {
-            profileView.firstBarProgress = Float(stepCountValue / 8000)
-        }
     }
 
 }

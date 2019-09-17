@@ -39,7 +39,8 @@ class TeamDetailsViewController: UIViewController {
         teamDetailsView.profileDetailsView.name = team.name ?? ""
 
         let quitTeamBarButton = UIBarButtonItem(
-            title: "Sair", style: .plain, target: self, action: #selector(quitTeamTapped(_:)))
+            title: NSLocalizedString("Quit", comment: ""),
+            style: .plain, target: self, action: #selector(quitTeamTapped(_:)))
         quitTeamBarButton.tintColor = .red
         navigationItem.rightBarButtonItem = quitTeamBarButton
     }

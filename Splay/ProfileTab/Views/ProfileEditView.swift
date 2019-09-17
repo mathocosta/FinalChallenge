@@ -23,14 +23,14 @@ class ProfileEditView: UIView {
     lazy var editProfileImageButton: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Editar imagem", for: .normal)
+        button.setTitle(NSLocalizedString("Edit image", comment: ""), for: .normal)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(editProfileImageTapped(sender:)), for: .touchUpInside)
         return button
     }()
 
     lazy var nameInput: Input = {
-        let input = Input(frame: .zero, label: "Nome")
+        let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         input.inputTextField.delegate = self
@@ -38,7 +38,7 @@ class ProfileEditView: UIView {
     }()
 
     lazy var emailInput: Input = {
-        let input = Input(frame: .zero, label: "Email")
+        let input = Input(frame: .zero, label: NSLocalizedString("Email", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .emailAddress
         input.inputTextField.delegate = self

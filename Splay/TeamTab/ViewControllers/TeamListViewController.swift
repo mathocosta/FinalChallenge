@@ -41,7 +41,7 @@ class TeamListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Grupos"
+        title = NSLocalizedString("Teams", comment: "")
 
         let createTeamBarButton = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(createTeamBarButtonTapped(_:)))
