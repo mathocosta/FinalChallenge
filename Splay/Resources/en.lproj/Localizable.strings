@@ -5,3 +5,13 @@
   Created by Matheus Oliveira Costa on 16/09/19.
   Copyright © 2019 The Rest of Us. All rights reserved.
 */
+"Quit" = "Quit";
+"Join Team" = "Join Team";
+"Profile" = "Profile";
+"Teams" = "Teams";
+"Name" = "Name";
+"Description" = "Description";
+"City" = "City";
+"Neighborhood" = "Neighborhood";
+"Edit image" = "Edit image";
+"Email" = "Email";

@@ -11,28 +11,28 @@ import UIKit
 class CreateTeamView: UIView {
 
     lazy var nameInput: Input = {
-        let input = Input(frame: .zero, label: "Nome")
+        let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
 
     lazy var descriptionInput: Input = {
-        let input = Input(frame: .zero, label: "Descrição")
+        let input = Input(frame: .zero, label: NSLocalizedString("Description", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
 
     lazy var cityInput: Input = {
-        let input = Input(frame: .zero, label: "Cidade")
+        let input = Input(frame: .zero, label: NSLocalizedString("City", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
 
     lazy var neighborhoodInput: Input = {
-        let input = Input(frame: .zero, label: "Bairro")
+        let input = Input(frame: .zero, label: NSLocalizedString("Neighborhood", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
