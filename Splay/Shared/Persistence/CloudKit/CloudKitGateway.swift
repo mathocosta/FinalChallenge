@@ -252,4 +252,12 @@ extension CloudKitGateway {
         object(with: teamReference.recordID, in: publicDatabase, completion: completion)
     }
 
+    /// Esse método cria um `CKRecord` de um time.
+    /// - Parameter userRecord: Record do time para ser salvo
+    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
+    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
+    func create(teamRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
+        save(teamRecord, in: publicDatabase, completion: completion)
+    }
+
 }

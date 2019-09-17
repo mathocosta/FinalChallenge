@@ -12,12 +12,14 @@ import CoreData
 
 extension Team: CKManagedObject {
     func asCKRecord() -> CKRecord {
-        guard let recordMetadata = recordMetadata else {
-            fatalError("Propriedade 'recordMetadata' não inicializada no user")
+        let record: CKRecord
+
+        if let recordMetadata = recordMetadata {
+            record = CKRecord(recordMetadata: recordMetadata)!
+        } else {
+            record = CKRecord(recordType: "Teams")
         }
 
-        let record = CKRecord(recordMetadata: recordMetadata)!
-        
         record["id"] = id?.uuidString
         record["name"] = name
         record["points"] = points

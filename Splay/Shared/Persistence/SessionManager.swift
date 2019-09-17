@@ -105,4 +105,17 @@ class SessionManager {
         }
     }
 
+    func create(team: Team, with user: User, completion: @escaping (ResultHandler<Bool>)) {
+        let teamRecord = team.asCKRecord()
+        cloudKitGateway.create(teamRecord: teamRecord) { (result) in
+            switch result {
+            case .success(let updatedTeamRecord):
+                TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
+                self.add(user: user, to: team, completion: completion)
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
 }

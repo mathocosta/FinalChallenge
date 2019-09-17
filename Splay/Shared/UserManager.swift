@@ -59,7 +59,7 @@ class UserManager: NSObject {
         if let imageData = info["photo"] as? Data {
             user.photo = imageData
         }
-        
+
         return user
     }
 

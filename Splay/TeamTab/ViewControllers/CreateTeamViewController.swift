@@ -55,9 +55,17 @@ class CreateTeamViewController: UIViewController {
         guard let nameText = createTeamView.nameInput.inputTextField.text,
             let loggedUser = UserManager.getLoggedUser() else { return }
 
-        let newTeam = TeamManager.newTeam(named: nameText, createdBy: loggedUser)
-        CoreStataStore.saveContext()
-        coordinator?.showDetails(of: newTeam)
+        let newTeam = TeamManager.createTeam(with: ["name": nameText])
+        SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    self.coordinator?.showDetails(of: newTeam)
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 
 }

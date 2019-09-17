@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
             profileView.profileDetailsView.imageView.image = profileImage
         }
     }
-    
+
     func setProgressBars() {
         let currentGoals = GoalsManager.currentTimedGoals(of: user)
         let barsView = profileView.progressBars

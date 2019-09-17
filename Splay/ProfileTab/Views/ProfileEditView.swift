@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileEditView: UIView {
-    
+
     var profileImageConstrait: NSLayoutConstraint?
 
     lazy var profileImage: UIImageView = {
@@ -114,7 +114,8 @@ extension ProfileEditView: CodeView {
 
     func setupConstraints() {
         profileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileImageConstrait = profileImage.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor, constant: 38)
+        profileImageConstrait = profileImage.topAnchor.constraint(
+            equalTo: self.layoutMarginsGuide.topAnchor, constant: 38)
         profileImageConstrait?.isActive = true
         profileImage.widthAnchor.constraint(equalToConstant: 119).isActive = true
         profileImage.heightAnchor.constraint(equalToConstant: 113).isActive = true

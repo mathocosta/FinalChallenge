@@ -15,13 +15,13 @@ class ProfileView: UIView {
             progressBars.firstBar.progress = CGFloat(firstBarProgress)
         }
     }
-    
+
     var secondBarProgress: Float {
         didSet {
             progressBars.secondBar.progress = CGFloat(secondBarProgress)
         }
     }
-    
+
     var thirdBarProgress: Float {
         didSet {
             progressBars.thirdBar.progress = CGFloat(thirdBarProgress)
