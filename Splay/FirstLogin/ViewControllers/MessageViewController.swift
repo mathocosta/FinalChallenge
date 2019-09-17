@@ -38,7 +38,7 @@ class MessageViewController: UIViewController {
 
     private func actionOnConfirmation() {
         let userDefaults = UserDefaults.standard
-
+        
         messageView.startLoader()
 
         switch contentType {

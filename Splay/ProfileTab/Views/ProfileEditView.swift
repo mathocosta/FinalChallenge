@@ -146,3 +146,10 @@ extension ProfileEditView: UITextFieldDelegate {
         return true
     }
 }
+
+extension ProfileEditView: LoaderView {
+    var loadingView: LoadingView {
+        let view = LoadingView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        return view
+    }
+}

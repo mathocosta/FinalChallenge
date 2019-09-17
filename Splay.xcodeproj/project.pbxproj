@@ -51,6 +51,9 @@
 		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
 		2B86B1E92331009C00688735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1E82331009C00688735 /* LoadingView.swift */; };
 		2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1EA2331036C00688735 /* LoaderView.swift */; };
+		2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1ED233120B100688735 /* LoadingViewController.swift */; };
+		2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */; };
+		2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
@@ -113,6 +116,9 @@
 		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		2B86B1E82331009C00688735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2B86B1EA2331036C00688735 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		2B86B1ED233120B100688735 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewPushTransition.swift; sourceTree = "<group>"; };
+		2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewPopTransition.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 		275FE878231D3D33001695D2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2B86B1F1233123E800688735 /* Transitions */,
+				2B86B1EC2331208F00688735 /* ViewControllers */,
 				2BB47419232001470099D4EB /* Components */,
 				27C56E5D231EB5DF009CCAAB /* HealthKit */,
 				278717E9231F029700A2A481 /* Persistence */,
@@ -388,6 +396,23 @@
 			path = LoadingView;
 			sourceTree = "<group>";
 		};
+		2B86B1EC2331208F00688735 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B86B1ED233120B100688735 /* LoadingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2B86B1F1233123E800688735 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */,
+				2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,6 +554,7 @@
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
@@ -539,6 +565,7 @@
 				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
+				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
@@ -550,6 +577,7 @@
 				2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
+				2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */,
 				27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,

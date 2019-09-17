@@ -59,6 +59,9 @@ class ProfileEditViewController: UIViewController {
             UserManager.changeGoals(for: user)
             userDefaults.isFirstLogin = false
         }
+        
+        let vc = LoadingViewController()
+        self.present(vc, animated: false, completion: nil)
 
         if let profileImage = profileEditView.profileImage.image,
             let imageData = profileImage.pngData() {
@@ -77,9 +80,13 @@ class ProfileEditViewController: UIViewController {
             switch result {
             case .success:
                 DispatchQueue.main.async {
+                    vc.stopLoader()
                     self.coordinator?.showProfileViewController(for: self.user)
                 }
             case .failure(let error):
+                DispatchQueue.main.async {
+                    vc.dismiss(animated: true, completion: nil)
+                }
                 print(error)
             }
         }
