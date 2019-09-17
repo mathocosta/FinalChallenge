@@ -34,12 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.backgroundColor = .white
         appCoordinator?.start()
 
-        // TODO: Remover isso depois, foi feito rápido para colocar no testflight :P
-        if UserDefaults.standard.value(forKey: "SeedTeams") == nil {
-            seedCoreData()
-            UserDefaults.standard.set(true, forKey: "SeedTeams")
-        }
-
         return true
     }
 
@@ -64,29 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        CoreStataStore.saveContext()
-    }
-
-    // TODO: Remover isso depois, foi feito rápido para colocar no testflight :P
-    func seedCoreData() {
-        let team1 = Team(context: CoreStataStore.context)
-        team1.id = UUID()
-        team1.name = "Fortaleza"
-        team1.points = 0
-        team1.members = []
-
-        let team2 = Team(context: CoreStataStore.context)
-        team2.id = UUID()
-        team2.name = "Ceará"
-        team2.points = 0
-        team2.members = []
-
-        let team3 = Team(context: CoreStataStore.context)
-        team3.id = UUID()
-        team3.name = "Ferroviário"
-        team3.points = 0
-        team3.members = []
-
         CoreStataStore.saveContext()
     }
 

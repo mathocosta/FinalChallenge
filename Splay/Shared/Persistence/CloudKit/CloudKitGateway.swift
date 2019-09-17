@@ -166,21 +166,20 @@ extension CloudKitGateway {
     /// e outro para o record do time, já que no usuário está apenas a referência.
     /// - Parameter completion: Callback executado quando todos os dados forem baixados ou
     /// com os erros que aconteceram
-    func fetchInitialData(completion: @escaping (ResultHandler<(CKRecord, CKRecord)>)) {
+    func fetchInitialData(completion: @escaping (ResultHandler<(CKRecord, CKRecord?)>)) {
         fetchCurrentUser { (result) in
             switch result {
             case .success(let userRecord):
-                if userRecord.value(forKey: "team") != nil {
-                    self.team(of: userRecord) { (result) in
-                        switch result {
-                        case .success(let teamRecord):
-                            completion(.success((userRecord, teamRecord)))
-                        case .failure(let error):
-                            completion(.failure(error))
-                        }
+                // Tenta baixar o record do time, caso dê erro, é porque
+                // não tem um time cadastrado para o usuário.
+                self.team(of: userRecord) { (result) in
+                    switch result {
+                    case .success(let teamRecord):
+                        completion(.success((userRecord, teamRecord)))
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        completion(.success((userRecord, nil)))
                     }
-                } else {
-                    completion(.success((userRecord, CKRecord(recordType: "Teams"))))
                 }
             case .failure(let error):
                 completion(.failure(error))
@@ -239,9 +238,15 @@ extension CloudKitGateway {
         publicDatabase.add(queryOperation)
     }
 
+    /// Obtém o record do time cadastrado com o usuário, mas caso não haja nenhum,
+    /// será retornado um erro.
+    /// - Parameter userRecord: Record do usuário para buscar o time
+    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
+    /// os records obtidos, ou os errors encontrados
     func team(of userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
         guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
-            fatalError("Não tem referencia do time")
+            let nsError = NSError(domain: "User doesn't have a team", code: 1, userInfo: nil)
+            return completion(.failure(nsError))
         }
 
         object(with: teamReference.recordID, in: publicDatabase, completion: completion)

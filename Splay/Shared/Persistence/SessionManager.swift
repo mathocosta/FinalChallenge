@@ -35,9 +35,11 @@ class SessionManager {
                     switch result {
                     case .success(let userRecord, let teamRecord):
                         let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
-                        let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
 
-                        team.addToMembers(user)
+                        if let teamRecord = teamRecord {
+                            let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
+                            team.addToMembers(user)
+                        }
 
                         self?.coreDataGateway.save(user) { (result) in
                             switch result {
