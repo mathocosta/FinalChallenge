@@ -35,9 +35,11 @@ class SessionManager {
                     switch result {
                     case .success(let userRecord, let teamRecord):
                         let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
-                        let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
 
-                        team.addToMembers(user)
+                        if let teamRecord = teamRecord {
+                            let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
+                            team.addToMembers(user)
+                        }
 
                         self?.coreDataGateway.save(user) { (result) in
                             switch result {
@@ -97,6 +99,19 @@ class SessionManager {
                     teams.append(TeamManager.createTeam(with: recordInfo))
                 }
                 completion(.success(teams))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func create(team: Team, with user: User, completion: @escaping (ResultHandler<Bool>)) {
+        let teamRecord = team.asCKRecord()
+        cloudKitGateway.create(teamRecord: teamRecord) { (result) in
+            switch result {
+            case .success(let updatedTeamRecord):
+                TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
+                self.add(user: user, to: team, completion: completion)
             case .failure(let error):
                 completion(.failure(error))
             }

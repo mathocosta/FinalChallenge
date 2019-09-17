@@ -19,7 +19,7 @@ class BarView: UIView {
             progressBarConstraint?.constant = -(self.frame.width * (1 - progress))
         }
     }
-    
+
     lazy var label: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
@@ -77,7 +77,7 @@ extension BarView: CodeView {
         progressBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         progressBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         progressBar.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        
+
         label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
 //        label.heightAnchor.constraint(equalTo: progressBar.heightAnchor).isActive = true
         label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true

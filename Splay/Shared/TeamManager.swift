@@ -49,6 +49,11 @@ class TeamManager: NSObject {
 
     }
 
+    static func update(recordMetadata: Data, of team: Team) {
+        team.recordMetadata = recordMetadata
+        CoreStataStore.saveContext()
+    }
+
     static func remove(_ team: Team) {
         CoreStataStore.context.delete(team)
     }
