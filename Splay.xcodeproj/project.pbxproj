@@ -49,6 +49,8 @@
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
 		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
+		2B86B1E92331009C00688735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1E82331009C00688735 /* LoadingView.swift */; };
+		2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1EA2331036C00688735 /* LoaderView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
@@ -109,6 +111,8 @@
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		2B86B1E82331009C00688735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		2B86B1EA2331036C00688735 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 				275FE87A231D3D46001695D2 /* CodeView.swift */,
 				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
 				278717F3232001D600A2A481 /* CKManagedObject.swift */,
+				2B86B1EA2331036C00688735 /* LoaderView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -375,9 +380,18 @@
 			path = BarView;
 			sourceTree = "<group>";
 		};
+		2B86B1E72331008500688735 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				2B86B1E82331009C00688735 /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B86B1E72331008500688735 /* LoadingView */,
 				2B6E353F23229C080092A481 /* Input */,
 				2B7DC2B3232291C8009C3F54 /* ProgressBarsView */,
 				2BB4741A232001550099D4EB /* ProfileDetailsView */,
@@ -518,6 +532,7 @@
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
+				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
 				2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */,
@@ -547,6 +562,7 @@
 				275FE886231D3ECE001695D2 /* CoreStataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
+				2B86B1E92331009C00688735 /* LoadingView.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
@@ -694,14 +710,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = VA7DWMQ39T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -717,14 +733,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = VA7DWMQ39T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

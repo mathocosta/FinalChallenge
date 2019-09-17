@@ -39,6 +39,8 @@ class MessageViewController: UIViewController {
     private func actionOnConfirmation() {
         let userDefaults = UserDefaults.standard
 
+        messageView.startLoader()
+
         switch contentType {
         case .healthKitAuthorization:
             let healthStoreManager = HealthStoreManager()
@@ -47,9 +49,11 @@ class MessageViewController: UIViewController {
                 case .success(let isAuthorized):
                     userDefaults.isHealthKitAuthorized = isAuthorized
                     DispatchQueue.main.async {
+                        self?.messageView.stopLoader()
                         self?.coordinator?.showNextScreen()
                     }
                 case .failure(let error):
+                    self?.messageView.stopLoader()
                     print(error.localizedDescription)
                 }
             }
@@ -60,10 +64,14 @@ class MessageViewController: UIViewController {
                     print("Success on login")
                     userDefaults.isCloudKitAuthorized = true
                     DispatchQueue.main.async {
+                        self.messageView.stopLoader()
                         self.coordinator?.showNextScreen()
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.messageView.stopLoader()
+                    }
                 }
             }
         case .addMoreInformation:
