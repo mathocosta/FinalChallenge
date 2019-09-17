@@ -15,3 +15,9 @@
 "Neighborhood" = "Neighborhood";
 "Edit image" = "Edit image";
 "Email" = "Email";
+"HealthKit title" = "HealthKit Data";
+"HealthKit authorization" = "We need to use HealthKit to check how much physical activity you did towards completing goals inside our application. Completing goals allows you to earn points for you and your team.";
+"iCloud title" = "iCloud Account";
+"iCloud authorization" = "We use your iCloud account data to register you and it gives access to groups, so you can practice together with other people. This also allows you to have the same profile between multiple devices.";
+"Registration title" = "Complete your registration";
+"Complete registration" = "Your registration was a success! However, you can also fill your profile with more information, if you're interested.";

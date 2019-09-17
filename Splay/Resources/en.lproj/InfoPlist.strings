@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  Splay
+
+  Created by Matheus Oliveira Costa on 16/09/19.
+  Copyright © 2019 The Rest of Us. All rights reserved.
+*/
+"NSCameraUsageDescription" = "The application reguires access to the camera to take your profile picture";
+"NSHealthShareUsageDescription" = "Your physical activity data will allow you to earn points and progress in the application";
+"NSHealthUpdateUsageDescription" = "Your physical activity data will allow you to earn points and progress in the application";
+"NSPhotoLibraryUsageDescription" = "The application requires access to the Gallery to choose your profile picture";

@@ -16,33 +16,22 @@ enum MessageViewContent {
     var title: String {
         switch self {
         case .healthKitAuthorization:
-            return "Dados de saúde"
+            return NSLocalizedString("HealthKit title", comment: "")
         case .cloudKitAuthorization:
-            return "Dados da conta iCloud"
+            return NSLocalizedString("iCloud title", comment: "")
         case .addMoreInformation:
-            return "Complete seu cadastro!"
+            return NSLocalizedString("Registration title", comment: "")
         }
     }
 
     var message: String {
         switch self {
         case .healthKitAuthorization:
-            return """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis ipsum in dolor maximus
-            bibendum. Vivamus sed eros tortor. Nunc eu luctus metus, eu condimentum nunc. Donec ultricies sit amet diam
-            sed fermentum.
-            """
+            return NSLocalizedString("HealthKit authorization", comment: "")
         case .cloudKitAuthorization:
-            return """
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis ipsum in dolor maximus
-            bibendum. Vivamus sed eros tortor. Nunc eu luctus metus, eu condimentum nunc. Donec ultricies sit amet diam
-            sed fermentum.
-            """
+            return NSLocalizedString("iCloud authorization", comment: "")
         case .addMoreInformation:
-            return """
-            Você foi cadastrado automaticamente usando sua conta do iCloud, não precisa fazer mais nada.
-            No entanto, pedimos que você coloque mais informações para completar o seu perfil.
-            """
+            return NSLocalizedString("Complete registration", comment: "")
         }
     }
 }
