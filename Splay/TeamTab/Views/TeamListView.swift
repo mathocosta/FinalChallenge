@@ -18,6 +18,17 @@ class TeamListView: UIView {
         return tableView
     }()
 
+    let refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(
+            string: "Fetching Weather Data ...",
+            attributes: nil
+        )
+
+        return refreshControl
+    }()
+
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         setupView()
@@ -25,6 +36,12 @@ class TeamListView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    var onRefreshControl: (() -> Void)?
+    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        guard let onRefreshControl = onRefreshControl else { return }
+        onRefreshControl()
     }
 
 }
@@ -42,5 +59,7 @@ extension TeamListView: CodeView {
         resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
-    func setupAdditionalConfiguration() {}
+    func setupAdditionalConfiguration() {
+//        resultsTableView.refreshControl = refreshControl
+    }
 }

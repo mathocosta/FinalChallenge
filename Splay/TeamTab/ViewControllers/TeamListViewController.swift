@@ -14,15 +14,40 @@ class TeamListViewController: UIViewController {
     // MARK: - Properties
     weak var coordinator: TeamTabCoordinator?
 
-    var teams = [Team]()
+    private let teamListView: TeamListView
+
+    private var teams = [Team]()
+    private var filteredTeams = [Team]()
+
+    lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Teams"
+
+        return searchController
+    }()
+
+    private var searchBarIsEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
 
     // MARK: - Lifecycle
-    override func loadView() {
-        let teamListView = TeamListView()
-        view = teamListView
+    init() {
+        self.teamListView = TeamListView()
+        super.init(nibName: nil, bundle: nil)
+    }
 
-        teamListView.resultsTableView.delegate = self
-        teamListView.resultsTableView.dataSource = self
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        view = teamListView
     }
 
     override func viewDidLoad() {
@@ -30,9 +55,14 @@ class TeamListViewController: UIViewController {
 
         title = NSLocalizedString("Teams", comment: "")
 
+        teamListView.resultsTableView.delegate = self
+        teamListView.resultsTableView.dataSource = self
+        teamListView.onRefreshControl = updateTeamList
+
         let createTeamBarButton = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(createTeamBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = createTeamBarButton
+        navigationItem.searchController = searchController
 
         // TODO: Esse método está aqui apenas porque ainda não funciona corretamente,
         // depois é para ser movido para a viewWillAppear
@@ -49,10 +79,9 @@ class TeamListViewController: UIViewController {
             case .success(let newTeams):
                 self.teams.append(contentsOf: newTeams)
 
-                DispatchQueue.main.async {
-                    if let teamListView = self.view as? TeamListView {
-                        teamListView.resultsTableView.reloadData()
-                    }
+                DispatchQueue.main.async { [weak self] in
+                    self?.teamListView.refreshControl.endRefreshing()
+                    self?.teamListView.resultsTableView.reloadData()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
@@ -70,12 +99,18 @@ class TeamListViewController: UIViewController {
 // MARK: - UITableViewDelegate, UITableViewDataSource
 extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count
+        return isFiltering ? filteredTeams.count : teams.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell", for: indexPath)
-        let team = teams[indexPath.row]
+
+        let team: Team
+        if isFiltering {
+            team = filteredTeams[indexPath.row]
+        } else {
+            team = teams[indexPath.row]
+        }
 
         cell.textLabel?.text = team.name
 
@@ -83,7 +118,32 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedTeam = teams[indexPath.row]
+        let selectedTeam: Team
+        if isFiltering {
+            selectedTeam = filteredTeams[indexPath.row]
+        } else {
+            selectedTeam = teams[indexPath.row]
+        }
         coordinator?.showEntrance(of: selectedTeam)
     }
+}
+
+// MARK: - UISearchControllerDelegate
+extension TeamListViewController: UISearchResultsUpdating {
+
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+        }
+    }
+
+    private func filterContent(for searchText: String) {
+        filteredTeams = teams.filter({ (team) -> Bool in
+            guard let teamName = team.name else { return false }
+            return teamName.lowercased().contains(searchText.lowercased())
+        })
+
+        teamListView.resultsTableView.reloadData()
+    }
+
 }
