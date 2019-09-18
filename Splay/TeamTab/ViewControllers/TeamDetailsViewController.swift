@@ -9,8 +9,13 @@
 import UIKit
 import CoreData
 
-class TeamDetailsViewController: UIViewController {
-
+class TeamDetailsViewController: UIViewController, LoaderView {
+    
+    var loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
+    }()
+    
     // MARK: - Properties
     private let teamDetailsView: TeamDetailsView
     private let team: Team
@@ -46,14 +51,19 @@ class TeamDetailsViewController: UIViewController {
 
     // MARK: - Actions
     @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
+        
+        self.startLoader()
+        
         guard let loggedUser = UserManager.getLoggedUser() else { return }
         SessionManager.current.remove(user: loggedUser, from: team) { (result) in
             switch result {
             case .success:
                 DispatchQueue.main.async { [unowned self] in
+                    self.stopLoader()
                     self.coordinator?.showTeamList()
                 }
             case .failure(let error):
+                self.stopLoader()
                 print(error.localizedDescription)
             }
         }
