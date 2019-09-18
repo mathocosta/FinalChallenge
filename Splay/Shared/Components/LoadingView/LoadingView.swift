@@ -20,17 +20,22 @@ class LoadingView: UIView {
     lazy var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.color = UIColor.black
         return view
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         activityIndicatorView.startAnimating()
-        setupView()
+//        setupView()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        setupView()
     }
 }
 

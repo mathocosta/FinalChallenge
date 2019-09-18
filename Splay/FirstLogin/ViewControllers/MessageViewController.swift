@@ -8,7 +8,12 @@
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class MessageViewController: UIViewController, LoaderView {
+    
+    var loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
+    }()
 
     let messageView: MessageView
     let contentType: MessageViewContent
@@ -39,7 +44,7 @@ class MessageViewController: UIViewController {
     private func actionOnConfirmation() {
         let userDefaults = UserDefaults.standard
         
-        messageView.startLoader()
+        self.startLoader()
 
         switch contentType {
         case .healthKitAuthorization:
@@ -49,11 +54,11 @@ class MessageViewController: UIViewController {
                 case .success(let isAuthorized):
                     userDefaults.isHealthKitAuthorized = isAuthorized
                     DispatchQueue.main.async {
-                        self?.messageView.stopLoader()
+                        self?.stopLoader()
                         self?.coordinator?.showNextScreen()
                     }
                 case .failure(let error):
-                    self?.messageView.stopLoader()
+                    self?.stopLoader()
                     print(error.localizedDescription)
                 }
             }
@@ -64,17 +69,18 @@ class MessageViewController: UIViewController {
                     print("Success on login")
                     userDefaults.isCloudKitAuthorized = true
                     DispatchQueue.main.async {
-                        self.messageView.stopLoader()
+                        self.stopLoader()
                         self.coordinator?.showNextScreen()
                     }
                 case .failure(let error):
                     print(error.localizedDescription)
                     DispatchQueue.main.async {
-                        self.messageView.stopLoader()
+                        self.stopLoader()
                     }
                 }
             }
         case .addMoreInformation:
+            self.stopLoader()
             coordinator?.showNextScreen()
         }
     }

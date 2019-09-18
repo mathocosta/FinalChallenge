@@ -12,16 +12,13 @@ protocol LoaderView {
     var loadingView: LoadingView { get }
 }
 
-extension LoaderView where Self: UIView {
+extension LoaderView {
     func startLoader() {
-        loadingView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(loadingView)
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+            let window = appDelegate.window else { return }
         
-//        loadingView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        loadingView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//        loadingView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//        loadingView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-
+        loadingView.frame = window.frame
+        window.addSubview(loadingView)
         loadingView.activityIndicatorView.startAnimating()
     }
 
