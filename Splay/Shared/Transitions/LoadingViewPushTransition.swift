@@ -24,12 +24,10 @@ class LoadingViewPushTransition: NSObject, UIViewControllerAnimatedTransitioning
         
         toViewController.backdropView.alpha = 0
         toViewController.activityIndicator.alpha = 0
-        toView.backgroundColor = UIColor.white.withAlphaComponent(0)
         
-        UIView.animate(withDuration: self.transitionDuration(using: transitionContext)) {
+        UIView.animate(withDuration: 0.3) {
             toViewController.backdropView.alpha = 1
             toViewController.activityIndicator.alpha = 1
-            toView.backgroundColor = UIColor.white.withAlphaComponent(0)
         }
     }
 }

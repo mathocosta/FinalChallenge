@@ -16,7 +16,7 @@ class LoadingViewController: UIViewController {
         view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         return view
     }()
-    
+
     lazy var activityIndicator: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,17 +27,15 @@ class LoadingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0)
+        view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
         activityIndicator.startAnimating()
-        
+
         self.transitioningDelegate = self
     }
-    
+
     func stopLoader() {
         activityIndicator.stopAnimating()
-        dismiss(animated: true) {
-            print("Dismissed")
-        }
+        dismiss(animated: true, completion: nil)
     }
 }
 

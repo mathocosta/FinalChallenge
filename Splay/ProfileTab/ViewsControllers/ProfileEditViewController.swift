@@ -60,8 +60,10 @@ class ProfileEditViewController: UIViewController {
             userDefaults.isFirstLogin = false
         }
         
-        let vc = LoadingViewController()
-        self.present(vc, animated: false, completion: nil)
+        self.coordinator?.showLoadingViewController()
+//        let vc = LoadingViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion: nil)
 
         if let profileImage = profileEditView.profileImage.image,
             let imageData = profileImage.pngData() {
@@ -80,12 +82,12 @@ class ProfileEditViewController: UIViewController {
             switch result {
             case .success:
                 DispatchQueue.main.async {
-                    vc.stopLoader()
+                    self.coordinator?.dismissLoadingViewController()
                     self.coordinator?.showProfileViewController(for: self.user)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-                    vc.dismiss(animated: true, completion: nil)
+//                    vc.dismiss(animated: true, completion: nil)
                 }
                 print(error)
             }
