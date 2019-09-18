@@ -36,26 +36,18 @@ class CreateTeamViewController: UIViewController {
     }
 
     @objc func createBarButtonTapped(_ sender: UIBarButtonItem) {
-//        if let nameText = createTeamView.nameInput.inputTextField.text {
-//
-//        }
-//
-//        if let descriptionText = createTeamView.descriptionInput.inputTextField.text {
-//
-//        }
-//
-//        if let cityText = createTeamView.cityInput.inputTextField.text {
-//
-//        }
-//
-//        if let neighborhoodText = createTeamView.neighborhoodInput.inputTextField.text {
-//
-//        }
+        guard let nameText = createTeamView.nameInput.inputTextField.text, !nameText.isEmpty else {
+            return presentAlert(with: NSLocalizedString("Name Field Missing", comment: ""))
+        }
 
-        guard let nameText = createTeamView.nameInput.inputTextField.text,
-            let loggedUser = UserManager.getLoggedUser() else { return }
+        let descriptionText = createTeamView.descriptionInput.inputTextField.text
 
-        let newTeam = TeamManager.createTeam(with: ["name": nameText])
+        guard let loggedUser = UserManager.getLoggedUser() else { return }
+
+        let newTeam = TeamManager.createTeam(with: [
+            "name": nameText,
+            "description": descriptionText
+        ])
         SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
             switch result {
             case .success:
@@ -66,6 +58,23 @@ class CreateTeamViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
+    }
+
+    func presentAlert(with message: String) {
+        let alert = UIAlertController(
+            title: NSLocalizedString("Error", comment: ""),
+            message: message,
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("OK", comment: "Default Action"),
+            style: .default,
+            handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+        ))
+
+        present(alert, animated: true, completion: nil)
     }
 
 }
