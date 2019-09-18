@@ -37,7 +37,7 @@ final class CloudKitGateway {
             guard let savedRecords = savedRecords, error == nil else { return completion(.failure(error!)) }
 
             if let savedRecord = savedRecords.first {
-                print("Records salvos")
+                print("Records salvos: \(savedRecords)")
                 completion(.success(savedRecord))
             }
         }

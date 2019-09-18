@@ -46,7 +46,7 @@ class CreateTeamViewController: UIViewController {
 
         let newTeam = TeamManager.createTeam(with: [
             "name": nameText,
-            "description": descriptionText
+            "teamDescription": descriptionText
         ])
         SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
             switch result {

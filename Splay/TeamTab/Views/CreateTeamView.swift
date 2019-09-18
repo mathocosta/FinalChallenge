@@ -24,23 +24,23 @@ class CreateTeamView: UIView {
         return input
     }()
 
-    lazy var cityInput: Input = {
-        let input = Input(frame: .zero, label: NSLocalizedString("City", comment: ""))
-        input.translatesAutoresizingMaskIntoConstraints = false
-        input.inputTextField.keyboardType = .alphabet
-        return input
-    }()
+//    lazy var cityInput: Input = {
+//        let input = Input(frame: .zero, label: NSLocalizedString("City", comment: ""))
+//        input.translatesAutoresizingMaskIntoConstraints = false
+//        input.inputTextField.keyboardType = .alphabet
+//        return input
+//    }()
 
-    lazy var neighborhoodInput: Input = {
-        let input = Input(frame: .zero, label: NSLocalizedString("Neighborhood", comment: ""))
-        input.translatesAutoresizingMaskIntoConstraints = false
-        input.inputTextField.keyboardType = .alphabet
-        return input
-    }()
+//    lazy var neighborhoodInput: Input = {
+//        let input = Input(frame: .zero, label: NSLocalizedString("Neighborhood", comment: ""))
+//        input.translatesAutoresizingMaskIntoConstraints = false
+//        input.inputTextField.keyboardType = .alphabet
+//        return input
+//    }()
 
     lazy var formStackView: UIStackView = {
         let stackView = UIStackView(
-            arrangedSubviews: [nameInput, descriptionInput, cityInput, neighborhoodInput])
+            arrangedSubviews: [nameInput, descriptionInput])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
@@ -69,8 +69,8 @@ extension CreateTeamView: CodeView {
         NSLayoutConstraint.activate([
             nameInput.heightAnchor.constraint(equalToConstant: Input.height),
             descriptionInput.heightAnchor.constraint(equalToConstant: Input.height),
-            cityInput.heightAnchor.constraint(equalToConstant: Input.height),
-            neighborhoodInput.heightAnchor.constraint(equalToConstant: Input.height),
+//            cityInput.heightAnchor.constraint(equalToConstant: Input.height),
+//            neighborhoodInput.heightAnchor.constraint(equalToConstant: Input.height),
 
             formStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             formStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
