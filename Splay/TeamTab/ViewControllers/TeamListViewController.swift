@@ -16,19 +16,6 @@ class TeamListViewController: UIViewController {
 
     var teams = [Team]()
 
-//    lazy var fetchedResultsController: NSFetchedResultsController<Team> = {
-//        let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-//        let resultsController = NSFetchedResultsController(
-//            fetchRequest: fetchRequest,
-//            managedObjectContext: CoreStataStore.context,
-//            sectionNameKeyPath: nil,
-//            cacheName: nil
-//        )
-//
-//        return resultsController
-//    }()
-
     // MARK: - Lifecycle
     override func loadView() {
         let teamListView = TeamListView()
@@ -46,22 +33,17 @@ class TeamListViewController: UIViewController {
         let createTeamBarButton = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(createTeamBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = createTeamBarButton
+
+        // TODO: Esse método está aqui apenas porque ainda não funciona corretamente,
+        // depois é para ser movido para a viewWillAppear
+        updateTeamList()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
 
-//        defer {
-//            if let teamListView = view as? TeamListView {
-//                teamListView.resultsTableView.reloadData()
-//            }
-//        }
-//        do {
-//            try fetchedResultsController.performFetch()
-//        } catch let error {
-//            print(error.localizedDescription)
-//        }
-
+    private func updateTeamList() {
         SessionManager.current.listTeams { (result) in
             switch result {
             case .success(let newTeams):
