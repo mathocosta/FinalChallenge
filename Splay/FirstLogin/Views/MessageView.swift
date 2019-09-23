@@ -13,8 +13,9 @@ class MessageView: UIView {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
+//        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center
+        label.font = UIFont.detailLightStyle
         return label
     }()
 
