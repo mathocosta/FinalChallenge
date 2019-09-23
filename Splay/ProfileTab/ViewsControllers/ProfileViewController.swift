@@ -45,7 +45,9 @@ class ProfileViewController: UIViewController {
     }
 
     func setProgressBars() {
-        let currentGoals = GoalsManager.currentTimedGoals(of: user)
+        let currentGoals = GoalsManager.currentTimedGoals(of: user).sorted { (g1, g2) -> Bool in
+            return g1.id < g2.id
+        }
         let barsView = profileView.progressBars
         let tracksView = profileView.tracksView
         let colors: [UIColor] = [.systemPink, .systemBlue, .systemRed, .systemGreen]

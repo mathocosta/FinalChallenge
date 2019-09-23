@@ -28,6 +28,7 @@ extension CALayer {
         sliceLayer.strokeEnd = view.progress
         sliceLayer.lineWidth = CGFloat(TrackView.strokeWidth)
         sliceLayer.path = path
+        sliceLayer.lineCap = .round
 
         layer.addSublayer(trackLayer)
         layer.addSublayer(sliceLayer)

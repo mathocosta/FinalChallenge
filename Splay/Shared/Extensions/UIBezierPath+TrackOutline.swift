@@ -30,7 +30,6 @@ extension UIBezierPath {
         path.addArc(withCenter: lowerAnchor, radius: halfWidth, startAngle: CGFloat.pi, endAngle: 0, clockwise: false)
         path.addLine(to: CGPoint(x: frame.width, y: higherAnchor.y))
         path.addArc(withCenter: higherAnchor, radius: halfWidth, startAngle: 0, endAngle: 3*halfPi, clockwise: false)
-        path.lineCapStyle = .round
         return path.cgPath
     }
 }

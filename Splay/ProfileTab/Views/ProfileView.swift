@@ -69,6 +69,8 @@ extension ProfileView: CodeView {
     }
 
     func setupConstraints() {
+        let screenBounds = UIScreen.main.bounds
+
         profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         profileDetailsView.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
         //profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70).isActive = true
@@ -84,8 +86,8 @@ extension ProfileView: CodeView {
 
         tracksView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         tracksView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
-        tracksView.widthAnchor.constraint(equalToConstant: 270).isActive = true
-        tracksView.heightAnchor.constraint(equalToConstant: 430).isActive = true
+        tracksView.widthAnchor.constraint(equalToConstant: screenBounds.width-105).isActive = true
+        tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height-237).isActive = true
 //        trackView.bottomAnchor.constraint(equalTo: progressBars.topAnchor, constant: -60).isActive = true
     }
 

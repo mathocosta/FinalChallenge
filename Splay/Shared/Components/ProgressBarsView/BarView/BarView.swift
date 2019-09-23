@@ -24,16 +24,19 @@ class BarView: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
+        label.font = .systemFont(ofSize: 14)
+        label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     lazy var progressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .white
-        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,10 +51,6 @@ class BarView: UIView {
     init(frame: CGRect, progress: CGFloat = 0.5) {
         self.progress = progress
         super.init(frame: frame)
-
-//        self.layer.borderWidth = 1
-//        self.layer.cornerRadius = 5
-//        self.layer.masksToBounds = true
 
         setupView()
     }
@@ -97,7 +96,7 @@ extension BarView: CodeView {
 
         progressLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         //progressLabel.leftAnchor.constraint(equalTo: goalLabel.rightAnchor, constant: 8).isActive = true
-        progressLabel.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        progressLabel.widthAnchor.constraint(equalToConstant: 96).isActive = true
         progressLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         progressLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
 //        progressBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true

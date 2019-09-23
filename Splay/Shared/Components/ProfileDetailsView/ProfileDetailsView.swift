@@ -35,6 +35,7 @@ class ProfileDetailsView: UIView {
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.textColor = .white
         label.text = self.name
         return label
     }()
@@ -43,6 +44,7 @@ class ProfileDetailsView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.textColor = .white
         label.text = "Nível \(level)"
         return label
     }()
