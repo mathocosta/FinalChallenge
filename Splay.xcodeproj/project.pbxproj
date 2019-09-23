@@ -57,6 +57,11 @@
 		2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1ED233120B100688735 /* LoadingViewController.swift */; };
 		2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */; };
 		2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */; };
+		2B86F07C23390A51005BE690 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07923390A51005BE690 /* Oswald-Medium.ttf */; };
+		2B86F07D23390A51005BE690 /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07A23390A51005BE690 /* Oswald-ExtraLight.ttf */; };
+		2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */; };
+		2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */; };
+		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
@@ -126,6 +131,11 @@
 		2B86B1ED233120B100688735 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewPushTransition.swift; sourceTree = "<group>"; };
 		2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewPopTransition.swift; sourceTree = "<group>"; };
+		2B86F07923390A51005BE690 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
+		2B86F07A23390A51005BE690 /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
+		2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+customFonts.swift"; sourceTree = "<group>"; };
+		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
@@ -281,6 +291,7 @@
 		2797D619232B2F6C00A33470 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2B86F07823390A30005BE690 /* Fonts */,
 				275FE86E231D3666001695D2 /* LaunchScreen.storyboard */,
 				275FE86C231D3666001695D2 /* Assets.xcassets */,
 				27EE5A7223306590009E2D6B /* Goals.plist */,
@@ -421,6 +432,17 @@
 			path = Transitions;
 			sourceTree = "<group>";
 		};
+		2B86F07823390A30005BE690 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B86F07A23390A51005BE690 /* Oswald-ExtraLight.ttf */,
+				2B86F07923390A51005BE690 /* Oswald-Medium.ttf */,
+				2B86F08123390BF2005BE690 /* Oswald-Light.ttf */,
+				2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +472,7 @@
 				309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */,
 				2797D615232B1A8800A33470 /* UserDefaults+keys.swift */,
 				2797D62B232D76A100A33470 /* CKRecordExtension.swift */,
+				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -522,8 +545,12 @@
 				275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */,
 				27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */,
 				275FE86D231D3666001695D2 /* Assets.xcassets in Resources */,
+				2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */,
+				2B86F07D23390A51005BE690 /* Oswald-ExtraLight.ttf in Resources */,
+				2B86F07C23390A51005BE690 /* Oswald-Medium.ttf in Resources */,
 				27EE5A7023306590009E2D6B /* Goals.plist in Resources */,
 				27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */,
+				2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,6 +621,7 @@
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
+				2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
