@@ -10,23 +10,7 @@ import UIKit
 
 class ProfileView: UIView {
 
-    var firstBarProgress: Float {
-        didSet {
-            progressBars.firstBar.progress = CGFloat(firstBarProgress)
-        }
-    }
-
-    var secondBarProgress: Float {
-        didSet {
-            progressBars.secondBar.progress = CGFloat(secondBarProgress)
-        }
-    }
-
-    var thirdBarProgress: Float {
-        didSet {
-            progressBars.thirdBar.progress = CGFloat(thirdBarProgress)
-        }
-    }
+    var progress: [Float] = []
 
     lazy var profileDetailsView: ProfileDetailsView = {
         let view = ProfileDetailsView(
@@ -36,22 +20,37 @@ class ProfileView: UIView {
     }()
 
     lazy var progressBars: ProgressBarsView = {
-        let view = ProgressBarsView(frame: .zero)
+        let view = ProgressBarsView(frame: .zero, amount: 3)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
+    lazy var tracksView: ProgressTracksView = {
+        let view = ProgressTracksView(frame: .zero, amount: 3)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     override init(frame: CGRect) {
-        self.firstBarProgress = 0.0
-        self.secondBarProgress = 0.0
-        self.thirdBarProgress = 0.0
+        progress = Array(repeating: 0, count: 3)
         super.init(frame: frame)
-        backgroundColor = .white
+        self.backgroundColor = .blue
         setupView()
+    }
+
+    func setProgress(index: Int, amount: Float) {
+        progress[index] = amount
+        let cgBarProgress = CGFloat(amount)
+        progressBars.setProgress(index: index, value: cgBarProgress)
+        tracksView.setProgress(index: index, value: cgBarProgress)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+
     }
 
     var onProfileDetails: (() -> Void)?
@@ -64,21 +63,30 @@ class ProfileView: UIView {
 
 extension ProfileView: CodeView {
     func buildViewHierarchy() {
+        addSubview(tracksView)
         addSubview(profileDetailsView)
         addSubview(progressBars)
     }
 
     func setupConstraints() {
         profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 150).isActive = true
+        profileDetailsView.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
+        //profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70).isActive = true
         profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
         profileDetailsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(
-            equalTo: profileDetailsView.bottomAnchor, constant: 60).isActive = true
-        progressBars.heightAnchor.constraint(equalToConstant: BarView.height * 3 + 31 * 2).isActive = true
-        progressBars.widthAnchor.constraint(equalToConstant: 195).isActive = true
+            equalTo: tracksView.bottomAnchor, constant: 16).isActive = true
+        progressBars.heightAnchor.constraint(equalToConstant: BarView.height * CGFloat(progressBars.amountOfBars) +
+            CGFloat(16 * (progressBars.amountOfBars - 1))).isActive = true
+        progressBars.widthAnchor.constraint(equalToConstant: 300).isActive = true
+
+        tracksView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        tracksView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
+        tracksView.widthAnchor.constraint(equalToConstant: 270).isActive = true
+        tracksView.heightAnchor.constraint(equalToConstant: 430).isActive = true
+//        trackView.bottomAnchor.constraint(equalTo: progressBars.topAnchor, constant: -60).isActive = true
     }
 
     func setupAdditionalConfiguration() {

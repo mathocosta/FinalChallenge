@@ -10,7 +10,7 @@ import UIKit
 
 class BarView: UIView {
 
-    static let height: CGFloat = 30.0
+    static let height: CGFloat = 20.0
 
     var progressBarConstraint: NSLayoutConstraint?
 
@@ -20,17 +20,26 @@ class BarView: UIView {
         }
     }
 
-    lazy var label: UILabel = {
+    lazy var goalLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    lazy var progressLabel: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy var progressBar: UIView = {
-        let view = UIView()
+    lazy var goalColor: RoundedView = {
+        let view = RoundedView()
         view.backgroundColor = UIColor.darkGray
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -40,9 +49,9 @@ class BarView: UIView {
         self.progress = progress
         super.init(frame: frame)
 
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
-        self.layer.masksToBounds = true
+//        self.layer.borderWidth = 1
+//        self.layer.cornerRadius = 5
+//        self.layer.masksToBounds = true
 
         setupView()
     }
@@ -58,31 +67,48 @@ class BarView: UIView {
         // será atualizada, pois foi salva na propriedade `progressBarConstraint`. Isso causa o erro "Unable
         // to simultaneously satisfy constraints". Assim, é checado se a propriedade já foi inicializada,
         // para não adicionar mais de uma vez.
-        if progressBarConstraint == nil {
-            progressBarConstraint = progressBar.rightAnchor.constraint(
-                equalTo: self.rightAnchor, constant: -(self.frame.width * (1 - progress)))
-            progressBarConstraint?.isActive = true
-        }
+//        if progressBarConstraint == nil {
+//            progressBarConstraint = progressBar.rightAnchor.constraint(
+//                equalTo: self.rightAnchor, constant: -(self.frame.width * (1 - progress)))
+//            progressBarConstraint?.isActive = true
+//        }
     }
 
 }
 
 extension BarView: CodeView {
     func buildViewHierarchy() {
-        addSubview(progressBar)
-        addSubview(label)
+        addSubview(goalColor)
+        addSubview(goalLabel)
+        addSubview(progressLabel)
     }
 
     func setupConstraints() {
-        progressBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        progressBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        progressBar.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        goalColor.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        goalColor.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        goalColor.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        goalColor.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
 
-        label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        label.heightAnchor.constraint(equalTo: progressBar.heightAnchor).isActive = true
-        label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
-        label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4).isActive = true
+        goalLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        goalLabel.leftAnchor.constraint(equalTo: goalColor.rightAnchor, constant: 8).isActive = true
+        goalLabel.rightAnchor.constraint(equalTo: progressLabel.leftAnchor, constant: -8).isActive = true
+        //goalLabel.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        goalLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+
+        progressLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        //progressLabel.leftAnchor.constraint(equalTo: goalLabel.rightAnchor, constant: 8).isActive = true
+        progressLabel.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        progressLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        progressLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+//        progressBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+//        progressBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+//        progressBar.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//
+//        label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+////        label.heightAnchor.constraint(equalTo: progressBar.heightAnchor).isActive = true
+//        label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 4).isActive = true
+//        label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -4).isActive = true
     }
 
     func setupAdditionalConfiguration() {

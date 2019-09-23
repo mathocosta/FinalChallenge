@@ -19,7 +19,7 @@ class TeamDetailsView: UIView {
     }()
 
     lazy var progressBars: ProgressBarsView = {
-        let view = ProgressBarsView(frame: .zero)
+        let view = ProgressBarsView(frame: .zero, amount: 2)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

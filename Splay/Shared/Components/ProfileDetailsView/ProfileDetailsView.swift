@@ -22,8 +22,8 @@ class ProfileDetailsView: UIView {
         }
     }
 
-    lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    lazy var imageView: RoundedImageView = {
+        let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "avatar-placeholder")
         imageView.contentMode = .scaleAspectFill
