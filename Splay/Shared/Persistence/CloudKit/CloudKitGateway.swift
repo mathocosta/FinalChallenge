@@ -304,13 +304,14 @@ extension CloudKitGateway {
             subscriptionsToSave: subscripitions,
             subscriptionIDsToDelete: subscriptionsToRemove
         )
-
+        operation.qualityOfService = .utility
         operation.modifySubscriptionsCompletionBlock = { _, _, error in
             if let error = error {
                 completion(.failure(error))
             }
 
             // Atualizar o UserDefaults
+            completion(.success(true))
         }
 
         publicDatabase.add(operation)

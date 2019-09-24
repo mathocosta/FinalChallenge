@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var appCoordinator: AppCoordinator?
 
+    // MARK: - Application Lifecycle
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -25,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Checa se o usuário não está logado, por agora, isso quer dizer que é
         // o primeiro acesso ao app
         UserDefaults.standard.isFirstLogin = UserManager.getLoggedUser() == nil
+
+        // Adiciona as subscriptions caso não existam
+        application.registerForRemoteNotifications()
 
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
@@ -61,4 +65,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CoreStataStore.saveContext()
     }
 
+    // MARK: - Remote Notifications
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+        print("Receive notification")
+    }
 }

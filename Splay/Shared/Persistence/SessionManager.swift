@@ -118,4 +118,11 @@ class SessionManager {
         }
     }
 
+    func addSubscriptions(for user: User, completion: @escaping (ResultHandler<Bool>)) {
+        if let teamUUID = user.team?.id?.uuidString {
+            print("teamUUID:\(teamUUID)")
+            let subscription = cloudKitGateway.subscriptionForUpdates(recordType: "Teams", objectUUID: teamUUID)
+            cloudKitGateway.save([subscription], completion: completion)
+        }
+    }
 }

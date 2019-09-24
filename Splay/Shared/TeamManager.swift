@@ -22,7 +22,13 @@ class TeamManager: NSObject {
 
     static func createTeam(with info: [String: Any?]) -> Team {
         let team = Team(context: CoreStataStore.context)
-        team.id = (info["id"] as? UUID) ?? UUID()
+
+        if let uuidString = info["id"] as? String {
+            team.id = UUID(uuidString: uuidString)
+        } else {
+            team.id = UUID()
+        }
+
         team.recordMetadata = info["recordMetadata"] as? Data
         team.name = info["name"] as? String
         team.points = (info["points"] as? Int32) ?? 0
