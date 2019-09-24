@@ -62,6 +62,7 @@
 		2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */; };
 		2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */; };
 		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
+		2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
 		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
 		3006C5502334FA2B00DA501B /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54F2334FA2B00DA501B /* TrackView.swift */; };
@@ -145,6 +146,7 @@
 		2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+customFonts.swift"; sourceTree = "<group>"; };
 		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
 		3006C54F2334FA2B00DA501B /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
@@ -524,6 +526,7 @@
 				3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */,
 				3006C55E2338F5FD00DA501B /* UIView+RoundedBorder.swift */,
 				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
+				2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -662,6 +665,7 @@
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
+				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				2B6E354123229C520092A481 /* Input.swift in Sources */,
 				2B417FA02320006F002AD09D /* ProfileView.swift in Sources */,
@@ -865,14 +869,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = VA7DWMQ39T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -888,14 +892,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = VA7DWMQ39T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
