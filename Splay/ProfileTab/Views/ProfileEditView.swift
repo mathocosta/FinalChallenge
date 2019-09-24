@@ -12,21 +12,12 @@ class ProfileEditView: UIView {
 
     var profileImageConstrait: NSLayoutConstraint?
 
-    lazy var profileImage: UIImageView = {
-        let imageView = UIImageView()
+    lazy var profileImage: RoundedImageView = {
+        let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "avatar-placeholder")
         imageView.contentMode = .scaleAspectFill
         return imageView
-    }()
-
-    lazy var editProfileImageButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(NSLocalizedString("Edit image", comment: ""), for: .normal)
-        button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(editProfileImageTapped(sender:)), for: .touchUpInside)
-        return button
     }()
 
     lazy var nameInput: Input = {
@@ -43,6 +34,16 @@ class ProfileEditView: UIView {
         input.inputTextField.keyboardType = .emailAddress
         input.inputTextField.delegate = self
         return input
+    }()
+
+    lazy var saveButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
+        button.backgroundColor = .systemPink
+        button.layer.cornerRadius = Input.height / 2
+        button.addTarget(self, action: #selector(saveButtonTapped(_:)), for: .touchUpInside)
+        return button
     }()
 
     override init(frame: CGRect) {
@@ -69,16 +70,22 @@ class ProfileEditView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    var onSaveProfile: (() -> Void)?
+    @objc func saveButtonTapped(_ sender: UIButton) {
+        guard let onSaveProfile = onSaveProfile else { return }
+        onSaveProfile()
+    }
+
     var onLogout: (() -> Void)?
     @objc func logoutButtonTapped(_ sender: UIButton) {
         guard let onLogout = onLogout else { return }
         onLogout()
     }
 
-    var onEditProfileImage: ((UIButton) -> Void)?
-    @objc func editProfileImageTapped(sender: UIButton) {
+    var onEditProfileImage: (() -> Void)?
+    @objc func editProfileImageTapped(_ sender: UITapGestureRecognizer? = nil) {
         guard let onEditProfileImage = onEditProfileImage else { return }
-        onEditProfileImage(sender)
+        onEditProfileImage()
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -107,9 +114,9 @@ class ProfileEditView: UIView {
 extension ProfileEditView: CodeView {
     func buildViewHierarchy() {
         addSubview(profileImage)
-        addSubview(editProfileImageButton)
         addSubview(nameInput)
         addSubview(emailInput)
+        addSubview(saveButton)
     }
 
     func setupConstraints() {
@@ -118,13 +125,9 @@ extension ProfileEditView: CodeView {
             equalTo: self.layoutMarginsGuide.topAnchor, constant: 38)
         profileImageConstrait?.isActive = true
         profileImage.widthAnchor.constraint(equalToConstant: 119).isActive = true
-        profileImage.heightAnchor.constraint(equalToConstant: 113).isActive = true
+        profileImage.heightAnchor.constraint(equalToConstant: 119).isActive = true
 
-        editProfileImageButton.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 10).isActive = true
-        editProfileImageButton.leadingAnchor.constraint(equalTo: profileImage.leadingAnchor).isActive = true
-        editProfileImageButton.trailingAnchor.constraint(equalTo: profileImage.trailingAnchor).isActive = true
-
-        nameInput.topAnchor.constraint(equalTo: editProfileImageButton.bottomAnchor, constant: 20).isActive = true
+        nameInput.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 20).isActive = true
         nameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         nameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         nameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
@@ -133,10 +136,17 @@ extension ProfileEditView: CodeView {
         emailInput.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         emailInput.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         emailInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
+        
+        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 31).isActive = true
+        saveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        saveButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        saveButton.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
     }
 
     func setupAdditionalConfiguration() {
-
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editProfileImageTapped(_:)))
+        profileImage.addGestureRecognizer(tapGesture)
+        profileImage.isUserInteractionEnabled = true
     }
 
 }

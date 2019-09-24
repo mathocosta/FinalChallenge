@@ -43,16 +43,17 @@ class ProfileEditViewController: UIViewController {
         }
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
+        profileEditView.onSaveProfile = saveButtonTapped
 
-        let saveBarButton = UIBarButtonItem(
-            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
-
-        navigationItem.rightBarButtonItem = saveBarButton
+//        let saveBarButton = UIBarButtonItem(
+//            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
+//
+//        navigationItem.rightBarButtonItem = saveBarButton
 
     }
 
     // MARK: - Actions
-    @objc func saveBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func saveButtonTapped() {
         let userDefaults = UserDefaults.standard
         if !userDefaults.isRegistrationComplete {
             userDefaults.isRegistrationComplete = true
@@ -89,8 +90,8 @@ class ProfileEditViewController: UIViewController {
         UserManager.logout(user: user)
     }
 
-    private func showImagePicker(sender: UIButton) {
-        imagePicker.present(from: sender)
+    private func showImagePicker() {
+        imagePicker.present(from: self.view)
     }
 
 }
