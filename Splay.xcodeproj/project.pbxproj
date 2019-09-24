@@ -52,6 +52,16 @@
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
 		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
+		2B86B1E92331009C00688735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1E82331009C00688735 /* LoadingView.swift */; };
+		2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1EA2331036C00688735 /* LoaderView.swift */; };
+		2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1ED233120B100688735 /* LoadingViewController.swift */; };
+		2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */; };
+		2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */; };
+		2B86F07C23390A51005BE690 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07923390A51005BE690 /* Oswald-Medium.ttf */; };
+		2B86F07D23390A51005BE690 /* Oswald-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07A23390A51005BE690 /* Oswald-ExtraLight.ttf */; };
+		2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */; };
+		2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */; };
+		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
 		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
 		3006C5502334FA2B00DA501B /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54F2334FA2B00DA501B /* TrackView.swift */; };
@@ -125,6 +135,16 @@
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		2B86B1E82331009C00688735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		2B86B1EA2331036C00688735 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
+		2B86B1ED233120B100688735 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewPushTransition.swift; sourceTree = "<group>"; };
+		2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewPopTransition.swift; sourceTree = "<group>"; };
+		2B86F07923390A51005BE690 /* Oswald-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Medium.ttf"; sourceTree = "<group>"; };
+		2B86F07A23390A51005BE690 /* Oswald-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-ExtraLight.ttf"; sourceTree = "<group>"; };
+		2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
+		2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+customFonts.swift"; sourceTree = "<group>"; };
+		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
 		3006C54F2334FA2B00DA501B /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
@@ -197,6 +217,8 @@
 		275FE878231D3D33001695D2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2B86B1F1233123E800688735 /* Transitions */,
+				2B86B1EC2331208F00688735 /* ViewControllers */,
 				2BB47419232001470099D4EB /* Components */,
 				27C56E5D231EB5DF009CCAAB /* HealthKit */,
 				278717E9231F029700A2A481 /* Persistence */,
@@ -217,6 +239,7 @@
 				275FE87A231D3D46001695D2 /* CodeView.swift */,
 				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
 				278717F3232001D600A2A481 /* CKManagedObject.swift */,
+				2B86B1EA2331036C00688735 /* LoaderView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -286,6 +309,7 @@
 		2797D619232B2F6C00A33470 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2B86F07823390A30005BE690 /* Fonts */,
 				275FE86E231D3666001695D2 /* LaunchScreen.storyboard */,
 				275FE86C231D3666001695D2 /* Assets.xcassets */,
 				27EE5A7223306590009E2D6B /* Goals.plist */,
@@ -403,9 +427,46 @@
 			path = BarView;
 			sourceTree = "<group>";
 		};
+		2B86B1E72331008500688735 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				2B86B1E82331009C00688735 /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
+		2B86B1EC2331208F00688735 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2B86B1ED233120B100688735 /* LoadingViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		2B86B1F1233123E800688735 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				2B86B1F22331241100688735 /* LoadingViewPushTransition.swift */,
+				2B86B1F42331252B00688735 /* LoadingViewPopTransition.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		2B86F07823390A30005BE690 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2B86F07A23390A51005BE690 /* Oswald-ExtraLight.ttf */,
+				2B86F07923390A51005BE690 /* Oswald-Medium.ttf */,
+				2B86F08123390BF2005BE690 /* Oswald-Light.ttf */,
+				2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B86B1E72331008500688735 /* LoadingView */,
 				2B6E353F23229C080092A481 /* Input */,
 				2B7DC2B3232291C8009C3F54 /* ProgressBarsView */,
 				2BB4741A232001550099D4EB /* ProfileDetailsView */,
@@ -462,6 +523,7 @@
 				3006C5512334FD7200DA501B /* CGRect+Center.swift */,
 				3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */,
 				3006C55E2338F5FD00DA501B /* UIView+RoundedBorder.swift */,
+				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -534,8 +596,12 @@
 				275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */,
 				27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */,
 				275FE86D231D3666001695D2 /* Assets.xcassets in Resources */,
+				2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */,
+				2B86F07D23390A51005BE690 /* Oswald-ExtraLight.ttf in Resources */,
+				2B86F07C23390A51005BE690 /* Oswald-Medium.ttf in Resources */,
 				27EE5A7023306590009E2D6B /* Goals.plist in Resources */,
 				27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */,
+				2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -579,15 +645,18 @@
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
+				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
 				2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */,
 				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
+				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
@@ -601,12 +670,14 @@
 				2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
+				2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */,
 				27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
+				2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
 				3006C55B2338F10B00DA501B /* RoundedImageView.swift in Sources */,
 				3006C55D2338F51900DA501B /* RoundedViewProtocol.swift in Sources */,
@@ -617,6 +688,7 @@
 				275FE886231D3ECE001695D2 /* CoreStataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
+				2B86B1E92331009C00688735 /* LoadingView.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
@@ -792,8 +864,8 @@
 				CODE_SIGN_ENTITLEMENTS = Splay/Splay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -815,8 +887,8 @@
 				CODE_SIGN_ENTITLEMENTS = Splay/Splay.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (

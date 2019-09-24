@@ -26,6 +26,7 @@ class TeamManager: NSObject {
         team.recordMetadata = info["recordMetadata"] as? Data
         team.name = info["name"] as? String
         team.points = (info["points"] as? Int32) ?? 0
+        team.teamDescription = info["teamDescription"] as? String
 
         if let imageData = info["photo"] as? Data {
             team.photo = imageData

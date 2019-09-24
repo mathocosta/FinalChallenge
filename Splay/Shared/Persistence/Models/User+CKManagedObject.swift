@@ -29,6 +29,8 @@ extension User: CKManagedObject {
 
         if let teamRecord = team?.asCKRecord() {
             record["team"] = CKRecord.Reference(record: teamRecord, action: .none)
+        } else {
+            record["team"] = nil
         }
 
         return record

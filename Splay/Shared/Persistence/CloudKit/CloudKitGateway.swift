@@ -37,7 +37,7 @@ final class CloudKitGateway {
             guard let savedRecords = savedRecords, error == nil else { return completion(.failure(error!)) }
 
             if let savedRecord = savedRecords.first {
-                print("Records salvos")
+                print("Records salvos: \(savedRecords)")
                 completion(.success(savedRecord))
             }
         }
@@ -194,6 +194,15 @@ extension CloudKitGateway {
     /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
     func update(userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
         save(userRecord, in: publicDatabase, completion: completion)
+    }
+
+    /// Remove a referência do time no usuário. Depois é feito o update dos dados no servidor.
+    /// - Parameter userRecord: Record do usuário para ser atualizado e salvo
+    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
+    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
+    func removeTeamReference(from userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
+        userRecord["team"] = nil
+        update(userRecord: userRecord, completion: completion)
     }
 
 }

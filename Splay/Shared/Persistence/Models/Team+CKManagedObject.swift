@@ -23,6 +23,7 @@ extension Team: CKManagedObject {
         record["id"] = id?.uuidString
         record["name"] = name
         record["points"] = points
+        record["teamDescription"] = teamDescription
 
         if let photo = photo, let profileImage = UIImage(data: photo) {
             record["photo"] = ckAsset(of: profileImage)

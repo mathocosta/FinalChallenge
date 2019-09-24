@@ -92,7 +92,6 @@ class ProfileEditView: UIView {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
 
             let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
 
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                 self.profileImageConstrait?.constant = -16
@@ -155,5 +154,12 @@ extension ProfileEditView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+extension ProfileEditView: LoaderView {
+    var loadingView: LoadingView {
+        let view = LoadingView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+        return view
     }
 }

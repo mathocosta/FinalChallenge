@@ -8,7 +8,12 @@
 
 import UIKit
 
-class ProfileEditViewController: UIViewController {
+class ProfileEditViewController: UIViewController, LoaderView {
+    
+    var loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
+    }()
 
     // MARK: - Properties
     private let user: User
@@ -60,7 +65,14 @@ class ProfileEditViewController: UIViewController {
             UserManager.changeGoals(for: user)
             userDefaults.isFirstLogin = false
         }
-
+        
+//        self.coordinator?.showLoadingViewController()
+//        let vc = LoadingViewController()
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true, completion: nil)
+        
+        self.startLoader()
+        
         if let profileImage = profileEditView.profileImage.image,
             let imageData = profileImage.pngData() {
             user.photo = imageData
@@ -78,9 +90,14 @@ class ProfileEditViewController: UIViewController {
             switch result {
             case .success:
                 DispatchQueue.main.async {
+//                    self.coordinator?.dismissLoadingViewController()
+                    self.stopLoader()
                     self.coordinator?.showProfileViewController(for: self.user)
                 }
             case .failure(let error):
+                DispatchQueue.main.async {
+//                    vc.dismiss(animated: true, completion: nil)
+                }
                 print(error)
             }
         }
@@ -103,3 +120,4 @@ extension ProfileEditViewController: ImagePickerDelegate {
         profileEditView.profileImage.image = image
     }
 }
+
