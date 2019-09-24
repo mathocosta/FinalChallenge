@@ -18,7 +18,7 @@ extension CALayer {
 
         let trackLayer = CAShapeLayer()
         trackLayer.fillColor = UIColor.clear.cgColor
-        trackLayer.strokeColor = UIColor.gray.cgColor
+        trackLayer.strokeColor = UIColor.lightGray.cgColor
         trackLayer.lineWidth = CGFloat(TrackView.strokeWidth)
         trackLayer.path = path
 
