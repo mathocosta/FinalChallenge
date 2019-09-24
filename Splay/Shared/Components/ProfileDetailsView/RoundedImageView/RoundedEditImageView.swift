@@ -13,8 +13,8 @@ class RoundedEditImageView: UIView {
     lazy var editLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Edit", comment: "")
-        label.backgroundColor = UIColor.white.withAlphaComponent(0.5)
-        label.textColor = .black
+        label.backgroundColor = UIColor.backgroundColor.withAlphaComponent(0.5)
+        label.textColor = .textColor
         label.textAlignment = .center
         label.font = .listItemLightStyle
         label.adjustsFontSizeToFitWidth = true

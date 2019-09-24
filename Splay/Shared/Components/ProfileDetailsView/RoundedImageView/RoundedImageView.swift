@@ -13,7 +13,7 @@ class RoundedImageView: UIImageView, RoundedViewProtocol {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.setRounded()
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 4
         self.layer.borderColor = UIColor.systemBlue.cgColor
     }
 

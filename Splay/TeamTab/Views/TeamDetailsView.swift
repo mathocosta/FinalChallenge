@@ -26,7 +26,7 @@ class TeamDetailsView: UIView {
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
 
         setupView()
     }

@@ -47,7 +47,7 @@ class ProfileEditView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
         setupView()
 
         NotificationCenter.default.addObserver(
@@ -135,7 +135,7 @@ extension ProfileEditView: CodeView {
         emailInput.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         emailInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
 
-        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 64).isActive = true
+        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 96).isActive = true
         saveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         saveButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: Input.height).isActive = true

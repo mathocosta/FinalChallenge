@@ -71,8 +71,8 @@
 		3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5552336E9CD00DA501B /* ProgressTracksView.swift */; };
 		3006C55B2338F10B00DA501B /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C55A2338F10B00DA501B /* RoundedImageView.swift */; };
 		3006C55D2338F51900DA501B /* RoundedViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C55C2338F51900DA501B /* RoundedViewProtocol.swift */; };
-		3006C55F2338F5FD00DA501B /* UIView+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C55E2338F5FD00DA501B /* UIView+RoundedBorder.swift */; };
 		3006C5622338F79D00DA501B /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5612338F79D00DA501B /* RoundedView.swift */; };
+		3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C569233A5C7C00DA501B /* RoundedEditImageView.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
@@ -155,8 +155,8 @@
 		3006C5552336E9CD00DA501B /* ProgressTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTracksView.swift; sourceTree = "<group>"; };
 		3006C55A2338F10B00DA501B /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		3006C55C2338F51900DA501B /* RoundedViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViewProtocol.swift; sourceTree = "<group>"; };
-		3006C55E2338F5FD00DA501B /* UIView+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedBorder.swift"; sourceTree = "<group>"; };
 		3006C5612338F79D00DA501B /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		3006C569233A5C7C00DA501B /* RoundedEditImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedEditImageView.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -498,6 +498,7 @@
 		3006C5592338F0C700DA501B /* RoundedImageView */ = {
 			isa = PBXGroup;
 			children = (
+				3006C569233A5C7C00DA501B /* RoundedEditImageView.swift */,
 				3006C55A2338F10B00DA501B /* RoundedImageView.swift */,
 			);
 			path = RoundedImageView;
@@ -524,7 +525,6 @@
 				3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */,
 				3006C5512334FD7200DA501B /* CGRect+Center.swift */,
 				3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */,
-				3006C55E2338F5FD00DA501B /* UIView+RoundedBorder.swift */,
 				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
 				2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */,
 			);
@@ -648,6 +648,7 @@
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
@@ -685,7 +686,6 @@
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
 				3006C55B2338F10B00DA501B /* RoundedImageView.swift in Sources */,
 				3006C55D2338F51900DA501B /* RoundedViewProtocol.swift in Sources */,
-				3006C55F2338F5FD00DA501B /* UIView+RoundedBorder.swift in Sources */,
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
@@ -869,14 +869,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -892,14 +892,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

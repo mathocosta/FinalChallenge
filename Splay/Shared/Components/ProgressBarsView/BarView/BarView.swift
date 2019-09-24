@@ -23,7 +23,7 @@ class BarView: UIView {
     lazy var goalLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .textColor
         label.font = .detailDarkStyle
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -34,7 +34,7 @@ class BarView: UIView {
     lazy var progressLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.textColor = .black
+        label.textColor = .textColor
         label.textAlignment = .right
         label.font = .detailDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false

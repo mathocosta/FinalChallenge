@@ -34,7 +34,7 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         progress = Array(repeating: 0, count: 3)
         super.init(frame: frame)
-        self.backgroundColor = .white
+        self.backgroundColor = .backgroundColor
         setupView()
     }
 

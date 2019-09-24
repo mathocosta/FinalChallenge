@@ -36,7 +36,7 @@ class ProfileDetailsView: UIView {
         label.font = UIFont.sectionDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .textColor
         label.text = self.name
         return label
     }()
@@ -46,7 +46,7 @@ class ProfileDetailsView: UIView {
         label.font = UIFont.detailDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .black
+        label.textColor = .textColor
         label.text = "Nível \(level)"
         return label
     }()
