@@ -12,11 +12,9 @@ class ProfileEditView: UIView {
 
     var profileImageConstrait: NSLayoutConstraint?
 
-    lazy var profileImage: RoundedImageView = {
-        let imageView = RoundedImageView()
+    lazy var editProfileImage: RoundedEditImageView = {
+        let imageView = RoundedEditImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "avatar-placeholder")
-        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -39,6 +37,7 @@ class ProfileEditView: UIView {
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = .actionStyle
         button.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         button.backgroundColor = .systemPink
         button.layer.cornerRadius = Input.height / 2
@@ -112,21 +111,21 @@ class ProfileEditView: UIView {
 
 extension ProfileEditView: CodeView {
     func buildViewHierarchy() {
-        addSubview(profileImage)
+        addSubview(editProfileImage)
         addSubview(nameInput)
         addSubview(emailInput)
         addSubview(saveButton)
     }
 
     func setupConstraints() {
-        profileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileImageConstrait = profileImage.topAnchor.constraint(
+        editProfileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        profileImageConstrait = editProfileImage.topAnchor.constraint(
             equalTo: self.layoutMarginsGuide.topAnchor, constant: 38)
         profileImageConstrait?.isActive = true
-        profileImage.widthAnchor.constraint(equalToConstant: 119).isActive = true
-        profileImage.heightAnchor.constraint(equalToConstant: 119).isActive = true
+        editProfileImage.widthAnchor.constraint(equalToConstant: 119).isActive = true
+        editProfileImage.heightAnchor.constraint(equalToConstant: 119).isActive = true
 
-        nameInput.topAnchor.constraint(equalTo: profileImage.bottomAnchor, constant: 20).isActive = true
+        nameInput.topAnchor.constraint(equalTo: editProfileImage.bottomAnchor, constant: 20).isActive = true
         nameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         nameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         nameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
@@ -135,8 +134,8 @@ extension ProfileEditView: CodeView {
         emailInput.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         emailInput.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         emailInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-        
-        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 31).isActive = true
+
+        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 64).isActive = true
         saveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         saveButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
@@ -144,8 +143,8 @@ extension ProfileEditView: CodeView {
 
     func setupAdditionalConfiguration() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(editProfileImageTapped(_:)))
-        profileImage.addGestureRecognizer(tapGesture)
-        profileImage.isUserInteractionEnabled = true
+        editProfileImage.addGestureRecognizer(tapGesture)
+        editProfileImage.isUserInteractionEnabled = true
     }
 
 }

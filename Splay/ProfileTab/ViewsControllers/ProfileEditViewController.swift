@@ -44,7 +44,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
         profileEditView.nameInput.inputTextField.text = user.name
         profileEditView.emailInput.inputTextField.text = user.email
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
-            profileEditView.profileImage.image = profileImage
+            profileEditView.editProfileImage.imageView.image = profileImage
         }
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
@@ -73,7 +73,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
         
         self.startLoader()
         
-        if let profileImage = profileEditView.profileImage.image,
+        if let profileImage = profileEditView.editProfileImage.imageView.image,
             let imageData = profileImage.pngData() {
             user.photo = imageData
         }
@@ -117,7 +117,6 @@ class ProfileEditViewController: UIViewController, LoaderView {
 extension ProfileEditViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         guard let image = image else { return }
-        profileEditView.profileImage.image = image
+        profileEditView.editProfileImage.imageView.image = image
     }
 }
-

@@ -30,6 +30,16 @@ extension CALayer {
         sliceLayer.path = path
         sliceLayer.lineCap = .round
 
+        let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        pathAnimation.fromValue = 0
+        pathAnimation.toValue = view.progress
+        pathAnimation.duration = 2
+        pathAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        pathAnimation.autoreverses = false
+        pathAnimation.repeatCount = 1
+        
+        sliceLayer.add(pathAnimation, forKey: "line")
+
         layer.addSublayer(trackLayer)
         layer.addSublayer(sliceLayer)
     }

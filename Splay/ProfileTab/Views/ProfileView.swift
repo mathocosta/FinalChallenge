@@ -34,7 +34,7 @@ class ProfileView: UIView {
     override init(frame: CGRect) {
         progress = Array(repeating: 0, count: 3)
         super.init(frame: frame)
-        self.backgroundColor = .blue
+        self.backgroundColor = .white
         setupView()
     }
 
@@ -73,7 +73,6 @@ extension ProfileView: CodeView {
 
         profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         profileDetailsView.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
-        //profileDetailsView.topAnchor.constraint(equalTo: self.topAnchor, constant: 70).isActive = true
         profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
         profileDetailsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
@@ -88,7 +87,6 @@ extension ProfileView: CodeView {
         tracksView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         tracksView.widthAnchor.constraint(equalToConstant: screenBounds.width-105).isActive = true
         tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height-237).isActive = true
-//        trackView.bottomAnchor.constraint(equalTo: progressBars.topAnchor, constant: -60).isActive = true
     }
 
     func setupAdditionalConfiguration() {

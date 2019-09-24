@@ -33,18 +33,20 @@ class ProfileDetailsView: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
+        label.font = UIFont.sectionDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .black
         label.text = self.name
         return label
     }()
 
     lazy var levelLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.detailDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.textColor = .white
+        label.textColor = .black
         label.text = "Nível \(level)"
         return label
     }()
