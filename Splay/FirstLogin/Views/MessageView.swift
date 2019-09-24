@@ -16,6 +16,7 @@ class MessageView: UIView {
 //        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center
         label.font = UIFont.detailLightStyle
+        label.textColor = .textColor
         return label
     }()
 
@@ -38,7 +39,7 @@ class MessageView: UIView {
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
         setupView()
     }
 
