@@ -15,11 +15,6 @@ class UserManager: NSObject {
 
     override init() {
         super.init()
-        // FIXME: Isso quebra se chamar o current antes de criar um usuário, precisa ser colocado em outro lugar
-//        self.loggedUser = UserManager.getLoggedUser()
-//        if self.loggedUser.goalPile == nil || self.loggedUser.goalPile?.isEmpty == true {
-//            GoalsManager.setNewTimedGoals(for: self.loggedUser)
-//        }
     }
 
     /// Retorna o usuário logado no app. Caso não exista, retorna "nil"

@@ -79,6 +79,30 @@ class SessionManager {
         }
     }
 
+    func updateLocallyTeam(of user: User, completion: @escaping (ResultHandler<Bool>)) {
+        let userRecord = user.asCKRecord()
+        if let userTeam = user.team {
+            cloudKitGateway.team(of: userRecord) { (result) in
+                switch result {
+                case .success(let teamRecord):
+                    let teamRecordInfo = teamRecord.recordKeysAndValues()
+                    TeamManager.update(team: userTeam, with: teamRecordInfo)
+                    self.coreDataGateway.save(userTeam) { (result) in
+                        if case .success = result {
+                            completion(.success(true))
+                        } else if case .failure(let error) = result {
+                            completion(.failure(error))
+                        }
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        } else {
+            completion(.success(false))
+        }
+    }
+
     func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
         user.team = team
         updateRegister(of: user, completion: completion)

@@ -41,6 +41,28 @@ class TeamManager: NSObject {
         return team
     }
 
+    static func update(team: Team, with info: [String: Any?]) {
+        if let updatedName = info["name"] as? String {
+            team.name = updatedName
+        }
+
+        if let updatedPoints = info["points"] as? Int32 {
+            team.points = updatedPoints
+        }
+
+        if let updatedImage = info["photo"] as? Data {
+            team.photo = updatedImage
+        }
+
+        if let updatedTeamDescription = info["teamDescription"] as? String {
+            team.teamDescription = updatedTeamDescription
+        }
+
+        if let updatedRecordMetadata = info["recordMetadata"] as? Data {
+            team.recordMetadata = updatedRecordMetadata
+        }
+    }
+
     static func add(_ user: User, to team: Team) {
         team.addToMembers(user)
         TeamManager.updateAmountOfPoints(for: team)

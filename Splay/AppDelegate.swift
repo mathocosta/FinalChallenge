@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 import HealthKit
 
 @UIApplicationMain
@@ -71,6 +72,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         didReceiveRemoteNotification userInfo: [AnyHashable: Any],
         fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
     ) {
-        print("Receive notification")
+        if let notification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) {
+            if notification.category == "team-update" {
+                if let loggedUser = UserManager.getLoggedUser() {
+                    SessionManager.current.updateLocallyTeam(of: loggedUser) { (result) in
+                        if case .failure(let error) = result {
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+            }
+        }
     }
+
 }
