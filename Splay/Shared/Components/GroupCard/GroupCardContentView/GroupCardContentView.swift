@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupCardContentView: UIView, RoundedView {
+class GroupCardContentView: UIView, CustomView {
     
     static let height = 112
 
@@ -71,7 +71,7 @@ extension GroupCardContentView: CodeView {
         
         usersPhotoView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         usersPhotoView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
-        usersPhotoView.widthAnchor.constraint(equalToConstant: 122).isActive = true
+        usersPhotoView.widthAnchor.constraint(equalToConstant: 104).isActive = true
         usersPhotoView.heightAnchor.constraint(equalToConstant: 32.0).isActive = true
     }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GroupCardView: UITableViewCell, RoundedView {
+class GroupCardView: UITableViewCell, CustomView {
     
     static var height = 112 + 8
 

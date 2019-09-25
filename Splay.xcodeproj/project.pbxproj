@@ -64,7 +64,7 @@
 		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
 		2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */; };
 		2BA7B7C6233A568E00134C6E /* GroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C5233A568E00134C6E /* GroupCardView.swift */; };
-		2BA7B7C8233A572F00134C6E /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C7233A572F00134C6E /* RoundedView.swift */; };
+		2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C7233A572F00134C6E /* CustomView.swift */; };
 		2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */; };
 		2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
@@ -152,7 +152,7 @@
 		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		2BA7B7C5233A568E00134C6E /* GroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardView.swift; sourceTree = "<group>"; };
-		2BA7B7C7233A572F00134C6E /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		2BA7B7C7233A572F00134C6E /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardContentView.swift; sourceTree = "<group>"; };
 		2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPhotoView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
@@ -250,7 +250,7 @@
 				275FE87C231D3D6D001695D2 /* Coordinator.swift */,
 				278717F3232001D600A2A481 /* CKManagedObject.swift */,
 				2B86B1EA2331036C00688735 /* LoaderView.swift */,
-				2BA7B7C7233A572F00134C6E /* RoundedView.swift */,
+				2BA7B7C7233A572F00134C6E /* CustomView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -677,7 +677,7 @@
 				278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */,
 				2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
-				2BA7B7C8233A572F00134C6E /* RoundedView.swift in Sources */,
+				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
@@ -909,14 +909,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				DEVELOPMENT_TEAM = VA7DWMQ39T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -932,14 +932,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				DEVELOPMENT_TEAM = VA7DWMQ39T;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

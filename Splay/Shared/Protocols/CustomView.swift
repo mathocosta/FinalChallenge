@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol RoundedView {
+protocol CustomView {
     
 }
 
-extension RoundedView where Self: UIView {
+extension CustomView where Self: UIView {
     func setRoundedLayer(color: UIColor,
                          radius: CGFloat = 10,
                          shadowOppacity: CGFloat = 0.2,
