@@ -39,7 +39,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profileEditView
-        title = "Perfil"
+        title = NSLocalizedString("Profile", comment: "")
 
         profileEditView.nameInput.inputTextField.text = user.name
         profileEditView.emailInput.inputTextField.text = user.email

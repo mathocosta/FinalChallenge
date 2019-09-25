@@ -37,7 +37,7 @@ extension CALayer {
         pathAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         pathAnimation.autoreverses = false
         pathAnimation.repeatCount = 1
-        
+
         sliceLayer.add(pathAnimation, forKey: "line")
 
         layer.addSublayer(trackLayer)

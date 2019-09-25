@@ -29,6 +29,7 @@ class Input: UIView {
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
         textField.font = .detailLightStyle
+        textField.returnKeyType = .done
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
