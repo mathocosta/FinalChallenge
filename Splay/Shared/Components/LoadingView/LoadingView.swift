@@ -20,7 +20,7 @@ class LoadingView: UIView {
     lazy var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.color = UIColor.black
+        view.color = .textColor
         return view
     }()
     

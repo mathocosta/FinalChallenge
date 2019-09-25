@@ -44,20 +44,21 @@ class ProfileEditViewController: UIViewController, LoaderView {
         profileEditView.nameInput.inputTextField.text = user.name
         profileEditView.emailInput.inputTextField.text = user.email
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
-            profileEditView.profileImage.image = profileImage
+            profileEditView.editProfileImage.imageView.image = profileImage
         }
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
+        profileEditView.onSaveProfile = saveButtonTapped
 
-        let saveBarButton = UIBarButtonItem(
-            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
-
-        navigationItem.rightBarButtonItem = saveBarButton
+//        let saveBarButton = UIBarButtonItem(
+//            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
+//
+//        navigationItem.rightBarButtonItem = saveBarButton
 
     }
 
     // MARK: - Actions
-    @objc func saveBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func saveButtonTapped() {
         let userDefaults = UserDefaults.standard
         if !userDefaults.isRegistrationComplete {
             userDefaults.isRegistrationComplete = true
@@ -72,7 +73,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
         
         self.startLoader()
         
-        if let profileImage = profileEditView.profileImage.image,
+        if let profileImage = profileEditView.editProfileImage.imageView.image,
             let imageData = profileImage.pngData() {
             user.photo = imageData
         }
@@ -106,8 +107,8 @@ class ProfileEditViewController: UIViewController, LoaderView {
         UserManager.logout(user: user)
     }
 
-    private func showImagePicker(sender: UIButton) {
-        imagePicker.present(from: sender)
+    private func showImagePicker() {
+        imagePicker.present(from: self.view)
     }
 
 }
@@ -116,7 +117,6 @@ class ProfileEditViewController: UIViewController, LoaderView {
 extension ProfileEditViewController: ImagePickerDelegate {
     func didSelect(image: UIImage?) {
         guard let image = image else { return }
-        profileEditView.profileImage.image = image
+        profileEditView.editProfileImage.imageView.image = image
     }
 }
-

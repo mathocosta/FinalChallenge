@@ -6,6 +6,8 @@
   Copyright © 2019 The Rest of Us. All rights reserved.
 */
 "Quit" = "Sair";
+"Save" = "Salvar";
+"Edit" = "Editar";
 "Error" = "Erro";
 "Join Team" = "Entrar no time";
 "Profile" = "Perfil";

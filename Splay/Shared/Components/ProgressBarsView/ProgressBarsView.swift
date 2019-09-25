@@ -10,27 +10,17 @@ import UIKit
 
 class ProgressBarsView: UIView {
 
-    lazy var firstBar: BarView = {
-        let view = BarView(frame: .zero, progress: 0.5)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    var bars: [BarView] = []
+    var amountOfBars: Int = 0
 
-    lazy var secondBar: BarView = {
-        let view = BarView(frame: .zero, progress: 0.8)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    lazy var thirdBar: BarView = {
-        let view = BarView(frame: .zero, progress: 0.2)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-
-    override init(frame: CGRect) {
+    init(frame: CGRect, amount: Int) {
         super.init(frame: frame)
+        self.amountOfBars = amount
         setupView()
+    }
+
+    func setProgress(index: Int, value: CGFloat) {
+        bars[index].progress = value
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -41,26 +31,26 @@ class ProgressBarsView: UIView {
 
 extension ProgressBarsView: CodeView {
     func buildViewHierarchy() {
-        addSubview(firstBar)
-        addSubview(secondBar)
-        addSubview(thirdBar)
+        for _ in 1...amountOfBars {
+            let view = BarView(frame: .zero, progress: 0.8)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            bars.append(view)
+            addSubview(view)
+        }
     }
 
     func setupConstraints() {
-        firstBar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        firstBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        firstBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        firstBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
-
-        secondBar.topAnchor.constraint(equalTo: firstBar.bottomAnchor, constant: 31).isActive = true
-        secondBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        secondBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        secondBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
-
-        thirdBar.topAnchor.constraint(equalTo: secondBar.bottomAnchor, constant: 31).isActive = true
-        thirdBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        thirdBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        thirdBar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
+        for index in 0..<bars.count {
+            let bar = bars[index]
+            if index == 0 {
+                bar.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            } else {
+                bar.topAnchor.constraint(equalTo: bars[index-1].bottomAnchor, constant: 12).isActive = true
+            }
+            bar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+            bar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+            bar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
+        }
     }
 
     func setupAdditionalConfiguration() {

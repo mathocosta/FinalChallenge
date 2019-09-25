@@ -68,6 +68,15 @@
 		2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */; };
 		2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
+		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
+		3006C5502334FA2B00DA501B /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54F2334FA2B00DA501B /* TrackView.swift */; };
+		3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5512334FD7200DA501B /* CGRect+Center.swift */; };
+		3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */; };
+		3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5552336E9CD00DA501B /* ProgressTracksView.swift */; };
+		3006C55B2338F10B00DA501B /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C55A2338F10B00DA501B /* RoundedImageView.swift */; };
+		3006C55D2338F51900DA501B /* RoundedViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C55C2338F51900DA501B /* RoundedViewProtocol.swift */; };
+		3006C5622338F79D00DA501B /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5612338F79D00DA501B /* RoundedView.swift */; };
+		3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C569233A5C7C00DA501B /* RoundedEditImageView.swift */; };
 		303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */; };
 		303F5A8F231D619F0054587C /* PointManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A8E231D619F0054587C /* PointManager.swift */; };
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
@@ -147,6 +156,15 @@
 		2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardContentView.swift; sourceTree = "<group>"; };
 		2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPhotoView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
+		3006C54F2334FA2B00DA501B /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
+		3006C5512334FD7200DA501B /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
+		3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+TrackOutline.swift"; sourceTree = "<group>"; };
+		3006C5552336E9CD00DA501B /* ProgressTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTracksView.swift; sourceTree = "<group>"; };
+		3006C55A2338F10B00DA501B /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		3006C55C2338F51900DA501B /* RoundedViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViewProtocol.swift; sourceTree = "<group>"; };
+		3006C5612338F79D00DA501B /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		3006C569233A5C7C00DA501B /* RoundedEditImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedEditImageView.swift; sourceTree = "<group>"; };
 		303F5A8C231D617E0054587C /* Calendar+GetUpdateTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+GetUpdateTimes.swift"; sourceTree = "<group>"; };
 		303F5A8E231D619F0054587C /* PointManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointManager.swift; sourceTree = "<group>"; };
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -404,8 +422,10 @@
 		2B7DC2B3232291C8009C3F54 /* ProgressBarsView */ = {
 			isa = PBXGroup;
 			children = (
+				3006C54E2334FA0B00DA501B /* TrackView */,
 				2B7DC2B62322930F009C3F54 /* BarView */,
 				2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */,
+				3006C5552336E9CD00DA501B /* ProgressTracksView.swift */,
 			);
 			path = ProgressBarsView;
 			sourceTree = "<group>";
@@ -496,9 +516,37 @@
 		2BB4741A232001550099D4EB /* ProfileDetailsView */ = {
 			isa = PBXGroup;
 			children = (
+				3006C5602338F6DC00DA501B /* RoundedView */,
+				3006C5592338F0C700DA501B /* RoundedImageView */,
 				2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */,
 			);
 			path = ProfileDetailsView;
+			sourceTree = "<group>";
+		};
+		3006C54E2334FA0B00DA501B /* TrackView */ = {
+			isa = PBXGroup;
+			children = (
+				3006C54F2334FA2B00DA501B /* TrackView.swift */,
+			);
+			path = TrackView;
+			sourceTree = "<group>";
+		};
+		3006C5592338F0C700DA501B /* RoundedImageView */ = {
+			isa = PBXGroup;
+			children = (
+				3006C569233A5C7C00DA501B /* RoundedEditImageView.swift */,
+				3006C55A2338F10B00DA501B /* RoundedImageView.swift */,
+			);
+			path = RoundedImageView;
+			sourceTree = "<group>";
+		};
+		3006C5602338F6DC00DA501B /* RoundedView */ = {
+			isa = PBXGroup;
+			children = (
+				3006C55C2338F51900DA501B /* RoundedViewProtocol.swift */,
+				3006C5612338F79D00DA501B /* RoundedView.swift */,
+			);
+			path = RoundedView;
 			sourceTree = "<group>";
 		};
 		303F5A8B231D61640054587C /* Extensions */ = {
@@ -510,6 +558,9 @@
 				309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */,
 				2797D615232B1A8800A33470 /* UserDefaults+keys.swift */,
 				2797D62B232D76A100A33470 /* CKRecordExtension.swift */,
+				3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */,
+				3006C5512334FD7200DA501B /* CGRect+Center.swift */,
+				3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */,
 				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
 				2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */,
 			);
@@ -628,11 +679,14 @@
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* RoundedView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
+				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
+				3006C5502334FA2B00DA501B /* TrackView.swift in Sources */,
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
@@ -646,6 +700,8 @@
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
+				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
+				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
@@ -663,8 +719,11 @@
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
+				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
 				2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
+				3006C55B2338F10B00DA501B /* RoundedImageView.swift in Sources */,
+				3006C55D2338F51900DA501B /* RoundedViewProtocol.swift in Sources */,
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
@@ -675,6 +734,7 @@
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
+				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
 				2797D626232D3F3900A33470 /* MessageViewController.swift in Sources */,
 				27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */,
@@ -849,14 +909,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -872,14 +932,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Splay/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.paulo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

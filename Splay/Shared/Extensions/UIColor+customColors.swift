@@ -23,11 +23,11 @@ extension UIColor {
     }
     
     @nonobjc class var backgroundColor: UIColor {
-        return UIColor(named: "backgroundColor")!
+        return UIColor(named: "backgroundColor") ?? .white
     }
-    
+
     @nonobjc class var textColor: UIColor {
-        return UIColor(named: "textColor")!
+        return UIColor(named: "textColor") ?? .black
     }
-    
+
 }
