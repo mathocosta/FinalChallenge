@@ -10,6 +10,13 @@ import UIKit
 
 class GroupCardContentView: UIView, CustomView {
     
+    var team: Team? {
+        didSet {
+            titleLabel.text = team?.name
+            detailLabel.text = team?.teamDescription
+        }
+    }
+    
     static let height = 112
 
     lazy var titleLabel: UILabel = {

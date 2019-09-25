@@ -14,7 +14,8 @@ class TeamListView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(GroupCardView.self, forCellReuseIdentifier: "GroupCardView")
-
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .backgroundColor
         return tableView
     }()
 

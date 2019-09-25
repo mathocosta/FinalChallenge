@@ -114,7 +114,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
             team = teams[indexPath.row]
         }
 
-//        cell.titleLabel.text = team.name
+        cell.team = team
 
         return cell
     }
