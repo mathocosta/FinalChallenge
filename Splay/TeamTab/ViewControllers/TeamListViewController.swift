@@ -103,7 +103,9 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCardView", for: indexPath) as? GroupCardView else {
+                return UITableViewCell()
+        }
 
         let team: Team
         if isFiltering {
@@ -112,9 +114,13 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
             team = teams[indexPath.row]
         }
 
-        cell.textLabel?.text = team.name
+//        cell.titleLabel.text = team.name
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(GroupCardView.height)
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

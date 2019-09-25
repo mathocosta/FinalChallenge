@@ -13,7 +13,7 @@ class TeamListView: UIView {
     let resultsTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ResultsCell")
+        tableView.register(GroupCardView.self, forCellReuseIdentifier: "GroupCardView")
 
         return tableView
     }()
