@@ -9,17 +9,15 @@
 import UIKit
 
 class LoadingViewPopTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromViewController = transitionContext.viewController(forKey: .from) as? LoadingViewController,
-            let _ = fromViewController.view else { return }
-        
-        let containerView = transitionContext.containerView
-        
+            fromViewController.view != nil else { return }
+
         fromViewController.backdropView.alpha = 1
 //        fromViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0)
         fromViewController.activityIndicator.alpha = 1
@@ -28,7 +26,7 @@ class LoadingViewPopTransition: NSObject, UIViewControllerAnimatedTransitioning 
             fromViewController.backdropView.alpha = 0
 //            fromViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
             fromViewController.activityIndicator.alpha = 0
-        }) { (true) in
+        }) { (_) in
             transitionContext.completeTransition(true)
         }
     }

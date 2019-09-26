@@ -21,13 +21,15 @@ class Input: UIView {
     lazy var inputLabel: UILabel = {
         let label = UILabel()
         label.text = self.label
-        label.font = UIFont.systemFont(ofSize: 18.0)
+        label.font = .listItemLightStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
+        textField.font = .detailLightStyle
+        textField.returnKeyType = .done
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()

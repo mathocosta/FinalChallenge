@@ -10,12 +10,12 @@ import UIKit
 import CoreData
 
 class TeamDetailsViewController: UIViewController, LoaderView {
-    
+
     var loadingView: LoadingView = {
         let view = LoadingView()
         return view
     }()
-    
+
     // MARK: - Properties
     private let teamDetailsView: TeamDetailsView
     private let team: Team
@@ -52,9 +52,9 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
     // MARK: - Actions
     @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
-        
+
         self.startLoader()
-        
+
         guard let loggedUser = UserManager.getLoggedUser() else { return }
         SessionManager.current.remove(user: loggedUser, from: team) { (result) in
             switch result {

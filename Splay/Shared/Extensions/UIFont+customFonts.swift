@@ -9,61 +9,61 @@
 import UIKit
 
 extension UIFont {
-    
+
     class var actionStyle: UIFont {
-        return UIFont(name: "Oswald-Medium", size: 20.0)!
+        return UIFont(name: "Oswald-Medium", size: 20.0) ?? UIFont()
     }
-    
+
     class var itemCondensedDarkStyle: UIFont {
-        return UIFont(name: "Oswald-ExtraLight", size: 20.0)!
+        return UIFont(name: "Oswald-ExtraLight", size: 20.0) ?? UIFont()
     }
-    
+
     class var cardStyle: UIFont {
-        return UIFont(name: "Oswald-Medium", size: 18.0)!
+        return UIFont(name: "Oswald-Medium", size: 18.0) ?? UIFont()
     }
-    
+
     class var sectionDarkStyle: UIFont {
-        return UIFont(name: "Oswald-Medium", size: 18.0)!
+        return UIFont(name: "Oswald-Medium", size: 18.0) ?? UIFont()
     }
-    
+
     class var sectionLightStyle: UIFont {
-        return UIFont(name: "Oswald-Medium", size: 18.0)!
+        return UIFont(name: "Oswald-Medium", size: 18.0) ?? UIFont()
     }
-    
+
     class var listItemLightStyle: UIFont {
-        return UIFont(name: "Avenir-Roman", size: 18.0)!
+        return UIFont(name: "Avenir-Roman", size: 18.0) ?? UIFont()
     }
-    
+
     class var listItemDarkStyle: UIFont {
-        return UIFont(name: "Avenir-Roman", size: 18.0)!
+        return UIFont(name: "Avenir-Roman", size: 18.0) ?? UIFont()
     }
-    
+
     class var detailCondensedLightStyle: UIFont {
-        return UIFont(name: "Oswald-Light", size: 18.0)!
+        return UIFont(name: "Oswald-Light", size: 18.0) ?? UIFont()
     }
-    
+
     class var detailCondensedDarkStyle: UIFont {
-        return UIFont(name: "Oswald-Light", size: 18.0)!
+        return UIFont(name: "Oswald-Light", size: 18.0) ?? UIFont()
     }
-    
+
     class var detailLightStyle: UIFont {
-        return UIFont(name: "Avenir-Light", size: 16.0)!
+        return UIFont(name: "Avenir-Light", size: 16.0) ?? UIFont()
     }
-    
+
     class var detailDarkStyle: UIFont {
-        return UIFont(name: "Avenir-Light", size: 16.0)!
+        return UIFont(name: "Avenir-Light", size: 16.0) ?? UIFont()
     }
-    
+
     class var cardDetailStyle: UIFont {
-        return UIFont(name: "Oswald-ExtraLight", size: 16.0)!
+        return UIFont(name: "Oswald-ExtraLight", size: 16.0) ?? UIFont()
     }
-    
+
     class var listItemDetailDarkStyle: UIFont {
-        return UIFont(name: "Avenir-Light", size: 12.0)!
+        return UIFont(name: "Avenir-Light", size: 12.0) ?? UIFont()
     }
-    
+
     class var listItemDetailLightStyle: UIFont {
-        return UIFont(name: "Avenir-Light", size: 12.0)!
+        return UIFont(name: "Avenir-Light", size: 12.0) ?? UIFont()
     }
-    
+
 }

@@ -18,12 +18,12 @@ class ProfileDetailsView: UIView {
 
     var level: Int {
         didSet {
-            levelLabel.text = "\(level) pontos"
+            levelLabel.text = "\(level) "+NSLocalizedString("Points", comment: "")
         }
     }
 
-    lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    lazy var imageView: RoundedImageView = {
+        let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "avatar-placeholder")
         imageView.contentMode = .scaleAspectFill
@@ -33,16 +33,20 @@ class ProfileDetailsView: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
+        label.font = UIFont.sectionDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.textColor = .textColor
         label.text = self.name
         return label
     }()
 
     lazy var levelLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.detailDarkStyle
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
+        label.textColor = .textColor
         label.text = "Nível \(level)"
         return label
     }()

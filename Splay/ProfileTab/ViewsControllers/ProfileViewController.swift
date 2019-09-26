@@ -45,15 +45,25 @@ class ProfileViewController: UIViewController {
     }
 
     func setProgressBars() {
-        let currentGoals = GoalsManager.currentTimedGoals(of: user)
+        let currentGoals = GoalsManager.currentTimedGoals(of: user).sorted { (g1, g2) -> Bool in
+            return g1.id < g2.id
+        }
         let barsView = profileView.progressBars
-        let progressBars = [barsView.firstBar, barsView.secondBar, barsView.thirdBar]
+        let tracksView = profileView.tracksView
+        let colors: [UIColor] = [.systemPink, .systemBlue, .systemRed, .systemGreen]
         for (index, goal) in currentGoals.enumerated() {
-            let bar = progressBars[index]
+            let bar = barsView.bars[index]
+            let track = tracksView.tracks[index]
+            let color = colors[index%colors.count]
             GoalsManager.progress(for: user, on: goal) { (amount, required) in
                 DispatchQueue.main.async {
-                    bar.label.text = goal.title
-                    bar.progress = CGFloat(amount > required ? 1.0 : amount / required)
+                    let progress = CGFloat(amount > required ? 1.0 : amount / required)
+                    bar.goalLabel.text = goal.title
+                    bar.progressLabel.text = String.init(format: "%.0f/%.0f", amount, required)
+                    bar.goalColor.backgroundColor = color
+                    track.trackColor = color
+                    bar.progress = progress
+                    track.progress = progress
                 }
             }
         }

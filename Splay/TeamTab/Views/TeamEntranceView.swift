@@ -56,7 +56,7 @@ class TeamEntranceView: UIView {
     // MARK: - Lifecycle
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = .backgroundColor
 
         setupView()
     }

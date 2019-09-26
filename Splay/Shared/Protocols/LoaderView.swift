@@ -16,7 +16,7 @@ extension LoaderView {
     func startLoader() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
             let window = appDelegate.window else { return }
-        
+
         loadingView.frame = window.frame
         window.addSubview(loadingView)
         loadingView.activityIndicatorView.startAnimating()

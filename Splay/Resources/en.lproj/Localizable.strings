@@ -6,7 +6,14 @@
   Copyright © 2019 The Rest of Us. All rights reserved.
 */
 "Quit" = "Quit";
+"Save" = "Save";
+"Edit" = "Edit";
 "Error" = "Error";
+"Take Photo" = "Take Photo";
+"Camera Roll" = "Camera Roll";
+"Gallery" = "Gallery";
+"Cancel" = "Cancel";
+"Points" = "Points";
 "Join Team" = "Join Team";
 "Profile" = "Profile";
 "Teams" = "Teams";

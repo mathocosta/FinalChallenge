@@ -9,7 +9,7 @@
 import UIKit
 
 class LoadingView: UIView {
-    
+
     lazy var backdropView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.3)
@@ -20,10 +20,10 @@ class LoadingView: UIView {
     lazy var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.color = UIColor.black
+        view.color = .textColor
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         activityIndicatorView.startAnimating()
@@ -33,7 +33,7 @@ class LoadingView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func layoutSubviews() {
         setupView()
     }

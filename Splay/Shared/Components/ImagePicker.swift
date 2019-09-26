@@ -43,19 +43,23 @@ class ImagePicker: NSObject {
     func present(from sourceView: UIView) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        if let action = action(for: .camera, title: "Tirar uma foto") {
+        if let action = action(for: .camera, title: NSLocalizedString("Take Photo", comment: "")) {
             alertController.addAction(action)
         }
 
-        if let action = action(for: .savedPhotosAlbum, title: "Rolo da câmera") {
+        if let action = action(for: .savedPhotosAlbum, title: NSLocalizedString("Camera Roll", comment: "")) {
             alertController.addAction(action)
         }
 
-        if let action = action(for: .photoLibrary, title: "Galeria") {
+        if let action = action(for: .photoLibrary, title: NSLocalizedString("Gallery", comment: "")) {
             alertController.addAction(action)
         }
 
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(
+            title: NSLocalizedString("Cancel", comment: ""),
+            style: .cancel,
+            handler: nil)
+        )
 
         if UIDevice.current.userInterfaceIdiom == .pad {
             alertController.popoverPresentationController?.sourceView = sourceView
