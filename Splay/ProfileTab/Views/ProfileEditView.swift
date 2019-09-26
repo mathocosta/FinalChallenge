@@ -22,7 +22,6 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
-        input.inputTextField.delegate = self
         return input
     }()
 
@@ -30,7 +29,6 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: NSLocalizedString("Email", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .emailAddress
-        input.inputTextField.delegate = self
         return input
     }()
 
@@ -149,12 +147,12 @@ extension ProfileEditView: CodeView {
 
 }
 
-extension ProfileEditView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+//extension ProfileEditView: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//}
 
 extension ProfileEditView: LoaderView {
     var loadingView: LoadingView {

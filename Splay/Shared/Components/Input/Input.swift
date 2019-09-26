@@ -30,6 +30,7 @@ class Input: UIView {
         let textField = UITextField()
         textField.font = .detailLightStyle
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
 
@@ -77,5 +78,12 @@ extension Input: CodeView {
 
     func setupAdditionalConfiguration() {
 
+    }
+}
+
+extension Input: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

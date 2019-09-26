@@ -48,6 +48,7 @@
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
 		2B417FA02320006F002AD09D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9F2320006F002AD09D /* ProfileView.swift */; };
+		2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */; };
 		2B6E354123229C520092A481 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E354023229C520092A481 /* Input.swift */; };
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
@@ -136,6 +137,7 @@
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2B417F9F2320006F002AD09D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		2B6E354023229C520092A481 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
@@ -383,6 +385,14 @@
 			path = HealthKit;
 			sourceTree = "<group>";
 		};
+		2B636714233CDAB300CFC7B9 /* CustomTextView */ = {
+			isa = PBXGroup;
+			children = (
+				2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */,
+			);
+			path = CustomTextView;
+			sourceTree = "<group>";
+		};
 		2B6E353F23229C080092A481 /* Input */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +513,7 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B636714233CDAB300CFC7B9 /* CustomTextView */,
 				2BA7B7C4233A567100134C6E /* GroupCard */,
 				2B86B1E72331008500688735 /* LoadingView */,
 				2B6E353F23229C080092A481 /* Input */,
@@ -717,6 +728,7 @@
 				27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
+				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
