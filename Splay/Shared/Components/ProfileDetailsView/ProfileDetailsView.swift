@@ -18,7 +18,7 @@ class ProfileDetailsView: UIView {
 
     var level: Int {
         didSet {
-            levelLabel.text = "\(level) pontos"
+            levelLabel.text = "\(level) "+NSLocalizedString("Points", comment: "")
         }
     }
 

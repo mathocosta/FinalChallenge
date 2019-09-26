@@ -21,9 +21,11 @@ final class ProfileTabCoordinator: Coordinator {
         self.navigationController = navigationController
         self.navigationController.navigationBar.isTranslucent = false
         self.navigationController.navigationBar.barTintColor = UIColor.backgroundColor
+        self.navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController.navigationBar.shadowImage = UIImage()
         self.navigationController.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.font: UIFont.sectionLightStyle
-        ]
+        ]Profi
         self.navigationController.tabBarItem = UITabBarItem(
             title: "Profile",
             image: UIImage(named: "profile-unselected"),

@@ -11,7 +11,7 @@ import UIKit
 class TrackView: UIView {
     static let strokeWidth = 14
 
-    var progress: CGFloat = 1 {
+    var progress: CGFloat = 0 {
         didSet {
             layoutSubviews()
         }
