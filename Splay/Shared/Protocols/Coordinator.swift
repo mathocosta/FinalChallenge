@@ -22,10 +22,10 @@ extension Coordinator {
         vc.modalPresentationStyle = .overFullScreen
         navController.present(vc, animated: false, completion: nil)
     }
-    
+
     func dismissLoadingViewController() {
         guard let navController = rootViewController as? UINavigationController else { return }
-        
+
         navController.topViewController?.dismiss(animated: true, completion: nil)
     }
 }

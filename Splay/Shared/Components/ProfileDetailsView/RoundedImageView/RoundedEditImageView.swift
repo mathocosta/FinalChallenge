@@ -9,7 +9,7 @@
 import UIKit
 
 class RoundedEditImageView: UIView {
-    
+
     lazy var editLabel: UILabel = {
         let label = UILabel()
         label.text = NSLocalizedString("Edit", comment: "")
@@ -21,7 +21,7 @@ class RoundedEditImageView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     lazy var imageView: RoundedImageView = {
         let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIFont {
-    
+
     class var actionStyle: UIFont {
         return UIFont(name: "Oswald-Medium", size: 20.0) ?? UIFont()
     }
@@ -65,5 +65,5 @@ extension UIFont {
     class var listItemDetailLightStyle: UIFont {
         return UIFont(name: "Avenir-Light", size: 12.0) ?? UIFont()
     }
-    
+
 }

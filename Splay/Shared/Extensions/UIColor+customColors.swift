@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIColor {
-    
+
     @nonobjc class var fadedRed: UIColor {
       return UIColor(red: 223.0 / 255.0, green: 58.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0)
     }

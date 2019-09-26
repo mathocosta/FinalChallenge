@@ -9,7 +9,7 @@
 import UIKit
 
 class LoadingViewController: UIViewController {
-    
+
     lazy var backdropView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -60,7 +60,11 @@ extension LoadingViewController: CodeView {
 }
 
 extension LoadingViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         return LoadingViewPushTransition()
     }
 

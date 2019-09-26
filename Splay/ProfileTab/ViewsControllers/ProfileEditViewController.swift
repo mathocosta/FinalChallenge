@@ -9,7 +9,7 @@
 import UIKit
 
 class ProfileEditViewController: UIViewController, LoaderView {
-    
+
     var loadingView: LoadingView = {
         let view = LoadingView()
         return view
@@ -65,14 +65,14 @@ class ProfileEditViewController: UIViewController, LoaderView {
             UserManager.changeGoals(for: user)
             userDefaults.isFirstLogin = false
         }
-        
+
 //        self.coordinator?.showLoadingViewController()
 //        let vc = LoadingViewController()
 //        vc.modalPresentationStyle = .fullScreen
 //        self.present(vc, animated: true, completion: nil)
-        
+
         self.startLoader()
-        
+
         if let profileImage = profileEditView.editProfileImage.imageView.image,
             let imageData = profileImage.pngData() {
             user.photo = imageData

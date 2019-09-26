@@ -9,7 +9,7 @@
 import UIKit
 
 class MessageViewController: UIViewController, LoaderView {
-    
+
     var loadingView: LoadingView = {
         let view = LoadingView()
         return view
@@ -43,7 +43,7 @@ class MessageViewController: UIViewController, LoaderView {
 
     private func actionOnConfirmation() {
         let userDefaults = UserDefaults.standard
-        
+
         self.startLoader()
 
         switch contentType {
