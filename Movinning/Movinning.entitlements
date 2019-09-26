@@ -10,7 +10,7 @@
 	<array/>
 	<key>com.apple.developer.icloud-container-identifiers</key>
 	<array>
-		<string>iCloud.com.thalia.CloudKit-Study</string>
+		<string>iCloud.academy.rest-of-us.Splay</string>
 	</array>
 	<key>com.apple.developer.icloud-services</key>
 	<array>

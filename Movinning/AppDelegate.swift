@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        CoreStataStore.saveContext()
+        CoreDataStore.saveContext()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        CoreStataStore.saveContext()
+        CoreDataStore.saveContext()
     }
 
 }

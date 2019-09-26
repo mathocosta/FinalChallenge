@@ -1,5 +1,5 @@
 //
-//  CoreStataStore.swift
+//  CoreDataStore.swift
 //  FinalChallenge
 //
 //  Created by Matheus Oliveira Costa on 02/09/19.
@@ -9,9 +9,9 @@
 import Foundation
 import CoreData
 
-class CoreStataStore: NSObject {
+class CoreDataStore: NSObject {
     static var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Splay")
+        let container = NSPersistentContainer(name: "Movinning")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 print("Unresolved error \(error), \(error.userInfo)")

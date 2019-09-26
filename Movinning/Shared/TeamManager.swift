@@ -12,7 +12,7 @@ import CoreData
 class TeamManager: NSObject {
     @discardableResult
     static func newTeam(named name: String, createdBy user: User) -> Team {
-        let team = Team(context: CoreStataStore.context)
+        let team = Team(context: CoreDataStore.context)
         team.id = UUID()
         team.name = name
         team.points = 0
@@ -21,7 +21,7 @@ class TeamManager: NSObject {
     }
 
     static func createTeam(with info: [String: Any?]) -> Team {
-        let team = Team(context: CoreStataStore.context)
+        let team = Team(context: CoreDataStore.context)
         team.id = (info["id"] as? UUID) ?? UUID()
         team.recordMetadata = info["recordMetadata"] as? Data
         team.name = info["name"] as? String
@@ -52,11 +52,11 @@ class TeamManager: NSObject {
 
     static func update(recordMetadata: Data, of team: Team) {
         team.recordMetadata = recordMetadata
-        CoreStataStore.saveContext()
+        CoreDataStore.saveContext()
     }
 
     static func remove(_ team: Team) {
-        CoreStataStore.context.delete(team)
+        CoreDataStore.context.delete(team)
     }
 
     static func validateAllTeams() {
@@ -79,13 +79,13 @@ class TeamManager: NSObject {
             x + Int(y.points)
         })
         team.points = Int32(teamPoints)
-        CoreStataStore.saveContext()
+        CoreDataStore.saveContext()
         return teamPoints
     }
 
     static func allTeams() -> [Team] {
         let request = NSFetchRequest<Team>(entityName: "Team")
-        let teams = CoreStataStore.fetch(request)
+        let teams = CoreDataStore.fetch(request)
         return teams
     }
 }

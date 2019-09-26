@@ -14,7 +14,7 @@
 		275FE87B231D3D46001695D2 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87A231D3D46001695D2 /* CodeView.swift */; };
 		275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87C231D3D6D001695D2 /* Coordinator.swift */; };
 		275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE87F231D3DD2001695D2 /* AppCoordinator.swift */; };
-		275FE886231D3ECE001695D2 /* CoreStataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreStataStore.swift */; };
+		275FE886231D3ECE001695D2 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE885231D3ECE001695D2 /* CoreDataStore.swift */; };
 		275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE887231D4CBD001695D2 /* HealthStoreManager.swift */; };
 		275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275FE88B231D55CC001695D2 /* HealthKit.framework */; };
 		276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */; };
@@ -40,7 +40,7 @@
 		2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D629232D480600A33470 /* MessageViewContent.swift */; };
 		2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D62B232D76A100A33470 /* CKRecordExtension.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
-		27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */; };
+		27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */; };
 		27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A5B23305DB9009E2D6B /* Localizable.strings */; };
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
@@ -106,7 +106,7 @@
 
 /* Begin PBXFileReference section */
 		273D233E2327E0AC003147DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
-		275FE85F231D3664001695D2 /* Splay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Splay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		275FE85F231D3664001695D2 /* Movinning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movinning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		275FE86C231D3666001695D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		275FE86F231D3666001695D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		275FE87A231D3D46001695D2 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		275FE87C231D3D6D001695D2 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		275FE87F231D3DD2001695D2 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		275FE885231D3ECE001695D2 /* CoreStataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStataStore.swift; sourceTree = "<group>"; };
+		275FE885231D3ECE001695D2 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		275FE887231D4CBD001695D2 /* HealthStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreManager.swift; sourceTree = "<group>"; };
 		275FE88B231D55CC001695D2 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Team+CKManagedObject.swift"; sourceTree = "<group>"; };
@@ -129,6 +129,7 @@
 		278717FE23207FEA00A2A481 /* TeamDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailsView.swift; sourceTree = "<group>"; };
 		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
 		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
+		278A03E6233CF4CD00AF1840 /* Movinning.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Movinning.entitlements; sourceTree = "<group>"; };
 		2797D615232B1A8800A33470 /* UserDefaults+keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+keys.swift"; sourceTree = "<group>"; };
 		2797D617232B29EA00A33470 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2797D61A232BBDD300A33470 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -141,7 +142,6 @@
 		2797D62B232D76A100A33470 /* CKRecordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
 		27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
-		27EE5A49233051DB009E2D6B /* Splay.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Splay.entitlements; sourceTree = "<group>"; };
 		27EE5A5A23305DB9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		27EE5A5C23305DD2009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		27EE5A6B23306325009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		275FE856231D3664001695D2 = {
 			isa = PBXGroup;
 			children = (
-				275FE861231D3664001695D2 /* Splay */,
+				275FE861231D3664001695D2 /* Movinning */,
 				57FF126C233CE52C00380A88 /* MovinningTests */,
 				57FF127A233CE53D00380A88 /* MovinningUITests */,
 				275FE860231D3664001695D2 /* Products */,
@@ -235,14 +235,14 @@
 		275FE860231D3664001695D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				275FE85F231D3664001695D2 /* Splay.app */,
+				275FE85F231D3664001695D2 /* Movinning.app */,
 				57FF126B233CE52C00380A88 /* MovinningTests.xctest */,
 				57FF1279233CE53D00380A88 /* MovinningUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		275FE861231D3664001695D2 /* Splay */ = {
+		275FE861231D3664001695D2 /* Movinning */ = {
 			isa = PBXGroup;
 			children = (
 				2797D619232B2F6C00A33470 /* Resources */,
@@ -253,10 +253,10 @@
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
 				275FE87F231D3DD2001695D2 /* AppCoordinator.swift */,
 				275FE871231D3666001695D2 /* Info.plist */,
-				27EE5A49233051DB009E2D6B /* Splay.entitlements */,
-				27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */,
+				278A03E6233CF4CD00AF1840 /* Movinning.entitlements */,
+				27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */,
 			);
-			path = Splay;
+			path = Movinning;
 			sourceTree = "<group>";
 		};
 		275FE878231D3D33001695D2 /* Shared */ = {
@@ -402,7 +402,7 @@
 		2797D630232E730C00A33470 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				275FE885231D3ECE001695D2 /* CoreStataStore.swift */,
+				275FE885231D3ECE001695D2 /* CoreDataStore.swift */,
 				278717ED231F0AD200A2A481 /* CoreDataGateway.swift */,
 			);
 			path = CoreData;
@@ -595,9 +595,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		275FE85E231D3664001695D2 /* Splay */ = {
+		275FE85E231D3664001695D2 /* Movinning */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "Splay" */;
+			buildConfigurationList = 275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "Movinning" */;
 			buildPhases = (
 				275FE85B231D3664001695D2 /* Sources */,
 				275FE85C231D3664001695D2 /* Frameworks */,
@@ -608,9 +608,9 @@
 			);
 			dependencies = (
 			);
-			name = Splay;
+			name = Movinning;
 			productName = FinalChallenge;
-			productReference = 275FE85F231D3664001695D2 /* Splay.app */;
+			productReference = 275FE85F231D3664001695D2 /* Movinning.app */;
 			productType = "com.apple.product-type.application";
 		};
 		57FF126A233CE52C00380A88 /* MovinningTests */ = {
@@ -677,7 +677,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 275FE85A231D3664001695D2 /* Build configuration list for PBXProject "Splay" */;
+			buildConfigurationList = 275FE85A231D3664001695D2 /* Build configuration list for PBXProject "Movinning" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -691,7 +691,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				275FE85E231D3664001695D2 /* Splay */,
+				275FE85E231D3664001695D2 /* Movinning */,
 				57FF126A233CE52C00380A88 /* MovinningTests */,
 				57FF1278233CE53D00380A88 /* MovinningUITests */,
 			);
@@ -797,7 +797,7 @@
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
 				2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */,
-				27EE5A4A233051DB009E2D6B /* Splay.xcdatamodeld in Sources */,
+				27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
@@ -810,7 +810,7 @@
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
-				275FE886231D3ECE001695D2 /* CoreStataStore.swift in Sources */,
+				275FE886231D3ECE001695D2 /* CoreDataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
 				2B86B1E92331009C00688735 /* LoadingView.swift in Sources */,
@@ -845,12 +845,12 @@
 /* Begin PBXTargetDependency section */
 		57FF1271233CE52C00380A88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 275FE85E231D3664001695D2 /* Splay */;
+			target = 275FE85E231D3664001695D2 /* Movinning */;
 			targetProxy = 57FF1270233CE52C00380A88 /* PBXContainerItemProxy */;
 		};
 		57FF127F233CE53D00380A88 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 275FE85E231D3664001695D2 /* Splay */;
+			target = 275FE85E231D3664001695D2 /* Movinning */;
 			targetProxy = 57FF127E233CE53D00380A88 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1015,18 +1015,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Splay/Splay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
-				INFOPLIST_FILE = Splay/Info.plist;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.thalia;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1038,18 +1038,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Splay/Splay.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
-				INFOPLIST_FILE = Splay/Info.plist;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ifce.academy.Splay.thalia;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1062,7 +1062,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1074,7 +1074,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Splay.app/Splay";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movinning.app/Movinning";
 			};
 			name = Debug;
 		};
@@ -1083,7 +1083,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1095,7 +1095,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Splay.app/Splay";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movinning.app/Movinning";
 			};
 			name = Release;
 		};
@@ -1103,7 +1103,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1115,7 +1115,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Splay;
+				TEST_TARGET_NAME = Movinning;
 			};
 			name = Debug;
 		};
@@ -1123,7 +1123,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1135,14 +1135,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Splay;
+				TEST_TARGET_NAME = Movinning;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		275FE85A231D3664001695D2 /* Build configuration list for PBXProject "Splay" */ = {
+		275FE85A231D3664001695D2 /* Build configuration list for PBXProject "Movinning" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				275FE872231D3666001695D2 /* Debug */,
@@ -1151,7 +1151,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "Splay" */ = {
+		275FE874231D3666001695D2 /* Build configuration list for PBXNativeTarget "Movinning" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				275FE875231D3666001695D2 /* Debug */,
@@ -1181,13 +1181,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		27EE5A47233051DB009E2D6B /* Splay.xcdatamodeld */ = {
+		27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */,
 			);
 			currentVersion = 27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */;
-			path = Splay.xcdatamodeld;
+			path = Movinning.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

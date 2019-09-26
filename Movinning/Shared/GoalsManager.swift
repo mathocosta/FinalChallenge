@@ -19,7 +19,7 @@ class GoalsManager: NSObject {
             guard let currentGoals = user.currentGoals else { return }
             user.currentGoals = currentGoals.add(Int(goal.id))
         }
-        CoreStataStore.saveContext()
+        CoreDataStore.saveContext()
     }
 
     static func currentTimedGoals(of user: User) -> [Goal] {

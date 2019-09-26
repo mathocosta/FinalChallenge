@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "1030"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "275FE85E231D3664001695D2"
-               BuildableName = "Splay.app"
-               BlueprintName = "Splay"
-               ReferencedContainer = "container:Splay.xcodeproj">
+               BuildableName = "Movinning.app"
+               BlueprintName = "Movinning"
+               ReferencedContainer = "container:Movinning.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "275FE85E231D3664001695D2"
-            BuildableName = "Splay.app"
-            BlueprintName = "Splay"
-            ReferencedContainer = "container:Splay.xcodeproj">
+            BuildableName = "Movinning.app"
+            BlueprintName = "Movinning"
+            ReferencedContainer = "container:Movinning.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "57FF126A233CE52C00380A88"
                BuildableName = "MovinningTests.xctest"
                BlueprintName = "MovinningTests"
-               ReferencedContainer = "container:Splay.xcodeproj">
+               ReferencedContainer = "container:Movinning.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -55,8 +55,12 @@
                BlueprintIdentifier = "57FF1278233CE53D00380A88"
                BuildableName = "MovinningUITests.xctest"
                BlueprintName = "MovinningUITests"
-               ReferencedContainer = "container:Splay.xcodeproj">
+               ReferencedContainer = "container:Movinning.xcodeproj">
             </BuildableReference>
+            <LocationScenarioReference
+               identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
+               referenceType = "1">
+            </LocationScenarioReference>
          </TestableReference>
       </Testables>
    </TestAction>
@@ -75,9 +79,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "275FE85E231D3664001695D2"
-            BuildableName = "Splay.app"
-            BlueprintName = "Splay"
-            ReferencedContainer = "container:Splay.xcodeproj">
+            BuildableName = "Movinning.app"
+            BlueprintName = "Movinning"
+            ReferencedContainer = "container:Movinning.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -92,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "275FE85E231D3664001695D2"
-            BuildableName = "Splay.app"
-            BlueprintName = "Splay"
-            ReferencedContainer = "container:Splay.xcodeproj">
+            BuildableName = "Movinning.app"
+            BlueprintName = "Movinning"
+            ReferencedContainer = "container:Movinning.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

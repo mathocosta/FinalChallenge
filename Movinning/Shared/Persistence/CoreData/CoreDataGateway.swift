@@ -13,7 +13,7 @@ final class CoreDataGateway {
 
     private let viewContext: NSManagedObjectContext
 
-    init(viewContext: NSManagedObjectContext = CoreStataStore.context) {
+    init(viewContext: NSManagedObjectContext = CoreDataStore.context) {
         self.viewContext = viewContext
     }
 
