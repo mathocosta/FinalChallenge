@@ -100,23 +100,69 @@ extension CloudKitGateway {
     /// logado no device.
     /// FIXME: Ainda não tem tratamento de erros para caso o usuário não dê acesso para usar a conta do iCloud.
     /// - Parameter completion: Callback executado quando o processo é terminado e com os possíveis erros
-    func canUseUserData(completion: @escaping (Bool, Error?) -> Void) {
+    func canUseUserData(completion: @escaping (ResultHandler<Bool>)) {
         container.accountStatus { [weak self] (accountStatus, error) in
-            if error != nil {
-                completion(false, error)
+            if let error = error {
+                completion(.failure(error))
             } else {
                 if case .available = accountStatus {
                     self?.container.requestApplicationPermission(.userDiscoverability) { (status, error) in
-                        guard status == .granted, error == nil else {
-                            return completion(false, error)
+                        if let error = error {
+                            return completion(.failure(error))
                         }
 
-                        completion(true, nil)
+                        if status == .granted {
+                            completion(.success(true))
+                        }
                     }
                 } else {
-                    completion(false, error)
+                    completion(.success(false))
                 }
             }
+        }
+    }
+
+    /// Checa se tem usuário logado no device
+    /// - Parameter completion: Callback executado quando o processo é terminado e com os possíveis erros
+    func userAccountAvailable(completion: @escaping (ResultHandler<Bool>)) {
+        container.accountStatus { (accountStatus, error) in
+            if let error = error {
+                return completion(.failure(error))
+            } else {
+                return completion(.success(accountStatus == .available))
+            }
+        }
+    }
+
+    /// Solicita permissão ao usuário para utilizar os dados do usuário para preencher
+    /// inicialmente o nome do usuário
+    /// - Parameter completion: Callback executado quando o processo é terminado e com os possíveis erros
+    func userIdentityPermission(completion: @escaping (ResultHandler<Bool>)) {
+        container.requestApplicationPermission(.userDiscoverability) { (permissionStatus, error) in
+            if let error = error {
+                return completion(.failure(error))
+            } else {
+                return completion(.success(permissionStatus == .granted))
+            }
+        }
+    }
+
+    func identityData(of userRecordID: CKRecord.ID, completion: @escaping (ResultHandler<[String: String]>)) {
+        container.discoverUserIdentity(withUserRecordID: userRecordID) {
+            (userIdentity, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+
+            if let userIdentity = userIdentity,
+                let nameComponents = userIdentity.nameComponents {
+                let userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
+                completion(.success([
+                    "name": userFullName
+                ]))
+            }
+
+            completion(.success([:]))
         }
     }
 
@@ -128,7 +174,7 @@ extension CloudKitGateway {
     /// com os erros que aconteceram
     func fetchCurrentUser(completion: @escaping (ResultHandler<CKRecord>)) {
         let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
-        operation.fetchRecordsCompletionBlock = { recordsByRecordID, operationError in
+        operation.fetchRecordsCompletionBlock = { (recordsByRecordID, operationError) in
             if let operationError = operationError {
                 return completion(.failure(operationError))
             }
@@ -137,23 +183,24 @@ extension CloudKitGateway {
                 let userRecord = recordsByRecordID.values.first,
                 let userRecordID = recordsByRecordID.keys.first {
 
-                if userRecord.value(forKey: "name") == nil {
-                    self.container.discoverUserIdentity(withUserRecordID: userRecordID) {
-                        (userIdentity, error) in
-                        if let error = error {
-                            print(error.localizedDescription)
+                self.userIdentityPermission { (identityPermissionResult) in
+                    if case .failure(let error) = identityPermissionResult {
+                        return completion(.failure(error))
+                    } else if case .success(let isGranted) = identityPermissionResult {
+                        if isGranted {
+                            self.identityData(of: userRecord.recordID) { (identityDataResult) in
+                                switch identityDataResult {
+                                case .success(let userIdentityData):
+                                    userRecord["name"] = userIdentityData["name"]
+                                    completion(.success(userRecord))
+                                case .failure(let error):
+                                    completion(.failure(error))
+                                }
+                            }
+                        } else {
+                            completion(.success(userRecord))
                         }
-
-                        if let userIdentity = userIdentity,
-                            let nameComponents = userIdentity.nameComponents {
-                            let userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
-                            userRecord["name"] = userFullName
-                        }
-
-                        completion(.success(userRecord))
                     }
-                } else {
-                    completion(.success(userRecord))
                 }
 
             }
