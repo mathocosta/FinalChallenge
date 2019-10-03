@@ -65,5 +65,13 @@ extension UIFont {
     class var listItemDetailLightStyle: UIFont {
         return UIFont(name: "Avenir-Light", size: 12.0) ?? UIFont()
     }
+    
+    class var inputContentStyle: UIFont {
+        return UIFont(name: "Avenir-Light", size: 20) ?? UIFont()
+    }
+    
+    class var inputLabelStyle: UIFont {
+        return UIFont(name: "Oswald-Regular", size: 18) ?? UIFont()
+    }
 
 }

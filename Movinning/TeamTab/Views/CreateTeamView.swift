@@ -46,6 +46,16 @@ class CreateTeamView: UIView {
         scrollView.backgroundColor = .backgroundColor
         return scrollView
     }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 32
+        stackView.axis = .vertical
+        return stackView
+    }()
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -95,38 +105,37 @@ class CreateTeamView: UIView {
 
 extension CreateTeamView: CodeView {
     func buildViewHierarchy() {
-        scrollView.addSubview(nameInput)
-        scrollView.addSubview(descriptionInput)
-        scrollView.addSubview(cityInput)
-        scrollView.addSubview(neighborhoodInput)
-
+//        scrollView.addSubview(nameInput)
+//        scrollView.addSubview(descriptionInput)
+//        scrollView.addSubview(cityInput)
+//        scrollView.addSubview(neighborhoodInput)
+        
+        stackView.addArrangedSubview(nameInput)
+        stackView.addArrangedSubview(descriptionInput)
+        stackView.addArrangedSubview(cityInput)
+        stackView.addArrangedSubview(neighborhoodInput)
+        
+        scrollView.addSubview(stackView)
+    
         addSubview(scrollView)
-        scrollView.contentSize = CGSize(width: 325, height: 10000)
     }
 
     func setupConstraints() {
-        nameInput.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 16).isActive = true
-        nameInput.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor).isActive = true
-        nameInput.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor).isActive = true
         nameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-        nameInput.widthAnchor.constraint(equalToConstant: scrollView.contentSize.width).isActive = true
 
-        descriptionInput.topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 32).isActive = true
-        descriptionInput.leadingAnchor.constraint(equalTo: nameInput.leadingAnchor).isActive = true
-        descriptionInput.trailingAnchor.constraint(equalTo: nameInput.trailingAnchor).isActive = true
         descriptionInput.heightAnchor.constraint(equalToConstant: CustomTextView.height).isActive = true
 
-        cityInput.topAnchor.constraint(equalTo: descriptionInput.bottomAnchor, constant: 47).isActive = true
-        cityInput.leadingAnchor.constraint(equalTo: nameInput.leadingAnchor).isActive = true
-        cityInput.trailingAnchor.constraint(equalTo: nameInput.trailingAnchor).isActive = true
         cityInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-
-        neighborhoodInput.topAnchor.constraint(equalTo: cityInput.bottomAnchor, constant: 32).isActive = true
-        neighborhoodInput.leadingAnchor.constraint(equalTo: nameInput.leadingAnchor).isActive = true
-        neighborhoodInput.trailingAnchor.constraint(equalTo: nameInput.trailingAnchor).isActive = true
+        
         neighborhoodInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
         
-        scrollViewTopAnchor = scrollView.topAnchor.constraint(equalTo: self.topAnchor)
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
+        stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+
+        scrollViewTopAnchor = scrollView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor)
         scrollViewTopAnchor?.isActive = true
         scrollView.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
