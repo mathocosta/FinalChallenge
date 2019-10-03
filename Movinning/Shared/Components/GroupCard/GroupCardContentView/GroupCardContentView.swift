@@ -68,12 +68,12 @@ extension GroupCardContentView: CodeView {
     func setupConstraints() {
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 17.0).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 14.0).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.width).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
 
         detailLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 2).isActive = true
         detailLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor).isActive = true
-        detailLabel.widthAnchor.constraint(equalToConstant: detailLabel.intrinsicContentSize.width).isActive = true
+        detailLabel.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         detailLabel.heightAnchor.constraint(equalToConstant: detailLabel.intrinsicContentSize.height).isActive = true
         
         usersPhotoView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
