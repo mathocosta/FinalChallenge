@@ -9,10 +9,10 @@
 import Foundation
 
 class PointManager: NSObject {
-    static let lastUpdateTime: Date! = Date(timeIntervalSinceReferenceDate: 0)
-    static let stepsForPoint: Int = 100
+//    static var display: PointDisplayUpdater?
 
-    static func points(forSteps steps: Double) -> Int {
-        return Int(steps)/stepsForPoint
+    static func add(_ points: Int, to user: User) {
+        user.points += Int32(points)
+//        display?.didUpdate(newAmount: Int(user.points))
     }
 }

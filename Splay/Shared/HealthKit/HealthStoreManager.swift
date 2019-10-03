@@ -12,6 +12,7 @@ import HealthKit
 final class HealthStoreManager {
 
     typealias ResultHandler<T> = (Result<T, Error>) -> Void
+    typealias ResultHandlerWithDate<T> = (Result<T, Error>, Date) -> Void
 
     // FIXME: Remover essa variável estática e fazer de outra forma
     static var healthStore = HKHealthStore()
@@ -52,11 +53,11 @@ final class HealthStoreManager {
     ///   - service: Case do `HealthStoreService` para configurar a query
     ///   - completion: Callback para ser executado após a consulta
     func quantitySum(
-        from startDate: Date?, of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
+        from startDate: Date?, to endDate: Date = Date(), of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
 
         guard let sampleType = service.type as? HKQuantityType else { return }
 
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
 
         // Constrói uma HKStatisticsQuery que busca os samples do tipo definido no `quantityType`,
         // filtra baseado no predicate e executa a operação definida nas `options`
@@ -83,7 +84,7 @@ final class HealthStoreManager {
         of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
         let calendar = Calendar.current
         let now = Date()
-        let startOfDay = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: now)
+        let startOfDay = calendar.date(bySettingHour: 3, minute: 0, second: 0, of: now)
         quantitySum(from: startOfDay, of: service, completion: completion)
     }
 
@@ -95,11 +96,40 @@ final class HealthStoreManager {
         quantitySum(from: lastHour, of: service, completion: completion)
     }
 
-    func quantitySumSinceLastUpdate(
-        of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
+    func quantitySumThisWeekPerDay(of service: HealthStoreService, completion: @escaping(([HKStatistics])->Void)) {
+        let calendar = Calendar.current
         let now = Date()
-        quantitySum(from: lastUpdateTime, of: service, completion: completion)
-        lastUpdateTime = now
+        let interval = DateComponents(
+            calendar: .current, timeZone: .current,
+            era: 0, year: 0, month: 0, day: 1,
+            hour: 0, minute: 0, second: 0, nanosecond: 0,
+            weekday: 0, weekdayOrdinal: 0, quarter: 0, weekOfMonth: 0,
+            weekOfYear: 0, yearForWeekOfYear: 0
+        )
+
+        guard let lastSunday = calendar.getLastUpdateTime(from: now),
+            var startOfDay = calendar.date(bySettingHour: 3, minute: 0, second: 0, of: lastSunday),
+            let sampleType = service.type as? HKQuantityType else { return }
+
+        let query = HKStatisticsCollectionQuery(quantityType: sampleType, quantitySamplePredicate: nil, options: .cumulativeSum, anchorDate: lastSunday, intervalComponents: interval)
+        
+        query.initialResultsHandler = {
+            query, results, error in
+            
+            guard let statsCollection = results else {
+                // Perform proper error handling here
+                fatalError("*** An error occurred while calculating the statistics: \(error?.localizedDescription) ***")
+            }
+            completion(statsCollection.statistics())
+        }
+         
+        HealthStoreManager.healthStore.execute(query)
+        
+//        while startOfDay.compare(now) == .orderedAscending {
+//            guard let nextDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) else { return }
+//            quantitySum(from: startOfDay, to: nextDay, of: service, completion: completion)
+//            startOfDay = nextDay
+//        }
     }
 
     func quantitySumSinceLastSunday(
