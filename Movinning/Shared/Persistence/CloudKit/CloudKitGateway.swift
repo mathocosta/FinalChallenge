@@ -76,7 +76,7 @@ final class CloudKitGateway {
     private func objects(
         of entityName: String, in database: CKDatabase, completion: @escaping (ResultHandler<[CKRecord]>)) {
         let query = CKQuery(recordType: entityName, predicate: NSPredicate(value: true))
-        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        query.sortDescriptors = [NSSortDescriptor(key: "firstName", ascending: true),NSSortDescriptor(key: "lastName", ascending: true)]
 
         database.perform(query, inZoneWith: nil) { (records, error) in
             guard let records = records, error == nil else {
@@ -137,7 +137,7 @@ extension CloudKitGateway {
                 let userRecord = recordsByRecordID.values.first,
                 let userRecordID = recordsByRecordID.keys.first {
 
-                if userRecord.value(forKey: "name") == nil {
+                if userRecord.value(forKey: "firstName") == nil, userRecord.value(forKey: "lastName") == nil {
                     self.container.discoverUserIdentity(withUserRecordID: userRecordID) {
                         (userIdentity, error) in
                         if let error = error {
@@ -146,8 +146,12 @@ extension CloudKitGateway {
 
                         if let userIdentity = userIdentity,
                             let nameComponents = userIdentity.nameComponents {
-                            let userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
-                            userRecord["name"] = userFullName
+                            if let firstName = nameComponents.givenName,
+                                let middleName = nameComponents.middleName,
+                                let familyName = nameComponents.familyName {
+                                userRecord["firstName"] = firstName
+                                userRecord["lastName"] = middleName + familyName
+                            }
                         }
 
                         completion(.success(userRecord))

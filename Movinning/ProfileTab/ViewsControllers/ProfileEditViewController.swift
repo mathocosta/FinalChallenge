@@ -39,9 +39,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profileEditView
-        title = self.user.name ?? NSLocalizedString("Profile", comment: "")
+        title = self.user.fullName ?? NSLocalizedString("Profile", comment: "")
 
-        profileEditView.nameInput.inputTextField.text = user.name
+        profileEditView.firstNameInput.inputTextField.text = user.firstName
+        profileEditView.lastNameInput.inputTextField.text = user.lastName
         profileEditView.emailInput.inputTextField.text = user.email
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileEditView.editProfileImage.imageView.image = profileImage
@@ -78,8 +79,12 @@ class ProfileEditViewController: UIViewController, LoaderView {
             user.photo = imageData
         }
 
-        if let nameText = profileEditView.nameInput.inputTextField.text {
-            user.name = nameText
+        if let firstNameText = profileEditView.firstNameInput.inputTextField.text {
+            user.firstName = firstNameText
+        }
+
+        if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
+            user.lastName = lastNameText
         }
 
         if let emailText = profileEditView.emailInput.inputTextField.text {
