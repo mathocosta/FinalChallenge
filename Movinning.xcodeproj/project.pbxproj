@@ -27,6 +27,8 @@
 		278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F823207D7900A2A481 /* TeamTabCoordinator.swift */; };
 		278718052320849900A2A481 /* TeamEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278718042320849900A2A481 /* TeamEntranceView.swift */; };
 		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
+		278A03F123411DFD00AF1840 /* CloudKitGateway+Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */; };
+		278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */; };
 		278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */; };
 		278F829A2322A67200F55372 /* TeamDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamDetailsView.swift */; };
 		2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D615232B1A8800A33470 /* UserDefaults+keys.swift */; };
@@ -132,6 +134,8 @@
 		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
 		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
 		278A03E6233CF4CD00AF1840 /* Movinning.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Movinning.entitlements; sourceTree = "<group>"; };
+		278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Teams.swift"; sourceTree = "<group>"; };
+		278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Users.swift"; sourceTree = "<group>"; };
 		2797D615232B1A8800A33470 /* UserDefaults+keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+keys.swift"; sourceTree = "<group>"; };
 		2797D617232B29EA00A33470 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2797D61A232BBDD300A33470 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -400,6 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
+				278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */,
+				278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -799,6 +805,7 @@
 				2B417FA02320006F002AD09D /* ProfileView.swift in Sources */,
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				2797D628232D3F6E00A33470 /* FirstLoginCoordinator.swift in Sources */,
+				278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */,
 				2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
@@ -818,6 +825,7 @@
 				303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */,
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
+				278A03F123411DFD00AF1840 /* CloudKitGateway+Teams.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
