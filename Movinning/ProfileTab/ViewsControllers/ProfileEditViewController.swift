@@ -78,13 +78,26 @@ class ProfileEditViewController: UIViewController, LoaderView {
             user.photo = imageData
         }
 
-        if let nameText = profileEditView.nameInput.inputTextField.text {
-            user.name = nameText
+        guard let nameText = profileEditView.nameInput.inputTextField.text,
+            nameText != "" else {
+            let alert = UIAlertController.okAlert(title: NSLocalizedString("Invalid Name Title", comment: ""),
+                                                  message: NSLocalizedString("Invalid Name Message", comment: ""))
+            self.present(alert, animated: true, completion: nil)
+            self.stopLoader()
+            return
+        }
+        user.name = nameText
+
+        guard let emailText = profileEditView.emailInput.inputTextField.text,
+            validateEmail(candidate: emailText) else {
+            let alert = UIAlertController.okAlert(title: NSLocalizedString("Invalid Email Title", comment: ""),
+                                                  message: NSLocalizedString("Invalid Email Message", comment: ""))
+            self.present(alert, animated: true, completion: nil)
+            self.stopLoader()
+            return
         }
 
-        if let emailText = profileEditView.emailInput.inputTextField.text {
-            user.email = emailText
-        }
+        user.email = emailText
 
         SessionManager.current.updateRegister(of: user) { [unowned self] result in
             switch result {
@@ -111,6 +124,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
         imagePicker.present(from: self.view)
     }
 
+    private func validateEmail(candidate: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
+    }
 }
 
 // MARK: - ImagePickerDelegate

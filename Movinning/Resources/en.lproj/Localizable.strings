@@ -30,3 +30,7 @@
 "Registration title" = "Complete your registration";
 "Complete registration" = "Your registration was a success! However, you can also fill your profile with more information, if you're interested.";
 "Name Field Missing" = "Sorry, but it takes a name for the team. It is the minimum necessary";
+"Invalid Name Title" = "Invalid Name";
+"Invalid Name Message" = "The field 'name' is required";
+"Invalid Email Title" = "Invalid email";
+"Invalid Email Message" = "The entered email is invalid";

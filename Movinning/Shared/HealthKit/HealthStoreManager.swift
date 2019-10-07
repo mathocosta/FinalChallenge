@@ -112,19 +112,19 @@ final class HealthStoreManager {
             let sampleType = service.type as? HKQuantityType else { return }
 
         let query = HKStatisticsCollectionQuery(quantityType: sampleType, quantitySamplePredicate: nil, options: .cumulativeSum, anchorDate: lastSunday, intervalComponents: interval)
-        
+
         query.initialResultsHandler = {
             query, results, error in
-            
+
             guard let statsCollection = results else {
                 // Perform proper error handling here
                 fatalError("*** An error occurred while calculating the statistics: \(error?.localizedDescription) ***")
             }
             completion(statsCollection.statistics())
         }
-         
+
         HealthStoreManager.healthStore.execute(query)
-        
+
 //        while startOfDay.compare(now) == .orderedAscending {
 //            guard let nextDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) else { return }
 //            quantitySum(from: startOfDay, to: nextDay, of: service, completion: completion)

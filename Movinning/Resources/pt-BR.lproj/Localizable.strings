@@ -30,3 +30,7 @@
 "Registration title" = "Complete seu cadastro!";
 "Complete registration" = "Seu cadastro foi realizado com sucesso! No entanto, você pode preencher o seu perfil com mais informações, caso deseje.";
 "Name Field Missing" = "Desculpa, mas é preciso de uma nome para o time. É o mínimo necessário";
+"Invalid Name Title" = "Nome inválido";
+"Invalid Name Message" = "O campo 'nome' é obrigatório";
+"Invalid Email Title" = "Email inválido";
+"Invalid Email Message" = "O email inserido não é um email válido";
