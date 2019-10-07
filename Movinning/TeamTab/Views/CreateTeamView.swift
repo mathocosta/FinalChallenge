@@ -26,18 +26,38 @@ class CreateTeamView: UIView {
         return input
     }()
     
+    lazy var detailsStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 32
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
     lazy var cityInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("City", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
-
+    
     lazy var neighborhoodInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("Neighborhood", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
+    }()
+    
+    lazy var addressStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fill
+        stackView.alignment = .fill
+        stackView.spacing = 32
+        stackView.axis = .vertical
+        return stackView
     }()
 
     lazy var scrollView: UIScrollView = {
@@ -52,7 +72,7 @@ class CreateTeamView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fill
         stackView.alignment = .fill
-        stackView.spacing = 32
+        stackView.spacing = 64
         stackView.axis = .vertical
         return stackView
     }()
@@ -105,15 +125,14 @@ class CreateTeamView: UIView {
 
 extension CreateTeamView: CodeView {
     func buildViewHierarchy() {
-//        scrollView.addSubview(nameInput)
-//        scrollView.addSubview(descriptionInput)
-//        scrollView.addSubview(cityInput)
-//        scrollView.addSubview(neighborhoodInput)
+        detailsStackView.addArrangedSubview(nameInput)
+        detailsStackView.addArrangedSubview(descriptionInput)
         
-        stackView.addArrangedSubview(nameInput)
-        stackView.addArrangedSubview(descriptionInput)
-        stackView.addArrangedSubview(cityInput)
-        stackView.addArrangedSubview(neighborhoodInput)
+        addressStackView.addArrangedSubview(cityInput)
+        addressStackView.addArrangedSubview(neighborhoodInput)
+        
+        stackView.addArrangedSubview(detailsStackView)
+        stackView.addArrangedSubview(addressStackView)
         
         scrollView.addSubview(stackView)
     
