@@ -44,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidBecomeActive(_ application: UIApplication) {
         let now = Date()
         let calendar = Calendar(identifier: .gregorian)
-        guard let user = UserManager.current.loggedUser else { return }
+
+        guard let user = UserManager.getLoggedUser() else { return }
 
         guard let lastUpdateTime = UserDefaults.standard.goalUpdateTime,
             let nextUpdateTime = calendar.getNextUpdateTime(from: lastUpdateTime) else {
@@ -54,6 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if nextUpdateTime.compare(now) == .orderedAscending {
             UserManager.changeGoals(for: user, at: now)
+        } else {
+
+            GoalsManager.checkForCompletedGoals(for: user)
         }
     }
 
