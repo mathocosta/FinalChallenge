@@ -25,7 +25,7 @@ class ProfileEditView: UIView {
         input.inputTextField.delegate = self
         return input
     }()
-    
+
     lazy var lastNameInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("Last Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +136,7 @@ extension ProfileEditView: CodeView {
         firstNameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         firstNameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         firstNameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-        
+
         lastNameInput.topAnchor.constraint(equalTo: firstNameInput.bottomAnchor, constant: 20).isActive = true
         lastNameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         lastNameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true

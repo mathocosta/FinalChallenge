@@ -26,7 +26,7 @@ class TrackView: UIView {
     override func layoutSubviews() {
         CALayer.createTrackLine(in: self)
     }
-    
+
     override func didMoveToWindow() {
         layoutSubviews()
     }

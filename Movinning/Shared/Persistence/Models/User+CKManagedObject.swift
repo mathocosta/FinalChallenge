@@ -15,7 +15,7 @@ extension User: CKManagedObject {
         guard let firstName = firstName, let lastName = lastName else { return nil }
         return firstName+" "+lastName
     }
-    
+
     func asCKRecord() -> CKRecord {
         guard let recordMetadata = recordMetadata else {
             fatalError("Propriedade 'recordMetadata' não inicializada no user")
