@@ -96,7 +96,7 @@ final class HealthStoreManager {
         quantitySum(from: lastHour, of: service, completion: completion)
     }
 
-    func quantitySumThisWeekPerDay(of service: HealthStoreService, completion: @escaping(([HKStatistics])->Void)) {
+    func quantitySumThisWeekPerDay(of service: HealthStoreService, completion: @escaping(([HKStatistics]) -> Void)) {
         let calendar = Calendar.current
         let now = Date()
         let interval = DateComponents(

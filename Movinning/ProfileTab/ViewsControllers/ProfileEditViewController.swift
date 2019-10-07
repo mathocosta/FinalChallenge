@@ -39,9 +39,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profileEditView
-        title = self.user.name ?? NSLocalizedString("Profile", comment: "")
+        title = self.user.fullName ?? NSLocalizedString("Profile", comment: "")
 
-        profileEditView.nameInput.inputTextField.text = user.name
+        profileEditView.firstNameInput.inputTextField.text = user.firstName
+        profileEditView.lastNameInput.inputTextField.text = user.lastName
         profileEditView.emailInput.inputTextField.text = user.email
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileEditView.editProfileImage.imageView.image = profileImage
@@ -77,8 +78,8 @@ class ProfileEditViewController: UIViewController, LoaderView {
             let imageData = profileImage.pngData() {
             user.photo = imageData
         }
-
-        guard let nameText = profileEditView.nameInput.inputTextField.text,
+      
+        guard let firstNameText = profileEditView.firstNameInput.inputTextField.text,
             nameText != "" else {
             let alert = UIAlertController.okAlert(title: NSLocalizedString("Invalid Name Title", comment: ""),
                                                   message: NSLocalizedString("Invalid Name Message", comment: ""))
@@ -86,7 +87,11 @@ class ProfileEditViewController: UIViewController, LoaderView {
             self.stopLoader()
             return
         }
-        user.name = nameText
+        user.firstName = firstNameText
+      
+        if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
+            user.lastName = lastNameText
+        }
 
         guard let emailText = profileEditView.emailInput.inputTextField.text,
             validateEmail(candidate: emailText) else {

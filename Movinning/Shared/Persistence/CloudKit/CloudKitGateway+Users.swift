@@ -45,10 +45,13 @@ extension CloudKitGateway {
             }
 
             if let userIdentity = userIdentity,
-                let nameComponents = userIdentity.nameComponents {
-                let userFullName = PersonNameComponentsFormatter().string(from: nameComponents)
+                let nameComponents = userIdentity.nameComponents,
+                let firstName = nameComponents.givenName,
+                let lastName = nameComponents.familyName {
+
                 completion(.success([
-                    "name": userFullName
+                    "firstName": firstName,
+                    "lastName": lastName
                 ]))
             }
 
@@ -82,7 +85,8 @@ extension CloudKitGateway {
                                 self.identityData(of: userRecord.recordID) { (identityDataResult) in
                                     switch identityDataResult {
                                     case .success(let userIdentityData):
-                                        userRecord["name"] = userIdentityData["name"]
+                                        userRecord["firstName"] = userIdentityData["firstName"]
+                                        userRecord["lastName"] = userIdentityData["lastName"]
                                         return completion(.success(userRecord))
                                     case .failure(let error):
                                         return completion(.failure(error))

@@ -82,7 +82,10 @@ final class CloudKitGateway {
         completion: @escaping (ResultHandler<[CKRecord]>)
     ) {
         let query = CKQuery(recordType: entityName, predicate: NSPredicate(value: true))
-        query.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        query.sortDescriptors = [
+            NSSortDescriptor(key: "firstName", ascending: true),
+            NSSortDescriptor(key: "lastName", ascending: true)
+        ]
 
         database.perform(query, inZoneWith: nil) { (records, error) in
             if let error = error {

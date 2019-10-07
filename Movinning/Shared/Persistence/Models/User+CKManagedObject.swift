@@ -11,6 +11,11 @@ import CloudKit
 import CoreData
 
 extension User: CKManagedObject {
+    var fullName: String? {
+        guard let firstName = firstName, let lastName = lastName else { return nil }
+        return firstName+" "+lastName
+    }
+
     func asCKRecord() -> CKRecord {
         guard let recordMetadata = recordMetadata else {
             fatalError("Propriedade 'recordMetadata' não inicializada no user")
@@ -19,7 +24,8 @@ extension User: CKManagedObject {
         let record = CKRecord(recordMetadata: recordMetadata)!
 
         record["id"] = id?.uuidString
-        record["name"] = name
+        record["firstName"] = firstName
+        record["lastName"] = lastName
         record["email"] = email
         record["points"] = points
 

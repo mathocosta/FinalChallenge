@@ -36,7 +36,7 @@ class ProfileViewController: UIViewController {
 
         title = NSLocalizedString("Profile", comment: "")
         profileView.onProfileDetails = showProfileEditForm
-        profileView.profileDetailsView.name = user.name ?? ""
+        profileView.profileDetailsView.name = user.firstName ?? ""
         profileView.profileDetailsView.level = Int(user.points)
 
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {

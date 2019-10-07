@@ -81,7 +81,7 @@ class SessionManager {
             }
         }
     }
-    
+
     /// Retorna o status da conta do iCloud do usuário no dispositivo. Se retornar
     /// `true` quer dizer que está logado e pode continuar, no contrário, o usuário não
     /// está mais logado no dispositivo.
