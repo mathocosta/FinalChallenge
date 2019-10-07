@@ -125,7 +125,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
-        header.textLabel?.font = .sectionDarkStyle
+        header.textLabel?.font = .sectionTitle
         header.backgroundView?.backgroundColor = .backgroundColor
     }
     

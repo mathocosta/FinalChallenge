@@ -24,7 +24,7 @@ class BarView: UIView {
         let label = UILabel()
         label.numberOfLines = 0
         label.textColor = .textColor
-        label.font = .detailDarkStyle
+        label.font = .itemTitle
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ class BarView: UIView {
         label.numberOfLines = 0
         label.textColor = .textColor
         label.textAlignment = .right
-        label.font = .detailDarkStyle
+        label.font = .itemDetail
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -24,7 +24,7 @@ final class ProfileTabCoordinator: Coordinator {
         self.navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController.navigationBar.shadowImage = UIImage()
         self.navigationController.navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.sectionLightStyle
+            NSAttributedString.Key.font: UIFont.sectionTitle
         ]
         self.navigationController.tabBarItem = UITabBarItem(
             title: "Profile",

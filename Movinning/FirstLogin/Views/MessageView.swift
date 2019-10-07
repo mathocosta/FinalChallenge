@@ -15,7 +15,7 @@ class MessageView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
 //        label.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         label.textAlignment = .center
-        label.font = UIFont.detailLightStyle
+        label.font = UIFont.bodySmall
         label.textColor = .textColor
         return label
     }()

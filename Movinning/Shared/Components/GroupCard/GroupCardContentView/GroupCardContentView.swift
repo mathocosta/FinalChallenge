@@ -22,7 +22,7 @@ class GroupCardContentView: UIView, CustomView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .cardStyle
+        label.font = .itemTitleCondensed
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Clube da Luluzinha"
         return label
@@ -31,7 +31,7 @@ class GroupCardContentView: UIView, CustomView {
     lazy var detailLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .cardDetailStyle
+        label.font = .bodySmall
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Parquelândia, Fortaleza"
         return label

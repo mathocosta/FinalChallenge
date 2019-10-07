@@ -21,7 +21,7 @@ class Input: UIView {
     lazy var inputLabel: UILabel = {
         let label = UILabel()
         label.text = self.label
-        label.font = .inputLabelStyle
+        label.font = .sectionTitle
         label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -29,7 +29,7 @@ class Input: UIView {
 
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
-        textField.font = .inputContentStyle
+        textField.font = .input
         textField.textColor = .textColor
         textField.returnKeyType = .done
         textField.translatesAutoresizingMaskIntoConstraints = false

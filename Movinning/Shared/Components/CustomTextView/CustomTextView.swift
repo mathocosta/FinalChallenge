@@ -21,7 +21,7 @@ class CustomTextView: UIView {
     lazy var inputLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .inputLabelStyle
+        label.font = .sectionTitle
         label.textColor = .textColor
         return label
     }()
@@ -29,7 +29,7 @@ class CustomTextView: UIView {
     lazy var textView: UITextView = {
         let textView = UITextView()
         textView.textColor = .textColor
-        textView.font = .inputContentStyle
+        textView.font = .input
         textView.backgroundColor = .backgroundColor
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
