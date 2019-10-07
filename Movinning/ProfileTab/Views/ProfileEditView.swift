@@ -39,6 +39,7 @@ class ProfileEditView: UIView {
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .emailAddress
         input.inputTextField.delegate = self
+        input.inputTextField.autocapitalizationType = .none
         return input
     }()
 
@@ -112,7 +113,6 @@ class ProfileEditView: UIView {
             self.layoutSubviews()
         }, completion: nil)
     }
-
 }
 
 extension ProfileEditView: CodeView {
