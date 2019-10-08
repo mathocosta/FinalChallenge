@@ -16,7 +16,7 @@ class RoundedEditImageView: UIView {
         label.backgroundColor = UIColor.backgroundColor.withAlphaComponent(0.5)
         label.textColor = .textColor
         label.textAlignment = .center
-        label.font = .listItemLightStyle
+        label.font = .bodySmall
         label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

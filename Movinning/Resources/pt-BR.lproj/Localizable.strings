@@ -23,6 +23,7 @@
 "Neighborhood" = "Bairro";
 "Edit image" = "Editar imagem";
 "Email" = "Email";
+"Create Team" = "Criar Time";
 "HealthKit title" = "Dados de Saúde";
 "HealthKit authorization" = "Nós precisamos utilizar o HealthKit para poder verificar o quanto de atividade física você realizou para completar objetivos dentro da aplicação e ganhar pontos para si mesmo e para o seu grupo.";
 "iCloud title" = "Dados da conta iCloud";
@@ -30,3 +31,7 @@
 "Registration title" = "Complete seu cadastro!";
 "Complete registration" = "Seu cadastro foi realizado com sucesso! No entanto, você pode preencher o seu perfil com mais informações, caso deseje.";
 "Name Field Missing" = "Desculpa, mas é preciso de uma nome para o time. É o mínimo necessário";
+"Invalid Name Title" = "Nome inválido";
+"Invalid Name Message" = "O campo 'nome' é obrigatório";
+"Invalid Email Title" = "Email inválido";
+"Invalid Email Message" = "O email inserido não é um email válido";

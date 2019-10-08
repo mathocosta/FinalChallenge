@@ -9,22 +9,22 @@
 import Foundation
 
 public class GoalPile: NSObject, NSCoding {
-    let value: [Int]
-    let markedValues: [Int]
+    let value: Set<Int>
+    let markedValues: Set<Int>
 
     var isEmpty: Bool {
         return value.isEmpty
     }
 
-    public init(value: [Int], markedValues: [Int] = []) {
+    public init(value: Set<Int>, markedValues: Set<Int> = []) {
         self.value = value
         self.markedValues = markedValues
         super.init()
     }
 
     required public init?(coder aDecoder: NSCoder) {
-        guard let value = aDecoder.decodeObject(forKey: "value") as? [Int],
-            let markedValues = aDecoder.decodeObject(forKey: "mark") as? [Int] else {
+        guard let value = aDecoder.decodeObject(forKey: "value") as? Set<Int>,
+            let markedValues = aDecoder.decodeObject(forKey: "mark") as? Set<Int> else {
             self.value = []
             self.markedValues = []
             return
@@ -40,33 +40,29 @@ public class GoalPile: NSObject, NSCoding {
 
     public func add(_ item: Int) -> GoalPile {
         var value = self.value
-        value.append(item)
+        value.insert(item)
         return GoalPile(value: value, markedValues: self.markedValues)
     }
 
     public func remove(_ item: Int) -> GoalPile {
         var value = self.value
-        value.removeAll { (value) -> Bool in
-            return item == value
-        }
+        value.remove(item)
         return GoalPile(value: value, markedValues: self.markedValues)
     }
 
     public func mark(_ item: Int) -> GoalPile {
         var markedValues = self.markedValues
-        markedValues.append(item)
+        markedValues.insert(item)
         return GoalPile(value: self.value, markedValues: markedValues)
     }
 
     public func unmark(_ item: Int) -> GoalPile {
         var markedValues = self.markedValues
-        markedValues.removeAll { (value) -> Bool in
-            return item == value
-        }
+        markedValues.remove(item)
         return GoalPile(value: self.value, markedValues: markedValues)
     }
 
-    public func unmarkedGoals() -> [Int] {
+    public func unmarkedGoals() -> Set<Int> {
         return self.value.filter { (item) -> Bool in
             return !self.markedValues.contains(item)
         }

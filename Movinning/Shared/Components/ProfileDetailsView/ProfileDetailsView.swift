@@ -33,7 +33,7 @@ class ProfileDetailsView: UIView {
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
-        label.font = UIFont.sectionDarkStyle
+        label.font = UIFont.itemTitleLargeCondensed
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .textColor
@@ -43,7 +43,7 @@ class ProfileDetailsView: UIView {
 
     lazy var levelLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.detailDarkStyle
+        label.font = UIFont.bodySmall
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .textColor

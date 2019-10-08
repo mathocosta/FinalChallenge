@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 class UserManager: NSObject {
-    var loggedUser: User!
     static let current = UserManager()
 
     override init() {
@@ -28,7 +27,7 @@ class UserManager: NSObject {
     }
 
     static func add(points: Int, to user: User) {
-        user.points += Int32(points)
+        PointManager.add(points, to: user)
         if let team = user.team {
             TeamManager.updateAmountOfPoints(for: team)
         }
@@ -36,6 +35,7 @@ class UserManager: NSObject {
     }
 
     static func changeGoals(for user: User, at date: Date = Date()) {
+        GoalsManager.checkForCompletedGoals(for: user)
         GoalsManager.removeAllTimedGoals(from: user)
         GoalsManager.setNewTimedGoals(for: user, at: date)
         CoreDataStore.saveContext()
@@ -45,7 +45,8 @@ class UserManager: NSObject {
         let user = User(context: CoreDataStore.context)
         user.id = (info["id"] as? UUID) ?? UUID()
         user.recordMetadata = info["recordMetadata"] as? Data
-        user.name = info["name"] as? String
+        user.firstName = info["firstName"] as? String
+        user.lastName = info["lastName"] as? String
         user.email = info["email"] as? String
         user.points = (info["points"] as? Int32) ?? 0
         user.goalPile = GoalPile(value: [])
@@ -66,11 +67,5 @@ class UserManager: NSObject {
     static func logout(user: User) {
         CoreDataStore.context.delete(user)
         CoreDataStore.saveContext()
-    }
-
-    func simulateAppInteraction() {
-        let steps = Int.random(in: 0...1000)
-        let points = PointManager.points(forSteps: Double(steps))
-        UserManager.add(points: points, to: UserManager.current.loggedUser)
     }
 }

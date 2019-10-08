@@ -25,6 +25,7 @@ final class TeamTabCoordinator: Coordinator {
             selectedImage: UIImage(named: "group-selected")
         )
         self.navigationController.navigationBar.isTranslucent = false
+        self.navigationController.navigationBar.barTintColor = .backgroundColor
     }
 
     func start() {

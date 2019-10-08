@@ -39,9 +39,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profileEditView
-        title = self.user.name ?? NSLocalizedString("Profile", comment: "")
+        title = self.user.fullName ?? NSLocalizedString("Profile", comment: "")
 
-        profileEditView.nameInput.inputTextField.text = user.name
+        profileEditView.firstNameInput.inputTextField.text = user.firstName
+        profileEditView.lastNameInput.inputTextField.text = user.lastName
         profileEditView.emailInput.inputTextField.text = user.email
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileEditView.editProfileImage.imageView.image = profileImage
@@ -49,12 +50,6 @@ class ProfileEditViewController: UIViewController, LoaderView {
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
         profileEditView.onSaveProfile = saveButtonTapped
-
-//        let saveBarButton = UIBarButtonItem(
-//            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
-//
-//        navigationItem.rightBarButtonItem = saveBarButton
-
     }
 
     // MARK: - Actions
@@ -66,37 +61,51 @@ class ProfileEditViewController: UIViewController, LoaderView {
             userDefaults.isFirstLogin = false
         }
 
-//        self.coordinator?.showLoadingViewController()
-//        let vc = LoadingViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true, completion: nil)
-
         self.startLoader()
 
         if let profileImage = profileEditView.editProfileImage.imageView.image,
             let imageData = profileImage.pngData() {
             user.photo = imageData
         }
-
-        if let nameText = profileEditView.nameInput.inputTextField.text {
-            user.name = nameText
+      
+        guard let firstNameText = profileEditView.firstNameInput.inputTextField.text,
+            !firstNameText.isEmpty else {
+            let alert = UIAlertController.okAlert(
+                title: NSLocalizedString("Invalid Name Title", comment: ""),
+                message: NSLocalizedString("Invalid Name Message", comment: "")
+            )
+            self.present(alert, animated: true, completion: nil)
+            self.stopLoader()
+            return
+        }
+        user.firstName = firstNameText
+      
+        if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
+            user.lastName = lastNameText
         }
 
-        if let emailText = profileEditView.emailInput.inputTextField.text {
-            user.email = emailText
+        guard let emailText = profileEditView.emailInput.inputTextField.text,
+            validateEmail(candidate: emailText) else {
+            let alert = UIAlertController.okAlert(
+                title: NSLocalizedString("Invalid Email Title", comment: ""),
+                message: NSLocalizedString("Invalid Email Message", comment: "")
+            )
+            self.present(alert, animated: true, completion: nil)
+            self.stopLoader()
+            return
         }
+
+        user.email = emailText
 
         SessionManager.current.updateRegister(of: user) { [unowned self] result in
             switch result {
             case .success:
                 DispatchQueue.main.async {
-//                    self.coordinator?.dismissLoadingViewController()
                     self.stopLoader()
                     self.coordinator?.showProfileViewController(for: self.user)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-//                    vc.dismiss(animated: true, completion: nil)
                 }
                 print(error)
             }
@@ -111,6 +120,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
         imagePicker.present(from: self.view)
     }
 
+    private func validateEmail(candidate: String) -> Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
+    }
 }
 
 // MARK: - ImagePickerDelegate

@@ -23,23 +23,23 @@ class GoalsManager: NSObject {
     }
 
     static func currentTimedGoals(of user: User) -> [Goal] {
-        guard let currentGoals = user.currentGoals
+        guard let currentGoals = user.currentGoals?.value
             else { return [] }
-        let goals = getGoals(withIDs: currentGoals.value)
+        let goals = getGoals(withIDs: Array(currentGoals))
         return goals
     }
 
     static func completedGoals(of user: User) -> [Goal] {
         guard let currentGoals = user.currentGoals?.markedValues
             else { return [] }
-        let goals = getGoals(withIDs: currentGoals)
+        let goals = getGoals(withIDs: Array(currentGoals))
         return goals
     }
 
     static func inProgressGoals(of user: User) -> [Goal] {
         guard let currentGoals = user.currentGoals?.unmarkedGoals()
             else { return [] }
-        let goals = getGoals(withIDs: currentGoals)
+        let goals = getGoals(withIDs: Array(currentGoals))
         return goals
     }
 
@@ -136,7 +136,7 @@ class GoalsManager: NSObject {
             return Array(0...2)
         }
         let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
-        user.currentGoals = GoalPile(value: chosenGoals)
+        user.currentGoals = GoalPile(value: Set(chosenGoals))
         for goal in chosenGoals {
             user.goalPile = user.goalPile?.add(goal)
         }

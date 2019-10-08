@@ -36,12 +36,13 @@ class ProfileViewController: UIViewController {
 
         title = NSLocalizedString("Profile", comment: "")
         profileView.onProfileDetails = showProfileEditForm
-        profileView.profileDetailsView.name = user.name ?? ""
+        profileView.profileDetailsView.name = user.firstName ?? ""
         profileView.profileDetailsView.level = Int(user.points)
 
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileView.profileDetailsView.imageView.image = profileImage
         }
+//        PointManager.display = self
     }
 
     func setProgressBars() {
@@ -55,11 +56,15 @@ class ProfileViewController: UIViewController {
             let bar = barsView.bars[index]
             let track = tracksView.tracks[index]
             let color = colors[index%colors.count]
+            var didComplete = false
             GoalsManager.progress(for: user, on: goal) { (amount, required) in
                 DispatchQueue.main.async {
-                    let progress = CGFloat(amount > required ? 1.0 : amount / required)
+                    guard !didComplete else { return }
+                    didComplete = amount > required
+                    let progress = CGFloat(didComplete ? 1.0 : amount / required)
                     bar.goalLabel.text = goal.title
-                    bar.progressLabel.text = String.init(format: "%.0f/%.0f", amount, required)
+                    bar.progressLabel.text = didComplete
+                        ? "Complete" : String.init(format: "%.0f/%.0f", amount, required)
                     bar.goalColor.backgroundColor = color
                     track.trackColor = color
                     bar.progress = progress
@@ -80,3 +85,9 @@ class ProfileViewController: UIViewController {
     }
 
 }
+
+//extension ProfileViewController: PointDisplayUpdater {
+//    func didUpdate(newAmount: Int) {
+//        self.profileView.profileDetailsView.level = newAmount
+//    }
+//}

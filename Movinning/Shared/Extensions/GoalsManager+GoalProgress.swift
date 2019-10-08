@@ -31,10 +31,22 @@ extension GoalsManager {
             completion(progressAmount, Double(goalAmount))
         }
 
+        let processEachDay: ([HKStatistics]) -> Void = { (results) -> Void in
+            for item in results {
+                let service = HealthStoreService.type(forTag: goal.activityType)
+                let progressAmount = GoalsManager.progressAmount(item, for: service)
+                let goalAmount = goal.requiredAmount()
+                completion(progressAmount, Double(goalAmount))
+                if Int(progressAmount) > goalAmount {
+                    break
+                }
+            }
+        }
+
         let serviceType = HealthStoreService.type(forTag: goal.activityType)
         if goal.dailyReset {
-            manager.quantitySumToday(of: serviceType) { (results) in
-                process(results)
+            manager.quantitySumThisWeekPerDay(of: serviceType) { (results) in
+                processEachDay(results)
             }
         } else {
             manager.quantitySumSinceLastSunday(of: serviceType) { (results) in
@@ -51,6 +63,13 @@ extension GoalsManager {
             }
         case .failure(let error):
             print(error.localizedDescription)
+        }
+        return 0
+    }
+
+    static func progressAmount(_ statistics: HKStatistics, for service: HealthStoreService) -> Double {
+        if let quantity = statistics.sumQuantity() {
+            return quantity.doubleValue(for: service.unit)
         }
         return 0
     }

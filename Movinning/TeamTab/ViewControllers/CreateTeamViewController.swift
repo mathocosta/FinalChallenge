@@ -29,7 +29,9 @@ class CreateTeamViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        title = NSLocalizedString("Create Team", comment: "")
+        
         let createBarButton = UIBarButtonItem(
             barButtonSystemItem: .save, target: self, action: #selector(createBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = createBarButton
@@ -40,7 +42,7 @@ class CreateTeamViewController: UIViewController {
             return presentAlert(with: NSLocalizedString("Name Field Missing", comment: ""))
         }
 
-        let descriptionText = createTeamView.descriptionInput.inputTextField.text
+        let descriptionText = createTeamView.descriptionInput.textView.text
 
         guard let loggedUser = UserManager.getLoggedUser() else { return }
 

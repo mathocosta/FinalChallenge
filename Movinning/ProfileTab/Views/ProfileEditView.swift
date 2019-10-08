@@ -18,11 +18,17 @@ class ProfileEditView: UIView {
         return imageView
     }()
 
-    lazy var nameInput: Input = {
-        let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""))
+    lazy var firstNameInput: Input = {
+        let input = Input(frame: .zero, label: NSLocalizedString("First Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
-        input.inputTextField.delegate = self
+        return input
+    }()
+
+    lazy var lastNameInput: Input = {
+        let input = Input(frame: .zero, label: NSLocalizedString("Last Name", comment: ""))
+        input.translatesAutoresizingMaskIntoConstraints = false
+        input.inputTextField.keyboardType = .alphabet
         return input
     }()
 
@@ -30,14 +36,14 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: NSLocalizedString("Email", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .emailAddress
-        input.inputTextField.delegate = self
+        input.inputTextField.autocapitalizationType = .none
         return input
     }()
 
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = .actionStyle
+        button.titleLabel?.font = .action
         button.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         button.backgroundColor = .systemPink
         button.layer.cornerRadius = Input.height / 2
@@ -91,7 +97,7 @@ class ProfileEditView: UIView {
 //        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
 
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-                self.profileImageConstrait?.constant = -16
+                self.profileImageConstrait?.constant = -32
                 self.layoutSubviews()
             }, completion: nil)
 //        }
@@ -104,13 +110,13 @@ class ProfileEditView: UIView {
             self.layoutSubviews()
         }, completion: nil)
     }
-
 }
 
 extension ProfileEditView: CodeView {
     func buildViewHierarchy() {
         addSubview(editProfileImage)
-        addSubview(nameInput)
+        addSubview(firstNameInput)
+        addSubview(lastNameInput)
         addSubview(emailInput)
         addSubview(saveButton)
     }
@@ -123,17 +129,22 @@ extension ProfileEditView: CodeView {
         editProfileImage.widthAnchor.constraint(equalToConstant: 119).isActive = true
         editProfileImage.heightAnchor.constraint(equalToConstant: 119).isActive = true
 
-        nameInput.topAnchor.constraint(equalTo: editProfileImage.bottomAnchor, constant: 20).isActive = true
-        nameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
-        nameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
-        nameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
+        firstNameInput.topAnchor.constraint(equalTo: editProfileImage.bottomAnchor, constant: 20).isActive = true
+        firstNameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
+        firstNameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
+        firstNameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
 
-        emailInput.topAnchor.constraint(equalTo: nameInput.bottomAnchor, constant: 31).isActive = true
+        lastNameInput.topAnchor.constraint(equalTo: firstNameInput.bottomAnchor, constant: 20).isActive = true
+        lastNameInput.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
+        lastNameInput.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
+        lastNameInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
+
+        emailInput.topAnchor.constraint(equalTo: lastNameInput.bottomAnchor, constant: 31).isActive = true
         emailInput.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor).isActive = true
         emailInput.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor).isActive = true
         emailInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
 
-        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 96).isActive = true
+        saveButton.topAnchor.constraint(equalTo: emailInput.bottomAnchor, constant: 64).isActive = true
         saveButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         saveButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         saveButton.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
@@ -145,13 +156,6 @@ extension ProfileEditView: CodeView {
         editProfileImage.isUserInteractionEnabled = true
     }
 
-}
-
-extension ProfileEditView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
 }
 
 extension ProfileEditView: LoaderView {
