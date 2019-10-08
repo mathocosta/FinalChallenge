@@ -30,7 +30,6 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: NSLocalizedString("Last Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
-        input.inputTextField.delegate = self
         return input
     }()
 
@@ -46,7 +45,7 @@ class ProfileEditView: UIView {
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = .actionStyle
+        button.titleLabel?.font = .action
         button.setTitle(NSLocalizedString("Save", comment: ""), for: .normal)
         button.backgroundColor = .systemPink
         button.layer.cornerRadius = Input.height / 2
@@ -161,12 +160,12 @@ extension ProfileEditView: CodeView {
 
 }
 
-extension ProfileEditView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
+//extension ProfileEditView: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//}
 
 extension ProfileEditView: LoaderView {
     var loadingView: LoadingView {

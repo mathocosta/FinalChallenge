@@ -30,6 +30,8 @@ final class AppCoordinator: NSObject, Coordinator {
 
         self.tabBarController.viewControllers = self.childCoordinators?.map { $0.rootViewController }
         self.tabBarController.tabBar.isTranslucent = false
+        self.tabBarController.tabBar.barTintColor = .tabBarColor
+        self.tabBarController.tabBar.tintColor = .tabBarItemColor
         self.tabBarController.delegate = self
     }
 

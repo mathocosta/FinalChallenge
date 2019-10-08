@@ -21,16 +21,19 @@ class Input: UIView {
     lazy var inputLabel: UILabel = {
         let label = UILabel()
         label.text = self.label
-        label.font = .listItemLightStyle
+        label.font = .sectionTitle
+        label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
-        textField.font = .detailLightStyle
+        textField.font = .input
+        textField.textColor = .textColor
         textField.returnKeyType = .done
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         return textField
     }()
 
@@ -78,5 +81,12 @@ extension Input: CodeView {
 
     func setupAdditionalConfiguration() {
 
+    }
+}
+
+extension Input: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
