@@ -11,6 +11,7 @@ import UIKit
 class CreateTeamView: UIView {
     
     var scrollViewTopAnchor: NSLayoutConstraint?
+    var marginViewHeightAnchor: NSLayoutConstraint?
 
     lazy var nameInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""))
@@ -76,6 +77,12 @@ class CreateTeamView: UIView {
         stackView.axis = .vertical
         return stackView
     }()
+    
+    lazy var view: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
 
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
@@ -107,7 +114,7 @@ class CreateTeamView: UIView {
             let keyboardRectangle = keyboardFrame.cgRectValue
 
             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-                self.scrollViewTopAnchor?.constant = -16
+                self.marginViewHeightAnchor?.constant = 200
                 self.layoutSubviews()
             }, completion: nil)
         }
@@ -116,7 +123,7 @@ class CreateTeamView: UIView {
 
     @objc func keyboardWillDismiss(_ notification: Notification) {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-            self.scrollViewTopAnchor?.constant = 38
+            self.marginViewHeightAnchor?.constant = 50
             self.layoutSubviews()
         }, completion: nil)
     }
@@ -133,6 +140,7 @@ extension CreateTeamView: CodeView {
         
         stackView.addArrangedSubview(detailsStackView)
         stackView.addArrangedSubview(addressStackView)
+        stackView.addArrangedSubview(view)
         
         scrollView.addSubview(stackView)
     
@@ -148,11 +156,14 @@ extension CreateTeamView: CodeView {
         
         neighborhoodInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
         
-        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 24).isActive = true
         stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        
+        marginViewHeightAnchor = view.heightAnchor.constraint(equalToConstant: 50)
+        marginViewHeightAnchor?.isActive = true
 
         scrollViewTopAnchor = scrollView.topAnchor.constraint(equalTo: self.layoutMarginsGuide.topAnchor)
         scrollViewTopAnchor?.isActive = true
