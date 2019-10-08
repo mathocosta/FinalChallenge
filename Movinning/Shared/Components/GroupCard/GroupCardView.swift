@@ -9,13 +9,13 @@
 import UIKit
 
 class GroupCardView: UITableViewCell, CustomView {
-    
+
     var team: Team? {
         didSet {
             groupCardContentView.team = team
         }
     }
-    
+
     static var height = 112 + 8
 
     lazy var groupCardContentView: GroupCardContentView = {
@@ -23,7 +23,7 @@ class GroupCardView: UITableViewCell, CustomView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
