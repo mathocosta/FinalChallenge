@@ -65,6 +65,9 @@
 		2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */; };
 		2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */; };
 		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
+		2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */; };
+		2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */; };
+		2B9E3FDF234CD60F00CBD497 /* AchievmentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDE234CD60F00CBD497 /* AchievmentItemView.swift */; };
 		2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */; };
 		2BA7B7C6233A568E00134C6E /* GroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C5233A568E00134C6E /* GroupCardView.swift */; };
 		2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C7233A572F00134C6E /* CustomView.swift */; };
@@ -177,6 +180,9 @@
 		2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+customFonts.swift"; sourceTree = "<group>"; };
 		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentListView.swift; sourceTree = "<group>"; };
+		2B9E3FDE234CD60F00CBD497 /* AchievmentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentItemView.swift; sourceTree = "<group>"; };
 		2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		2BA7B7C5233A568E00134C6E /* GroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardView.swift; sourceTree = "<group>"; };
 		2BA7B7C7233A572F00134C6E /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -538,6 +544,30 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2B9E3FD7234CB50400CBD497 /* CustomButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */,
+			);
+			path = CustomButtonView;
+			sourceTree = "<group>";
+		};
+		2B9E3FDA234CD37D00CBD497 /* AchievmentListView */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */,
+			);
+			path = AchievmentListView;
+			sourceTree = "<group>";
+		};
+		2B9E3FDD234CD5DC00CBD497 /* AchievmentItemView */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E3FDE234CD60F00CBD497 /* AchievmentItemView.swift */,
+			);
+			path = AchievmentItemView;
+			sourceTree = "<group>";
+		};
 		2BA7B7C4233A567100134C6E /* GroupCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +597,9 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B9E3FDD234CD5DC00CBD497 /* AchievmentItemView */,
+				2B9E3FDA234CD37D00CBD497 /* AchievmentListView */,
+				2B9E3FD7234CB50400CBD497 /* CustomButtonView */,
 				2B636714233CDAB300CFC7B9 /* CustomTextView */,
 				2BA7B7C4233A567100134C6E /* GroupCard */,
 				2B86B1E72331008500688735 /* LoadingView */,
@@ -821,6 +854,7 @@
 				278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */,
 				2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
+				2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
@@ -830,6 +864,7 @@
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
@@ -846,6 +881,7 @@
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
+				2B9E3FDF234CD60F00CBD497 /* AchievmentItemView.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,

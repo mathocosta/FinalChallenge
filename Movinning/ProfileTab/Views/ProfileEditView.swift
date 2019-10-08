@@ -22,7 +22,6 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: NSLocalizedString("First Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
-        input.inputTextField.delegate = self
         return input
     }()
 
@@ -37,7 +36,6 @@ class ProfileEditView: UIView {
         let input = Input(frame: .zero, label: NSLocalizedString("Email", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .emailAddress
-        input.inputTextField.delegate = self
         input.inputTextField.autocapitalizationType = .none
         return input
     }()
