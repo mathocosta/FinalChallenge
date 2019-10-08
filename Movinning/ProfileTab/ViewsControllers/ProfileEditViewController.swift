@@ -50,12 +50,6 @@ class ProfileEditViewController: UIViewController, LoaderView {
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
         profileEditView.onSaveProfile = saveButtonTapped
-
-//        let saveBarButton = UIBarButtonItem(
-//            barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonTapped(_:)))
-//
-//        navigationItem.rightBarButtonItem = saveBarButton
-
     }
 
     // MARK: - Actions
@@ -67,11 +61,6 @@ class ProfileEditViewController: UIViewController, LoaderView {
             userDefaults.isFirstLogin = false
         }
 
-//        self.coordinator?.showLoadingViewController()
-//        let vc = LoadingViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc, animated: true, completion: nil)
-
         self.startLoader()
 
         if let profileImage = profileEditView.editProfileImage.imageView.image,
@@ -80,9 +69,11 @@ class ProfileEditViewController: UIViewController, LoaderView {
         }
       
         guard let firstNameText = profileEditView.firstNameInput.inputTextField.text,
-            nameText != "" else {
-            let alert = UIAlertController.okAlert(title: NSLocalizedString("Invalid Name Title", comment: ""),
-                                                  message: NSLocalizedString("Invalid Name Message", comment: ""))
+            !firstNameText.isEmpty else {
+            let alert = UIAlertController.okAlert(
+                title: NSLocalizedString("Invalid Name Title", comment: ""),
+                message: NSLocalizedString("Invalid Name Message", comment: "")
+            )
             self.present(alert, animated: true, completion: nil)
             self.stopLoader()
             return
@@ -95,8 +86,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
 
         guard let emailText = profileEditView.emailInput.inputTextField.text,
             validateEmail(candidate: emailText) else {
-            let alert = UIAlertController.okAlert(title: NSLocalizedString("Invalid Email Title", comment: ""),
-                                                  message: NSLocalizedString("Invalid Email Message", comment: ""))
+            let alert = UIAlertController.okAlert(
+                title: NSLocalizedString("Invalid Email Title", comment: ""),
+                message: NSLocalizedString("Invalid Email Message", comment: "")
+            )
             self.present(alert, animated: true, completion: nil)
             self.stopLoader()
             return
@@ -108,13 +101,11 @@ class ProfileEditViewController: UIViewController, LoaderView {
             switch result {
             case .success:
                 DispatchQueue.main.async {
-//                    self.coordinator?.dismissLoadingViewController()
                     self.stopLoader()
                     self.coordinator?.showProfileViewController(for: self.user)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
-//                    vc.dismiss(animated: true, completion: nil)
                 }
                 print(error)
             }
