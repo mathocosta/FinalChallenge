@@ -45,7 +45,8 @@ class UserManager: NSObject {
         let user = User(context: CoreDataStore.context)
         user.id = (info["id"] as? UUID) ?? UUID()
         user.recordMetadata = info["recordMetadata"] as? Data
-        user.name = info["name"] as? String
+        user.firstName = info["firstName"] as? String
+        user.lastName = info["lastName"] as? String
         user.email = info["email"] as? String
         user.points = (info["points"] as? Int32) ?? 0
         user.goalPile = GoalPile(value: [])

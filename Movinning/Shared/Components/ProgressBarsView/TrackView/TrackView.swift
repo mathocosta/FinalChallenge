@@ -27,6 +27,10 @@ class TrackView: UIView {
         CALayer.createTrackLine(in: self)
     }
 
+    override func didMoveToWindow() {
+        layoutSubviews()
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

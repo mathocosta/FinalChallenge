@@ -25,35 +25,38 @@ class SessionManager {
     }
 
     func loginUser(completion: @escaping (ResultHandler<Bool>)) {
-        cloudKitGateway.canUseUserData { [weak self] (success, error) in
-            if let error = error {
-                return completion(.failure(error))
-            }
+        cloudKitGateway.userAccountAvailable { [weak self] (userAccountAvailableResult) in
+            switch userAccountAvailableResult {
+            case .success(let isAvailable):
+                if isAvailable {
+                    self?.cloudKitGateway.fetchInitialData { (initialDataResult) in
+                        switch initialDataResult {
+                        case .success(let userRecord, let teamRecord):
+                            let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
 
-            if success {
-                self?.cloudKitGateway.fetchInitialData { (result) in
-                    switch result {
-                    case .success(let userRecord, let teamRecord):
-                        let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
-
-                        if let teamRecord = teamRecord {
-                            let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
-                            team.addToMembers(user)
-                        }
-
-                        self?.coreDataGateway.save(user) { (result) in
-                            switch result {
-                            case .success:
-                                completion(.success(true))
-                            case .failure(let error):
-                                completion(.failure(error))
+                            if let teamRecord = teamRecord {
+                                let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
+                                team.addToMembers(user)
                             }
-                        }
 
-                    case .failure(let error):
-                        completion(.failure(error))
+                            self?.coreDataGateway.save(user) { (saveResult) in
+                                switch saveResult {
+                                case .success:
+                                    completion(.success(true))
+                                case .failure(let error):
+                                    completion(.failure(error))
+                                }
+                            }
+                        case .failure(let error):
+                            completion(.failure(error))
+                        }
                     }
+                } else {
+                    let nsError = NSError(domain: "User not logged", code: 0, userInfo: nil)
+                    completion(.failure(nsError))
                 }
+            case .failure(let error):
+                completion(.failure(error))
             }
         }
     }
@@ -77,6 +80,14 @@ class SessionManager {
                 completion(.failure(error))
             }
         }
+    }
+
+    /// Retorna o status da conta do iCloud do usuário no dispositivo. Se retornar
+    /// `true` quer dizer que está logado e pode continuar, no contrário, o usuário não
+    /// está mais logado no dispositivo.
+    /// - Parameter completion: Callback com o resultado ou com os possiveis erros
+    func userIsLogged(completion: @escaping (ResultHandler<Bool>)) {
+        cloudKitGateway.userAccountAvailable(completion: completion)
     }
 
     func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
