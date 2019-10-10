@@ -67,13 +67,15 @@
 		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
 		2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */; };
 		2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */; };
-		2B9E3FDF234CD60F00CBD497 /* AchievmentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDE234CD60F00CBD497 /* AchievmentItemView.swift */; };
+		2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDE234CD60F00CBD497 /* AchievmentItemViewCell.swift */; };
 		2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */; };
 		2BA7B7C6233A568E00134C6E /* GroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C5233A568E00134C6E /* GroupCardView.swift */; };
 		2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C7233A572F00134C6E /* CustomView.swift */; };
 		2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */; };
 		2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
+		2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */; };
+		2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */; };
 		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
 		3006C5502334FA2B00DA501B /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54F2334FA2B00DA501B /* TrackView.swift */; };
 		3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5512334FD7200DA501B /* CGRect+Center.swift */; };
@@ -182,13 +184,15 @@
 		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentListView.swift; sourceTree = "<group>"; };
-		2B9E3FDE234CD60F00CBD497 /* AchievmentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentItemView.swift; sourceTree = "<group>"; };
+		2B9E3FDE234CD60F00CBD497 /* AchievmentItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentItemViewCell.swift; sourceTree = "<group>"; };
 		2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		2BA7B7C5233A568E00134C6E /* GroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardView.swift; sourceTree = "<group>"; };
 		2BA7B7C7233A572F00134C6E /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardContentView.swift; sourceTree = "<group>"; };
 		2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPhotoView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewCell.swift; sourceTree = "<group>"; };
+		2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListView.swift; sourceTree = "<group>"; };
 		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
 		3006C54F2334FA2B00DA501B /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		3006C5512334FD7200DA501B /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
@@ -560,12 +564,12 @@
 			path = AchievmentListView;
 			sourceTree = "<group>";
 		};
-		2B9E3FDD234CD5DC00CBD497 /* AchievmentItemView */ = {
+		2B9E3FDD234CD5DC00CBD497 /* AchievmentItemViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				2B9E3FDE234CD60F00CBD497 /* AchievmentItemView.swift */,
+				2B9E3FDE234CD60F00CBD497 /* AchievmentItemViewCell.swift */,
 			);
-			path = AchievmentItemView;
+			path = AchievmentItemViewCell;
 			sourceTree = "<group>";
 		};
 		2BA7B7C4233A567100134C6E /* GroupCard */ = {
@@ -597,7 +601,11 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				2B9E3FDD234CD5DC00CBD497 /* AchievmentItemView */,
+				2BF29589234F6B1D0017E3B2 /* GroupMemberListView */,
+				2BF29586234F5A020017E3B2 /* GroupMemberViewCell */,
+				3006C5602338F6DC00DA501B /* RoundedView */,
+				3006C5592338F0C700DA501B /* RoundedImageView */,
+				2B9E3FDD234CD5DC00CBD497 /* AchievmentItemViewCell */,
 				2B9E3FDA234CD37D00CBD497 /* AchievmentListView */,
 				2B9E3FD7234CB50400CBD497 /* CustomButtonView */,
 				2B636714233CDAB300CFC7B9 /* CustomTextView */,
@@ -614,11 +622,25 @@
 		2BB4741A232001550099D4EB /* ProfileDetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				3006C5602338F6DC00DA501B /* RoundedView */,
-				3006C5592338F0C700DA501B /* RoundedImageView */,
 				2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */,
 			);
 			path = ProfileDetailsView;
+			sourceTree = "<group>";
+		};
+		2BF29586234F5A020017E3B2 /* GroupMemberViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */,
+			);
+			path = GroupMemberViewCell;
+			sourceTree = "<group>";
+		};
+		2BF29589234F6B1D0017E3B2 /* GroupMemberListView */ = {
+			isa = PBXGroup;
+			children = (
+				2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */,
+			);
+			path = GroupMemberListView;
 			sourceTree = "<group>";
 		};
 		3006C54E2334FA0B00DA501B /* TrackView */ = {
@@ -857,6 +879,7 @@
 				2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
+				2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
 				3006C5502334FA2B00DA501B /* TrackView.swift in Sources */,
@@ -881,7 +904,7 @@
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
-				2B9E3FDF234CD60F00CBD497 /* AchievmentItemView.swift in Sources */,
+				2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
@@ -898,6 +921,7 @@
 				27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
+				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,
 				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */,

@@ -37,6 +37,10 @@ extension UIFont {
     class var bodySmall: UIFont {
       return UIFont(name: "Avenir-Light", size: 16.0)!
     }
+    
+    class var body: UIFont {
+      return UIFont(name: "Avenir-Light", size: 18.0)!
+    }
 
     class var itemDetail: UIFont {
       return UIFont(name: "Avenir-Light", size: 14.0)!
