@@ -49,11 +49,40 @@ extension CloudKitGateway {
         publicDatabase.add(queryOperation)
     }
 
+    /// Obtém os usuários de um time baseado na lista de referências de usuários. Retorna `CKRecord`s com
+    /// somente o `firstName` e `photo`, pois os outros dados são desnecessários.
+    /// - Parameter teamRecord: `CKRecord` do time usado pela consulta
+    /// - Parameter completion: Callback executado quando termina a consulta com os resultados,
+    /// ou os errors encontrados
+    func users(from teamRecord: CKRecord, completion: @escaping(ResultHandler<[CKRecord]>)) {
+        if let usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference] {
+            let usersRecordsIDs = usersReferences.map { $0.recordID }
+
+            let fetchOperation = CKFetchRecordsOperation(recordIDs: usersRecordsIDs)
+            fetchOperation.desiredKeys = ["id", "firstName", "photo"]
+
+            fetchOperation.fetchRecordsCompletionBlock = { recordsByRecordsIDs, error in
+                if let error = error {
+                    return completion(.failure(error))
+                }
+
+                if let recordsByRecordsIDs = recordsByRecordsIDs {
+                    let records = Array(recordsByRecordsIDs.values)
+                    completion(.success(records))
+                } else {
+                    completion(.success([]))
+                }
+            }
+
+            publicDatabase.add(fetchOperation)
+        }
+    }
+
     /// Obtém o record do time cadastrado com o usuário, mas caso não haja nenhum,
     /// será retornado um erro.
     /// - Parameter userRecord: Record do usuário para buscar o time
-    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
-    /// os records obtidos, ou os errors encontrados
+    /// - Parameter completion: Callback executado quando termina a consulta com os resultados,
+    /// ou os errors encontrados
     func team(of userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
         guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
             let nsError = NSError(domain: "User doesn't have a team", code: 1, userInfo: nil)
