@@ -26,6 +26,8 @@ final class TeamTabCoordinator: Coordinator {
         )
         self.navigationController.navigationBar.isTranslucent = false
         self.navigationController.navigationBar.barTintColor = .backgroundColor
+        self.navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController.navigationBar.shadowImage = UIImage()
     }
 
     func start() {
