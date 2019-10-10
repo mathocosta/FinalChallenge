@@ -9,12 +9,17 @@
 import UIKit
 
 extension UIAlertController {
-    static func okAlert(title: String, message: String) -> UIAlertController {
+    static func okAlert(title: String, message: String, whenDismiss: (() -> Void)? = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(okAction)
+
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("OK", comment: "Default Action"),
+            style: .default,
+            handler: { _ in
+                alert.dismiss(animated: true, completion: whenDismiss)
+            }
+        ))
+
         return alert
     }
 }
