@@ -29,9 +29,9 @@ class CreateTeamViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = NSLocalizedString("Create Team", comment: "")
-        
+
         let createBarButton = UIBarButtonItem(
             barButtonSystemItem: .save, target: self, action: #selector(createBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = createBarButton
@@ -50,6 +50,7 @@ class CreateTeamViewController: UIViewController {
             "name": nameText,
             "teamDescription": descriptionText
         ])
+
         SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
             switch result {
             case .success:

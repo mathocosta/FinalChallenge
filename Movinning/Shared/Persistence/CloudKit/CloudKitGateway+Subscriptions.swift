@@ -24,9 +24,8 @@ extension CloudKitGateway {
         )
 
         let info = CKSubscription.NotificationInfo()
-        info.category = "TeamUpdated"
+        info.category = "team-update"
         info.shouldSendContentAvailable = true
-        info.shouldSendMutableContent = true
 
         subscription.notificationInfo = info
 
@@ -48,7 +47,7 @@ extension CloudKitGateway {
                 completion(.failure(error))
             }
 
-            // Atualizar o UserDefaults
+            print("Subscriptions adicionadas")
             completion(.success(true))
         }
 
@@ -69,6 +68,7 @@ extension CloudKitGateway {
                 let toUpdate = newSubscriptions.map { $0.subscriptionID }
                 let subscriptionsToRemove = alreadySaved.filter(toUpdate.contains)
 
+                print("Atualizando subscriptions")
                 self.save(newSubscriptions, andRemove: subscriptionsToRemove, completion: completion)
             }
         }

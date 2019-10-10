@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CustomView {
-    
+
 }
 
 extension CustomView where Self: UIView {
@@ -24,9 +24,9 @@ extension CustomView where Self: UIView {
 
         let shadowLayer = CAShapeLayer()
         shadowLayer.masksToBounds = false
-        
+
         shadowLayer.path = UIBezierPath(roundedRect: self.bounds, cornerRadius: radius).cgPath
-        shadowLayer.fillColor = color.cgColor    
+        shadowLayer.fillColor = color.cgColor
         shadowLayer.shadowColor = UIColor.black.cgColor
         shadowLayer.shadowPath = shadowLayer.path
         shadowLayer.shadowOffset = CGSize(width: 0.0, height: 2.0)

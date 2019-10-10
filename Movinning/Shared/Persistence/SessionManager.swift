@@ -20,7 +20,7 @@ class SessionManager {
 
     init() {
         self.cloudKitGateway = CloudKitGateway(container:
-            CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay.paulo"))
+            CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
         self.coreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)
     }
 
@@ -116,7 +116,9 @@ class SessionManager {
 
     func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
         user.team = team
-        updateRegister(of: user, completion: completion)
+        updateRegister(of: user) { [weak self] _ in
+            self?.addSubscriptions(for: user, completion: completion)
+        }
     }
 
     func remove(user: User, from team: Team, completion: @escaping (ResultHandler<Bool>)) {
@@ -155,7 +157,7 @@ class SessionManager {
 
     func addSubscriptions(for user: User, completion: @escaping (ResultHandler<Bool>)) {
         if let teamUUID = user.team?.id?.uuidString {
-            print("teamUUID:\(teamUUID)")
+            print("Adicionando subscriptions para time: \(teamUUID)")
             let subscription = cloudKitGateway.subscriptionForUpdates(recordType: "Teams", objectUUID: teamUUID)
             cloudKitGateway.save([subscription], completion: completion)
         }

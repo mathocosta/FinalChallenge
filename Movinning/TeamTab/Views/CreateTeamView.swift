@@ -9,7 +9,7 @@
 import UIKit
 
 class CreateTeamView: UIView {
-    
+
     var scrollViewTopAnchor: NSLayoutConstraint?
     var marginViewHeightAnchor: NSLayoutConstraint?
 
@@ -26,7 +26,7 @@ class CreateTeamView: UIView {
         input.textView.keyboardType = .alphabet
         return input
     }()
-    
+
     lazy var detailsStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,21 +36,21 @@ class CreateTeamView: UIView {
         stackView.axis = .vertical
         return stackView
     }()
-    
+
     lazy var cityInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("City", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
-    
+
     lazy var neighborhoodInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("Neighborhood", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
-    
+
     lazy var addressStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -67,7 +67,7 @@ class CreateTeamView: UIView {
         scrollView.backgroundColor = .backgroundColor
         return scrollView
     }()
-    
+
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class CreateTeamView: UIView {
         stackView.axis = .vertical
         return stackView
     }()
-    
+
     lazy var view: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -107,7 +107,7 @@ class CreateTeamView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
 
@@ -134,16 +134,16 @@ extension CreateTeamView: CodeView {
     func buildViewHierarchy() {
         detailsStackView.addArrangedSubview(nameInput)
         detailsStackView.addArrangedSubview(descriptionInput)
-        
+
         addressStackView.addArrangedSubview(cityInput)
         addressStackView.addArrangedSubview(neighborhoodInput)
-        
+
         stackView.addArrangedSubview(detailsStackView)
         stackView.addArrangedSubview(addressStackView)
         stackView.addArrangedSubview(view)
-        
+
         scrollView.addSubview(stackView)
-    
+
         addSubview(scrollView)
     }
 
@@ -153,15 +153,15 @@ extension CreateTeamView: CodeView {
         descriptionInput.heightAnchor.constraint(equalToConstant: CustomTextView.height).isActive = true
 
         cityInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-        
+
         neighborhoodInput.heightAnchor.constraint(equalToConstant: Input.height).isActive = true
-        
+
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 24).isActive = true
         stackView.leftAnchor.constraint(equalTo: scrollView.leftAnchor).isActive = true
         stackView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        
+
         marginViewHeightAnchor = view.heightAnchor.constraint(equalToConstant: 50)
         marginViewHeightAnchor?.isActive = true
 

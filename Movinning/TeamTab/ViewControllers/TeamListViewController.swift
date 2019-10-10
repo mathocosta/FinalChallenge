@@ -128,7 +128,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
         header.textLabel?.font = .sectionTitle
         header.backgroundView?.backgroundColor = .backgroundColor
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(GroupCardView.height)
     }

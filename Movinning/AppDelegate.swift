@@ -29,7 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.isFirstLogin = UserManager.getLoggedUser() == nil
 
         // Adiciona as subscriptions caso não existam
-        application.registerForRemoteNotifications()
+        if !application.isRegisteredForRemoteNotifications {
+            application.registerForRemoteNotifications()
+        }
 
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
@@ -82,6 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     SessionManager.current.updateLocallyTeam(of: loggedUser) { (result) in
                         if case .failure(let error) = result {
                             print(error.localizedDescription)
+                            completionHandler(.failed)
+                        } else {
+                            completionHandler(.newData)
                         }
                     }
                 }
