@@ -47,15 +47,14 @@ extension CloudKitGateway {
                 completion(.failure(error))
             }
 
-            print("Subscriptions adicionadas")
+            print("Subscriptions salvas")
             completion(.success(true))
         }
 
         publicDatabase.add(operation)
     }
 
-    func updateSubscriptions(
-        with newSubscriptions: [CKSubscription], completion: @escaping (ResultHandler<Bool>)) {
+    func removeSubscriptions(completion: @escaping (ResultHandler<Bool>)) {
         let userSubscriptionsOperation = CKFetchSubscriptionsOperation.fetchAllSubscriptionsOperation()
 
         userSubscriptionsOperation.fetchSubscriptionCompletionBlock = { subscriptions, error in
@@ -64,13 +63,14 @@ extension CloudKitGateway {
             }
 
             if let subscriptions = subscriptions {
-                let alreadySaved = Array(subscriptions.keys)
-                let toUpdate = newSubscriptions.map { $0.subscriptionID }
-                let subscriptionsToRemove = alreadySaved.filter(toUpdate.contains)
+                let subscriptionsToRemove = Array(subscriptions.keys)
 
-                print("Atualizando subscriptions")
-                self.save(newSubscriptions, andRemove: subscriptionsToRemove, completion: completion)
+                print("Removendo subscriptions")
+                self.save([], andRemove: subscriptionsToRemove, completion: completion)
+            } else {
+                completion(.success(true))
             }
+
         }
 
         publicDatabase.add(userSubscriptionsOperation)
