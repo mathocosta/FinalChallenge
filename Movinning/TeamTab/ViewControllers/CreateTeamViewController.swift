@@ -58,6 +58,7 @@ class CreateTeamViewController: UIViewController {
             "city": cityText,
             "neighborhood": neighborhoodText
         ])
+
         SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
             switch result {
             case .success:

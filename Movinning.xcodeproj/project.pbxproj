@@ -46,6 +46,7 @@
 		27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A5B23305DB9009E2D6B /* Localizable.strings */; };
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
+		27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -158,6 +159,7 @@
 		27EE5A6B23306325009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
 		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
+		27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Subscriptions.swift"; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
 				278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */,
 				278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */,
+				27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
+				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
