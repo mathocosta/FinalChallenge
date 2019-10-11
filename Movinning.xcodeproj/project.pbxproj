@@ -80,6 +80,7 @@
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
 		303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */; };
 		304398A3231FD2E80024568D /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304398A2231FD2E80024568D /* GoalsManager.swift */; };
+		305ABC36234CBF5300FB118B /* MovinningGoalsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -187,6 +188,7 @@
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+DefaultTypes.swift"; sourceTree = "<group>"; };
 		304398A2231FD2E80024568D /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
+		305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTest.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -591,6 +593,7 @@
 			children = (
 				57FF126D233CE52C00380A88 /* MovinningTests.swift */,
 				57FF126F233CE52C00380A88 /* Info.plist */,
+				305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */,
 			);
 			path = MovinningTests;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				305ABC36234CBF5300FB118B /* MovinningGoalsTest.swift in Sources */,
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1035,7 +1039,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1058,7 +1062,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1078,7 +1082,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1099,7 +1103,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1119,7 +1123,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1139,7 +1143,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

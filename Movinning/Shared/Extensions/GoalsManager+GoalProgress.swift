@@ -30,7 +30,7 @@ extension GoalsManager {
             let goalAmount = goal.requiredAmount()
             completion(progressAmount, Double(goalAmount))
         }
-        
+
         let processEachDay: ([HKStatistics]) -> Void = { (results) -> Void in
             for item in results {
                 let service = HealthStoreService.type(forTag: goal.activityType)
