@@ -142,6 +142,22 @@ class SessionManager {
         }
     }
 
+    func users(from team: Team, completion: @escaping (ResultHandler<[User]>)) {
+        let teamRecord = team.asCKRecord()
+        cloudKitGateway.users(from: teamRecord) { (result) in
+            switch result {
+            case .success(let usersRecords):
+                var users = [User]()
+                for record in usersRecords {
+                    users.append(UserManager.createUser(with: record.recordKeysAndValues()))
+                }
+                completion(.success(users))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     func create(team: Team, with user: User, completion: @escaping (ResultHandler<Bool>)) {
         let teamRecord = team.asCKRecord()
         cloudKitGateway.create(teamRecord: teamRecord) { (result) in
