@@ -8,54 +8,59 @@
 
 import Foundation
 import CloudKit
+import PromiseKit
+import PMKCloudKit
 
 // MARK: - Gerenciamento dos dados dos usuários
 extension CloudKitGateway {
 
     /// Checa se tem usuário logado no device
-    /// - Parameter completion: Callback executado quando o processo é terminado e com os possíveis erros
-    func userAccountAvailable(completion: @escaping (ResultHandler<Bool>)) {
-        container.accountStatus { (accountStatus, error) in
-            if let error = error {
-                return completion(.failure(error))
-            } else {
-                return completion(.success(accountStatus == .available))
-            }
-        }
+    func userAccountAvailable() -> Promise<Bool> {
+        return container.accountStatus().then { Promise.value($0 == .available) }
     }
 
     /// Solicita permissão ao usuário para utilizar os dados do usuário para preencher
     /// inicialmente o nome do usuário
-    /// - Parameter completion: Callback executado quando o processo é terminado e com os possíveis erros
-    func userIdentityPermission(completion: @escaping (ResultHandler<Bool>)) {
-        container.requestApplicationPermission(.userDiscoverability) { (permissionStatus, error) in
-            if let error = error {
-                return completion(.failure(error))
-            } else {
-                return completion(.success(permissionStatus == .granted))
-            }
+    func userIdentityPermission() -> Promise<Bool> {
+        return container.requestApplicationPermission(.userDiscoverability).then {
+            Promise.value($0 == .granted)
         }
     }
 
-    func identityData(of userRecordID: CKRecord.ID, completion: @escaping (ResultHandler<[String: String]>)) {
-        container.discoverUserIdentity(withUserRecordID: userRecordID) {
-            (userIdentity, error) in
-            if let error = error {
-                print(error.localizedDescription)
-            }
+    /// Obtém os dados do usuário com o record id
+    /// - Parameter userRecordID: `CKRecord.ID` do usuário para obter os dados
+    func identityData(of userRecordID: CKRecord.ID) -> Promise<[String: String]> {
+        return container.discoverUserIdentity(withUserRecordID: userRecordID).then {
+            userIdentity -> Promise<[String: String]> in
 
-            if let userIdentity = userIdentity,
-                let nameComponents = userIdentity.nameComponents,
+            if let nameComponents = userIdentity.nameComponents,
                 let firstName = nameComponents.givenName,
                 let lastName = nameComponents.familyName {
 
-                completion(.success([
+                return Promise.value([
                     "firstName": firstName,
                     "lastName": lastName
-                ]))
+                ])
             }
 
-            completion(.success([:]))
+            return Promise.value([:])
+
+        }
+    }
+
+    func addIndetityData(to userRecord: CKRecord) -> Promise<CKRecord> {
+        return userIdentityPermission().then { isGranted -> Promise<CKRecord> in
+            if isGranted {
+                return self.identityData(of: userRecord.recordID).then {
+                    userIdentityData -> Promise<CKRecord> in
+                    userRecord["firstName"] = userIdentityData["firstName"]
+                    userRecord["lastName"] = userIdentityData["lastName"]
+
+                    return Promise.value(userRecord)
+                }
+            }
+
+            return Promise.value(userRecord)
         }
     }
 
@@ -65,70 +70,34 @@ extension CloudKitGateway {
     /// e o record já exista na database, é apenas retornado com os dados antigos.
     /// - Parameter completion: Callback executado quando os dados do usuário são obtidos ou
     /// com os erros que aconteceram
-    func fetchCurrentUser(completion: @escaping (ResultHandler<CKRecord>)) {
-        let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
-        operation.fetchRecordsCompletionBlock = { (recordsByRecordID, operationError) in
-            if let operationError = operationError {
-                return completion(.failure(operationError))
-            }
-
-            if let recordsByRecordID = recordsByRecordID,
-                let userRecord = recordsByRecordID.values.first {
-
-                // Checa se no record já foi inicializado alguma das propriedades customizadas
-                if userRecord.value(forKey: "id") == nil {
-                    self.userIdentityPermission { (identityPermissionResult) in
-                        if case .failure(let error) = identityPermissionResult {
-                            return completion(.failure(error))
-                        } else if case .success(let isGranted) = identityPermissionResult {
-                            if isGranted {
-                                self.identityData(of: userRecord.recordID) { (identityDataResult) in
-                                    switch identityDataResult {
-                                    case .success(let userIdentityData):
-                                        userRecord["firstName"] = userIdentityData["firstName"]
-                                        userRecord["lastName"] = userIdentityData["lastName"]
-                                        return completion(.success(userRecord))
-                                    case .failure(let error):
-                                        return completion(.failure(error))
-                                    }
-                                }
-                            } else {
-                                return completion(.success(userRecord))
-                            }
-                        }
-                    }
-                } else {
-                    return completion(.success(userRecord))
+    func fetchCurrentUser() -> Promise<CKRecord> {
+        return Promise<CKRecord> { seal in
+            let operation = CKFetchRecordsOperation.fetchCurrentUserRecordOperation()
+            operation.fetchRecordsCompletionBlock = { (recordsByRecordID, operationError) in
+                if let operationError = operationError {
+                    return seal.reject(operationError)
                 }
 
+                if let recordsByRecordID = recordsByRecordID,
+                    let userRecord = recordsByRecordID.values.first {
+                    return seal.fulfill(userRecord)
+                }
             }
+            publicDatabase.add(operation)
         }
-        publicDatabase.add(operation)
     }
 
     /// Esse método obtém os dados do usuário e também os dados do time que está cadastrado na conta
-    /// do usuário. Dois métodos são usados para isso funcionar, um para buscar o record do usuário
-    /// e outro para o record do time, já que no usuário está apenas a referência.
-    /// - Parameter completion: Callback executado quando todos os dados forem baixados ou
-    /// com os erros que aconteceram
-    func fetchInitialData(completion: @escaping (ResultHandler<(CKRecord, CKRecord?)>)) {
-        fetchCurrentUser { (result) in
-            switch result {
-            case .success(let userRecord):
-                // Tenta baixar o record do time, caso dê erro, é porque
-                // não tem um time cadastrado para o usuário.
-                self.team(of: userRecord) { (result) in
-                    switch result {
-                    case .success(let teamRecord):
-                        completion(.success((userRecord, teamRecord)))
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                        completion(.success((userRecord, nil)))
-                    }
+    /// do usuário.
+    func fetchInitialData() -> Promise<(CKRecord, CKRecord?)> {
+        return firstly(execute: fetchCurrentUser)
+            .then(addIndetityData)
+            .then { userRecord in
+                self.team(of: userRecord).then { teamRecord in
+                    Promise.value((userRecord, teamRecord))
+                }.recover { _ in
+                    Promise.value((userRecord, nil))
                 }
-            case .failure(let error):
-                completion(.failure(error))
-            }
         }
     }
 

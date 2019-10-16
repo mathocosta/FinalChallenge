@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import PromiseKit
 
 // MARK: - Gerenciamento dos times
 extension CloudKitGateway {
@@ -52,15 +53,17 @@ extension CloudKitGateway {
     /// Obtém o record do time cadastrado com o usuário, mas caso não haja nenhum,
     /// será retornado um erro.
     /// - Parameter userRecord: Record do usuário para buscar o time
-    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
-    /// os records obtidos, ou os errors encontrados
-    func team(of userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
-            let nsError = NSError(domain: "User doesn't have a team", code: 1, userInfo: nil)
-            return completion(.failure(nsError))
-        }
+    func team(of userRecord: CKRecord) -> Promise<CKRecord> {
+        return Promise<CKRecord.Reference> { seal in
+            guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
+                let nsError = NSError(domain: "User doesn't have a team", code: 1, userInfo: nil)
+                return seal.reject(nsError)
+            }
 
-        object(with: teamReference.recordID, in: publicDatabase, completion: completion)
+            return seal.fulfill(teamReference)
+        }.then { teamReference in
+            self.publicDatabase.fetch(withRecordID: teamReference.recordID)
+        }
     }
 
     /// Esse método cria um `CKRecord` de um time.

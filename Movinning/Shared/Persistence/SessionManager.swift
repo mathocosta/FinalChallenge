@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import PromiseKit
 
 typealias ResultHandler<T> = ((Result<T, Error>) -> Void)
 
@@ -86,9 +87,8 @@ class SessionManager {
     /// Retorna o status da conta do iCloud do usuário no dispositivo. Se retornar
     /// `true` quer dizer que está logado e pode continuar, no contrário, o usuário não
     /// está mais logado no dispositivo.
-    /// - Parameter completion: Callback com o resultado ou com os possiveis erros
-    func userIsLogged(completion: @escaping (ResultHandler<Bool>)) {
-        cloudKitGateway.userAccountAvailable(completion: completion)
+    func userIsLogged() -> Promise<Bool> {
+        cloudKitGateway.userAccountAvailable()
     }
 
     // MARK: - Teams management
