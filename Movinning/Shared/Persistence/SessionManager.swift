@@ -10,7 +10,7 @@ import Foundation
 import CloudKit
 import PromiseKit
 
-typealias ResultHandler<T> = ((Result<T, Error>) -> Void)
+typealias ResultHandler<T> = ((Swift.Result<T, Error>) -> Void)
 
 class SessionManager {
 
@@ -26,39 +26,27 @@ class SessionManager {
     }
 
     // MARK: - User management
-    func loginUser(completion: @escaping (ResultHandler<Bool>)) {
-        cloudKitGateway.userAccountAvailable { [weak self] (userAccountAvailableResult) in
-            switch userAccountAvailableResult {
-            case .success(let isAvailable):
-                if isAvailable {
-                    self?.cloudKitGateway.fetchInitialData { (initialDataResult) in
-                        switch initialDataResult {
-                        case .success(let userRecord, let teamRecord):
-                            let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
+    func loginUser() -> Promise<Bool> {
+        return userIsLogged().then { _ in
+            self.cloudKitGateway.fetchInitialData().then { records -> Promise<Bool> in
+                let (userRecord, teamRecord) = records
+                let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
 
-                            if let teamRecord = teamRecord {
-                                let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
-                                team.addToMembers(user)
-                            }
+                if let teamRecord = teamRecord {
+                    let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
+                    team.addToMembers(user)
+                }
 
-                            self?.coreDataGateway.save(user) { (saveResult) in
-                                switch saveResult {
-                                case .success:
-                                    completion(.success(true))
-                                case .failure(let error):
-                                    completion(.failure(error))
-                                }
-                            }
+                return Promise<Bool> { seal in
+                    self.coreDataGateway.save(user) { (result) in
+                        switch result {
+                        case .success:
+                            seal.fulfill(true)
                         case .failure(let error):
-                            completion(.failure(error))
+                            seal.reject(error)
                         }
                     }
-                } else {
-                    let nsError = NSError(domain: "User not logged", code: 0, userInfo: nil)
-                    completion(.failure(nsError))
                 }
-            case .failure(let error):
-                completion(.failure(error))
             }
         }
     }
@@ -93,27 +81,28 @@ class SessionManager {
 
     // MARK: - Teams management
     func updateLocallyTeam(of user: User, completion: @escaping (ResultHandler<Bool>)) {
-        let userRecord = user.asCKRecord()
-        if let userTeam = user.team {
-            cloudKitGateway.team(of: userRecord) { (result) in
-                switch result {
-                case .success(let teamRecord):
-                    let teamRecordInfo = teamRecord.recordKeysAndValues()
-                    TeamManager.update(team: userTeam, with: teamRecordInfo)
-                    self.coreDataGateway.save(userTeam) { (result) in
-                        if case .success = result {
-                            completion(.success(true))
-                        } else if case .failure(let error) = result {
-                            completion(.failure(error))
-                        }
-                    }
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-        } else {
-            completion(.success(false))
-        }
+        // FIXME: Precisa refatorar para voltar a funcionar
+//        let userRecord = user.asCKRecord()
+//        if let userTeam = user.team {
+//            cloudKitGateway.team(of: userRecord) { (result) in
+//                switch result {
+//                case .success(let teamRecord):
+//                    let teamRecordInfo = teamRecord.recordKeysAndValues()
+//                    TeamManager.update(team: userTeam, with: teamRecordInfo)
+//                    self.coreDataGateway.save(userTeam) { (result) in
+//                        if case .success = result {
+//                            completion(.success(true))
+//                        } else if case .failure(let error) = result {
+//                            completion(.failure(error))
+//                        }
+//                    }
+//                case .failure(let error):
+//                    completion(.failure(error))
+//                }
+//            }
+//        } else {
+//            completion(.success(false))
+//        }
     }
 
     func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
