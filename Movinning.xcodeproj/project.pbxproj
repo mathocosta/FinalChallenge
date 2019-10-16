@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C62350AAE100BBCEE7 /* PromiseKit */; };
+		270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C92356072300BBCEE7 /* PMKCloudKit */; };
 		273D233F2327E0AC003147DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* SessionManager.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
@@ -230,6 +232,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */,
+				270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */,
+				270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */,
 				2797D61F232D315200A33470 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -726,6 +730,10 @@
 			dependencies = (
 			);
 			name = Movinning;
+			packageProductDependencies = (
+				270EE7C62350AAE100BBCEE7 /* PromiseKit */,
+				270EE7C92356072300BBCEE7 /* PMKCloudKit */,
+			);
 			productName = FinalChallenge;
 			productReference = 275FE85F231D3664001695D2 /* Movinning.app */;
 			productType = "com.apple.product-type.application";
@@ -804,6 +812,10 @@
 				"pt-BR",
 			);
 			mainGroup = 275FE856231D3664001695D2;
+			packageReferences = (
+				270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */,
+			);
 			productRefGroup = 275FE860231D3664001695D2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1311,6 +1323,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.11.0;
+			};
+		};
+		270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PromiseKit/CloudKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		270EE7C62350AAE100BBCEE7 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		270EE7C92356072300BBCEE7 /* PMKCloudKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */;
+			productName = PMKCloudKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */ = {
