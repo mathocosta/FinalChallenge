@@ -93,6 +93,10 @@
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
 		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
+		57479DAB235761CA00C21D09 /* FirstOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DAA235761CA00C21D09 /* FirstOnboardingViewController.swift */; };
+		57479DAD235761D900C21D09 /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DAC235761D900C21D09 /* SecondOnboardingViewController.swift */; };
+		57479DAF235761E600C21D09 /* ThirdOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DAE235761E600C21D09 /* ThirdOnboardingViewController.swift */; };
+		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
 		57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF126D233CE52C00380A88 /* MovinningTests.swift */; };
 		57FF127C233CE53D00380A88 /* MovinningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF127B233CE53D00380A88 /* MovinningUITests.swift */; };
 /* End PBXBuildFile section */
@@ -206,6 +210,10 @@
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
 		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
+		57479DAA235761CA00C21D09 /* FirstOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOnboardingViewController.swift; sourceTree = "<group>"; };
+		57479DAC235761D900C21D09 /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
+		57479DAE235761E600C21D09 /* ThirdOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOnboardingViewController.swift; sourceTree = "<group>"; };
+		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		57FF126B233CE52C00380A88 /* MovinningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovinningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FF126D233CE52C00380A88 /* MovinningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningTests.swift; sourceTree = "<group>"; };
 		57FF126F233CE52C00380A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -268,6 +276,7 @@
 				2797D619232B2F6C00A33470 /* Resources */,
 				275FE878231D3D33001695D2 /* Shared */,
 				2B7DC2AD23228813009C3F54 /* ProfileTab */,
+				57479DA9235761AD00C21D09 /* Onboarding */,
 				278717F723207CF700A2A481 /* TeamTab */,
 				2797D620232D38E400A33470 /* FirstLogin */,
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
@@ -636,6 +645,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		57479DA9235761AD00C21D09 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				57479DB0235761F400C21D09 /* OnboardingViewController.swift */,
+				57479DAA235761CA00C21D09 /* FirstOnboardingViewController.swift */,
+				57479DAC235761D900C21D09 /* SecondOnboardingViewController.swift */,
+				57479DAE235761E600C21D09 /* ThirdOnboardingViewController.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		57FF126C233CE52C00380A88 /* MovinningTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,12 +845,14 @@
 				2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
+				57479DAF235761E600C21D09 /* ThirdOnboardingViewController.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
 				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
 				3006C5502334FA2B00DA501B /* TrackView.swift in Sources */,
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
+				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
@@ -882,8 +904,10 @@
 				278A03F123411DFD00AF1840 /* CloudKitGateway+Teams.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
+				57479DAB235761CA00C21D09 /* FirstOnboardingViewController.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
 				2B86B1E92331009C00688735 /* LoadingView.swift in Sources */,
+				57479DAD235761D900C21D09 /* SecondOnboardingViewController.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
@@ -1091,14 +1115,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = 7ZRHSKUH65;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinningh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1114,14 +1138,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = 7ZRHSKUH65;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinningh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
