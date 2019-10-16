@@ -138,7 +138,16 @@ extension CloudKitGateway {
     /// - Parameter completion: Callback executado quando o processo termina que retorna o record
     /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
     func update(userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        save(userRecord, in: publicDatabase, completion: completion)
+        save([userRecord], in: publicDatabase) { (result) in
+            switch result {
+            case .success(let records):
+                if let record = records.first {
+                    completion(.success(record))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     /// Remove a referência do time no usuário. Depois é feito o update dos dados no servidor.

@@ -27,20 +27,24 @@ final class CloudKitGateway {
     /// especializados para obter `CKRecord` dos tipos específicos.
     ///
     /// - Parameters:
-    ///   - record: Objeto para ser salvo
+    ///   - records: Objetos para serem salvos
     ///   - database: Database que deve ser salvada
     ///   - completion: Callback para ser executado quando a operação finalizar
-    func save(_ record: CKRecord, in database: CKDatabase, completion: @escaping (ResultHandler<CKRecord>)) {
-        let operation = CKModifyRecordsOperation(recordsToSave: [record], recordIDsToDelete: nil)
+    func save(
+        _ records: [CKRecord],
+        in database: CKDatabase,
+        completion: @escaping (ResultHandler<[CKRecord]>)
+    ) {
+        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
         operation.savePolicy = .changedKeys
         operation.modifyRecordsCompletionBlock = { (savedRecords, _, error) in
             if let error = error {
                 return completion(.failure(error))
             }
 
-            if let savedRecords = savedRecords, let savedRecord = savedRecords.first {
+            if let savedRecords = savedRecords {
                 print("Records salvos: \(savedRecords)")
-                return completion(.success(savedRecord))
+                return completion(.success(savedRecords))
             }
         }
         database.add(operation)
