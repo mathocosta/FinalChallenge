@@ -110,6 +110,10 @@ extension CloudKitGateway {
         save(userRecord, in: publicDatabase, completion: completion)
     }
 
+    func update(userRecord: CKRecord) -> Promise<CKRecord> {
+        return Promise { save([userRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
+    }
+
     /// Remove a referência do time no usuário. Depois é feito o update dos dados no servidor.
     /// - Parameter userRecord: Record do usuário para ser atualizado e salvo
     /// - Parameter completion: Callback executado quando o processo termina que retorna o record

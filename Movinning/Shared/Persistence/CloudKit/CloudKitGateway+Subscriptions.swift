@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import PromiseKit
 
 // MARK: - Subscriptions
 extension CloudKitGateway {
@@ -54,6 +55,30 @@ extension CloudKitGateway {
         publicDatabase.add(operation)
     }
 
+    func save(
+        _ subscripitions: [CKSubscription],
+        andRemove subscriptionsToRemove: [CKSubscription.ID]? = nil
+    ) -> Promise<Bool> {
+        return Promise<Bool> { seal in
+            let operation = CKModifySubscriptionsOperation(
+                subscriptionsToSave: subscripitions,
+                subscriptionIDsToDelete: subscriptionsToRemove
+            )
+            operation.qualityOfService = .utility
+
+            operation.modifySubscriptionsCompletionBlock = { _, _, error in
+                if let error = error {
+                    seal.reject(error)
+                }
+
+                print("Subscriptions salvas")
+                seal.fulfill(true)
+            }
+
+            publicDatabase.add(operation)
+        }
+    }
+
     func removeSubscriptions(completion: @escaping (ResultHandler<Bool>)) {
         let userSubscriptionsOperation = CKFetchSubscriptionsOperation.fetchAllSubscriptionsOperation()
 
@@ -74,6 +99,21 @@ extension CloudKitGateway {
         }
 
         publicDatabase.add(userSubscriptionsOperation)
+    }
+
+    func removeSubscriptions() -> Promise<Bool> {
+        return Promise<[CKSubscription.ID: CKSubscription]?> { seal in
+            let userSubscriptionsOperation = CKFetchSubscriptionsOperation.fetchAllSubscriptionsOperation()
+
+            userSubscriptionsOperation.fetchSubscriptionCompletionBlock = seal.resolve
+
+            publicDatabase.add(userSubscriptionsOperation)
+        }
+        .compactMap { $0?.keys }
+        .map(Array.init)
+        .then { subscriptionsToRemove in
+            self.save([], andRemove: subscriptionsToRemove)
+        }
     }
 
 }

@@ -13,6 +13,17 @@ import PMKCloudKit
 
 final class CloudKitGateway {
 
+    enum CKGError: Error {
+        case missingTeamReference
+
+        var localizedDescription: String {
+            switch self {
+            case .missingTeamReference:
+                return "User record doesn't have a team reference"
+            }
+        }
+    }
+
     let container: CKContainer
     let publicDatabase: CKDatabase
     let privateDatabase: CKDatabase
@@ -43,6 +54,26 @@ final class CloudKitGateway {
             if let savedRecords = savedRecords, let savedRecord = savedRecords.first {
                 print("Records salvos: \(savedRecords)")
                 return completion(.success(savedRecord))
+            }
+        }
+        database.add(operation)
+    }
+
+    func save(
+        _ records: [CKRecord],
+        in database: CKDatabase,
+        completion: @escaping ([CKRecord]?, Error?) -> Void
+    ) {
+        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        operation.savePolicy = .changedKeys
+        operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+            if let error = error {
+                return completion(nil, error)
+            }
+
+            if let savedRecords = savedRecords {
+                print("Records salvos: \(savedRecords)")
+                return completion(savedRecords, nil)
             }
         }
         database.add(operation)

@@ -56,8 +56,7 @@ extension CloudKitGateway {
     func team(of userRecord: CKRecord) -> Promise<CKRecord> {
         return Promise<CKRecord.Reference> { seal in
             guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
-                let nsError = NSError(domain: "User doesn't have a team", code: 1, userInfo: nil)
-                return seal.reject(nsError)
+                return seal.reject(CKGError.missingTeamReference)
             }
 
             return seal.fulfill(teamReference)
@@ -72,6 +71,10 @@ extension CloudKitGateway {
     /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
     func create(teamRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
         save(teamRecord, in: publicDatabase, completion: completion)
+    }
+
+    func create(teamRecord: CKRecord) -> Promise<CKRecord> {
+        return Promise { save([teamRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
     }
 
 }
