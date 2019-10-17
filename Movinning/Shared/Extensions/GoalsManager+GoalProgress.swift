@@ -32,15 +32,16 @@ extension GoalsManager {
         }
 
         let processEachDay: ([HKStatistics]) -> Void = { (results) -> Void in
+            var progressAmount: Double = 0.0
+            let goalAmount = goal.requiredAmount()
             for item in results {
                 let service = HealthStoreService.type(forTag: goal.activityType)
-                let progressAmount = GoalsManager.progressAmount(item, for: service)
-                let goalAmount = goal.requiredAmount()
-                completion(progressAmount, Double(goalAmount))
+                progressAmount = GoalsManager.progressAmount(item, for: service)
                 if Int(progressAmount) > goalAmount {
                     break
                 }
             }
+            completion(progressAmount, Double(goalAmount))
         }
 
         let serviceType = HealthStoreService.type(forTag: goal.activityType)
