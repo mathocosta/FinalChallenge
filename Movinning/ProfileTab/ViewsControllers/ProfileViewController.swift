@@ -63,8 +63,8 @@ class ProfileViewController: UIViewController {
         var didComplete = false
         GoalsManager.progress(for: user, on: goal) { (amount, required) in
             DispatchQueue.main.async {
-                didComplete = amount > required
                 guard !didComplete else { return }
+                didComplete = amount > required
                 let progress = CGFloat(didComplete ? 1.0 : amount / required)
                 let text = didComplete
                 ? "Complete" : String.init(format: "%.0f/%.0f", amount, required)
