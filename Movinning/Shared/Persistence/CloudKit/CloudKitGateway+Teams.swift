@@ -50,6 +50,35 @@ extension CloudKitGateway {
         publicDatabase.add(queryOperation)
     }
 
+    /// Obtém os usuários de um time baseado na lista de referências de usuários. Retorna `CKRecord`s com
+    /// somente o `firstName` e `photo`, pois os outros dados são desnecessários.
+    /// - Parameter teamRecord: `CKRecord` do time usado pela consulta
+    /// - Parameter completion: Callback executado quando termina a consulta com os resultados,
+    /// ou os errors encontrados
+    func users(from teamRecord: CKRecord, completion: @escaping(ResultHandler<[CKRecord]>)) {
+        if let usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference] {
+            let usersRecordsIDs = usersReferences.map { $0.recordID }
+
+            let fetchOperation = CKFetchRecordsOperation(recordIDs: usersRecordsIDs)
+            fetchOperation.desiredKeys = ["id", "firstName", "photo"]
+
+            fetchOperation.fetchRecordsCompletionBlock = { recordsByRecordsIDs, error in
+                if let error = error {
+                    return completion(.failure(error))
+                }
+
+                if let recordsByRecordsIDs = recordsByRecordsIDs {
+                    let records = Array(recordsByRecordsIDs.values)
+                    completion(.success(records))
+                } else {
+                    completion(.success([]))
+                }
+            }
+
+            publicDatabase.add(fetchOperation)
+        }
+    }
+
     /// Obtém o record do time cadastrado com o usuário, mas caso não haja nenhum,
     /// será retornado um erro.
     /// - Parameter userRecord: Record do usuário para buscar o time
@@ -69,8 +98,28 @@ extension CloudKitGateway {
     /// - Parameter userRecord: Record do time para ser salvo
     /// - Parameter completion: Callback executado quando o processo termina que retorna o record
     /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
-    func create(teamRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        save(teamRecord, in: publicDatabase, completion: completion)
+    func create(
+        teamRecord: CKRecord,
+        withCreator userRecord: CKRecord,
+        completion: @escaping (ResultHandler<(CKRecord, CKRecord)>)
+    ) {
+        // Configura o record do time
+        let userReference = userRecord.reference(action: .none)
+        teamRecord["users"] = [userReference]
+        teamRecord["creator"] = userReference
+
+        userRecord["team"] = teamRecord.reference(action: .none)
+
+        save([teamRecord, userRecord], in: publicDatabase) { (result) in
+            switch result {
+            case .success(let updatedRecords):
+                let updatedTeamRecord = updatedRecords[0]
+                let updatedUserRecord = updatedRecords[1]
+                completion(.success((updatedTeamRecord, updatedUserRecord)))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     func create(teamRecord: CKRecord) -> Promise<CKRecord> {

@@ -145,13 +145,32 @@ class SessionManager {
         }
     }
 
+    func users(from team: Team, completion: @escaping (ResultHandler<[User]>)) {
+        let teamRecord = team.asCKRecord()
+        cloudKitGateway.users(from: teamRecord) { (result) in
+            switch result {
+            case .success(let usersRecords):
+                var users = [User]()
+                for record in usersRecords {
+                    users.append(UserManager.createUser(with: record.recordKeysAndValues()))
+                }
+                completion(.success(users))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+
     func create(team: Team, with user: User, completion: @escaping (ResultHandler<Bool>)) {
         let teamRecord = team.asCKRecord()
-        cloudKitGateway.create(teamRecord: teamRecord) { (result) in
+        let userRecord = user.asCKRecord()
+        cloudKitGateway.create(teamRecord: teamRecord, withCreator: userRecord) { (result) in
             switch result {
-            case .success(let updatedTeamRecord):
+            case .success(let updatedTeamRecord, let updatedUserRecord):
                 TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
-                self.add(user: user, to: team, completion: completion)
+                UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
+                user.team = team
+                self.addSubscriptions(for: user, completion: completion)
             case .failure(let error):
                 completion(.failure(error))
             }
