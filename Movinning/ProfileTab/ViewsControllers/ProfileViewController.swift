@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
     init(user: User) {
         self.user = user
         self.profileView = ProfileView()
-
+        
         super.init(nibName: nil, bundle: nil)
     }
 
