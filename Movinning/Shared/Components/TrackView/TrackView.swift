@@ -16,7 +16,11 @@ class TrackView: UIView {
             layoutSubviews()
         }
     }
-    var trackColor: UIColor = .textColor
+    var trackColor: UIColor = .textColor {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
 
     init(frame: CGRect, color: UIColor) {
         self.trackColor = color
