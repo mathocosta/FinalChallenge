@@ -9,6 +9,12 @@
 import UIKit
 
 class ProgressBarsView: UIView {
+    
+    var height: CGFloat {
+        get {
+            return BarView.height * CGFloat(amountOfBars) + CGFloat(12 * (amountOfBars - 1))
+        }
+    }
 
     var bars: [BarView] = []
     var amountOfBars: Int = 0
