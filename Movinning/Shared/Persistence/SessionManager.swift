@@ -72,6 +72,16 @@ class SessionManager {
         }
     }
 
+    func updateRegister(of user: User) -> Promise<Bool> {
+        let userRecord = user.asCKRecord()
+        return cloudKitGateway.update(userRecord: userRecord).then { updatedRecord -> Promise<Bool> in
+            let recordMetadata = updatedRecord.recordMetadata()
+            UserManager.update(recordMetadata: recordMetadata, of: user)
+
+            return Promise.value(true)
+        }
+    }
+
     /// Retorna o status da conta do iCloud do usuário no dispositivo. Se retornar
     /// `true` quer dizer que está logado e pode continuar, no contrário, o usuário não
     /// está mais logado no dispositivo.
