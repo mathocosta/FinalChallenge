@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController {
     init(user: User) {
         self.user = user
         self.profileView = ProfileView()
-        
+
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -42,34 +42,34 @@ class ProfileViewController: UIViewController {
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileView.profileDetailsView.imageView.image = profileImage
         }
-//        PointManager.display = self
     }
 
     func setProgressBars() {
         let currentGoals = GoalsManager.currentTimedGoals(of: user).sorted { (g1, g2) -> Bool in
             return g1.id < g2.id
         }
-        let barsView = profileView.progressBars
-        let tracksView = profileView.tracksView
-        let colors: [UIColor] = [.systemPink, .systemBlue, .systemRed, .systemGreen]
+
         for (index, goal) in currentGoals.enumerated() {
-            let bar = barsView.bars[index]
-            let track = tracksView.tracks[index]
-            let color = colors[index%colors.count]
-            var didComplete = false
-            GoalsManager.progress(for: user, on: goal) { (amount, required) in
-                DispatchQueue.main.async {
-                    guard !didComplete else { return }
-                    didComplete = amount > required
-                    let progress = CGFloat(didComplete ? 1.0 : amount / required)
-                    bar.goalLabel.text = goal.title
-                    bar.progressLabel.text = didComplete
-                        ? "Complete" : String.init(format: "%.0f/%.0f", amount, required)
-                    bar.goalColor.backgroundColor = color
-                    track.trackColor = color
-                    bar.progress = progress
-                    track.progress = progress
-                }
+            self.updateStatus(index: index, goal: goal)
+        }
+    }
+
+    func updateStatus(index: Int, goal: Goal) {
+        let colors: [UIColor] = [.systemPink, .systemBlue, .systemRed, .systemGreen]
+        let bar = profileView.progressBars.bars[index]
+        let track = profileView.tracksView.tracks[index]
+        let color = colors[index%colors.count]
+        var didComplete = false
+        GoalsManager.progress(for: user, on: goal) { (amount, required) in
+            DispatchQueue.main.async {
+                guard !didComplete else { return }
+                didComplete = amount > required
+                let progress = CGFloat(didComplete ? 1.0 : amount / required)
+                let text = didComplete
+                ? "Complete" : String.init(format: "%.0f/%.0f", amount, required)
+                bar.setGoal(title: goal.title, color: color, progressText: text)
+                track.trackColor = color
+                track.progress = progress
             }
         }
     }
@@ -85,9 +85,3 @@ class ProfileViewController: UIViewController {
     }
 
 }
-
-//extension ProfileViewController: PointDisplayUpdater {
-//    func didUpdate(newAmount: Int) {
-//        self.profileView.profileDetailsView.level = newAmount
-//    }
-//}

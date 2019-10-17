@@ -10,7 +10,7 @@ import UIKit
 
 class LegendProgressView: UIView {
 
-    var bars: [BarView] = []
+    var bars: [LegendBarView] = []
     var amountOfBars: Int = 0
 
     init(frame: CGRect, amount: Int) {
@@ -28,7 +28,7 @@ class LegendProgressView: UIView {
 extension LegendProgressView: CodeView {
     func buildViewHierarchy() {
         for _ in 1...amountOfBars {
-            let view = BarView(frame: .zero, progress: 0.8)
+            let view = LegendBarView(frame: .zero, progress: 0.8)
             view.translatesAutoresizingMaskIntoConstraints = false
             bars.append(view)
             addSubview(view)
@@ -45,7 +45,7 @@ extension LegendProgressView: CodeView {
             }
             bar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
             bar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-            bar.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
+            bar.heightAnchor.constraint(equalToConstant: LegendBarView.height).isActive = true
         }
     }
 
