@@ -67,7 +67,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
             let imageData = profileImage.pngData() {
             user.photo = imageData
         }
-      
+
         guard let firstNameText = profileEditView.firstNameInput.inputTextField.text,
             !firstNameText.isEmpty else {
             let alert = UIAlertController.okAlert(
@@ -79,7 +79,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
             return
         }
         user.firstName = firstNameText
-      
+
         if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
             user.lastName = lastNameText
         }

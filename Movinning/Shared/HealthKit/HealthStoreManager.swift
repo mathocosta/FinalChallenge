@@ -108,7 +108,6 @@ final class HealthStoreManager {
         )
 
         guard let lastSunday = calendar.getLastUpdateTime(from: now),
-            var startOfDay = calendar.date(bySettingHour: 3, minute: 0, second: 0, of: lastSunday),
             let sampleType = service.type as? HKQuantityType else { return }
 
         let query = HKStatisticsCollectionQuery(quantityType: sampleType, quantitySamplePredicate: nil, options: .cumulativeSum, anchorDate: lastSunday, intervalComponents: interval)
@@ -120,16 +119,12 @@ final class HealthStoreManager {
                 // Perform proper error handling here
                 fatalError("*** An error occurred while calculating the statistics: \(error?.localizedDescription) ***")
             }
-            completion(statsCollection.statistics())
+            completion(statsCollection.statistics().filter {
+                return $0.startDate.compare(lastSunday) != .orderedAscending
+            })
         }
 
         HealthStoreManager.healthStore.execute(query)
-
-//        while startOfDay.compare(now) == .orderedAscending {
-//            guard let nextDay = calendar.date(byAdding: .day, value: 1, to: startOfDay) else { return }
-//            quantitySum(from: startOfDay, to: nextDay, of: service, completion: completion)
-//            startOfDay = nextDay
-//        }
     }
 
     func quantitySumSinceLastSunday(

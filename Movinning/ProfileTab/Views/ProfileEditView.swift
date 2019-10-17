@@ -94,14 +94,10 @@ class ProfileEditView: UIView {
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
-//        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-
-            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-                self.profileImageConstrait?.constant = -32
-                self.layoutSubviews()
-            }, completion: nil)
-//        }
-
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+            self.profileImageConstrait?.constant = -32
+            self.layoutSubviews()
+        }, completion: nil)
     }
 
     @objc func keyboardWillDismiss(_ notification: Notification) {
@@ -157,13 +153,6 @@ extension ProfileEditView: CodeView {
     }
 
 }
-
-//extension ProfileEditView: UITextFieldDelegate {
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
-//}
 
 extension ProfileEditView: LoaderView {
     var loadingView: LoadingView {

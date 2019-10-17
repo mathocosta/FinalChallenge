@@ -25,7 +25,7 @@ extension UIColor {
     @nonobjc class var tabBarColor: UIColor {
         return UIColor(named: "tabBarColor") ?? .white
     }
-    
+
     @nonobjc class var tabBarItemColor: UIColor {
         return UIColor(named: "tabBarItemColor") ?? .white
     }

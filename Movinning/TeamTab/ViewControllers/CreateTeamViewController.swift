@@ -29,9 +29,9 @@ class CreateTeamViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = NSLocalizedString("Create Team", comment: "")
-        
+
         let createBarButton = UIBarButtonItem(
             barButtonSystemItem: .save, target: self, action: #selector(createBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = createBarButton
@@ -39,17 +39,26 @@ class CreateTeamViewController: UIViewController {
 
     @objc func createBarButtonTapped(_ sender: UIBarButtonItem) {
         guard let nameText = createTeamView.nameInput.inputTextField.text, !nameText.isEmpty else {
-            return presentAlert(with: NSLocalizedString("Name Field Missing", comment: ""))
+            let alert = UIAlertController.okAlert(
+                title: NSLocalizedString("Error", comment: ""),
+                message: NSLocalizedString("Name Field Missing", comment: "")
+            )
+            return present(alert, animated: true)
         }
 
         let descriptionText = createTeamView.descriptionInput.textView.text
+        let cityText = createTeamView.cityInput.inputTextField.text
+        let neighborhoodText = createTeamView.neighborhoodInput.inputTextField.text
 
         guard let loggedUser = UserManager.getLoggedUser() else { return }
 
         let newTeam = TeamManager.createTeam(with: [
             "name": nameText,
-            "teamDescription": descriptionText
+            "teamDescription": descriptionText,
+            "city": cityText,
+            "neighborhood": neighborhoodText
         ])
+
         SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
             switch result {
             case .success:
@@ -60,23 +69,6 @@ class CreateTeamViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-    }
-
-    func presentAlert(with message: String) {
-        let alert = UIAlertController(
-            title: NSLocalizedString("Error", comment: ""),
-            message: message,
-            preferredStyle: .alert
-        )
-        alert.addAction(UIAlertAction(
-            title: NSLocalizedString("OK", comment: "Default Action"),
-            style: .default,
-            handler: { _ in
-                alert.dismiss(animated: true, completion: nil)
-            }
-        ))
-
-        present(alert, animated: true, completion: nil)
     }
 
 }

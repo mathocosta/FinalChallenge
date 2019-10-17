@@ -9,14 +9,14 @@
 import UIKit
 
 class GroupCardContentView: UIView, CustomView {
-    
+
     var team: Team? {
         didSet {
             titleLabel.text = team?.name
             detailLabel.text = team?.teamDescription
         }
     }
-    
+
     static let height = 112
 
     lazy var titleLabel: UILabel = {
@@ -36,7 +36,7 @@ class GroupCardContentView: UIView, CustomView {
         label.text = "Parquelândia, Fortaleza"
         return label
     }()
-    
+
     lazy var usersPhotoView: UsersPhotoView = {
         let view = UsersPhotoView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +75,7 @@ extension GroupCardContentView: CodeView {
         detailLabel.leftAnchor.constraint(equalTo: titleLabel.leftAnchor).isActive = true
         detailLabel.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
         detailLabel.heightAnchor.constraint(equalToConstant: detailLabel.intrinsicContentSize.height).isActive = true
-        
+
         usersPhotoView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
         usersPhotoView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
         usersPhotoView.widthAnchor.constraint(equalToConstant: 104).isActive = true

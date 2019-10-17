@@ -9,7 +9,7 @@
 import UIKit
 
 class CustomTextView: UIView {
-    
+
     static var height: CGFloat = 155.0
 
     var label: String {
@@ -25,7 +25,7 @@ class CustomTextView: UIView {
         label.textColor = .textColor
         return label
     }()
-    
+
     lazy var textView: UITextView = {
         let textView = UITextView()
         textView.textColor = .textColor
@@ -77,7 +77,7 @@ extension CustomTextView: CodeView {
         underline.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         underline.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
-    
+
     func setupAdditionalConfiguration() {
 
     }

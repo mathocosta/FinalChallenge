@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CloudKit
 import HealthKit
 
 @UIApplicationMain
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private var appCoordinator: AppCoordinator?
 
+    // MARK: - Application Lifecycle
     func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -25,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Checa se o usuário não está logado, por agora, isso quer dizer que é
         // o primeiro acesso ao app
         UserDefaults.standard.isFirstLogin = UserManager.getLoggedUser() == nil
+
+        // Adiciona as subscriptions caso não existam
+        if !application.isRegisteredForRemoteNotifications {
+            application.registerForRemoteNotifications()
+        }
 
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
@@ -63,6 +70,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         CoreDataStore.saveContext()
+    }
+
+    // MARK: - Remote Notifications
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+    ) {
+        if let notification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) {
+            if notification.category == "team-update" {
+                if let loggedUser = UserManager.getLoggedUser() {
+                    SessionManager.current.updateLocallyTeam(of: loggedUser) { (result) in
+                        if case .failure(let error) = result {
+                            print(error.localizedDescription)
+                            completionHandler(.failed)
+                        } else {
+                            completionHandler(.newData)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

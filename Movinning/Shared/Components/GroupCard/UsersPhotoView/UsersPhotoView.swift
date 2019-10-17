@@ -9,7 +9,7 @@
 import UIKit
 
 class UsersPhotoView: UIView {
-    
+
     lazy var photoView1: RoundedImageView = {
         let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +17,7 @@ class UsersPhotoView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     lazy var photoView2: RoundedImageView = {
         let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +25,7 @@ class UsersPhotoView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     lazy var photoView3: RoundedImageView = {
         let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class UsersPhotoView: UIView {
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     lazy var photoView4: RoundedImageView = {
         let imageView = RoundedImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

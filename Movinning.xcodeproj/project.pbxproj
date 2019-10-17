@@ -46,6 +46,7 @@
 		27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A5B23305DB9009E2D6B /* Localizable.strings */; };
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
+		27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -90,6 +91,7 @@
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
 		303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */; };
 		304398A3231FD2E80024568D /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304398A2231FD2E80024568D /* GoalsManager.swift */; };
+		305ABC36234CBF5300FB118B /* MovinningGoalsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -163,6 +165,7 @@
 		27EE5A6B23306325009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
 		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
+		27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Subscriptions.swift"; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+DefaultTypes.swift"; sourceTree = "<group>"; };
 		304398A2231FD2E80024568D /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
+		305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTest.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -427,6 +431,7 @@
 				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
 				278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */,
 				278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */,
+				27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -693,6 +698,7 @@
 			children = (
 				57FF126D233CE52C00380A88 /* MovinningTests.swift */,
 				57FF126F233CE52C00380A88 /* Info.plist */,
+				305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */,
 			);
 			path = MovinningTests;
 			sourceTree = "<group>";
@@ -902,6 +908,7 @@
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
+				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
 				2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */,
@@ -956,6 +963,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				305ABC36234CBF5300FB118B /* MovinningGoalsTest.swift in Sources */,
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1147,14 +1155,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning.paulo";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1170,14 +1178,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning.paulo";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1190,7 +1198,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1211,7 +1219,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1231,7 +1239,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1251,7 +1259,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
