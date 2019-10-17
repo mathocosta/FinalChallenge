@@ -1,109 +1,87 @@
 //
 //  BarView.swift
-//  FinalChallenge
+//  Movinning
 //
-//  Created by Paulo José on 06/09/19.
+//  Created by Paulo José on 17/10/19.
 //  Copyright © 2019 The Rest of Us. All rights reserved.
 //
 
 import UIKit
 
 class BarView: UIView {
-
-    static let height: CGFloat = 20.0
-
-    var goalText: String? {
-        didSet {
-            guard let goalText = goalText else { return }
-            goalLabel.text = goalText
-        }
-    }
-
-    lazy var goalLabel: UILabel = {
+    
+    static var height: CGFloat = 42
+    
+    let progress: CGFloat
+    
+    lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .textColor
-        label.font = .itemTitle
-        label.textAlignment = .left
-        label.adjustsFontSizeToFitWidth = true
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .textColor
+        label.font = .bodySmall
+        label.text = "Meta"
         return label
+    }()
+
+    lazy var backgroundBar: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .brownGrey
+        return view
     }()
     
-    var progressText: String? {
-        didSet {
-            guard let progressText = progressText else { return }
-            progressLabel.text = progressText
-        }
-    }
-
-    lazy var progressLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.textColor = .textColor
-        label.textAlignment = .right
-        label.font = .itemDetail
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    var roundedColor: UIColor? {
-        didSet {
-            guard let roundedColor = roundedColor else { return }
-            goalColor.backgroundColor = roundedColor
-        }
-    }
-
-    lazy var goalColor: RoundedView = {
-        let view = RoundedView()
-        view.backgroundColor = UIColor.darkGray
+    lazy var progressBar: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .fadedRed
         return view
     }()
 
-    init(frame: CGRect, progress: CGFloat = 0.5) {
+    init(frame: CGRect, progress: CGFloat) {
+        self.progress = progress
         super.init(frame: frame)
-
         setupView()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func setGoal(title: String, color: UIColor, progressText: String) {
-        self.goalText = title
-        self.roundedColor = color
-        self.progressText = progressText
+    
+    override func layoutSubviews() {
+        progressBar.rightAnchor.constraint(equalTo: backgroundBar.rightAnchor, constant: (self.bounds.width * progress) - self.bounds.width).isActive = true
+        
+        backgroundBar.layer.masksToBounds = true
+        backgroundBar.layer.cornerRadius = 5
     }
+
 }
 
 extension BarView: CodeView {
     func buildViewHierarchy() {
-        addSubview(goalColor)
-        addSubview(goalLabel)
-        addSubview(progressLabel)
+        addSubview(titleLabel)
+        backgroundBar.addSubview(progressBar)
+        addSubview(backgroundBar)
     }
-
+    
     func setupConstraints() {
-        goalColor.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        goalColor.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        goalColor.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        goalColor.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-
-        goalLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        goalLabel.leftAnchor.constraint(equalTo: goalColor.rightAnchor, constant: 8).isActive = true
-        goalLabel.rightAnchor.constraint(equalTo: progressLabel.leftAnchor, constant: -8).isActive = true
-        goalLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-
-        progressLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        progressLabel.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        progressLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        progressLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        progressBar.topAnchor.constraint(equalTo: backgroundBar.topAnchor).isActive = true
+        progressBar.leftAnchor.constraint(equalTo: backgroundBar.leftAnchor).isActive = true
+        progressBar.bottomAnchor.constraint(equalTo: backgroundBar.bottomAnchor).isActive = true
+        
+        titleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        titleLabel.heightAnchor.constraint(equalToConstant: titleLabel.intrinsicContentSize.height).isActive = true
+        
+        backgroundBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5).isActive = true
+        backgroundBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        backgroundBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        backgroundBar.heightAnchor.constraint(equalToConstant: 15).isActive = true
     }
-
+    
     func setupAdditionalConfiguration() {
-
+        
     }
-
+    
+    
 }

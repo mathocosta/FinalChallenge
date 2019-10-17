@@ -39,7 +39,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profileEditView
-        title = self.user.fullName ?? NSLocalizedString("Profile", comment: "")
+        title = self.user.firstName ?? NSLocalizedString("Profile", comment: "")
 
         profileEditView.firstNameInput.inputTextField.text = user.firstName
         profileEditView.lastNameInput.inputTextField.text = user.lastName
@@ -78,7 +78,8 @@ class ProfileEditViewController: UIViewController, LoaderView {
             self.stopLoader()
             return
         }
-        user.firstName = firstNameText
+                
+        user.firstName = firstNameText.trimmingCharacters(in: .whitespaces)
 
         if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
             user.lastName = lastNameText

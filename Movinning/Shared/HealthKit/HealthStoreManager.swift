@@ -123,7 +123,7 @@ final class HealthStoreManager {
                 return $0.startDate.compare(lastSunday) != .orderedAscending
             })
         }
-
+        
         HealthStoreManager.healthStore.execute(query)
     }
 
