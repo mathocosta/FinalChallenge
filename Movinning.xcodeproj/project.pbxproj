@@ -54,8 +54,8 @@
 		2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */; };
 		2B6E354123229C520092A481 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E354023229C520092A481 /* Input.swift */; };
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
-		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
-		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
+		2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* LegendProgressView.swift */; };
+		2B7DC2B823229321009C3F54 /* LegendBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* LegendBarView.swift */; };
 		2B86B1E92331009C00688735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1E82331009C00688735 /* LoadingView.swift */; };
 		2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1EA2331036C00688735 /* LoaderView.swift */; };
 		2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1ED233120B100688735 /* LoadingViewController.swift */; };
@@ -75,6 +75,8 @@
 		2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */; };
 		2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
+		2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */; };
+		2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD98CC235896CD00D5B8F4 /* BarView.swift */; };
 		2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */; };
 		2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */; };
 		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
@@ -173,8 +175,8 @@
 		2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		2B6E354023229C520092A481 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
-		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
-		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		2B7DC2B423229255009C3F54 /* LegendProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendProgressView.swift; sourceTree = "<group>"; };
+		2B7DC2B723229321009C3F54 /* LegendBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendBarView.swift; sourceTree = "<group>"; };
 		2B86B1E82331009C00688735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2B86B1EA2331036C00688735 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		2B86B1ED233120B100688735 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +196,8 @@
 		2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardContentView.swift; sourceTree = "<group>"; };
 		2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPhotoView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
+		2BCD98CC235896CD00D5B8F4 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
 		2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewCell.swift; sourceTree = "<group>"; };
 		2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListView.swift; sourceTree = "<group>"; };
 		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
@@ -501,20 +505,18 @@
 		2B7DC2B3232291C8009C3F54 /* ProgressBarsView */ = {
 			isa = PBXGroup;
 			children = (
-				3006C54E2334FA0B00DA501B /* TrackView */,
-				2B7DC2B62322930F009C3F54 /* BarView */,
-				2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */,
-				3006C5552336E9CD00DA501B /* ProgressTracksView.swift */,
+				2BCD98CB235896AB00D5B8F4 /* BarView */,
+				2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */,
 			);
 			path = ProgressBarsView;
 			sourceTree = "<group>";
 		};
-		2B7DC2B62322930F009C3F54 /* BarView */ = {
+		2B7DC2B62322930F009C3F54 /* LegendBarView */ = {
 			isa = PBXGroup;
 			children = (
-				2B7DC2B723229321009C3F54 /* BarView.swift */,
+				2B7DC2B723229321009C3F54 /* LegendBarView.swift */,
 			);
-			path = BarView;
+			path = LegendBarView;
 			sourceTree = "<group>";
 		};
 		2B86B1E72331008500688735 /* LoadingView */ = {
@@ -606,6 +608,8 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2BCD98CA2358969100D5B8F4 /* LegendProgressView */,
+				3006C54E2334FA0B00DA501B /* TrackView */,
 				2BF29589234F6B1D0017E3B2 /* GroupMemberListView */,
 				2BF29586234F5A020017E3B2 /* GroupMemberViewCell */,
 				3006C5602338F6DC00DA501B /* RoundedView */,
@@ -632,6 +636,23 @@
 			path = ProfileDetailsView;
 			sourceTree = "<group>";
 		};
+		2BCD98CA2358969100D5B8F4 /* LegendProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				2B7DC2B62322930F009C3F54 /* LegendBarView */,
+				2B7DC2B423229255009C3F54 /* LegendProgressView.swift */,
+			);
+			path = LegendProgressView;
+			sourceTree = "<group>";
+		};
+		2BCD98CB235896AB00D5B8F4 /* BarView */ = {
+			isa = PBXGroup;
+			children = (
+				2BCD98CC235896CD00D5B8F4 /* BarView.swift */,
+			);
+			path = BarView;
+			sourceTree = "<group>";
+		};
 		2BF29586234F5A020017E3B2 /* GroupMemberViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -651,6 +672,7 @@
 		3006C54E2334FA0B00DA501B /* TrackView */ = {
 			isa = PBXGroup;
 			children = (
+				3006C5552336E9CD00DA501B /* ProgressTracksView.swift */,
 				3006C54F2334FA2B00DA501B /* TrackView.swift */,
 			);
 			path = TrackView;
@@ -887,7 +909,7 @@
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
-				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
+				2B7DC2B823229321009C3F54 /* LegendBarView.swift in Sources */,
 				3006C5502334FA2B00DA501B /* TrackView.swift in Sources */,
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
@@ -907,12 +929,13 @@
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
-				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
+				2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */,
 				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
 				2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
+				2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
@@ -953,6 +976,7 @@
 				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
 				2797D626232D3F3900A33470 /* MessageViewController.swift in Sources */,
+				2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */,
 				27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */,
 				2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */,
 				2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */,

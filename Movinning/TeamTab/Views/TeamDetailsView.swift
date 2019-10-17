@@ -48,11 +48,8 @@ class TeamDetailsView: UIView {
     }()
     
     lazy var progressBarsView: ProgressBarsView = {
-        let view = ProgressBarsView(frame: .zero, amount: 3)
+        let view = ProgressBarsView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setProgress(index: 0, value: 0.5)
-        view.setProgress(index: 1, value: 0.3)
-        view.setProgress(index: 2, value: 0.1)
         return view
     }()
     
