@@ -19,10 +19,6 @@ class ProgressBarsView: UIView {
         setupView()
     }
 
-    func setProgress(index: Int, value: CGFloat) {
-        bars[index].progress = value
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

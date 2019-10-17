@@ -12,11 +12,10 @@ class BarView: UIView {
 
     static let height: CGFloat = 20.0
 
-    var progressBarConstraint: NSLayoutConstraint?
-
-    var progress: CGFloat {
+    var goalText: String? {
         didSet {
-            progressBarConstraint?.constant = -(self.frame.width * (1 - progress))
+            guard let goalText = goalText else { return }
+            goalLabel.text = goalText
         }
     }
 
@@ -30,6 +29,13 @@ class BarView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    var progressText: String? {
+        didSet {
+            guard let progressText = progressText else { return }
+            progressLabel.text = progressText
+        }
+    }
 
     lazy var progressLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +47,13 @@ class BarView: UIView {
         return label
     }()
 
+    var roundedColor: UIColor? {
+        didSet {
+            guard let roundedColor = roundedColor else { return }
+            goalColor.backgroundColor = roundedColor
+        }
+    }
+
     lazy var goalColor: RoundedView = {
         let view = RoundedView()
         view.backgroundColor = UIColor.darkGray
@@ -49,7 +62,6 @@ class BarView: UIView {
     }()
 
     init(frame: CGRect, progress: CGFloat = 0.5) {
-        self.progress = progress
         super.init(frame: frame)
 
         setupView()
@@ -57,6 +69,12 @@ class BarView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func setGoal(title: String, color: UIColor, progressText: String) {
+        self.goalText = title
+        self.roundedColor = color
+        self.progressText = progressText
     }
 }
 

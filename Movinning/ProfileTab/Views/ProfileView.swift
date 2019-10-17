@@ -41,7 +41,6 @@ class ProfileView: UIView {
     func setProgress(index: Int, amount: Float) {
         progress[index] = amount
         let cgBarProgress = CGFloat(amount)
-        progressBars.setProgress(index: index, value: cgBarProgress)
         tracksView.setProgress(index: index, value: cgBarProgress)
     }
 
