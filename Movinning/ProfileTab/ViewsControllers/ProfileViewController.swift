@@ -42,7 +42,6 @@ class ProfileViewController: UIViewController {
         if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
             profileView.profileDetailsView.imageView.image = profileImage
         }
-//        PointManager.display = self
     }
 
     func setProgressBars() {
@@ -86,9 +85,3 @@ class ProfileViewController: UIViewController {
     }
 
 }
-
-//extension ProfileViewController: PointDisplayUpdater {
-//    func didUpdate(newAmount: Int) {
-//        self.profileView.profileDetailsView.level = newAmount
-//    }
-//}

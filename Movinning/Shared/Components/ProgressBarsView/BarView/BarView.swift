@@ -12,13 +12,6 @@ class BarView: UIView {
 
     static let height: CGFloat = 20.0
 
-//    var progressBarConstraint: NSLayoutConstraint?
-//
-//    var progress: CGFloat {
-//        didSet {
-//            progressBarConstraint?.constant = -(self.frame.width * (1 - progress))
-//        }
-//    }
     var goalText: String? {
         didSet {
             guard let goalText = goalText else { return }
@@ -69,7 +62,6 @@ class BarView: UIView {
     }()
 
     init(frame: CGRect, progress: CGFloat = 0.5) {
-//        self.progress = progress
         super.init(frame: frame)
 
         setupView()
