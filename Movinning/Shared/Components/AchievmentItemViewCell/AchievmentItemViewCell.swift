@@ -9,7 +9,7 @@
 import UIKit
 
 class AchievmentItemViewCell: UICollectionViewCell {
-    
+
     static let height: CGFloat = 172
     static let width: CGFloat = 130
 
@@ -28,7 +28,7 @@ class AchievmentItemViewCell: UICollectionViewCell {
         label.text = "Corredor"
         return label
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

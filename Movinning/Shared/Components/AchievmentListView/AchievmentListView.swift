@@ -9,7 +9,7 @@
 import UIKit
 
 class AchievmentListView: UIView {
-    
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class AchievmentListView: UIView {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return collectionView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -54,7 +54,7 @@ extension AchievmentListView: CodeView {
         titleLabel.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-    
+
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 14).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true

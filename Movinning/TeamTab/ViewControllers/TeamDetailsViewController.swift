@@ -56,7 +56,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
         self.startLoader()
 
         guard let loggedUser = UserManager.getLoggedUser() else { return }
-        SessionManager.current.remove(user: loggedUser, from: team).done(on: .main) { (success) in
+        SessionManager.current.remove(user: loggedUser, from: team).done(on: .main) { (_) in
             self.stopLoader()
             self.coordinator?.showTeamList()
         }.catch(on: .main) { (error) in

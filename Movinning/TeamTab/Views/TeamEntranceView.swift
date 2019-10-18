@@ -160,7 +160,7 @@ extension TeamEntranceView: CodeView {
         teamDetailLabel.topAnchor.constraint(equalTo: teamLevelSubtitleLabel.bottomAnchor).isActive = true
         teamDetailLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         teamDetailLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
+
         joinTeamButton.widthAnchor.constraint(equalToConstant: 164).isActive = true
         joinTeamButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
         joinTeamButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -170,7 +170,7 @@ extension TeamEntranceView: CodeView {
         conquistasView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
         conquistasView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
         conquistasView.heightAnchor.constraint(equalToConstant: 259).isActive = true
-        
+
         seeMoreAchievmentsLabel.topAnchor.constraint(equalTo: conquistasView.bottomAnchor, constant: 8).isActive = true
         seeMoreAchievmentsLabel.rightAnchor.constraint(equalTo: contentView.layoutMarginsGuide.rightAnchor).isActive = true
         seeMoreAchievmentsLabel.heightAnchor.constraint(equalToConstant: seeMoreAchievmentsLabel.intrinsicContentSize.height).isActive = true
@@ -179,7 +179,7 @@ extension TeamEntranceView: CodeView {
         participantesView.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
         participantesView.heightAnchor.constraint(equalToConstant: 321).isActive = true
         participantesView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        
+
         seeMoreMembersLabel.topAnchor.constraint(equalTo: participantesView.bottomAnchor, constant: 8).isActive = true
         seeMoreMembersLabel.rightAnchor.constraint(equalTo: participantesView.layoutMarginsGuide.rightAnchor).isActive = true
         seeMoreMembersLabel.heightAnchor.constraint(equalToConstant: seeMoreMembersLabel.intrinsicContentSize.height).isActive = true
@@ -190,7 +190,7 @@ extension TeamEntranceView: CodeView {
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         contentView.heightAnchor.constraint(equalToConstant: 1100).isActive = true
-    
+
         scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
