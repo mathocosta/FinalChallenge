@@ -90,34 +90,9 @@ extension CloudKitGateway {
         return publicDatabase.fetch(withRecordID: teamReference.recordID)
     }
 
-    /// Esse método cria um `CKRecord` de um time.
-    /// - Parameter userRecord: Record do time para ser salvo
-    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
-    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
-    func create(
-        teamRecord: CKRecord,
-        withCreator userRecord: CKRecord,
-        completion: @escaping (ResultHandler<(CKRecord, CKRecord)>)
-    ) {
-        // Configura o record do time
-        let userReference = userRecord.reference(action: .none)
-        teamRecord["users"] = [userReference]
-        teamRecord["creator"] = userReference
-
-        userRecord["team"] = teamRecord.reference(action: .none)
-
-        save([teamRecord, userRecord], in: publicDatabase) { (result) in
-            switch result {
-            case .success(let updatedRecords):
-                let updatedTeamRecord = updatedRecords[0]
-                let updatedUserRecord = updatedRecords[1]
-                completion(.success((updatedTeamRecord, updatedUserRecord)))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
+    /// Cria um time e adiciona o usuário como criador e como membro.
+    /// - Parameter teamRecord: Record do time a ser criado
+    /// - Parameter userRecord: Record do usuário para atualizar
     func create(teamRecord: CKRecord, withCreator userRecord: CKRecord) -> Promise<(CKRecord, CKRecord)> {
         let userReference = userRecord.reference(action: .none)
         teamRecord["users"] = [userReference]

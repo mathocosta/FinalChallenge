@@ -61,7 +61,6 @@ class UserManager: NSObject {
 
     static func update(recordMetadata: Data, of user: User) {
         user.recordMetadata = recordMetadata
-        CoreDataStore.saveContext()
     }
 
     static func logout(user: User) {

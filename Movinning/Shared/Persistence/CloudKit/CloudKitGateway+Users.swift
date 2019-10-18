@@ -129,15 +129,15 @@ extension CloudKitGateway {
     /// - Parameter teamRecord: Record do time para ser atualizado
     func remove(userRecord: CKRecord, from teamRecord: CKRecord) -> Promise<CKRecord> {
         return publicDatabase.fetch(withRecordID: teamRecord.recordID).then {
-            _ -> Promise<CKRecord> in
+            updatedTeamRecord -> Promise<CKRecord> in
             userRecord["team"] = nil
 
-            if var usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference],
+            if var usersReferences = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference],
                 let index = usersReferences.firstIndex(of: userRecord.reference()) {
                 usersReferences.remove(at: index)
 
                 return Promise {
-                    self.save([userRecord, teamRecord], in: self.publicDatabase, completion: $0.resolve)
+                    self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
                 }.firstValue
             } else {
                 return self.update(userRecord: userRecord)

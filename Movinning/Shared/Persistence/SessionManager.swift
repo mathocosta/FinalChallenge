@@ -42,27 +42,6 @@ class SessionManager {
         }
     }
 
-    func updateRegister(of user: User, completion: @escaping (ResultHandler<Bool>)) {
-        coreDataGateway.save(user) { [weak self] (result) in
-            switch result {
-            case .success(let user):
-                let userRecord = user.ckRecord()
-                self?.cloudKitGateway.update(userRecord: userRecord) { (result) in
-                    switch result {
-                    case .success(let updatedRecord):
-                        let recordMetadata = updatedRecord.recordMetadata()
-                        UserManager.update(recordMetadata: recordMetadata, of: user)
-                        completion(.success(true))
-                    case .failure(let error):
-                        completion(.failure(error))
-                    }
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
     func updateRegister(of user: User) -> Promise<Bool> {
         let userRecord = user.ckRecord()
         return cloudKitGateway.update(userRecord: userRecord).then { updatedRecord -> Promise<Bool> in
@@ -91,10 +70,13 @@ class SessionManager {
         }
     }
 
-    func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
+    func add(user: User, to team: Team) -> Promise<Bool> {
         user.team = team
-        updateRegister(of: user) { [weak self] _ in
-            self?.addSubscriptions(for: user, completion: completion)
+
+        return firstly {
+            updateRegister(of: user)
+        }.then { _ in
+            self.addSubscriptions(for: user)
         }
     }
 
@@ -103,7 +85,7 @@ class SessionManager {
         let teamRecord = team.ckRecord()
 
         return cloudKitGateway.remove(userRecord: userRecord, from: teamRecord).then {
-            (updatedUserRecord) -> Promise<Bool> in
+            updatedUserRecord -> Promise<Bool> in
             team.removeFromMembers(user)
             UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
             return self.coreDataGateway.save(user)
@@ -159,14 +141,6 @@ class SessionManager {
     }
 
     // MARK: - Subscriptions
-    private func addSubscriptions(for user: User, completion: @escaping (ResultHandler<Bool>)) {
-        if let teamUUID = user.team?.id?.uuidString {
-            print("Adicionando subscriptions para time: \(teamUUID)")
-            let subscription = cloudKitGateway.subscriptionForUpdates(recordType: "Teams", objectUUID: teamUUID)
-            cloudKitGateway.save([subscription], completion: completion)
-        }
-    }
-
     private func addSubscriptions(for user: User) -> Promise<Bool> {
         guard let teamUUID = user.team?.id?.uuidString else {
             return Promise(error: SessionError.missingTeamIdentifier)
