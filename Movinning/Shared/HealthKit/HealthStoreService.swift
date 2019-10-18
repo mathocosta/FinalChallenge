@@ -38,7 +38,6 @@ enum HealthStoreService: CaseIterable {
                     return HKObjectType.quantityType(forIdentifier: .stepCount)
                 }
             } catch {
-                print(error.localizedDescription)
                 return HKObjectType.quantityType(forIdentifier: .stepCount)
             }
         case .distanceWalkingRunning:
@@ -50,7 +49,6 @@ enum HealthStoreService: CaseIterable {
                     return HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
                 }
             } catch {
-                print(error.localizedDescription)
                 return HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
             }
         case .cycling:
@@ -94,8 +92,23 @@ enum HealthStoreService: CaseIterable {
     }
 
     static var allTypes: Set<HKObjectType> {
-        let types = HealthStoreService.allCases.compactMap { $0.type }
-
+        let identifiers: [HKQuantityTypeIdentifier] =
+        [
+            .appleExerciseTime,
+            .pushCount,
+            .stepCount,
+            .distanceWheelchair,
+            .distanceWalkingRunning,
+            .distanceCycling,
+            .swimmingStrokeCount
+        ]
+        
+        var types: [HKObjectType] = []
+        for id in identifiers {
+            if let object = HKObjectType.quantityType(forIdentifier: id) {
+                types.append(object)
+            }
+        }
         return Set(types)
     }
 
