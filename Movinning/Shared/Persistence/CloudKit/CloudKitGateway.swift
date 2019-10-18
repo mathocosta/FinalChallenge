@@ -13,17 +13,6 @@ import PMKCloudKit
 
 final class CloudKitGateway {
 
-    enum CKGError: Error {
-        case missingTeamReference
-
-        var localizedDescription: String {
-            switch self {
-            case .missingTeamReference:
-                return "User record doesn't have a team reference"
-            }
-        }
-    }
-
     let container: CKContainer
     let publicDatabase: CKDatabase
     let privateDatabase: CKDatabase

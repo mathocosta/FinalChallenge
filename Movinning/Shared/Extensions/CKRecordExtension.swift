@@ -48,7 +48,7 @@ extension CKRecord {
 
     /// Retorna uma referência para esse `CKRecord`
     /// - Parameter action: Ação para ser executada quando o record for deletado
-    func reference(action: CKRecord_Reference_Action) -> CKRecord.Reference {
+    func reference(action: CKRecord_Reference_Action = .none) -> CKRecord.Reference {
         return CKRecord.Reference(record: self, action: action)
     }
 

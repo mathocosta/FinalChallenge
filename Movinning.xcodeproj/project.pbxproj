@@ -49,6 +49,7 @@
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
 		27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */; };
+		27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9B94823593F2200E2B1F8 /* SessionError.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -167,6 +168,7 @@
 		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
 		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
 		27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Subscriptions.swift"; sourceTree = "<group>"; };
+		27F9B94823593F2200E2B1F8 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				2797D62F232E730500A33470 /* CloudKit */,
 				278F829B2326881000F55372 /* Models */,
 				273D233E2327E0AC003147DF /* SessionManager.swift */,
+				27F9B94823593F2200E2B1F8 /* SessionError.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
 				2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */,
 				27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */,
+				27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,

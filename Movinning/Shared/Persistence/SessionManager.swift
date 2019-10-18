@@ -37,16 +37,7 @@ class SessionManager {
                     team.addToMembers(user)
                 }
 
-                return Promise<Bool> { seal in
-                    self.coreDataGateway.save(user) { (result) in
-                        switch result {
-                        case .success:
-                            seal.fulfill(true)
-                        case .failure(let error):
-                            seal.reject(error)
-                        }
-                    }
-                }
+                return self.coreDataGateway.save(user)
             }
         }
     }
@@ -55,7 +46,7 @@ class SessionManager {
         coreDataGateway.save(user) { [weak self] (result) in
             switch result {
             case .success(let user):
-                let userRecord = user.asCKRecord()
+                let userRecord = user.ckRecord()
                 self?.cloudKitGateway.update(userRecord: userRecord) { (result) in
                     switch result {
                     case .success(let updatedRecord):
@@ -73,12 +64,12 @@ class SessionManager {
     }
 
     func updateRegister(of user: User) -> Promise<Bool> {
-        let userRecord = user.asCKRecord()
+        let userRecord = user.ckRecord()
         return cloudKitGateway.update(userRecord: userRecord).then { updatedRecord -> Promise<Bool> in
             let recordMetadata = updatedRecord.recordMetadata()
             UserManager.update(recordMetadata: recordMetadata, of: user)
 
-            return Promise.value(true)
+            return self.coreDataGateway.save(user)
         }
     }
 
@@ -90,29 +81,14 @@ class SessionManager {
     }
 
     // MARK: - Teams management
-    func updateLocallyTeam(of user: User, completion: @escaping (ResultHandler<Bool>)) {
-        // FIXME: Precisa refatorar para voltar a funcionar
-//        let userRecord = user.asCKRecord()
-//        if let userTeam = user.team {
-//            cloudKitGateway.team(of: userRecord) { (result) in
-//                switch result {
-//                case .success(let teamRecord):
-//                    let teamRecordInfo = teamRecord.recordKeysAndValues()
-//                    TeamManager.update(team: userTeam, with: teamRecordInfo)
-//                    self.coreDataGateway.save(userTeam) { (result) in
-//                        if case .success = result {
-//                            completion(.success(true))
-//                        } else if case .failure(let error) = result {
-//                            completion(.failure(error))
-//                        }
-//                    }
-//                case .failure(let error):
-//                    completion(.failure(error))
-//                }
-//            }
-//        } else {
-//            completion(.success(false))
-//        }
+    func updateLocallyTeam(of user: User) -> Promise<Bool> {
+        guard let userTeam = user.team else { return Promise(error: SessionError.userDontHaveTeam) }
+        let userRecord = user.ckRecord()
+        return cloudKitGateway.team(of: userRecord).then { (teamRecord) -> Promise<Bool> in
+            let teamRecordInfo = teamRecord.recordKeysAndValues()
+            TeamManager.update(team: userTeam, with: teamRecordInfo)
+            return self.coreDataGateway.save(userTeam)
+        }
     }
 
     func add(user: User, to team: Team, completion: @escaping (ResultHandler<Bool>)) {
@@ -122,11 +98,16 @@ class SessionManager {
         }
     }
 
-    func remove(user: User, from team: Team, completion: @escaping (ResultHandler<Bool>)) {
-        team.removeFromMembers(user)
-        updateRegister(of: user) { [weak self] _ in
-            self?.removeSubscriptions(for: user, completion: completion)
-        }
+    func remove(user: User, from team: Team) -> Promise<Bool> {
+        let userRecord = user.ckRecord()
+        let teamRecord = team.ckRecord()
+
+        return cloudKitGateway.remove(userRecord: userRecord, from: teamRecord).then {
+            (updatedUserRecord) -> Promise<Bool> in
+            team.removeFromMembers(user)
+            UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
+            return self.coreDataGateway.save(user)
+        }.then { _ in self.removeSubscriptions() }
     }
 
     func listTeams(completion: @escaping (ResultHandler<[Team]>)) {
@@ -146,7 +127,7 @@ class SessionManager {
     }
 
     func users(from team: Team, completion: @escaping (ResultHandler<[User]>)) {
-        let teamRecord = team.asCKRecord()
+        let teamRecord = team.ckRecord()
         cloudKitGateway.users(from: teamRecord) { (result) in
             switch result {
             case .success(let usersRecords):
@@ -161,19 +142,19 @@ class SessionManager {
         }
     }
 
-    func create(team: Team, with user: User, completion: @escaping (ResultHandler<Bool>)) {
-        let teamRecord = team.asCKRecord()
-        let userRecord = user.asCKRecord()
-        cloudKitGateway.create(teamRecord: teamRecord, withCreator: userRecord) { (result) in
-            switch result {
-            case .success(let updatedTeamRecord, let updatedUserRecord):
-                TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
-                UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
-                user.team = team
-                self.addSubscriptions(for: user, completion: completion)
-            case .failure(let error):
-                completion(.failure(error))
-            }
+    func create(team: Team, with user: User) -> Promise<Bool> {
+        let teamRecord = team.ckRecord()
+        let userRecord = user.ckRecord()
+
+        return cloudKitGateway.create(teamRecord: teamRecord, withCreator: userRecord).then {
+            updatedRecords -> Promise<Bool> in
+
+            let (updatedTeamRecord, updatedUserRecord) = updatedRecords
+            TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
+            UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
+            user.team = team
+
+            return self.addSubscriptions(for: user)
         }
     }
 
@@ -186,7 +167,17 @@ class SessionManager {
         }
     }
 
-    private func removeSubscriptions(for user: User, completion: @escaping (ResultHandler<Bool>)) {
-        cloudKitGateway.removeSubscriptions(completion: completion)
+    private func addSubscriptions(for user: User) -> Promise<Bool> {
+        guard let teamUUID = user.team?.id?.uuidString else {
+            return Promise(error: SessionError.missingTeamIdentifier)
+        }
+        print("Adicionando subscriptions para time: \(teamUUID)")
+        let subscription = cloudKitGateway.subscriptionForUpdates(recordType: "Teams", objectUUID: teamUUID)
+
+        return cloudKitGateway.save([subscription])
+    }
+
+    func removeSubscriptions() -> Promise<Bool> {
+        cloudKitGateway.removeSubscriptions()
     }
 }

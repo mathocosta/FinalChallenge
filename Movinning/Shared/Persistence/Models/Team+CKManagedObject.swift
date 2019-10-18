@@ -11,7 +11,7 @@ import CloudKit
 import CoreData
 
 extension Team: CKManagedObject {
-    func asCKRecord() -> CKRecord {
+    func ckRecord() -> CKRecord {
         let record: CKRecord
 
         if let recordMetadata = recordMetadata {

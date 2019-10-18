@@ -123,13 +123,25 @@ extension CloudKitGateway {
         return Promise { save([userRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
     }
 
-    /// Remove a referência do time no usuário. Depois é feito o update dos dados no servidor.
+    /// Remove a referência do time no usuário e remove a referência da lista dos usuários do time.
+    /// Depois é feito o update dos dados no servidor.
     /// - Parameter userRecord: Record do usuário para ser atualizado e salvo
-    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
-    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
-    func removeTeamReference(from userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        userRecord["team"] = nil
-        update(userRecord: userRecord, completion: completion)
-    }
+    /// - Parameter teamRecord: Record do time para ser atualizado
+    func remove(userRecord: CKRecord, from teamRecord: CKRecord) -> Promise<CKRecord> {
+        return publicDatabase.fetch(withRecordID: teamRecord.recordID).then {
+            updatedTeamRecord -> Promise<CKRecord> in
+            userRecord["team"] = nil
 
+            if var usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference],
+                let index = usersReferences.firstIndex(of: userRecord.reference()) {
+                usersReferences.remove(at: index)
+
+                return Promise {
+                    self.save([userRecord, teamRecord], in: self.publicDatabase, completion: $0.resolve)
+                }.firstValue
+            } else {
+                return self.update(userRecord: userRecord)
+            }
+        }
+    }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import PromiseKit
 
 final class CoreDataGateway {
 
@@ -31,6 +32,20 @@ final class CoreDataGateway {
                 print("Context saved")
             } catch {
                 completion(.failure(error))
+            }
+        }
+    }
+
+    func save<T>(_ entity: T) -> Promise<Bool> {
+        return Promise<Bool> { seal in
+            if viewContext.hasChanges {
+                do {
+                    try viewContext.save()
+                    print("Context saved")
+                    seal.fulfill(true)
+                } catch {
+                    seal.reject(error)
+                }
             }
         }
     }

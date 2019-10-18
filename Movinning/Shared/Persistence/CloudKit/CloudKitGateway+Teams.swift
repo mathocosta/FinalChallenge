@@ -83,15 +83,11 @@ extension CloudKitGateway {
     /// será retornado um erro.
     /// - Parameter userRecord: Record do usuário para buscar o time
     func team(of userRecord: CKRecord) -> Promise<CKRecord> {
-        return Promise<CKRecord.Reference> { seal in
-            guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
-                return seal.reject(CKGError.missingTeamReference)
-            }
-
-            return seal.fulfill(teamReference)
-        }.then { teamReference in
-            self.publicDatabase.fetch(withRecordID: teamReference.recordID)
+        guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
+            return Promise(error: SessionError.missingTeamReference)
         }
+
+        return publicDatabase.fetch(withRecordID: teamReference.recordID)
     }
 
     /// Esse método cria um `CKRecord` de um time.
@@ -122,8 +118,21 @@ extension CloudKitGateway {
         }
     }
 
-    func create(teamRecord: CKRecord) -> Promise<CKRecord> {
-        return Promise { save([teamRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
+    func create(teamRecord: CKRecord, withCreator userRecord: CKRecord) -> Promise<(CKRecord, CKRecord)> {
+        let userReference = userRecord.reference(action: .none)
+        teamRecord["users"] = [userReference]
+        teamRecord["creator"] = userReference
+
+        userRecord["team"] = teamRecord.reference(action: .none)
+
+        return Promise {
+            save([teamRecord, userRecord], in: publicDatabase, completion: $0.resolve)
+        }.then { updatedRecords -> Promise<(CKRecord, CKRecord)> in
+            let updatedTeamRecord = updatedRecords[0]
+            let updatedUserRecord = updatedRecords[1]
+
+            return Promise.value((updatedTeamRecord, updatedUserRecord))
+        }
     }
 
 }
