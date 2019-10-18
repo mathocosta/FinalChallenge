@@ -14,7 +14,7 @@ class CreateTeamView: UIView {
     var marginViewHeightAnchor: NSLayoutConstraint?
 
     lazy var nameInput: Input = {
-        let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""))
+        let input = Input(frame: .zero, label: NSLocalizedString("Name", comment: ""), type: .groupName)
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
