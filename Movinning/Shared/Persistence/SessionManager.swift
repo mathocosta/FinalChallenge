@@ -70,6 +70,7 @@ class SessionManager {
         }
     }
 
+    // TODO: Colocar para adicionar o usuário no time do cloudkit
     func add(user: User, to team: Team) -> Promise<Bool> {
         user.team = team
 
@@ -92,19 +93,15 @@ class SessionManager {
         }.then { _ in self.removeSubscriptions() }
     }
 
-    func listTeams(completion: @escaping (ResultHandler<[Team]>)) {
-        cloudKitGateway.listTeams { (result) in
-            switch result {
-            case .success(_, let records):
-                var teams = [Team]()
-                for record in records {
-                    let recordInfo = record.recordKeysAndValues()
-                    teams.append(TeamManager.createTeam(with: recordInfo))
-                }
-                completion(.success(teams))
-            case .failure(let error):
-                completion(.failure(error))
+    func listTeams() -> Promise<[Team]> {
+        return cloudKitGateway.listTeams().then { result -> Promise<[Team]> in
+            let (_, teamRecords) = result
+            var teams = [Team]()
+            for record in teamRecords {
+                let recordInfo = record.recordKeysAndValues()
+                teams.append(TeamManager.createTeam(with: recordInfo))
             }
+            return Promise.value(teams)
         }
     }
 

@@ -16,38 +16,32 @@ extension CloudKitGateway {
     /// Faz uma consulta pelos times salvos na database. Pode receber como parâmetro o
     /// `CKQueryOperation.Cursor` da consulta passada para continuar caso seja necessário.
     /// - Parameter cursor: Onde deve começar a consulta
-    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
-    /// os records obtidos, ou os errors encontrados
-    func listTeams(
-        cursor: CKQueryOperation.Cursor? = nil,
-        completion: @escaping (ResultHandler<(CKQueryOperation.Cursor?, [CKRecord])>)
-    ) {
-        var fetchedRecords = [CKRecord]()
-        var queryOperation: CKQueryOperation
-
-        if let cursor = cursor {
-            queryOperation = CKQueryOperation(cursor: cursor)
-        } else {
-            let query = CKQuery(recordType: "Teams", predicate: NSPredicate(value: true))
-            queryOperation = CKQueryOperation(query: query)
-        }
-
-        queryOperation.cursor = nil
-        queryOperation.resultsLimit = 10
-
-        queryOperation.recordFetchedBlock = { (fetchedRecord) in
-            fetchedRecords.append(fetchedRecord)
-        }
-
-        queryOperation.queryCompletionBlock = { (nextCursor, operationError) in
-            if let operationError = operationError {
-                completion(.failure(operationError))
+    func listTeams(cursor: CKQueryOperation.Cursor? = nil) -> Promise<(CKQueryOperation.Cursor?, [CKRecord])> {
+        return Promise<(CKQueryOperation.Cursor?, [CKRecord])> { seal in
+            var fetchedRecords = [CKRecord]()
+            var queryOperation: CKQueryOperation
+            if let cursor = cursor {
+                queryOperation = CKQueryOperation(cursor: cursor)
+            } else {
+                let query = CKQuery(recordType: "Teams", predicate: NSPredicate(value: true))
+                queryOperation = CKQueryOperation(query: query)
             }
 
-            completion(.success((nextCursor, fetchedRecords)))
-        }
+            queryOperation.resultsLimit = 10
+            queryOperation.recordFetchedBlock = { fetchedRecord in
+                fetchedRecords.append(fetchedRecord)
+            }
 
-        publicDatabase.add(queryOperation)
+            queryOperation.queryCompletionBlock = { nextCursor, operationError in
+                if let operationError = operationError {
+                    seal.reject(operationError)
+                }
+
+                return seal.fulfill((cursor, fetchedRecords))
+            }
+
+            publicDatabase.add(queryOperation)
+        }
     }
 
     /// Obtém os usuários de um time baseado na lista de referências de usuários. Retorna `CKRecord`s com

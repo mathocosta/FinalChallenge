@@ -104,21 +104,6 @@ extension CloudKitGateway {
     /// Esse método atualiza o `CKRecord` de um usuário. É update pois sempre já existe o
     /// record para o usuário quando começa a usar a aplicação.
     /// - Parameter userRecord: Record do usuário para ser salvo
-    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
-    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
-    func update(userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        save([userRecord], in: publicDatabase) { (result) in
-            switch result {
-            case .success(let records):
-                if let record = records.first {
-                    completion(.success(record))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
     func update(userRecord: CKRecord) -> Promise<CKRecord> {
         return Promise { save([userRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
     }
