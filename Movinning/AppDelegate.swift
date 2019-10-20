@@ -37,12 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        if let window = self.window {
-            window.rootViewController = OnboardingViewController()
-            window.makeKeyAndVisible()
-        }
-//        window?.makeKeyAndVisible()
-//        window?.rootViewController = appCoordinator?.rootViewController
+//        if let window = self.window {
+//            window.rootViewController = OnboardingViewController()
+//            window.makeKeyAndVisible()
+//        }
+        window?.makeKeyAndVisible()
+        window?.rootViewController = appCoordinator?.rootViewController
         window?.backgroundColor = .backgroundColor
         appCoordinator?.start()
 

@@ -93,6 +93,7 @@
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
 		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
+		5739F780235CCB5C00B69D11 /* UIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIViewConstraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
 		57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */; };
 		57479DB52359E1C300C21D09 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB42359E1C300C21D09 /* Onboard.swift */; };
@@ -210,6 +211,7 @@
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
 		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
+		5739F77F235CCB5C00B69D11 /* UIViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewConstraints.swift; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		57479DB42359E1C300C21D09 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
@@ -651,6 +653,7 @@
 				57479DB0235761F400C21D09 /* OnboardingViewController.swift */,
 				57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */,
 				57479DB42359E1C300C21D09 /* Onboard.swift */,
+				5739F77F235CCB5C00B69D11 /* UIViewConstraints.swift */,
 				57479DB62359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift */,
 			);
 			path = Onboarding;
@@ -857,6 +860,7 @@
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
+				5739F780235CCB5C00B69D11 /* UIViewConstraints.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
