@@ -76,8 +76,13 @@ class SessionManager {
     func add(user: User, to team: Team) -> Promise<Bool> {
         user.team = team
 
-        return firstly {
-            updateRegister(of: user)
+        return self.cloudKitGateway.add(userRecord: user.ckRecord(), to: team.ckRecord()).then {
+                results -> Promise<Bool> in
+                let (updatedUserRecord, updatedTeamRecord) = results
+                UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
+                TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
+
+                return self.coreDataGateway.save(user)
         }.then { _ in
             self.addSubscriptions(for: user)
         }

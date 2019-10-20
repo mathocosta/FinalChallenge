@@ -21,7 +21,7 @@ extension CloudKitGateway {
 
     /// Solicita permissão ao usuário para utilizar os dados do usuário para preencher
     /// inicialmente o nome do usuário
-    func userIdentityPermission() -> Promise<Bool> {
+    private func userIdentityPermission() -> Promise<Bool> {
         return container.requestApplicationPermission(.userDiscoverability).then {
             Promise.value($0 == .granted)
         }
@@ -29,7 +29,7 @@ extension CloudKitGateway {
 
     /// Obtém os dados do usuário com o record id
     /// - Parameter userRecordID: `CKRecord.ID` do usuário para obter os dados
-    func identityData(of userRecordID: CKRecord.ID) -> Promise<[String: String]> {
+    private func identityData(of userRecordID: CKRecord.ID) -> Promise<[String: String]> {
         return container.discoverUserIdentity(withUserRecordID: userRecordID).then {
             userIdentity -> Promise<[String: String]> in
 
@@ -108,6 +108,22 @@ extension CloudKitGateway {
         return Promise { save([userRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
     }
 
+    func add(userRecord: CKRecord, to teamRecord: CKRecord) -> Promise<(CKRecord, CKRecord)> {
+        return publicDatabase.fetch(withRecordID: teamRecord.recordID).then {
+            updatedTeamRecord -> Promise<(CKRecord, CKRecord)> in
+
+            var usersReference = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference]
+            usersReference?.append(userRecord.reference())
+            updatedTeamRecord["users"] = usersReference
+
+            userRecord["team"] = updatedTeamRecord.reference()
+
+            return Promise {
+                self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
+            }.map({ ($0[0], $0[1]) })
+        }
+    }
+
     /// Remove a referência do time no usuário e remove a referência da lista dos usuários do time.
     /// Depois é feito o update dos dados no servidor.
     /// - Parameter userRecord: Record do usuário para ser atualizado e salvo
@@ -120,6 +136,7 @@ extension CloudKitGateway {
             if var usersReferences = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference],
                 let index = usersReferences.firstIndex(of: userRecord.reference()) {
                 usersReferences.remove(at: index)
+                teamRecord["users"] = usersReferences
 
                 return Promise {
                     self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)

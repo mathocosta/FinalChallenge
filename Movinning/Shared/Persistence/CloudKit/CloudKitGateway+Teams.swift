@@ -75,11 +75,11 @@ extension CloudKitGateway {
     /// - Parameter teamRecord: Record do time a ser criado
     /// - Parameter userRecord: Record do usuário para atualizar
     func create(teamRecord: CKRecord, withCreator userRecord: CKRecord) -> Promise<(CKRecord, CKRecord)> {
-        let userReference = userRecord.reference(action: .none)
+        let userReference = userRecord.reference()
         teamRecord["users"] = [userReference]
         teamRecord["creator"] = userReference
 
-        userRecord["team"] = teamRecord.reference(action: .none)
+        userRecord["team"] = teamRecord.reference()
 
         return Promise {
             save([teamRecord, userRecord], in: publicDatabase, completion: $0.resolve)
