@@ -20,7 +20,7 @@ class UserManager: NSObject {
     static func getLoggedUser() -> User? {
         guard let userUUIDString = UserDefaults.standard.loggedUserUUID,
             let userUUID = UUID(uuidString: userUUIDString) else { return nil }
-        
+
         let request = NSFetchRequest<User>(entityName: "User")
         request.predicate = NSPredicate(format: "id == %@", userUUID as CVarArg)
         let users = CoreDataStore.fetch(request)

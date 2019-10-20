@@ -35,26 +35,6 @@ final class CloudKitGateway {
     func save(
         _ records: [CKRecord],
         in database: CKDatabase,
-        completion: @escaping (ResultHandler<[CKRecord]>)
-    ) {
-        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
-        operation.savePolicy = .changedKeys
-        operation.modifyRecordsCompletionBlock = { (savedRecords, _, error) in
-            if let error = error {
-                return completion(.failure(error))
-            }
-
-            if let savedRecords = savedRecords {
-                print("Records salvos: \(savedRecords)")
-                return completion(.success(savedRecords))
-            }
-        }
-        database.add(operation)
-    }
-
-    func save(
-        _ records: [CKRecord],
-        in database: CKDatabase,
         completion: @escaping ([CKRecord]?, Error?) -> Void
     ) {
         let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
@@ -70,22 +50,6 @@ final class CloudKitGateway {
             }
         }
         database.add(operation)
-    }
-
-    /// Método para obter uma lista de objetos no CloudKit, esse método serve como base para
-    /// os métodos mais específicos.
-    ///
-    /// - Parameters:
-    ///   - entityName: Nome da entidade dos objetos
-    ///   - database: Database onde os objetos devem estar
-    func objects(of entityName: String, in database: CKDatabase) -> Promise<[CKRecord]> {
-        let query = CKQuery(recordType: entityName, predicate: NSPredicate(value: true))
-        query.sortDescriptors = [
-            NSSortDescriptor(key: "firstName", ascending: true),
-            NSSortDescriptor(key: "lastName", ascending: true)
-        ]
-
-        return database.perform(query)
     }
 
 }

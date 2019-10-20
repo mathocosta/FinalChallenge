@@ -101,8 +101,7 @@ extension CloudKitGateway {
         }
     }
 
-    /// Esse método atualiza o `CKRecord` de um usuário. É update pois sempre já existe o
-    /// record para o usuário quando começa a usar a aplicação.
+    /// Esse método atualiza o `CKRecord` de um usuário.
     /// - Parameter userRecord: Record do usuário para ser salvo
     func update(userRecord: CKRecord) -> Promise<CKRecord> {
         return Promise { save([userRecord], in: publicDatabase, completion: $0.resolve) }.firstValue

@@ -10,8 +10,6 @@ import Foundation
 import CloudKit
 import PromiseKit
 
-typealias ResultHandler<T> = ((Swift.Result<T, Error>) -> Void)
-
 class SessionManager {
 
     static let current = SessionManager()
