@@ -47,30 +47,17 @@ extension CloudKitGateway {
     /// Obtém os usuários de um time baseado na lista de referências de usuários. Retorna `CKRecord`s com
     /// somente o `firstName` e `photo`, pois os outros dados são desnecessários.
     /// - Parameter teamRecord: `CKRecord` do time usado pela consulta
-    /// - Parameter completion: Callback executado quando termina a consulta com os resultados,
-    /// ou os errors encontrados
-    func users(from teamRecord: CKRecord, completion: @escaping(ResultHandler<[CKRecord]>)) {
-        if let usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference] {
-            let usersRecordsIDs = usersReferences.map { $0.recordID }
+    func users(from teamRecord: CKRecord) -> Promise<[CKRecord]> {
+        return Promise<[CKRecord.ID: CKRecord]> { seal in
+            let usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference]
+            let usersRecordsIDs = usersReferences?.map { $0.recordID }
 
-            let fetchOperation = CKFetchRecordsOperation(recordIDs: usersRecordsIDs)
+            let fetchOperation = CKFetchRecordsOperation(recordIDs: usersRecordsIDs ?? [])
             fetchOperation.desiredKeys = ["id", "firstName", "photo"]
-
-            fetchOperation.fetchRecordsCompletionBlock = { recordsByRecordsIDs, error in
-                if let error = error {
-                    return completion(.failure(error))
-                }
-
-                if let recordsByRecordsIDs = recordsByRecordsIDs {
-                    let records = Array(recordsByRecordsIDs.values)
-                    completion(.success(records))
-                } else {
-                    completion(.success([]))
-                }
-            }
+            fetchOperation.fetchRecordsCompletionBlock = seal.resolve
 
             publicDatabase.add(fetchOperation)
-        }
+        }.compactMap({ $0.values }).map(Array.init)
     }
 
     /// Obtém o record do time cadastrado com o usuário, mas caso não haja nenhum,

@@ -37,6 +37,8 @@ class SessionManager {
                     team.addToMembers(user)
                 }
 
+                UserDefaults.standard.loggedUserUUID = user.id?.uuidString
+
                 return self.coreDataGateway.save(user)
             }
         }
@@ -94,30 +96,17 @@ class SessionManager {
     }
 
     func listTeams() -> Promise<[Team]> {
-        return cloudKitGateway.listTeams().then { result -> Promise<[Team]> in
-            let (_, teamRecords) = result
-            var teams = [Team]()
-            for record in teamRecords {
-                let recordInfo = record.recordKeysAndValues()
-                teams.append(TeamManager.createTeam(with: recordInfo))
+        return cloudKitGateway.listTeams().map({ $0.1 }).thenMap { teamRecord in
+            self.cloudKitGateway.users(from: teamRecord).map({ (teamRecord, $0) })
+        }.thenMap { results -> Promise<Team> in
+            let (teamRecord, usersRecords) = results
+            let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
+            for userRecord in usersRecords {
+                let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
+                team.addToMembers(user)
             }
-            return Promise.value(teams)
-        }
-    }
 
-    func users(from team: Team, completion: @escaping (ResultHandler<[User]>)) {
-        let teamRecord = team.ckRecord()
-        cloudKitGateway.users(from: teamRecord) { (result) in
-            switch result {
-            case .success(let usersRecords):
-                var users = [User]()
-                for record in usersRecords {
-                    users.append(UserManager.createUser(with: record.recordKeysAndValues()))
-                }
-                completion(.success(users))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            return Promise.value(team)
         }
     }
 
