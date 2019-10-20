@@ -25,7 +25,7 @@ class MovinningGoalsTest: XCTestCase {
         goals = []
     }
 
-    func testGoalRequiredAmounts() {
+    func test_goal_requiredAmounts() {
         let requiredAmounts = [
             5000, // passos em um dia
             20_000, // metros
@@ -121,6 +121,28 @@ class MovinningGoalsTest: XCTestCase {
                 print("\(goal.requiredAmount()) / \(requiredAmounts[goal.id])")
             }
         }
-
+    }
+    
+    func test_goal_initWithoutGoalInfo() {
+        let goal = Goal(id: 1, goalInfo: [:], userAmount: 1)
+        XCTAssert(goal.title == "Sem título")
+        XCTAssert(goal.difficulty == .easy)
+        XCTAssert(goal.rewardAmount == 0)
+        XCTAssert(goal.dailyReset == false)
+        XCTAssert(goal.id == 1)
+        XCTAssert(goal.activityType == "")
+        XCTAssert(goal.activityCoeficient == 50.0)
+    }
+    
+    func test_goal_initWithAllInfo() {
+        let goal = Goal(id: 100, title: "Um título", difficulty: .easy, rewardAmount: 100, activityType: "type", activityCoeficient: 50.0, dailyReset: true, amountOfUsers: 2)
+        XCTAssert(goal.id == 100)
+        XCTAssert(goal.title == "Um título")
+        XCTAssert(goal.difficulty == .easy)
+        XCTAssert(goal.rewardAmount == 100)
+        XCTAssert(goal.activityType == "type")
+        XCTAssert(goal.activityCoeficient == 50.0)
+        XCTAssert(goal.dailyReset == true)
+        XCTAssert(goal.amountOfUsers == 2)
     }
 }
