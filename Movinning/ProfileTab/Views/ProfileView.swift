@@ -19,8 +19,8 @@ class ProfileView: UIView {
         return view
     }()
 
-    lazy var progressBars: ProgressBarsView = {
-        let view = ProgressBarsView(frame: .zero, amount: 3)
+    lazy var progressBars: LegendProgressView = {
+        let view = LegendProgressView(frame: .zero, amount: 3)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -41,7 +41,6 @@ class ProfileView: UIView {
     func setProgress(index: Int, amount: Float) {
         progress[index] = amount
         let cgBarProgress = CGFloat(amount)
-        progressBars.setProgress(index: index, value: cgBarProgress)
         tracksView.setProgress(index: index, value: cgBarProgress)
     }
 
@@ -79,7 +78,7 @@ extension ProfileView: CodeView {
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(
             equalTo: tracksView.bottomAnchor, constant: 16).isActive = true
-        progressBars.heightAnchor.constraint(equalToConstant: BarView.height * CGFloat(progressBars.amountOfBars) +
+        progressBars.heightAnchor.constraint(equalToConstant: LegendBarView.height * CGFloat(progressBars.amountOfBars) +
             CGFloat(16 * (progressBars.amountOfBars - 1))).isActive = true
         progressBars.widthAnchor.constraint(equalToConstant: 300).isActive = true
 

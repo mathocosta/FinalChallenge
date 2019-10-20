@@ -8,7 +8,14 @@
 
 import UIKit
 
+enum InputType {
+    case groupName
+    case other
+}
+
 class Input: UIView {
+    
+    let type: InputType
 
     var label: String {
         didSet {
@@ -44,8 +51,9 @@ class Input: UIView {
         return view
     }()
 
-    init(frame: CGRect, label: String) {
+    init(frame: CGRect, label: String, type: InputType = .other) {
         self.label = label
+        self.type = type
         super.init(frame: frame)
         setupView()
     }
@@ -88,5 +96,15 @@ extension Input: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return type == .other ? true : count <= 15
     }
 }
