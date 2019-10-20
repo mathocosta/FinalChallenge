@@ -14,6 +14,7 @@ class MovinningUserManagerTests: XCTestCase {
 
     override func setUp() {
         testUser = User(context: CoreDataStore.context)
+        UserDefaults.standard.goalUpdateTime = nil
     }
 
     override func tearDown() {
@@ -23,6 +24,7 @@ class MovinningUserManagerTests: XCTestCase {
 
     func test_usermanager_changeGoalsForUserAtDate() {
         let now = Date()
+
         UserManager.changeGoals(for: testUser, at: now)
         guard let currentGoals = testUser.currentGoals else {
             XCTAssert(false)
@@ -45,7 +47,7 @@ class MovinningUserManagerTests: XCTestCase {
     }
 
     func test_usermanager_logoutUser() {
-
+        UserManager.logout(user: testUser)
     }
 
     func test_usermanager_addPointsToUser() {

@@ -147,11 +147,14 @@ class MovinningGoalsManager: XCTestCase {
     }
 
     func test_goalsmanager_selectNewTimedGoalsFromGoalPile() {
-        guard let goalPile = testUser.goalPile else {
+        guard var goalPile = testUser.goalPile,
+            let currentGoals = testUser.currentGoals else {
             XCTAssert(false)
             return
         }
-        
+        for item in currentGoals.value {
+            goalPile = goalPile.add(item)
+        }
         let goals = GoalsManager.selectNewTimedGoals(fromPile: goalPile)
         XCTAssert(goals.count == 3)
         XCTAssert(!goals.contains(where: { (id) in
@@ -192,5 +195,37 @@ class MovinningGoalsManager: XCTestCase {
         XCTAssert(goalPile.value.contains(8))
         XCTAssert(goalPile.value.contains(9))
         XCTAssert(goalPile.value.contains(10))
+    }
+    
+    func test_goalsmanager_selectNewTimedGoalsFromFullGoalPile() {
+        testUser.currentGoals = GoalPile(value: [0, 1, 2])
+        testUser.goalPile = GoalPile(value: Set(Array(4..<GoalsManager.amountOfGoals())))
+        guard var goalPile = testUser.goalPile,
+            let currentGoals = testUser.currentGoals else {
+            XCTAssert(false)
+            return
+        }
+        for item in currentGoals.value {
+            goalPile = goalPile.add(item)
+        }
+        let goals = GoalsManager.selectNewTimedGoals(fromPile: goalPile)
+        XCTAssert(goals.count == 3)
+    }
+
+    func test_goalsmanager_setNewTimedGoalsForUserAtDateFullPile() {
+        testUser.currentGoals = GoalPile(value: [0, 1, 2])
+        testUser.goalPile = GoalPile(value: Set(Array(4..<GoalsManager.amountOfGoals())))
+        let now = Date()
+        GoalsManager.setNewTimedGoals(for: testUser, at: now)
+
+        guard let goalPile = testUser.goalPile,
+            let currentGoals = testUser.currentGoals else {
+                XCTAssert(false)
+                return
+        }
+
+        XCTAssert(UserDefaults.standard.goalUpdateTime == now)
+        XCTAssert(currentGoals.value.count == 3)
+        XCTAssert(goalPile.value.count == 0)
     }
 }

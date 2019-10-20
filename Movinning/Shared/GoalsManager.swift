@@ -137,15 +137,20 @@ class GoalsManager: NSObject {
                 user.goalPile = user.goalPile?.add(goal)
             }
         }
-        guard let pile = user.goalPile else {
+        var chosenGoals: [Int] = []
+        if let pileCount = user.goalPile?.value.count,
+            pileCount + 3 > amountOfGoals() {
             user.goalPile = GoalPile(value: [])
-            return Array(0...2)
         }
-        let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
+
+        if let pile = user.goalPile {
+            chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
+        } else {
+            user.goalPile = GoalPile(value: [])
+            chosenGoals = Array(0...2)
+        }
+
         user.currentGoals = GoalPile(value: Set(chosenGoals))
-        for goal in chosenGoals {
-            user.goalPile = user.goalPile?.add(goal)
-        }
         UserDefaults.standard.goalUpdateTime = date
         return chosenGoals
     }

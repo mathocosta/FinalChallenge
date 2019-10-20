@@ -33,6 +33,8 @@ class TeamManager: NSObject {
         team.name = info["name"] as? String
         team.points = (info["points"] as? Int32) ?? 0
         team.teamDescription = info["teamDescription"] as? String
+        team.city = info["city"] as? String
+        team.neighborhood = info["neighborhood"] as? String
 
         if let imageData = info["photo"] as? Data {
             team.photo = imageData
@@ -52,6 +54,14 @@ class TeamManager: NSObject {
 
         if let updatedImage = info["photo"] as? Data {
             team.photo = updatedImage
+        }
+
+        if let updatedCity = info["city"] as? String {
+            team.city = updatedCity
+        }
+
+        if let updatedNeighborhood = info["neighborhood"] as? String {
+            team.neighborhood = updatedNeighborhood
         }
 
         if let updatedTeamDescription = info["teamDescription"] as? String {

@@ -22,7 +22,9 @@ class MovinningTeamManagerTests: XCTestCase {
     }
 
     override func tearDown() {
-        CoreDataStore.context.delete(testTeam)
+        for team in TeamManager.allTeams() {
+            CoreDataStore.context.delete(team)
+        }
         CoreDataStore.context.delete(testUserA)
         CoreDataStore.context.delete(testUserB)
         CoreDataStore.context.delete(testUserC)
@@ -48,7 +50,7 @@ class MovinningTeamManagerTests: XCTestCase {
             "city": "Fortaleza",
             "neighborhood": "Benfica"
         ])
-        
+
         XCTAssert(team.name == "Time")
         XCTAssert(team.teamDescription == "É um time")
         XCTAssert(team.city == "Fortaleza")
@@ -57,13 +59,18 @@ class MovinningTeamManagerTests: XCTestCase {
     }
 
     func test_teammanager_updateTeamWithData() {
+        XCTAssert(testTeam.name == nil)
+        XCTAssert(testTeam.teamDescription == nil)
+        XCTAssert(testTeam.city == nil)
+        XCTAssert(testTeam.neighborhood == nil)
+        
         TeamManager.update(team: testTeam, with: [
             "name": "Time",
             "teamDescription": "É um time",
             "city": "Fortaleza",
             "neighborhood": "Benfica"
         ])
-        
+
         guard let members = testTeam.members,
             let testUserA = testUserA,
             let testUserB = testUserB,
@@ -71,7 +78,7 @@ class MovinningTeamManagerTests: XCTestCase {
             XCTAssert(false)
             return
         }
-        
+
         XCTAssert(testTeam.name == "Time")
         XCTAssert(testTeam.teamDescription == "É um time")
         XCTAssert(testTeam.city == "Fortaleza")
@@ -84,7 +91,7 @@ class MovinningTeamManagerTests: XCTestCase {
 
     func test_teammanager_addUserToTeam() {
         let testUserD = User(context: CoreDataStore.context)
-        
+
         TeamManager.add(testUserD, to: testTeam)
         guard let members = testTeam.members,
             let testUserA = testUserA,
@@ -98,10 +105,10 @@ class MovinningTeamManagerTests: XCTestCase {
         XCTAssert(members.contains(testUserB))
         XCTAssert(members.contains(testUserC))
         XCTAssert(members.contains(testUserD))
-        
+
         CoreDataStore.context.delete(testUserD)
     }
-    
+
     func test_teammanager_validateAllTeams() {
         let team = Team(context: CoreDataStore.context)
         TeamManager.validateAllTeams()
@@ -142,7 +149,6 @@ class MovinningTeamManagerTests: XCTestCase {
     func test_teammanager_checkValidTeam() {
         let team = Team(context: CoreDataStore.context)
         XCTAssert(!TeamManager.checkValid(team))
-        CoreDataStore.context.delete(team)
     }
 
     func test_teammanager_allTeams() {
