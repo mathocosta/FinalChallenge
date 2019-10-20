@@ -41,7 +41,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
         super.viewDidLoad()
 
         title = team.name
-        teamDetailsView.profileDetailsView.name = team.name ?? ""
+        teamDetailsView.teamTitleLabel.text = team.name ?? ""
 
         let quitTeamBarButton = UIBarButtonItem(
             title: NSLocalizedString("Quit", comment: ""),
