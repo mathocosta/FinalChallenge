@@ -1,5 +1,5 @@
 //
-//  MovinningGoalsManager.swift
+//  MovinningGoalsManagerTests.swift
 //  MovinningTests
 //
 //  Created by Martônio Júnior on 18/10/19.
@@ -196,7 +196,7 @@ class MovinningGoalsManager: XCTestCase {
         XCTAssert(goalPile.value.contains(9))
         XCTAssert(goalPile.value.contains(10))
     }
-    
+
     func test_goalsmanager_selectNewTimedGoalsFromFullGoalPile() {
         testUser.currentGoals = GoalPile(value: [0, 1, 2])
         testUser.goalPile = GoalPile(value: Set(Array(4..<GoalsManager.amountOfGoals())))
@@ -227,5 +227,10 @@ class MovinningGoalsManager: XCTestCase {
         XCTAssert(UserDefaults.standard.goalUpdateTime == now)
         XCTAssert(currentGoals.value.count == 3)
         XCTAssert(goalPile.value.count == 0)
+    }
+
+    func test_goalsmanager_checkForCompletedDailyGoals() {
+        testUser.currentGoals = testUser.currentGoals?.add(2)
+        GoalsManager.checkForCompletedGoals(for: testUser)
     }
 }

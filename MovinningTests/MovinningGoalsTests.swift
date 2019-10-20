@@ -1,5 +1,5 @@
 //
-//  MovinningGoalsTest.swift
+//  MovinningGoalsTests.swift
 //  MovinningTests
 //
 //  Created by Martônio Júnior on 08/10/19.
