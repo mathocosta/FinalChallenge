@@ -29,6 +29,9 @@ final class TeamTabCoordinator: Coordinator {
         self.navigationController.navigationBar.barTintColor = .backgroundColor
         self.navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController.navigationBar.shadowImage = UIImage()
+        self.navigationController.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: UIFont.sectionTitle
+        ]
     }
 
     func start() {

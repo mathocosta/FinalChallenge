@@ -35,3 +35,9 @@
 "Invalid Name Message" = "The field 'name' is required";
 "Invalid Email Title" = "Invalid email";
 "Invalid Email Message" = "The entered email is invalid";
+"Sugestions" = "Suggestions";
+"Attention" = "Attention";
+"Leave team message" = "Are you sure you want to leave the team?";
+"Team members" = "Team members";
+"Achievements" = "Achievements";
+"See more" = "See more";

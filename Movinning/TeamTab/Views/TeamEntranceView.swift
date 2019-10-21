@@ -70,19 +70,19 @@ class TeamEntranceView: UIView {
         return view
     }()
 
-//    lazy var seeMoreAchievmentsLabel: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setTitle("Ver mais", for: .normal)
-//        button.setTitleColor(.textColor, for: .normal)
-//        button.titleLabel?.font = .body
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(seeMoreAchievmentsTapped(_:))))
-//        return button
-//    }()
+    // lazy var seeMoreAchievmentsLabel: UIButton = {
+    //     let button = UIButton(type: .system)
+    //     button.setTitle(NSLocalizedString("See more", comment: ""), for: .normal)
+    //     button.setTitleColor(.textColor, for: .normal)
+    //     button.titleLabel?.font = .body
+    //     button.translatesAutoresizingMaskIntoConstraints = false
+    //     button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(seeMoreAchievmentsTapped(_:))))
+    //     return button
+    // }()
 
     lazy var seeMoreMembersLabel: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Ver mais", for: .normal)
+        button.setTitle(NSLocalizedString("See more", comment: ""), for: .normal)
         button.setTitleColor(.textColor, for: .normal)
         button.titleLabel?.font = .body
         button.translatesAutoresizingMaskIntoConstraints = false

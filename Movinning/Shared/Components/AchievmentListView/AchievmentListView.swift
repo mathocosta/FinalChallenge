@@ -15,7 +15,7 @@ class AchievmentListView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
         label.font = .sectionTitle
-        label.text = "Conquistas"
+        label.text = NSLocalizedString("Achievements", comment: "")
         return label
     }()
 
@@ -25,7 +25,9 @@ class AchievmentListView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(AchievmentItemViewCell.self, forCellWithReuseIdentifier: String(describing: AchievmentItemViewCell.self))
+        collectionView.register(
+            AchievmentItemViewCell.self,
+            forCellWithReuseIdentifier: String(describing: AchievmentItemViewCell.self))
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
