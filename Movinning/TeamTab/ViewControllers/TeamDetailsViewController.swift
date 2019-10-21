@@ -46,23 +46,29 @@ class TeamDetailsViewController: UIViewController, LoaderView {
         let quitTeamBarButton = UIBarButtonItem(
             title: NSLocalizedString("Quit", comment: ""),
             style: .plain, target: self, action: #selector(quitTeamTapped(_:)))
-        quitTeamBarButton.tintColor = .red
+        quitTeamBarButton.tintColor = .fadedRed
         navigationItem.rightBarButtonItem = quitTeamBarButton
     }
 
     // MARK: - Actions
     @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController.okAlert(
+            title: NSLocalizedString("Attention", comment: ""),
+            message: NSLocalizedString("Leave team message", comment: "")
+        ) {
+            self.startLoader()
 
-        self.startLoader()
-
-        guard let loggedUser = UserManager.getLoggedUser() else { return }
-        SessionManager.current.remove(user: loggedUser, from: team).done(on: .main) { (_) in
-            self.stopLoader()
-            self.coordinator?.showTeamList()
-        }.catch(on: .main) { (error) in
-            self.stopLoader()
-            print(error.localizedDescription)
+            guard let loggedUser = UserManager.getLoggedUser() else { return }
+            SessionManager.current.remove(user: loggedUser, from: self.team).done(on: .main) { _ in
+                self.stopLoader()
+                self.coordinator?.showTeamList()
+            }.catch(on: .main) { (error) in
+                self.stopLoader()
+                print(error.localizedDescription)
+            }
         }
+
+        present(alert, animated: true, completion: nil)
     }
 
 }
