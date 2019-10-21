@@ -78,7 +78,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
             self.stopLoader()
             return
         }
-                
+
         user.firstName = firstNameText.trimmingCharacters(in: .whitespaces)
 
         if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
