@@ -25,7 +25,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
     // MARK: - Lifecycle
     init(team: Team) {
         self.team = team
-        self.teamDetailsView = TeamDetailsView()
+        self.teamDetailsView = TeamDetailsView(team: team)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,6 +35,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
     override func loadView() {
         view = teamDetailsView
+        teamDetailsView.onShowMembers = self.onShowMembers
     }
 
     override func viewDidLoad() {
@@ -63,6 +64,11 @@ class TeamDetailsViewController: UIViewController, LoaderView {
             self.stopLoader()
             print(error.localizedDescription)
         }
+    }
+    
+    func onShowMembers() {
+        guard let coordinator = coordinator else { return }
+        coordinator.showTeamMembers(of: team)
     }
 
 }

@@ -9,6 +9,10 @@
 import UIKit
 
 class TeamEntranceView: UIView {
+    
+    private let team: Team
+    
+    var onShowMembers: (() -> Void)?
 
     // MARK: - Properties
     lazy var teamImageView: UIImageView = {
@@ -34,7 +38,7 @@ class TeamEntranceView: UIView {
         label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
         // TODO: Remover
-        label.text = "Nível 12"
+        label.text = "\(team.points) points"
         return label
     }()
 
@@ -43,7 +47,7 @@ class TeamEntranceView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .bodySmall
         label.textColor = .textColor
-        label.text = "Parquelândia, Fortaleza"
+        label.text = "\(team.neighborhood ?? "")"
         return label
     }()
 
@@ -53,27 +57,28 @@ class TeamEntranceView: UIView {
         return button
     }()
 
-    lazy var conquistasView: AchievmentListView = {
-        let view = AchievmentListView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+//    lazy var conquistasView: AchievmentListView = {
+//        let view = AchievmentListView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        return view
+//    }()
 
     lazy var participantesView: GroupMemberListView = {
         let view = GroupMemberListView()
+        view.members = team.members?.allObjects as? [User]
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    lazy var seeMoreAchievmentsLabel: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Ver mais", for: .normal)
-        button.setTitleColor(.textColor, for: .normal)
-        button.titleLabel?.font = .body
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(seeMoreAchievmentsTapped(_:))))
-        return button
-    }()
+//    lazy var seeMoreAchievmentsLabel: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("Ver mais", for: .normal)
+//        button.setTitleColor(.textColor, for: .normal)
+//        button.titleLabel?.font = .body
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(seeMoreAchievmentsTapped(_:))))
+//        return button
+//    }()
 
     lazy var seeMoreMembersLabel: UIButton = {
         let button = UIButton(type: .system)
@@ -82,6 +87,7 @@ class TeamEntranceView: UIView {
         button.titleLabel?.font = .body
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(seeMoreMembersTapped(_:))))
+        button.isHidden = (team.members?.count ?? 0) < 6 ? true : false
         return button
     }()
 
@@ -100,7 +106,8 @@ class TeamEntranceView: UIView {
     }()
 
     // MARK: - Lifecycle
-    override init(frame: CGRect = .zero) {
+    init(frame: CGRect = .zero, team: Team) {
+        self.team = team
         super.init(frame: frame)
         backgroundColor = .backgroundColor
         setupView()
@@ -122,7 +129,8 @@ class TeamEntranceView: UIView {
     }
 
     @objc func seeMoreMembersTapped(_ sender: UITapGestureRecognizer) {
-        print("See more Members")
+        guard let onShowMembers = self.onShowMembers else { return }
+        onShowMembers()
     }
 }
 
@@ -133,8 +141,8 @@ extension TeamEntranceView: CodeView {
         contentView.addSubview(teamLevelSubtitleLabel)
         contentView.addSubview(teamDetailLabel)
         contentView.addSubview(joinTeamButton)
-        contentView.addSubview(conquistasView)
-        contentView.addSubview(seeMoreAchievmentsLabel)
+//        contentView.addSubview(conquistasView)
+//        contentView.addSubview(seeMoreAchievmentsLabel)
         contentView.addSubview(participantesView)
         contentView.addSubview(seeMoreMembersLabel)
 
@@ -166,16 +174,16 @@ extension TeamEntranceView: CodeView {
         joinTeamButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         joinTeamButton.topAnchor.constraint(equalTo: teamDetailLabel.bottomAnchor, constant: 14).isActive = true
 
-        conquistasView.topAnchor.constraint(equalTo: joinTeamButton.bottomAnchor, constant: 34).isActive = true
-        conquistasView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        conquistasView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
-        conquistasView.heightAnchor.constraint(equalToConstant: 259).isActive = true
+//        conquistasView.topAnchor.constraint(equalTo: joinTeamButton.bottomAnchor, constant: 34).isActive = true
+//        conquistasView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+//        conquistasView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+//        conquistasView.heightAnchor.constraint(equalToConstant: 259).isActive = true
+//
+//        seeMoreAchievmentsLabel.topAnchor.constraint(equalTo: conquistasView.bottomAnchor, constant: 8).isActive = true
+//        seeMoreAchievmentsLabel.rightAnchor.constraint(equalTo: contentView.layoutMarginsGuide.rightAnchor).isActive = true
+//        seeMoreAchievmentsLabel.heightAnchor.constraint(equalToConstant: seeMoreAchievmentsLabel.intrinsicContentSize.height).isActive = true
 
-        seeMoreAchievmentsLabel.topAnchor.constraint(equalTo: conquistasView.bottomAnchor, constant: 8).isActive = true
-        seeMoreAchievmentsLabel.rightAnchor.constraint(equalTo: contentView.layoutMarginsGuide.rightAnchor).isActive = true
-        seeMoreAchievmentsLabel.heightAnchor.constraint(equalToConstant: seeMoreAchievmentsLabel.intrinsicContentSize.height).isActive = true
-
-        participantesView.topAnchor.constraint(equalTo: seeMoreAchievmentsLabel.bottomAnchor, constant: 23).isActive = true
+        participantesView.topAnchor.constraint(equalTo: joinTeamButton.bottomAnchor, constant: 34).isActive = true
         participantesView.widthAnchor.constraint(equalTo: contentView.widthAnchor).isActive = true
         participantesView.heightAnchor.constraint(equalToConstant: 321).isActive = true
         participantesView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
@@ -189,7 +197,7 @@ extension TeamEntranceView: CodeView {
         contentView.rightAnchor.constraint(equalTo: scrollView.rightAnchor).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: 1100).isActive = true
+        contentView.heightAnchor.constraint(equalToConstant: 800).isActive = true
 
         scrollView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         scrollView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true

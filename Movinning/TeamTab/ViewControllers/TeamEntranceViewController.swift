@@ -19,7 +19,7 @@ class TeamEntranceViewController: UIViewController {
     // MARK: - Lifecycle
     init(team: Team) {
         self.team = team
-        self.teamEntranceView = TeamEntranceView()
+        self.teamEntranceView = TeamEntranceView(frame: .zero, team: team)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -29,6 +29,7 @@ class TeamEntranceViewController: UIViewController {
 
     override func loadView() {
         view = teamEntranceView
+        teamEntranceView.onShowMembers = self.onShowMembers
     }
 
     override func viewDidLoad() {
@@ -51,5 +52,9 @@ class TeamEntranceViewController: UIViewController {
             }
         }
     }
-
+    
+    func onShowMembers() {
+        guard let coordinator = coordinator else { return }
+        coordinator.showTeamMembers(of: team)
+    }
 }

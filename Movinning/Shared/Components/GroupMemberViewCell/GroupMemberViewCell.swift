@@ -9,6 +9,14 @@
 import UIKit
 
 class GroupMemberViewCell: UICollectionViewCell {
+    
+    var member: User? {
+        didSet {
+            guard let member = member, let photo = member.photo else { return }
+            nameLabel.text = member.firstName
+            profileImageView.image = UIImage(data: photo)
+        }
+    }
 
     static var width: CGFloat = 86
     static var height: CGFloat = 118
