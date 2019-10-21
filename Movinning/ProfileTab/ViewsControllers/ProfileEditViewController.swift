@@ -98,18 +98,11 @@ class ProfileEditViewController: UIViewController, LoaderView {
 
         user.email = emailText
 
-        SessionManager.current.updateRegister(of: user) { [unowned self] result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.stopLoader()
-                    self.coordinator?.showProfileViewController(for: self.user)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                }
-                print(error)
-            }
+        SessionManager.current.updateRegister(of: user).done(on: .main) { _ in
+            self.stopLoader()
+            self.coordinator?.showProfileViewController(for: self.user)
+        }.catch(on: .main) { (error) in
+            print(error.localizedDescription)
         }
     }
 

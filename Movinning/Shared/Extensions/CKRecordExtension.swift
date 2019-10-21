@@ -46,6 +46,12 @@ extension CKRecord {
         return dict
     }
 
+    /// Retorna uma referência para esse `CKRecord`
+    /// - Parameter action: Ação para ser executada quando o record for deletado
+    func reference(action: CKRecord_Reference_Action = .none) -> CKRecord.Reference {
+        return CKRecord.Reference(record: self, action: action)
+    }
+
     /// Transforma um asset para Data
     private func data(from ckAsset: CKAsset) -> Data {
         var assetData = Data()

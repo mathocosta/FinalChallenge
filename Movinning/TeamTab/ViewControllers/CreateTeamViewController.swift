@@ -59,15 +59,10 @@ class CreateTeamViewController: UIViewController {
             "neighborhood": neighborhoodText
         ])
 
-        SessionManager.current.create(team: newTeam, with: loggedUser) { (result) in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.coordinator?.showDetails(of: newTeam)
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        SessionManager.current.create(team: newTeam, with: loggedUser).done(on: .main) { _ in
+            self.coordinator?.showDetails(of: newTeam)
+        }.catch(on: .main) { error in
+            print(error.localizedDescription)
         }
     }
 

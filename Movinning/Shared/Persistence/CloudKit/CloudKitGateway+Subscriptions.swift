@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import PromiseKit
 
 // MARK: - Subscriptions
 extension CloudKitGateway {
@@ -34,46 +35,41 @@ extension CloudKitGateway {
 
     func save(
         _ subscripitions: [CKSubscription],
-        andRemove subscriptionsToRemove: [CKSubscription.ID]? = nil,
-        completion: @escaping(ResultHandler<Bool>)
-    ) {
-        let operation = CKModifySubscriptionsOperation(
-            subscriptionsToSave: subscripitions,
-            subscriptionIDsToDelete: subscriptionsToRemove
-        )
-        operation.qualityOfService = .utility
-        operation.modifySubscriptionsCompletionBlock = { _, _, error in
-            if let error = error {
-                completion(.failure(error))
+        andRemove subscriptionsToRemove: [CKSubscription.ID]? = nil
+    ) -> Promise<Bool> {
+        return Promise<Bool> { seal in
+            let operation = CKModifySubscriptionsOperation(
+                subscriptionsToSave: subscripitions,
+                subscriptionIDsToDelete: subscriptionsToRemove
+            )
+            operation.qualityOfService = .utility
+
+            operation.modifySubscriptionsCompletionBlock = { _, _, error in
+                if let error = error {
+                    seal.reject(error)
+                }
+
+                print("Subscriptions salvas")
+                seal.fulfill(true)
             }
 
-            print("Subscriptions salvas")
-            completion(.success(true))
+            publicDatabase.add(operation)
         }
-
-        publicDatabase.add(operation)
     }
 
-    func removeSubscriptions(completion: @escaping (ResultHandler<Bool>)) {
-        let userSubscriptionsOperation = CKFetchSubscriptionsOperation.fetchAllSubscriptionsOperation()
+    func removeSubscriptions() -> Promise<Bool> {
+        return Promise<[CKSubscription.ID: CKSubscription]?> { seal in
+            let userSubscriptionsOperation = CKFetchSubscriptionsOperation.fetchAllSubscriptionsOperation()
 
-        userSubscriptionsOperation.fetchSubscriptionCompletionBlock = { subscriptions, error in
-            if let error = error {
-                return completion(.failure(error))
-            }
+            userSubscriptionsOperation.fetchSubscriptionCompletionBlock = seal.resolve
 
-            if let subscriptions = subscriptions {
-                let subscriptionsToRemove = Array(subscriptions.keys)
-
-                print("Removendo subscriptions")
-                self.save([], andRemove: subscriptionsToRemove, completion: completion)
-            } else {
-                completion(.success(true))
-            }
-
+            publicDatabase.add(userSubscriptionsOperation)
         }
-
-        publicDatabase.add(userSubscriptionsOperation)
+        .compactMap { $0?.keys }
+        .map(Array.init)
+        .then { subscriptionsToRemove in
+            self.save([], andRemove: subscriptionsToRemove)
+        }
     }
 
 }

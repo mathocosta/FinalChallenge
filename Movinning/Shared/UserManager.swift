@@ -18,7 +18,11 @@ class UserManager: NSObject {
 
     /// Retorna o usuário logado no app. Caso não exista, retorna "nil"
     static func getLoggedUser() -> User? {
+        guard let userUUIDString = UserDefaults.standard.loggedUserUUID,
+            let userUUID = UUID(uuidString: userUUIDString) else { return nil }
+
         let request = NSFetchRequest<User>(entityName: "User")
+        request.predicate = NSPredicate(format: "id == %@", userUUID as CVarArg)
         let users = CoreDataStore.fetch(request)
 
         guard let user = users.first else { return nil }
@@ -61,7 +65,6 @@ class UserManager: NSObject {
 
     static func update(recordMetadata: Data, of user: User) {
         user.recordMetadata = recordMetadata
-        CoreDataStore.saveContext()
     }
 
     static func logout(user: User) {

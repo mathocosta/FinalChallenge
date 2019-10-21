@@ -34,6 +34,12 @@ extension UserDefaults {
         set { set(newValue, forKey: #function) }
     }
 
+    /// UUID do `User` logado no device
+    var loggedUserUUID: String? {
+        get { return string(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
+
     /// Último tempo de atualização das metas
     var goalUpdateTime: Date? {
         get { return value(forKey: #function) as? Date }

@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import PromiseKit
 
 // MARK: - Gerenciamento dos times
 extension CloudKitGateway {
@@ -15,60 +16,79 @@ extension CloudKitGateway {
     /// Faz uma consulta pelos times salvos na database. Pode receber como parâmetro o
     /// `CKQueryOperation.Cursor` da consulta passada para continuar caso seja necessário.
     /// - Parameter cursor: Onde deve começar a consulta
-    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
-    /// os records obtidos, ou os errors encontrados
-    func listTeams(
-        cursor: CKQueryOperation.Cursor? = nil,
-        completion: @escaping (ResultHandler<(CKQueryOperation.Cursor?, [CKRecord])>)
-    ) {
-        var fetchedRecords = [CKRecord]()
-        var queryOperation: CKQueryOperation
-
-        if let cursor = cursor {
-            queryOperation = CKQueryOperation(cursor: cursor)
-        } else {
-            let query = CKQuery(recordType: "Teams", predicate: NSPredicate(value: true))
-            queryOperation = CKQueryOperation(query: query)
-        }
-
-        queryOperation.cursor = nil
-        queryOperation.resultsLimit = 10
-
-        queryOperation.recordFetchedBlock = { (fetchedRecord) in
-            fetchedRecords.append(fetchedRecord)
-        }
-
-        queryOperation.queryCompletionBlock = { (nextCursor, operationError) in
-            if let operationError = operationError {
-                completion(.failure(operationError))
+    func listTeams(cursor: CKQueryOperation.Cursor? = nil) -> Promise<(CKQueryOperation.Cursor?, [CKRecord])> {
+        return Promise<(CKQueryOperation.Cursor?, [CKRecord])> { seal in
+            var fetchedRecords = [CKRecord]()
+            var queryOperation: CKQueryOperation
+            if let cursor = cursor {
+                queryOperation = CKQueryOperation(cursor: cursor)
+            } else {
+                let query = CKQuery(recordType: "Teams", predicate: NSPredicate(value: true))
+                queryOperation = CKQueryOperation(query: query)
             }
 
-            completion(.success((nextCursor, fetchedRecords)))
-        }
+            queryOperation.resultsLimit = 10
+            queryOperation.recordFetchedBlock = { fetchedRecord in
+                fetchedRecords.append(fetchedRecord)
+            }
 
-        publicDatabase.add(queryOperation)
+            queryOperation.queryCompletionBlock = { nextCursor, operationError in
+                if let operationError = operationError {
+                    seal.reject(operationError)
+                }
+
+                return seal.fulfill((cursor, fetchedRecords))
+            }
+
+            publicDatabase.add(queryOperation)
+        }
+    }
+
+    /// Obtém os usuários de um time baseado na lista de referências de usuários. Retorna `CKRecord`s com
+    /// somente o `firstName` e `photo`, pois os outros dados são desnecessários.
+    /// - Parameter teamRecord: `CKRecord` do time usado pela consulta
+    func users(from teamRecord: CKRecord) -> Promise<[CKRecord]> {
+        return Promise<[CKRecord.ID: CKRecord]> { seal in
+            let usersReferences = teamRecord.value(forKey: "users") as? [CKRecord.Reference]
+            let usersRecordsIDs = usersReferences?.map { $0.recordID }
+
+            let fetchOperation = CKFetchRecordsOperation(recordIDs: usersRecordsIDs ?? [])
+            fetchOperation.desiredKeys = ["id", "firstName", "photo"]
+            fetchOperation.fetchRecordsCompletionBlock = seal.resolve
+
+            publicDatabase.add(fetchOperation)
+        }.compactMap({ $0.values }).map(Array.init)
     }
 
     /// Obtém o record do time cadastrado com o usuário, mas caso não haja nenhum,
     /// será retornado um erro.
     /// - Parameter userRecord: Record do usuário para buscar o time
-    /// - Parameter completion: Callback executado quando termina a consulta, com o cursor atual e
-    /// os records obtidos, ou os errors encontrados
-    func team(of userRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
+    func team(of userRecord: CKRecord) -> Promise<CKRecord> {
         guard let teamReference = userRecord.value(forKey: "team") as? CKRecord.Reference else {
-            let nsError = NSError(domain: "User doesn't have a team", code: 1, userInfo: nil)
-            return completion(.failure(nsError))
+            return Promise(error: SessionError.missingTeamReference)
         }
 
-        object(with: teamReference.recordID, in: publicDatabase, completion: completion)
+        return publicDatabase.fetch(withRecordID: teamReference.recordID)
     }
 
-    /// Esse método cria um `CKRecord` de um time.
-    /// - Parameter userRecord: Record do time para ser salvo
-    /// - Parameter completion: Callback executado quando o processo termina que retorna o record
-    /// atualizado do servidor (necessário para atualizar os metadados localmente) ou os erros que aconteceram
-    func create(teamRecord: CKRecord, completion: @escaping (ResultHandler<CKRecord>)) {
-        save(teamRecord, in: publicDatabase, completion: completion)
+    /// Cria um time e adiciona o usuário como criador e como membro.
+    /// - Parameter teamRecord: Record do time a ser criado
+    /// - Parameter userRecord: Record do usuário para atualizar
+    func create(teamRecord: CKRecord, withCreator userRecord: CKRecord) -> Promise<(CKRecord, CKRecord)> {
+        let userReference = userRecord.reference()
+        teamRecord["users"] = [userReference]
+        teamRecord["creator"] = userReference
+
+        userRecord["team"] = teamRecord.reference()
+
+        return Promise {
+            save([teamRecord, userRecord], in: publicDatabase, completion: $0.resolve)
+        }.then { updatedRecords -> Promise<(CKRecord, CKRecord)> in
+            let updatedTeamRecord = updatedRecords[0]
+            let updatedUserRecord = updatedRecords[1]
+
+            return Promise.value((updatedTeamRecord, updatedUserRecord))
+        }
     }
 
 }

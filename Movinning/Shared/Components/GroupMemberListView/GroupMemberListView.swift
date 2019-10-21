@@ -9,7 +9,7 @@
 import UIKit
 
 class GroupMemberListView: UIView {
-    
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ extension GroupMemberListView: CodeView {
         addSubview(titleLabel)
         addSubview(collectionView)
     }
-    
+
     func setupConstraints() {
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         titleLabel.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true

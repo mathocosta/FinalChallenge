@@ -74,18 +74,12 @@ class TeamListViewController: UIViewController {
     }
 
     private func updateTeamList() {
-        SessionManager.current.listTeams { (result) in
-            switch result {
-            case .success(let newTeams):
-                self.teams.append(contentsOf: newTeams)
-
-                DispatchQueue.main.async { [weak self] in
-                    self?.teamListView.refreshControl.endRefreshing()
-                    self?.teamListView.resultsTableView.reloadData()
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
+        SessionManager.current.listTeams().done(on: .main) { [weak self] teams in
+            self?.teams.append(contentsOf: teams)
+            self?.teamListView.refreshControl.endRefreshing()
+            self?.teamListView.resultsTableView.reloadData()
+        }.catch(on: .main) { error in
+            print(error.localizedDescription)
         }
     }
 
@@ -103,7 +97,8 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCardView", for: indexPath) as? GroupCardView else {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "GroupCardView", for: indexPath) as? GroupCardView else {
                 return UITableViewCell()
         }
 

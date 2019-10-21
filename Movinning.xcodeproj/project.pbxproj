@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C62350AAE100BBCEE7 /* PromiseKit */; };
+		270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C92356072300BBCEE7 /* PMKCloudKit */; };
 		273D233F2327E0AC003147DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* SessionManager.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
@@ -47,6 +49,7 @@
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
 		27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */; };
+		27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9B94823593F2200E2B1F8 /* SessionError.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -174,6 +177,7 @@
 		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
 		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
 		27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Subscriptions.swift"; sourceTree = "<group>"; };
+		27F9B94823593F2200E2B1F8 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */,
+				270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */,
+				270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */,
 				2797D61F232D315200A33470 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,6 +361,7 @@
 				2797D62F232E730500A33470 /* CloudKit */,
 				278F829B2326881000F55372 /* Models */,
 				273D233E2327E0AC003147DF /* SessionManager.swift */,
+				27F9B94823593F2200E2B1F8 /* SessionError.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -769,6 +776,10 @@
 			dependencies = (
 			);
 			name = Movinning;
+			packageProductDependencies = (
+				270EE7C62350AAE100BBCEE7 /* PromiseKit */,
+				270EE7C92356072300BBCEE7 /* PMKCloudKit */,
+			);
 			productName = FinalChallenge;
 			productReference = 275FE85F231D3664001695D2 /* Movinning.app */;
 			productType = "com.apple.product-type.application";
@@ -847,6 +858,10 @@
 				"pt-BR",
 			);
 			mainGroup = 275FE856231D3664001695D2;
+			packageReferences = (
+				270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */,
+			);
 			productRefGroup = 275FE860231D3664001695D2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -967,6 +982,7 @@
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
 				2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */,
 				27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */,
+				27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,
@@ -1202,8 +1218,8 @@
 				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = VA7DWMQ39T;
+				CURRENT_PROJECT_VERSION = 21102019001;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1225,8 +1241,8 @@
 				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = "";
+				CURRENT_PROJECT_VERSION = 21102019001;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1363,6 +1379,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.11.0;
+			};
+		};
+		270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PromiseKit/CloudKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		270EE7C62350AAE100BBCEE7 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		270EE7C92356072300BBCEE7 /* PMKCloudKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */;
+			productName = PMKCloudKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */ = {

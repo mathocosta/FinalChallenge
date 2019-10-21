@@ -16,7 +16,7 @@ extension User: CKManagedObject {
         return firstName+" "+lastName
     }
 
-    func asCKRecord() -> CKRecord {
+    func ckRecord() -> CKRecord {
         guard let recordMetadata = recordMetadata else {
             fatalError("Propriedade 'recordMetadata' não inicializada no user")
         }
@@ -33,7 +33,7 @@ extension User: CKManagedObject {
             record["photo"] = ckAsset(of: profileImage)
         }
 
-        if let teamRecord = team?.asCKRecord() {
+        if let teamRecord = team?.ckRecord() {
             record["team"] = CKRecord.Reference(record: teamRecord, action: .none)
         } else {
             record["team"] = nil
