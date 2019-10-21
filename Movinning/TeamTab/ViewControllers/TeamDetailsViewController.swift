@@ -42,6 +42,15 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
         title = team.name
         teamDetailsView.teamTitleLabel.text = team.name ?? ""
+        
+        var location = ""
+        if let city = team.city, city != "" {
+            location = "\(city)"
+        }
+        if let neighborhood = team.neighborhood, neighborhood != "" {
+            location = "\(neighborhood)"+(location != "" ? ", "+location : "")
+        }
+        teamDetailsView.teamDetailLabel.text = location
 
         let quitTeamBarButton = UIBarButtonItem(
             title: NSLocalizedString("Quit", comment: ""),

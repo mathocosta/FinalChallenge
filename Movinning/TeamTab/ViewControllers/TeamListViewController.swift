@@ -128,6 +128,18 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
         return CGFloat(GroupCardView.height)
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: 30, height: 120))
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .clear
+        headerView.backgroundView = backgroundView
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedTeam: Team
         if isFiltering {
