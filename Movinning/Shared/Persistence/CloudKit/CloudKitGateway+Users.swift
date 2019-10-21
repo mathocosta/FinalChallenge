@@ -135,7 +135,7 @@ extension CloudKitGateway {
             if var usersReferences = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference],
                 let index = usersReferences.firstIndex(of: userRecord.reference()) {
                 usersReferences.remove(at: index)
-                teamRecord["users"] = usersReferences
+                updatedTeamRecord["users"] = usersReferences
 
                 return Promise {
                     self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
