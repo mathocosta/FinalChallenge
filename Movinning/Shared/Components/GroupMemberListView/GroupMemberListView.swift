@@ -15,7 +15,7 @@ class GroupMemberListView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
         label.font = .sectionTitle
-        label.text = "Participantes"
+        label.text = NSLocalizedString("Team members", comment: "")
         return label
     }()
 
