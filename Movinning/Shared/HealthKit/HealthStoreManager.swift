@@ -116,14 +116,14 @@ final class HealthStoreManager {
             query, results, error in
 
             guard let statsCollection = results else {
-                // Perform proper error handling here
-                fatalError("*** An error occurred while calculating the statistics: \(error?.localizedDescription) ***")
+                completion([])
+                return
             }
             completion(statsCollection.statistics().filter {
                 return $0.startDate.compare(lastSunday) != .orderedAscending
             })
         }
-        
+
         HealthStoreManager.healthStore.execute(query)
     }
 

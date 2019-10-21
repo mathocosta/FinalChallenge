@@ -119,7 +119,7 @@ enum HealthStoreService: CaseIterable {
             return HKUnit.count()
         case .distanceWalkingRunning,
              .cycling:
-            return HKUnit(from: .meter)
+            return HKUnit.meter()
         case .soccer,
              .functionalTraining,
              .traditionalTraining,

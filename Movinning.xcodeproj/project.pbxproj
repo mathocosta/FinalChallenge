@@ -93,7 +93,13 @@
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
 		303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */; };
 		304398A3231FD2E80024568D /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304398A2231FD2E80024568D /* GoalsManager.swift */; };
-		305ABC36234CBF5300FB118B /* MovinningGoalsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */; };
+		3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */; };
+		3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F044235C9B2E00D7342F /* MovinningTeamManagerTests.swift */; };
+		3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F045235C9B2E00D7342F /* MovinningUserManagerTests.swift */; };
+		3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */; };
+		3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */; };
+		3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */; };
+		305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -214,7 +220,13 @@
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+DefaultTypes.swift"; sourceTree = "<group>"; };
 		304398A2231FD2E80024568D /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
-		305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTest.swift; sourceTree = "<group>"; };
+		3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalPileTests.swift; sourceTree = "<group>"; };
+		3054F044235C9B2E00D7342F /* MovinningTeamManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningTeamManagerTests.swift; sourceTree = "<group>"; };
+		3054F045235C9B2E00D7342F /* MovinningUserManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningUserManagerTests.swift; sourceTree = "<group>"; };
+		3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreServiceTests.swift; sourceTree = "<group>"; };
+		3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalsManagerTests.swift; sourceTree = "<group>"; };
+		3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreManagerTests.swift; sourceTree = "<group>"; };
+		305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTests.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -718,9 +730,15 @@
 		57FF126C233CE52C00380A88 /* MovinningTests */ = {
 			isa = PBXGroup;
 			children = (
+				3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */,
+				3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */,
+				3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */,
+				3054F044235C9B2E00D7342F /* MovinningTeamManagerTests.swift */,
+				3054F045235C9B2E00D7342F /* MovinningUserManagerTests.swift */,
 				57FF126D233CE52C00380A88 /* MovinningTests.swift */,
 				57FF126F233CE52C00380A88 /* Info.plist */,
-				305ABC35234CBF5300FB118B /* MovinningGoalsTest.swift */,
+				305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */,
+				3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */,
 			);
 			path = MovinningTests;
 			sourceTree = "<group>";
@@ -987,8 +1005,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				305ABC36234CBF5300FB118B /* MovinningGoalsTest.swift in Sources */,
+				3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */,
+				3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */,
+				3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */,
+				3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */,
+				305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */,
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
+				3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */,
+				3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
