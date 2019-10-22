@@ -8,20 +8,28 @@
 
 import Foundation
 
-enum OnboardingAssetsOpition: String {
-    case animation = "animation"
-    case image = "image"
+enum OnboardingAssetsOption: String {
+    case animation
+    case image
 }
 
 struct Onboard {
-    let title : String
-    let description: String
+    let contentType: MessageViewContent
+    var title: String {
+        get {
+            return contentType.title
+        }
+    }
+    var description: String {
+        get {
+            return contentType.message
+        }
+    }
     let assetName: String
-    let assetKind: OnboardingAssetsOpition
-    
-    init(title: String, description: String, assetName: String, assetKind: OnboardingAssetsOpition) {
-        self.title = title
-        self.description = description
+    let assetKind: OnboardingAssetsOption
+
+    init(contentType: MessageViewContent, assetName: String, assetKind: OnboardingAssetsOption) {
+        self.contentType = contentType
         self.assetName = assetName
         self.assetKind = assetKind
     }

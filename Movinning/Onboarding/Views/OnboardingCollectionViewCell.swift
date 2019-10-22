@@ -11,49 +11,61 @@ import UIKit
 class OnboardingCollectionViewCell: UICollectionViewCell {
     fileprivate var customContentView: UIView = {
         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
     }()
+
     fileprivate lazy var animationView: UIView = {
         let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
     }()
+
     fileprivate lazy var imageCell: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "description"
-        label.textColor = .lightText
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.numberOfLines = 0
-        return label
+
+    lazy var descriptionTextView: UITextView = {
+        let textView = UITextView()
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.adjustsFontForContentSizeCategory = true
+        textView.isEditable = false
+        textView.isSelectable = false
+        textView.textColor = .textColor
+        textView.textAlignment = .justified
+        textView.font = .bodySmall
+        return textView
     }()
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Title"
-        label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = .lightText
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.adjustsFontForContentSizeCategory = true
+        label.font = .itemTitle
+        label.textColor = .textColor
         label.textAlignment = .center
         return label
     }()
 
-    public var assetOpition: OnboardingAssetsOpition? {
+    public var assetOpition: OnboardingAssetsOption? {
         didSet {
            setupViews()
         }
     }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+
     private func addViews() {
         addSubview(customContentView)
         if assetOpition == .animation {
@@ -62,30 +74,37 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
             customContentView.addSubview(imageCell)
         }
         customContentView.addSubview(titleLabel)
-        customContentView.addSubview(descriptionLabel)
+        customContentView.addSubview(descriptionTextView)
     }
+
     private func setupViews() {
         addViews()
         customContentView.fillSuperview()
         if assetOpition == .animation {
             animationView.anchor(top: customContentView.safeAreaLayoutGuide.topAnchor,
-                                 leading: customContentView.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: customContentView.safeAreaLayoutGuide.trailingAnchor, padding:
+                                 leading: customContentView.safeAreaLayoutGuide.leadingAnchor, bottom: nil,
+                                 trailing: customContentView.safeAreaLayoutGuide.trailingAnchor, padding:
                 UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: .zero)
-            animationView.heightAnchor.constraint(equalTo: customContentView.heightAnchor, multiplier: 0.7).isActive = true
+            animationView.heightAnchor.constraint(equalTo: customContentView.heightAnchor,
+                                                  multiplier: 0.6).isActive = true
             titleLabel.anchor(top: animationView.bottomAnchor, leading:
                 customContentView.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing:
-                customContentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 8, bottom: 0, right: 8), size: .zero)
-        }else{
+                customContentView.safeAreaLayoutGuide.trailingAnchor, padding:
+                UIEdgeInsets(top: 5, left: 8, bottom: 0, right: 8), size: .zero)
+        } else {
             imageCell.anchor(top: customContentView.safeAreaLayoutGuide.topAnchor, leading:
             customContentView.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing:
-            customContentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: .zero)
-            imageCell.heightAnchor.constraint(equalTo: customContentView.heightAnchor, multiplier: 0.7).isActive = true
+            customContentView.safeAreaLayoutGuide.trailingAnchor, padding:
+                UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: .zero)
+            imageCell.heightAnchor.constraint(equalTo: customContentView.heightAnchor, multiplier: 0.6).isActive = true
             titleLabel.anchor(top: imageCell.bottomAnchor, leading:
                 customContentView.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing:
-                customContentView.safeAreaLayoutGuide.trailingAnchor, padding: UIEdgeInsets(top: 5, left: 8, bottom: 0, right: 8), size: .zero)
+                customContentView.safeAreaLayoutGuide.trailingAnchor, padding:
+                UIEdgeInsets(top: 5, left: 8, bottom: 0, right: 8), size: .zero)
         }
-            descriptionLabel.anchor(top: titleLabel.bottomAnchor, leading:
-                customContentView.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing:
+            descriptionTextView.anchor(top: titleLabel.bottomAnchor, leading:
+                customContentView.safeAreaLayoutGuide.leadingAnchor, bottom:
+                customContentView.safeAreaLayoutGuide.bottomAnchor, trailing:
                 customContentView.safeAreaLayoutGuide.trailingAnchor, padding:
                 UIEdgeInsets(top: 5, left: 8, bottom: 0, right: 8), size: .zero)
     }

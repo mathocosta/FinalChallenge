@@ -1,5 +1,5 @@
 //
-//  UIViewConstraints.swift
+//  UIView+Constraints.swift
 //  Movinning
 //
 //  Created by Thalia Freitas on 20/10/19.

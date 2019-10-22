@@ -86,6 +86,7 @@
 		303F5A97231E93AA0054587C /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A96231E93AA0054587C /* UserManager.swift */; };
 		303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */; };
 		304398A3231FD2E80024568D /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304398A2231FD2E80024568D /* GoalsManager.swift */; };
+		304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F352B235DFAEB005F4900 /* OnboardingView.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -93,7 +94,7 @@
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
 		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
-		5739F780235CCB5C00B69D11 /* UIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIViewConstraints.swift */; };
+		5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
 		57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */; };
 		57479DB52359E1C300C21D09 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB42359E1C300C21D09 /* Onboard.swift */; };
@@ -204,6 +205,7 @@
 		303F5A96231E93AA0054587C /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+DefaultTypes.swift"; sourceTree = "<group>"; };
 		304398A2231FD2E80024568D /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
+		304F352B235DFAEB005F4900 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -211,7 +213,7 @@
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
 		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
-		5739F77F235CCB5C00B69D11 /* UIViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewConstraints.swift; sourceTree = "<group>"; };
+		5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
 		57479DB42359E1C300C21D09 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
@@ -642,19 +644,36 @@
 				3006C5532334FF2900DA501B /* UIBezierPath+TrackOutline.swift */,
 				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
 				2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */,
+				5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */,
 				30E4F102233CF71F00DDC39C /* Array+ToSet.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		57479DA9235761AD00C21D09 /* Onboarding */ = {
+		304F3529235DFAAF005F4900 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */,
+				304F352B235DFAEB005F4900 /* OnboardingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		304F352A235DFAB5005F4900 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				57479DB0235761F400C21D09 /* OnboardingViewController.swift */,
-				57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */,
-				57479DB42359E1C300C21D09 /* Onboard.swift */,
-				5739F77F235CCB5C00B69D11 /* UIViewConstraints.swift */,
 				57479DB62359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		57479DA9235761AD00C21D09 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				304F352A235DFAB5005F4900 /* ViewControllers */,
+				304F3529235DFAAF005F4900 /* Views */,
+				57479DB42359E1C300C21D09 /* Onboard.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -860,7 +879,7 @@
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
-				5739F780235CCB5C00B69D11 /* UIViewConstraints.swift in Sources */,
+				5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
@@ -880,6 +899,7 @@
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
+				304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				2B6E354123229C520092A481 /* Input.swift in Sources */,
 				2B417FA02320006F002AD09D /* ProfileView.swift in Sources */,
@@ -1119,14 +1139,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinningh";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1142,14 +1162,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinningh";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

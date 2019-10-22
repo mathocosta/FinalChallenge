@@ -78,19 +78,13 @@ extension ProfileDetailsView: CodeView {
         imageView.heightAnchor.constraint(equalToConstant: 119).isActive = true
         imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        //imageView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        //imageView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 13).isActive = true
-//        nameLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//        nameLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         nameLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 250).isActive = true
 
         levelLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5).isActive = true
-        //levelLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        //levelLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         levelLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         levelLabel.heightAnchor.constraint(equalToConstant: levelLabel.intrinsicContentSize.height).isActive = true
     }

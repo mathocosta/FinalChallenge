@@ -103,7 +103,8 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCardView", for: indexPath) as? GroupCardView else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCardView",
+                                                       for: indexPath) as? GroupCardView else {
                 return UITableViewCell()
         }
 

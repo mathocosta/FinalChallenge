@@ -35,3 +35,6 @@
 "Invalid Name Message" = "The field 'name' is required";
 "Invalid Email Title" = "Invalid email";
 "Invalid Email Message" = "The entered email is invalid";
+"Next" = "Next";
+"Skip" = "Skip All";
+"Get Started" = "Get Started";
