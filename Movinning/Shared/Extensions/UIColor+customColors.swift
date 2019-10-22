@@ -42,4 +42,16 @@ extension UIColor {
         return UIColor(named: "textColor") ?? .black
     }
 
+    @nonobjc class var trackOrange: UIColor {
+        return UIColor(red: 1.00, green: 0.65, blue: 0.33, alpha: 1.0)
+    }
+
+    @nonobjc class var trackBlue: UIColor {
+        return UIColor(red: 0.17, green: 0.73, blue: 1.00, alpha: 1.0)
+    }
+
+    @nonobjc class var trackRed: UIColor {
+        return UIColor(red: 0.89, green: 0.26, blue: 0.26, alpha: 1.0)
+    }
+    
 }

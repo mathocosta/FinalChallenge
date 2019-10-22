@@ -105,6 +105,6 @@ extension Input: UITextFieldDelegate {
         }
         let substringToReplace = textFieldText[rangeOfTextToReplace]
         let count = textFieldText.count - substringToReplace.count + string.count
-        return type == .other ? true : count <= 15
+        return type == .other ? true : count <= 20
     }
 }
