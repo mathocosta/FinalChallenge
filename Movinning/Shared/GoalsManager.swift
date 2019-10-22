@@ -64,6 +64,7 @@ class GoalsManager: NSObject {
     static func removeAllTimedGoals(from user: User) {
         var goals = GoalsManager.currentTimedGoals(of: user)
         GoalsManager.remove(timedGoals: &goals, sendToPile: &user.goalPile)
+        user.currentGoals = GoalPile(value: [])
     }
 
     static func remove(timedGoals goals: inout [Goal], sendToPile pile: inout GoalPile?) {
@@ -131,15 +132,25 @@ class GoalsManager: NSObject {
 
     @discardableResult
     static func setNewTimedGoals(for user: User, at date: Date = Date()) -> [Int] {
-        guard let pile = user.goalPile else {
+        if let lastGoals = user.currentGoals {
+            for goal in lastGoals.value {
+                user.goalPile = user.goalPile?.add(goal)
+            }
+        }
+        var chosenGoals: [Int] = []
+        if let pileCount = user.goalPile?.value.count,
+            pileCount + 3 > amountOfGoals() {
             user.goalPile = GoalPile(value: [])
-            return Array(0...2)
         }
-        let chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
+
+        if let pile = user.goalPile {
+            chosenGoals = GoalsManager.selectNewTimedGoals(fromPile: pile)
+        } else {
+            user.goalPile = GoalPile(value: [])
+            chosenGoals = Array(0...2)
+        }
+
         user.currentGoals = GoalPile(value: Set(chosenGoals))
-        for goal in chosenGoals {
-            user.goalPile = user.goalPile?.add(goal)
-        }
         UserDefaults.standard.goalUpdateTime = date
         return chosenGoals
     }

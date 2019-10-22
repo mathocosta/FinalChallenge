@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C62350AAE100BBCEE7 /* PromiseKit */; };
+		270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C92356072300BBCEE7 /* PMKCloudKit */; };
 		273D233F2327E0AC003147DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* SessionManager.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
@@ -47,6 +49,7 @@
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
 		27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */; };
+		27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9B94823593F2200E2B1F8 /* SessionError.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
 		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
@@ -54,8 +57,8 @@
 		2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */; };
 		2B6E354123229C520092A481 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E354023229C520092A481 /* Input.swift */; };
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
-		2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */; };
-		2B7DC2B823229321009C3F54 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* BarView.swift */; };
+		2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* LegendProgressView.swift */; };
+		2B7DC2B823229321009C3F54 /* LegendBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* LegendBarView.swift */; };
 		2B86B1E92331009C00688735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1E82331009C00688735 /* LoadingView.swift */; };
 		2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1EA2331036C00688735 /* LoaderView.swift */; };
 		2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1ED233120B100688735 /* LoadingViewController.swift */; };
@@ -66,12 +69,19 @@
 		2B86F07E23390A51005BE690 /* Oswald-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */; };
 		2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */; };
 		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
+		2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */; };
+		2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */; };
+		2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDE234CD60F00CBD497 /* AchievmentItemViewCell.swift */; };
 		2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */; };
 		2BA7B7C6233A568E00134C6E /* GroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C5233A568E00134C6E /* GroupCardView.swift */; };
 		2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C7233A572F00134C6E /* CustomView.swift */; };
 		2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */; };
 		2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */; };
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
+		2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */; };
+		2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD98CC235896CD00D5B8F4 /* BarView.swift */; };
+		2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */; };
+		2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */; };
 		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
 		3006C5502334FA2B00DA501B /* TrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54F2334FA2B00DA501B /* TrackView.swift */; };
 		3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C5512334FD7200DA501B /* CGRect+Center.swift */; };
@@ -87,6 +97,13 @@
 		303F5A99231EA7100054587C /* UIAlertController+DefaultTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */; };
 		304398A3231FD2E80024568D /* GoalsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304398A2231FD2E80024568D /* GoalsManager.swift */; };
 		304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304F352B235DFAEB005F4900 /* OnboardingView.swift */; };
+		3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */; };
+		3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F044235C9B2E00D7342F /* MovinningTeamManagerTests.swift */; };
+		3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F045235C9B2E00D7342F /* MovinningUserManagerTests.swift */; };
+		3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */; };
+		3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */; };
+		3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */; };
+		305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -166,6 +183,7 @@
 		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
 		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
 		27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Subscriptions.swift"; sourceTree = "<group>"; };
+		27F9B94823593F2200E2B1F8 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -173,8 +191,8 @@
 		2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		2B6E354023229C520092A481 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
-		2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
-		2B7DC2B723229321009C3F54 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		2B7DC2B423229255009C3F54 /* LegendProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendProgressView.swift; sourceTree = "<group>"; };
+		2B7DC2B723229321009C3F54 /* LegendBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendBarView.swift; sourceTree = "<group>"; };
 		2B86B1E82331009C00688735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2B86B1EA2331036C00688735 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		2B86B1ED233120B100688735 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -185,12 +203,19 @@
 		2B86F07B23390A51005BE690 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+customFonts.swift"; sourceTree = "<group>"; };
 		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
+		2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentListView.swift; sourceTree = "<group>"; };
+		2B9E3FDE234CD60F00CBD497 /* AchievmentItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentItemViewCell.swift; sourceTree = "<group>"; };
 		2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		2BA7B7C5233A568E00134C6E /* GroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardView.swift; sourceTree = "<group>"; };
 		2BA7B7C7233A572F00134C6E /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		2BA7B7CA233B86B500134C6E /* GroupCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardContentView.swift; sourceTree = "<group>"; };
 		2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersPhotoView.swift; sourceTree = "<group>"; };
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
+		2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
+		2BCD98CC235896CD00D5B8F4 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewCell.swift; sourceTree = "<group>"; };
+		2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListView.swift; sourceTree = "<group>"; };
 		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
 		3006C54F2334FA2B00DA501B /* TrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackView.swift; sourceTree = "<group>"; };
 		3006C5512334FD7200DA501B /* CGRect+Center.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Center.swift"; sourceTree = "<group>"; };
@@ -206,6 +231,13 @@
 		303F5A98231EA7100054587C /* UIAlertController+DefaultTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+DefaultTypes.swift"; sourceTree = "<group>"; };
 		304398A2231FD2E80024568D /* GoalsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsManager.swift; sourceTree = "<group>"; };
 		304F352B235DFAEB005F4900 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalPileTests.swift; sourceTree = "<group>"; };
+		3054F044235C9B2E00D7342F /* MovinningTeamManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningTeamManagerTests.swift; sourceTree = "<group>"; };
+		3054F045235C9B2E00D7342F /* MovinningUserManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningUserManagerTests.swift; sourceTree = "<group>"; };
+		3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreServiceTests.swift; sourceTree = "<group>"; };
+		3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalsManagerTests.swift; sourceTree = "<group>"; };
+		3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreManagerTests.swift; sourceTree = "<group>"; };
+		305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTests.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -232,6 +264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				275FE88C231D55CC001695D2 /* HealthKit.framework in Frameworks */,
+				270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */,
+				270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */,
 				2797D61F232D315200A33470 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +374,7 @@
 				2797D62F232E730500A33470 /* CloudKit */,
 				278F829B2326881000F55372 /* Models */,
 				273D233E2327E0AC003147DF /* SessionManager.swift */,
+				27F9B94823593F2200E2B1F8 /* SessionError.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -502,20 +537,18 @@
 		2B7DC2B3232291C8009C3F54 /* ProgressBarsView */ = {
 			isa = PBXGroup;
 			children = (
-				3006C54E2334FA0B00DA501B /* TrackView */,
-				2B7DC2B62322930F009C3F54 /* BarView */,
-				2B7DC2B423229255009C3F54 /* ProgressBarsView.swift */,
-				3006C5552336E9CD00DA501B /* ProgressTracksView.swift */,
+				2BCD98CB235896AB00D5B8F4 /* BarView */,
+				2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */,
 			);
 			path = ProgressBarsView;
 			sourceTree = "<group>";
 		};
-		2B7DC2B62322930F009C3F54 /* BarView */ = {
+		2B7DC2B62322930F009C3F54 /* LegendBarView */ = {
 			isa = PBXGroup;
 			children = (
-				2B7DC2B723229321009C3F54 /* BarView.swift */,
+				2B7DC2B723229321009C3F54 /* LegendBarView.swift */,
 			);
-			path = BarView;
+			path = LegendBarView;
 			sourceTree = "<group>";
 		};
 		2B86B1E72331008500688735 /* LoadingView */ = {
@@ -554,6 +587,30 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		2B9E3FD7234CB50400CBD497 /* CustomButtonView */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */,
+			);
+			path = CustomButtonView;
+			sourceTree = "<group>";
+		};
+		2B9E3FDA234CD37D00CBD497 /* AchievmentListView */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E3FDB234CD3A200CBD497 /* AchievmentListView.swift */,
+			);
+			path = AchievmentListView;
+			sourceTree = "<group>";
+		};
+		2B9E3FDD234CD5DC00CBD497 /* AchievmentItemViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2B9E3FDE234CD60F00CBD497 /* AchievmentItemViewCell.swift */,
+			);
+			path = AchievmentItemViewCell;
+			sourceTree = "<group>";
+		};
 		2BA7B7C4233A567100134C6E /* GroupCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,6 +640,15 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2BCD98CA2358969100D5B8F4 /* LegendProgressView */,
+				3006C54E2334FA0B00DA501B /* TrackView */,
+				2BF29589234F6B1D0017E3B2 /* GroupMemberListView */,
+				2BF29586234F5A020017E3B2 /* GroupMemberViewCell */,
+				3006C5602338F6DC00DA501B /* RoundedView */,
+				3006C5592338F0C700DA501B /* RoundedImageView */,
+				2B9E3FDD234CD5DC00CBD497 /* AchievmentItemViewCell */,
+				2B9E3FDA234CD37D00CBD497 /* AchievmentListView */,
+				2B9E3FD7234CB50400CBD497 /* CustomButtonView */,
 				2B636714233CDAB300CFC7B9 /* CustomTextView */,
 				2BA7B7C4233A567100134C6E /* GroupCard */,
 				2B86B1E72331008500688735 /* LoadingView */,
@@ -597,16 +663,48 @@
 		2BB4741A232001550099D4EB /* ProfileDetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				3006C5602338F6DC00DA501B /* RoundedView */,
-				3006C5592338F0C700DA501B /* RoundedImageView */,
 				2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */,
 			);
 			path = ProfileDetailsView;
 			sourceTree = "<group>";
 		};
+		2BCD98CA2358969100D5B8F4 /* LegendProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				2B7DC2B62322930F009C3F54 /* LegendBarView */,
+				2B7DC2B423229255009C3F54 /* LegendProgressView.swift */,
+			);
+			path = LegendProgressView;
+			sourceTree = "<group>";
+		};
+		2BCD98CB235896AB00D5B8F4 /* BarView */ = {
+			isa = PBXGroup;
+			children = (
+				2BCD98CC235896CD00D5B8F4 /* BarView.swift */,
+			);
+			path = BarView;
+			sourceTree = "<group>";
+		};
+		2BF29586234F5A020017E3B2 /* GroupMemberViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */,
+			);
+			path = GroupMemberViewCell;
+			sourceTree = "<group>";
+		};
+		2BF29589234F6B1D0017E3B2 /* GroupMemberListView */ = {
+			isa = PBXGroup;
+			children = (
+				2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */,
+			);
+			path = GroupMemberListView;
+			sourceTree = "<group>";
+		};
 		3006C54E2334FA0B00DA501B /* TrackView */ = {
 			isa = PBXGroup;
 			children = (
+				3006C5552336E9CD00DA501B /* ProgressTracksView.swift */,
 				3006C54F2334FA2B00DA501B /* TrackView.swift */,
 			);
 			path = TrackView;
@@ -681,8 +779,15 @@
 		57FF126C233CE52C00380A88 /* MovinningTests */ = {
 			isa = PBXGroup;
 			children = (
+				3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */,
+				3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */,
+				3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */,
+				3054F044235C9B2E00D7342F /* MovinningTeamManagerTests.swift */,
+				3054F045235C9B2E00D7342F /* MovinningUserManagerTests.swift */,
 				57FF126D233CE52C00380A88 /* MovinningTests.swift */,
 				57FF126F233CE52C00380A88 /* Info.plist */,
+				305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */,
+				3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */,
 			);
 			path = MovinningTests;
 			sourceTree = "<group>";
@@ -713,6 +818,10 @@
 			dependencies = (
 			);
 			name = Movinning;
+			packageProductDependencies = (
+				270EE7C62350AAE100BBCEE7 /* PromiseKit */,
+				270EE7C92356072300BBCEE7 /* PMKCloudKit */,
+			);
 			productName = FinalChallenge;
 			productReference = 275FE85F231D3664001695D2 /* Movinning.app */;
 			productType = "com.apple.product-type.application";
@@ -791,6 +900,10 @@
 				"pt-BR",
 			);
 			mainGroup = 275FE856231D3664001695D2;
+			packageReferences = (
+				270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */,
+			);
 			productRefGroup = 275FE860231D3664001695D2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -866,17 +979,20 @@
 				278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */,
 				2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
+				2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				57479DB72359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift in Sources */,
+				2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,
-				2B7DC2B823229321009C3F54 /* BarView.swift in Sources */,
+				2B7DC2B823229321009C3F54 /* LegendBarView.swift in Sources */,
 				3006C5502334FA2B00DA501B /* TrackView.swift in Sources */,
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */,
@@ -892,11 +1008,13 @@
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
-				2B7DC2B523229255009C3F54 /* ProgressBarsView.swift in Sources */,
+				2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */,
 				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
+				2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
+				2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
 				304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */,
@@ -911,8 +1029,10 @@
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
 				2B86B1F32331241100688735 /* LoadingViewPushTransition.swift in Sources */,
 				27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */,
+				27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
+				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,
 				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */,
@@ -938,6 +1058,7 @@
 				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
 				2797D626232D3F3900A33470 /* MessageViewController.swift in Sources */,
+				2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */,
 				27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */,
 				2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */,
 				2BA7B7CB233B86B500134C6E /* GroupCardContentView.swift in Sources */,
@@ -948,7 +1069,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */,
+				3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */,
+				3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */,
+				3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */,
+				305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */,
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
+				3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */,
+				3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,8 +1266,8 @@
 				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				CURRENT_PROJECT_VERSION = 21102019001;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1161,8 +1289,8 @@
 				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				CURRENT_PROJECT_VERSION = 21102019001;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1182,7 +1310,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1203,7 +1331,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1223,7 +1351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1243,7 +1371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = MovinningUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1299,6 +1427,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.11.0;
+			};
+		};
+		270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/PromiseKit/CloudKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		270EE7C62350AAE100BBCEE7 /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 270EE7C52350AAE100BBCEE7 /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		270EE7C92356072300BBCEE7 /* PMKCloudKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 270EE7C82356072300BBCEE7 /* XCRemoteSwiftPackageReference "CloudKit" */;
+			productName = PMKCloudKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */ = {

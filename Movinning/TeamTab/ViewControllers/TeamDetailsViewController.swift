@@ -41,7 +41,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
         super.viewDidLoad()
 
         title = team.name
-        teamDetailsView.profileDetailsView.name = team.name ?? ""
+        teamDetailsView.teamTitleLabel.text = team.name ?? ""
 
         let quitTeamBarButton = UIBarButtonItem(
             title: NSLocalizedString("Quit", comment: ""),
@@ -56,17 +56,12 @@ class TeamDetailsViewController: UIViewController, LoaderView {
         self.startLoader()
 
         guard let loggedUser = UserManager.getLoggedUser() else { return }
-        SessionManager.current.remove(user: loggedUser, from: team) { (result) in
-            switch result {
-            case .success:
-                DispatchQueue.main.async { [unowned self] in
-                    self.stopLoader()
-                    self.coordinator?.showTeamList()
-                }
-            case .failure(let error):
-                self.stopLoader()
-                print(error.localizedDescription)
-            }
+        SessionManager.current.remove(user: loggedUser, from: team).done(on: .main) { (_) in
+            self.stopLoader()
+            self.coordinator?.showTeamList()
+        }.catch(on: .main) { (error) in
+            self.stopLoader()
+            print(error.localizedDescription)
         }
     }
 

@@ -11,14 +11,12 @@ import CoreData
 import CloudKit
 
 protocol CKManagedObject {
-    var entityName: String { get }
-
-    func asCKRecord() -> CKRecord
+    func ckRecord() -> CKRecord
 }
 
 extension CKManagedObject where Self: NSManagedObject {
-    var entityName: String {
-        return entity.name ?? ""
+    static var entityName: String {
+        return String(describing: self)
     }
 }
 

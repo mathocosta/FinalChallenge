@@ -8,8 +8,11 @@
 
 import Foundation
 import CoreData
+import PromiseKit
 
 final class CoreDataGateway {
+
+    typealias ResultHandler<T> = ((Swift.Result<T, Error>) -> Void)
 
     private let viewContext: NSManagedObjectContext
 
@@ -22,15 +25,16 @@ final class CoreDataGateway {
     /// Salva um objeto no Core Data, basicamente salva o contexto.
     /// 
     /// - Parameter entity: Objeto a ser salvo
-    /// - Parameter completion: Callback para ser executado quando a operação finalizar
-    func save<T>(_ entity: T, completion: @escaping (ResultHandler<T>)) where T: NSManagedObject {
-        if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-                completion(.success(entity))
-                print("Context saved")
-            } catch {
-                completion(.failure(error))
+    func save<T: NSManagedObject>(_ entity: T) -> Promise<Bool> {
+        return Promise<Bool> { seal in
+            if viewContext.hasChanges {
+                do {
+                    try viewContext.save()
+                    print("Context saved")
+                    seal.fulfill(true)
+                } catch {
+                    seal.reject(error)
+                }
             }
         }
     }
@@ -41,8 +45,11 @@ final class CoreDataGateway {
     /// - Parameter id: Identificador do objeto a ser buscado
     /// - Parameter entityName: Nome da entidade do objeto
     /// - Parameter completion: Callback para ser executado quando a operação finalizar
-    func object<T>(with id: UUID, of entityName: String,
-                   completion: @escaping (ResultHandler<T>)) where T: NSManagedObject {
+    func object<T: NSManagedObject>(
+        with id: UUID,
+        of entityName: String,
+        completion: @escaping (ResultHandler<T>)
+    ) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
 
@@ -60,7 +67,7 @@ final class CoreDataGateway {
     ///
     /// - Parameter entityName: Nome da entidade dos objetos
     /// - Parameter completion: Callback para ser executado quando a operação finalizar
-    func objects<T>(of entityName: String, completion: @escaping (ResultHandler<[T]>)) where T: NSManagedObject {
+    func objects<T: NSManagedObject>(of entityName: String, completion: @escaping (ResultHandler<[T]>)) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
 
         do {

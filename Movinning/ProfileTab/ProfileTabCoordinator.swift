@@ -20,6 +20,7 @@ final class ProfileTabCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.navigationBar.isTranslucent = false
+        self.navigationController.navigationBar.tintColor = .textColor
         self.navigationController.navigationBar.barTintColor = UIColor.backgroundColor
         self.navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController.navigationBar.shadowImage = UIImage()

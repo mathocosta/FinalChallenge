@@ -39,7 +39,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = profileEditView
-        title = self.user.fullName ?? NSLocalizedString("Profile", comment: "")
+        title = self.user.firstName ?? NSLocalizedString("Profile", comment: "")
 
         profileEditView.firstNameInput.inputTextField.text = user.firstName
         profileEditView.lastNameInput.inputTextField.text = user.lastName
@@ -78,7 +78,8 @@ class ProfileEditViewController: UIViewController, LoaderView {
             self.stopLoader()
             return
         }
-        user.firstName = firstNameText
+                
+        user.firstName = firstNameText.trimmingCharacters(in: .whitespaces)
 
         if let lastNameText = profileEditView.lastNameInput.inputTextField.text {
             user.lastName = lastNameText
@@ -97,18 +98,11 @@ class ProfileEditViewController: UIViewController, LoaderView {
 
         user.email = emailText
 
-        SessionManager.current.updateRegister(of: user) { [unowned self] result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async {
-                    self.stopLoader()
-                    self.coordinator?.showProfileViewController(for: self.user)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
-                }
-                print(error)
-            }
+        SessionManager.current.updateRegister(of: user).done(on: .main) { _ in
+            self.stopLoader()
+            self.coordinator?.showProfileViewController(for: self.user)
+        }.catch(on: .main) { (error) in
+            print(error.localizedDescription)
         }
     }
 

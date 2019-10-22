@@ -85,15 +85,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) {
         if let notification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) {
             if notification.category == "team-update" {
-                if let loggedUser = UserManager.getLoggedUser() {
-                    SessionManager.current.updateLocallyTeam(of: loggedUser) { (result) in
-                        if case .failure(let error) = result {
-                            print(error.localizedDescription)
-                            completionHandler(.failed)
-                        } else {
-                            completionHandler(.newData)
-                        }
-                    }
+                guard let loggedUser = UserManager.getLoggedUser() else { return completionHandler(.failed) }
+
+                SessionManager.current.updateLocallyTeam(of: loggedUser).done { _ in
+                    completionHandler(.newData)
+                }.catch { error in
+                    print(error.localizedDescription)
+                    completionHandler(.failed)
                 }
             }
         }
