@@ -37,7 +37,8 @@ final class ProfileTabCoordinator: Coordinator {
         guard navigationController.topViewController == nil,
             let loggedUser = UserManager.getLoggedUser() else { return }
 
-        if !UserDefaults.standard.isRegistrationComplete {
+        if !UserDefaults.standard.isRegistrationComplete
+            && UserDefaults.standard.isCloudKitAuthorized {
             showProfileEditViewController(for: loggedUser)
         } else {
             showProfileViewController(for: loggedUser)
