@@ -85,7 +85,7 @@ extension ProfileView: CodeView {
         tracksView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         tracksView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         tracksView.widthAnchor.constraint(equalToConstant: screenBounds.width-105).isActive = true
-        tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height-290).isActive = true
+        tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height * 0.55).isActive = true
     }
 
     func setupAdditionalConfiguration() {
