@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        if let window = self.window {
+//            window.rootViewController = OnboardingViewController()
+//            window.makeKeyAndVisible()
+//        }
         window?.makeKeyAndVisible()
         window?.rootViewController = appCoordinator?.rootViewController
         window?.backgroundColor = .backgroundColor

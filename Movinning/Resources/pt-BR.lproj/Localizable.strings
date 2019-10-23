@@ -35,6 +35,9 @@
 "Invalid Name Message" = "O campo 'nome' é obrigatório";
 "Invalid Email Title" = "Email inválido";
 "Invalid Email Message" = "O email inserido não é um email válido";
+"Next" = "Continuar";
+"Skip" = "Pular Tudo";
+"Get Started" = "Iniciar";
 "Sugestions" = "Sugestões";
 "Attention" = "Atenção";
 "Leave team message" = "Tem certeza que deseja sair do time?";

@@ -16,6 +16,7 @@ class FirstLoginCoordinator: Coordinator {
     }
 
     let navigationController: UINavigationController
+    var onboardViewController: OnboardingViewController?
 
     var didLoginEnded: (() -> Void)?
 
@@ -27,22 +28,22 @@ class FirstLoginCoordinator: Coordinator {
     func start() {
         let userDefaults = UserDefaults.standard
         if !userDefaults.isHealthKitAuthorized {
-            showMessageView(for: .healthKitAuthorization)
+            showMessageView(for: 0)
         } else if !userDefaults.isCloudKitAuthorized {
-            showMessageView(for: .cloudKitAuthorization)
+            showMessageView(for: 1)
         } else if !userDefaults.isRegistrationComplete {
-            showMessageView(for: .addMoreInformation)
+            showMessageView(for: 2)
         }
     }
 
     func showNextScreen() {
-        if let messageViewController = navigationController.topViewController as? MessageViewController {
-            let contentType = messageViewController.contentType
-
+        if let onboardViewController = onboardViewController {
+            let currentPage = onboardViewController.onboardingView.currentPage
+            let contentType = onboardViewController.content[currentPage].contentType
             if contentType == .healthKitAuthorization {
-                showMessageView(for: .cloudKitAuthorization)
+                showMessageView(for: 1)
             } else if contentType == .cloudKitAuthorization {
-                showMessageView(for: .addMoreInformation)
+                showMessageView(for: 2)
             } else if contentType == .addMoreInformation {
                 navigationController.dismiss(animated: true, completion: { [weak self] in
                     guard let didLoginEnded = self?.didLoginEnded else { return }
@@ -52,11 +53,14 @@ class FirstLoginCoordinator: Coordinator {
         }
     }
 
-    func showMessageView(for contentType: MessageViewContent) {
-        let viewController = MessageViewController(content: contentType)
-        viewController.coordinator = self
-
-        navigationController.pushViewController(viewController, animated: true)
+    func showMessageView(for contentTypeIndex: Int) {
+        if onboardViewController == nil {
+            onboardViewController = OnboardingViewController()
+            onboardViewController?.coordinator = self
+            navigationController.pushViewController(onboardViewController ?? OnboardingViewController(), animated: true)
+            onboardViewController?.beginningPage = contentTypeIndex
+        } else {
+            onboardViewController?.moveTo(page: contentTypeIndex)
+        }
     }
-
 }
