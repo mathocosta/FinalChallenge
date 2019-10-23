@@ -56,20 +56,8 @@ class OnboardingView: UIView {
         return button
     }()
 
-    fileprivate var skipButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(NSLocalizedString("Skip", comment: ""), for: UIControl.State.normal)
-        button.backgroundColor = .clear
-        button.setTitleColor(.fadedRed, for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(skipButtonTapped), for: UIControl.Event.touchUpInside)
-        button.setTitleColor(.textColor, for: UIControl.State.highlighted)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-
     lazy var buttonsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [skipButton, nextButton])
+        let stack = UIStackView(arrangedSubviews: [nextButton])
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .horizontal
         stack.spacing = 0
@@ -120,13 +108,11 @@ class OnboardingView: UIView {
 
     func addGetStartedButton() {
         nextButton.removeFromSuperview()
-        skipButton.removeFromSuperview()
         buttonsStackView.addArrangedSubview(getStarted)
     }
 
     func removeGetStartedButton() {
         getStarted.removeFromSuperview()
-        buttonsStackView.addArrangedSubview(skipButton)
         buttonsStackView.addArrangedSubview(nextButton)
     }
 }
