@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController {
     }
 
     func updateStatus(index: Int, goal: Goal) {
-        let colors: [UIColor] = [.systemPink, .systemBlue, .systemRed, .systemGreen]
+        let colors: [UIColor] = [.trackRed, .trackBlue, .trackOrange]
         let bar = profileView.progressBars.bars[index]
         let track = profileView.tracksView.tracks[index]
         let color = colors[index%colors.count]

@@ -70,7 +70,7 @@
 	<key>5</key>
 	<dict>
 		<key>title</key>
-		<string>Pedale 4.940 metros em um dia</string>
+		<string>Cycle 4.940 meters in a single day</string>
 		<key>parameter</key>
 		<string>cycling</string>
 		<key>difficulty</key>
@@ -83,7 +83,7 @@
 	<key>6</key>
 	<dict>
 		<key>title</key>
-		<string>Pedale 14.820 metros</string>
+		<string>Cycle 14.820 meters</string>
 		<key>parameter</key>
 		<string>cycling</string>
 		<key>difficulty</key>
@@ -96,7 +96,7 @@
 	<key>7</key>
 	<dict>
 		<key>title</key>
-		<string>Pedale 9.880 metros em um dia</string>
+		<string>Cycle 9.880 meters in a single day</string>
 		<key>parameter</key>
 		<string>cycling</string>
 		<key>difficulty</key>

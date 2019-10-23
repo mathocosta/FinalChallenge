@@ -115,7 +115,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Sugestões"
+        return NSLocalizedString("Sugestions", comment: "")
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -126,6 +126,18 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(GroupCardView.height)
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UITableViewHeaderFooterView(frame: CGRect(x: 0, y: 0, width: 30, height: 120))
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .clear
+        headerView.backgroundView = backgroundView
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

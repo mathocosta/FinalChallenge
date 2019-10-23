@@ -29,6 +29,9 @@ final class TeamTabCoordinator: Coordinator {
         self.navigationController.navigationBar.barTintColor = .backgroundColor
         self.navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController.navigationBar.shadowImage = UIImage()
+        self.navigationController.navigationBar.titleTextAttributes = [
+            NSAttributedString.Key.font: UIFont.sectionTitle
+        ]
     }
 
     func start() {
@@ -62,6 +65,13 @@ final class TeamTabCoordinator: Coordinator {
 
     func showCreateTeam() {
         let viewController = CreateTeamViewController()
+        viewController.coordinator = self
+
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func showTeamMembers(of team: Team) -> Void {
+        let viewController = TeamMembersViewController(of: team)
         viewController.coordinator = self
 
         navigationController.pushViewController(viewController, animated: true)

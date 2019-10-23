@@ -80,6 +80,8 @@
 		2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */; };
 		2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */; };
 		2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BCD98CC235896CD00D5B8F4 /* BarView.swift */; };
+		2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDAE2B6235DDE64002DBE84 /* TeamMembersView.swift */; };
+		2BDAE2B9235DDEB3002DBE84 /* TeamMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDAE2B8235DDEB3002DBE84 /* TeamMembersViewController.swift */; };
 		2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */; };
 		2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */; };
 		3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */; };
@@ -214,6 +216,8 @@
 		2BB4741B232001A40099D4EB /* ProfileDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsView.swift; sourceTree = "<group>"; };
 		2BCD98C8235895AE00D5B8F4 /* ProgressBarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarsView.swift; sourceTree = "<group>"; };
 		2BCD98CC235896CD00D5B8F4 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		2BDAE2B6235DDE64002DBE84 /* TeamMembersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMembersView.swift; sourceTree = "<group>"; };
+		2BDAE2B8235DDEB3002DBE84 /* TeamMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMembersViewController.swift; sourceTree = "<group>"; };
 		2BF29587234F5AF80017E3B2 /* GroupMemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberViewCell.swift; sourceTree = "<group>"; };
 		2BF2958A234F6B310017E3B2 /* GroupMemberListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupMemberListView.swift; sourceTree = "<group>"; };
 		3006C54B2334F51400DA501B /* CALayer+CustomShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+CustomShapes.swift"; sourceTree = "<group>"; };
@@ -396,6 +400,7 @@
 				27871806232084A900A2A481 /* TeamEntranceViewController.swift */,
 				276FD47323219D6A00EA75C6 /* TeamListViewController.swift */,
 				2797D61A232BBDD300A33470 /* CreateTeamViewController.swift */,
+				2BDAE2B8235DDEB3002DBE84 /* TeamMembersViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				278718042320849900A2A481 /* TeamEntranceView.swift */,
 				276FD47523219D7B00EA75C6 /* TeamListView.swift */,
 				2797D61C232BBDE300A33470 /* CreateTeamView.swift */,
+				2BDAE2B6235DDE64002DBE84 /* TeamMembersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -992,11 +998,13 @@
 				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
+				2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */,
 				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
+				2BDAE2B9235DDEB3002DBE84 /* TeamMembersViewController.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
 				57479DB52359E1C300C21D09 /* Onboard.swift in Sources */,
@@ -1266,7 +1274,7 @@
 				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21102019001;
+				CURRENT_PROJECT_VERSION = 22102019001;
 				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -1289,7 +1297,7 @@
 				CODE_SIGN_ENTITLEMENTS = Movinning/Movinning.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21102019001;
+				CURRENT_PROJECT_VERSION = 22102019001;
 				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;

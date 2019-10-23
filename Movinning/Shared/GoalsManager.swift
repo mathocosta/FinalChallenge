@@ -106,7 +106,8 @@ class GoalsManager: NSObject {
 
     static func selectNewTimedGoals(fromPile goalPile: GoalPile) -> [Int] {
         var chosenGoals: [Int] = []
-        var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
+//        var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
+        var randomPile: [Int] = Array(0..<4).shuffled()
         let copyPile = randomPile
         for index in 0..<copyPile.count {
             let item = copyPile[index]

@@ -10,7 +10,7 @@ import UIKit
 
 class LegendBarView: UIView {
 
-    static let height: CGFloat = 20.0
+    static let height: CGFloat = 32.0
 
     var goalText: String? {
         didSet {
@@ -86,10 +86,10 @@ extension LegendBarView: CodeView {
     }
 
     func setupConstraints() {
-        goalColor.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         goalColor.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        goalColor.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
-        goalColor.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        goalColor.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        goalColor.widthAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
+        goalColor.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.5).isActive = true
 
         goalLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         goalLabel.leftAnchor.constraint(equalTo: goalColor.rightAnchor, constant: 8).isActive = true

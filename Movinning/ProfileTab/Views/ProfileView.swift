@@ -77,7 +77,7 @@ extension ProfileView: CodeView {
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(
-            equalTo: tracksView.bottomAnchor, constant: 16).isActive = true
+            equalTo: tracksView.bottomAnchor, constant: 24).isActive = true
         progressBars.heightAnchor.constraint(equalToConstant: LegendBarView.height * CGFloat(progressBars.amountOfBars) +
             CGFloat(16 * (progressBars.amountOfBars - 1))).isActive = true
         progressBars.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -85,7 +85,7 @@ extension ProfileView: CodeView {
         tracksView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         tracksView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         tracksView.widthAnchor.constraint(equalToConstant: screenBounds.width-105).isActive = true
-        tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height-237).isActive = true
+        tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height * 0.55).isActive = true
     }
 
     func setupAdditionalConfiguration() {

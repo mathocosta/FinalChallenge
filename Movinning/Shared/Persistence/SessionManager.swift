@@ -70,16 +70,14 @@ class SessionManager {
         }
     }
 
-    // TODO: Colocar para adicionar o usuário no time do cloudkit
     func add(user: User, to team: Team) -> Promise<Bool> {
-        user.team = team
-
         return self.cloudKitGateway.add(userRecord: user.ckRecord(), to: team.ckRecord()).then {
                 results -> Promise<Bool> in
                 let (updatedUserRecord, updatedTeamRecord) = results
                 UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
                 TeamManager.update(recordMetadata: updatedTeamRecord.recordMetadata(), of: team)
 
+                user.team = team
                 return self.coreDataGateway.save(user)
         }.then { _ in
             self.addSubscriptions(for: user)

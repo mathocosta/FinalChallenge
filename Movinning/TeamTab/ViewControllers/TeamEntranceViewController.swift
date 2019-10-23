@@ -8,7 +8,12 @@
 
 import UIKit
 
-class TeamEntranceViewController: UIViewController {
+class TeamEntranceViewController: UIViewController, LoaderView {
+    
+    var loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
+    }()
 
     // MARK: - Properties
     private let teamEntranceView: TeamEntranceView
@@ -19,7 +24,7 @@ class TeamEntranceViewController: UIViewController {
     // MARK: - Lifecycle
     init(team: Team) {
         self.team = team
-        self.teamEntranceView = TeamEntranceView()
+        self.teamEntranceView = TeamEntranceView(frame: .zero, team: team)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -29,6 +34,7 @@ class TeamEntranceViewController: UIViewController {
 
     override func loadView() {
         view = teamEntranceView
+        teamEntranceView.onShowMembers = self.onShowMembers
     }
 
     override func viewDidLoad() {
@@ -41,15 +47,22 @@ class TeamEntranceViewController: UIViewController {
 
     // MARK: - Actions
     func selectTeamForLoggedUser() {
+        self.startLoader()
         // Adicionar time ao usuário
         if let loggedUser = UserManager.getLoggedUser() {
             SessionManager.current.add(user: loggedUser, to: team).done(on: .main) { _ in
+                self.stopLoader()
                 // Retorna para a tela de abertura do time
                 self.coordinator?.showDetails(of: self.team)
             }.catch(on: .main) { error in
                 print(error.localizedDescription)
+                self.stopLoader()
             }
         }
     }
-
+    
+    func onShowMembers() {
+        guard let coordinator = coordinator else { return }
+        coordinator.showTeamMembers(of: team)
+    }
 }
