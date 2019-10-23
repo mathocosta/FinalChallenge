@@ -123,29 +123,25 @@ class OnboardingViewController: UIViewController, LoaderView {
                 }
             }
         case .cloudKitAuthorization:
-            SessionManager.current.loginUser().done { _ in
+            SessionManager.current.loginUser().done(on: .main) { _ in
                 print("Success on login")
                 userDefaults.isCloudKitAuthorized = true
-                DispatchQueue.main.async {
-                    self.stopLoader()
-                    self.coordinator?.showNextScreen()
-                }
-            }.catch { (error) in
+                self.stopLoader()
+                self.coordinator?.showNextScreen()
+            }.catch(on: .main) { (error) in
                 print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    self.stopLoader()
+                self.stopLoader()
 
-                    let alertController = UIAlertController(title: NSLocalizedString("An Error has occured", comment: ""),
-                                                            message: NSLocalizedString("iCloud Auth Error", comment: ""),
-                                                            preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Ok", style: .default) { (action) in
-                        alertController.dismiss(animated: true, completion: nil)
-                    }
-
-                    alertController.addAction(action)
-
-                    self.present(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: NSLocalizedString("An Error has occured", comment: ""),
+                                                        message: NSLocalizedString("iCloud Auth Error", comment: ""),
+                                                        preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .default) { _ in
+                    alertController.dismiss(animated: true, completion: nil)
                 }
+
+                alertController.addAction(action)
+
+                self.present(alertController, animated: true, completion: nil)
             }
         case .addMoreInformation:
             self.stopLoader()
