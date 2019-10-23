@@ -44,3 +44,6 @@
 "Team members" = "Participantes";
 "Achievements" = "Conquistas";
 "See more" = "Ver mais";
+"iCloud Auth Error" = "Verifique se está logado ao iCloud. Precisamos que você esteja logado(a) para que possamos criar sua conta.";
+"An Error has occured" = "Ocorreu um erro";
+
