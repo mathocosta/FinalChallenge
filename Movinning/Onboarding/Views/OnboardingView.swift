@@ -51,7 +51,7 @@ class OnboardingView: UIView {
         button.addTarget(self, action: #selector(nextButtonTapped), for: UIControl.Event.touchUpInside)
         button.setTitleColor(.fadedRed, for: UIControl.State.normal)
         button.setTitleColor(.textColor, for: UIControl.State.highlighted)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.titleLabel?.font = .action
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

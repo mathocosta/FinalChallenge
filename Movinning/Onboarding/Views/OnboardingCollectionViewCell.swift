@@ -38,6 +38,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         textView.isSelectable = false
         textView.textColor = .textColor
         textView.textAlignment = .justified
+        textView.backgroundColor = .backgroundColor
         textView.font = .bodySmall
         return textView
     }()
