@@ -134,6 +134,17 @@ class OnboardingViewController: UIViewController, LoaderView {
                 print(error.localizedDescription)
                 DispatchQueue.main.async {
                     self.stopLoader()
+
+                    let alertController = UIAlertController(title: NSLocalizedString("An Error has occured", comment: ""),
+                                                            message: NSLocalizedString("iCloud Auth Error", comment: ""),
+                                                            preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default) { (action) in
+                        alertController.dismiss(animated: true, completion: nil)
+                    }
+
+                    alertController.addAction(action)
+
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         case .addMoreInformation:
