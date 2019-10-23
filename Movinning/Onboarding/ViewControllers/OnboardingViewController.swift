@@ -94,8 +94,6 @@ class OnboardingViewController: UIViewController, LoaderView {
         let indexPath = IndexPath(row: content.count-1, section: 0)
         onboardingView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         onboardingView.currentPage = content.count-1
-        let _ = UserManager.createUser(with: [:])
-        CoreDataStore.saveContext()
     }
 
     @objc fileprivate func getStarted() {
@@ -125,20 +123,17 @@ class OnboardingViewController: UIViewController, LoaderView {
                 }
             }
         case .cloudKitAuthorization:
-            SessionManager.current.loginUser { (result) in
-                switch result {
-                case .success:
-                    print("Success on login")
-                    userDefaults.isCloudKitAuthorized = true
-                    DispatchQueue.main.async {
-                        self.stopLoader()
-                        self.coordinator?.showNextScreen()
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                    DispatchQueue.main.async {
-                        self.stopLoader()
-                    }
+            SessionManager.current.loginUser().done { _ in
+                print("Success on login")
+                userDefaults.isCloudKitAuthorized = true
+                DispatchQueue.main.async {
+                    self.stopLoader()
+                    self.coordinator?.showNextScreen()
+                }
+            }.catch { (error) in
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.stopLoader()
                 }
             }
         case .addMoreInformation:
