@@ -118,8 +118,9 @@ class OnboardingViewController: UIViewController, LoaderView {
                         self?.coordinator?.showNextScreen()
                     }
                 case .failure(let error):
-                    self?.stopLoader()
-                    print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self?.stopLoader()
+                    }
                 }
             }
         case .cloudKitAuthorization:

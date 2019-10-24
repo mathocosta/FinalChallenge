@@ -23,8 +23,10 @@ extension LoaderView {
     }
 
     func stopLoader() {
-        loadingView.activityIndicatorView.stopAnimating()
-        loadingView.removeFromSuperview()
+        DispatchQueue.main.async {
+            self.loadingView.activityIndicatorView.stopAnimating()
+            self.loadingView.removeFromSuperview()
+        }
     }
 
 }
