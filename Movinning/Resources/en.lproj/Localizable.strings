@@ -44,5 +44,6 @@
 "Team members" = "Team members";
 "Achievements" = "Achievements";
 "See more" = "See more";
-"iCloud Auth Error" = "Check if you are logged to iCloud. We need that you are logged to iCloud to create your account.";
 "An Error has occured" = "An error has occured";
+"iCloud Auth Error" = "Check if you are logged to iCloud. We need that you are logged to iCloud to create your account.";
+"iCloud Internet Error" = "Please, check your internet connection. It is required to synchronize your data with the server.";

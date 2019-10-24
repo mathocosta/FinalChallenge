@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class OnboardingViewController: UIViewController, LoaderView {
     var loadingView: LoadingView = {
@@ -120,6 +121,7 @@ class OnboardingViewController: UIViewController, LoaderView {
                 case .failure(let error):
                     DispatchQueue.main.async {
                         self?.stopLoader()
+                        print(error.localizedDescription)
                     }
                 }
             }
@@ -130,17 +132,17 @@ class OnboardingViewController: UIViewController, LoaderView {
                 self.stopLoader()
                 self.coordinator?.showNextScreen()
             }.catch(on: .main) { (error) in
+                var errorMessageKey = "iCloud Auth Error"
+                if let ckError = error as? CKError, ckError.code.rawValue == 4 {
+                    errorMessageKey = "iCloud Internet Error"
+                }
                 print(error.localizedDescription)
                 self.stopLoader()
 
-                let alertController = UIAlertController(title: NSLocalizedString("An Error has occured", comment: ""),
-                                                        message: NSLocalizedString("iCloud Auth Error", comment: ""),
-                                                        preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .default) { _ in
-                    alertController.dismiss(animated: true, completion: nil)
-                }
-
-                alertController.addAction(action)
+                let alertController = UIAlertController.okAlert(
+                    title: NSLocalizedString("An Error has occured", comment: ""),
+                    message: NSLocalizedString(errorMessageKey, comment: "")
+                )
 
                 self.present(alertController, animated: true, completion: nil)
             }
