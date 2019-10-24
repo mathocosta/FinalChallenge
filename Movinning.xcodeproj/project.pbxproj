@@ -110,6 +110,8 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
+		30B19CF923609E100096BB12 /* Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sports.swift */; };
+		30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */; };
 		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
 		57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF126D233CE52C00380A88 /* MovinningTests.swift */; };
@@ -240,6 +242,8 @@
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
 		309A2DD42329177E002C5371 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
+		30B19CF823609E100096BB12 /* Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports.swift; sourceTree = "<group>"; };
+		30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningSportTests.swift; sourceTree = "<group>"; };
 		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
 		57FF126B233CE52C00380A88 /* MovinningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovinningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -332,6 +336,7 @@
 				309A2DCC23267675002C5371 /* Goal.swift */,
 				303F5A96231E93AA0054587C /* UserManager.swift */,
 				309A2DD42329177E002C5371 /* TeamManager.swift */,
+				30B19CF823609E100096BB12 /* Sports.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -752,6 +757,7 @@
 				57FF126F233CE52C00380A88 /* Info.plist */,
 				305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */,
 				3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */,
+				30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */,
 			);
 			path = MovinningTests;
 			sourceTree = "<group>";
@@ -999,6 +1005,7 @@
 				30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
+				30B19CF923609E100096BB12 /* Sports.swift in Sources */,
 				2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */,
 				30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
@@ -1034,6 +1041,7 @@
 				3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */,
 				3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */,
 				305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */,
+				30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */,
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
 				3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */,
 				3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */,
@@ -1227,14 +1235,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22102019001;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1250,14 +1258,14 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22102019001;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

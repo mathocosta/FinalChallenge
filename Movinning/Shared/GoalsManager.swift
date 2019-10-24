@@ -104,10 +104,26 @@ class GoalsManager: NSObject {
         return data.count
     }
 
+    static func amountOfPossibleGoals() -> Int {
+        return getRandomPile().count
+    }
+
+    static func userHasPreference(for goal: Goal) -> Bool {
+        return true
+    }
+
+    static func getRandomPile() -> [Int] {
+        var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
+        randomPile = randomPile.filter({ (ri) -> Bool in
+            let goal = Goal(id: ri, forAmountofPeople: 1)
+            return GoalsManager.userHasPreference(for: goal)
+        })
+        return randomPile
+    }
+
     static func selectNewTimedGoals(fromPile goalPile: GoalPile) -> [Int] {
         var chosenGoals: [Int] = []
-//        var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
-        var randomPile: [Int] = Array(0..<4).shuffled()
+        var randomPile: [Int] = GoalsManager.getRandomPile()
         let copyPile = randomPile
         for index in 0..<copyPile.count {
             let item = copyPile[index]

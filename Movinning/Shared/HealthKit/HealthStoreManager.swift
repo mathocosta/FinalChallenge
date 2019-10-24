@@ -40,7 +40,6 @@ final class HealthStoreManager {
             if let error = error {
                 completion(.failure(error))
             }
-
             completion(.success(success))
         }
     }

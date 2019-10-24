@@ -102,7 +102,7 @@ enum HealthStoreService: CaseIterable {
             .distanceCycling,
             .swimmingStrokeCount
         ]
-        
+
         var types: [HKObjectType] = []
         for id in identifiers {
             if let object = HKObjectType.quantityType(forIdentifier: id) {
@@ -111,6 +111,8 @@ enum HealthStoreService: CaseIterable {
         }
         return Set(types)
     }
+
+    static var allAllowedTypes: Set<HKObjectType> = []
 
     var unit: HKUnit {
         switch self {
