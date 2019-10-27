@@ -43,7 +43,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
         title = team.name
         teamDetailsView.teamTitleLabel.text = team.name ?? ""
-        
+
         var location = ""
         if let city = team.city, city != "" {
             location = "\(city)"
@@ -80,7 +80,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
         present(alert, animated: true, completion: nil)
     }
-    
+
     func onShowMembers() {
         guard let coordinator = coordinator else { return }
         coordinator.showTeamMembers(of: team)

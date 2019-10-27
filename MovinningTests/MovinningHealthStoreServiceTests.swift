@@ -62,7 +62,7 @@ class MovinningHealthStoreServiceTests: XCTestCase {
 
         let baseball = HealthStoreService.baseball
         XCTAssert(baseball.queryPredicate == HKQuery.predicateForWorkouts(with: .baseball))
-        
+
         let rugby = HealthStoreService.rugby
         XCTAssert(rugby.queryPredicate == HKQuery.predicateForWorkouts(with: .rugby))
 

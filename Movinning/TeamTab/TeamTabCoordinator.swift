@@ -70,7 +70,7 @@ final class TeamTabCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func showTeamMembers(of team: Team) -> Void {
+    func showTeamMembers(of team: Team) {
         let viewController = TeamMembersViewController(of: team)
         viewController.coordinator = self
 

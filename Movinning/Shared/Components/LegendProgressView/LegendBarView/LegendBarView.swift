@@ -29,7 +29,7 @@ class LegendBarView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     var progressText: String? {
         didSet {
             guard let progressText = progressText else { return }

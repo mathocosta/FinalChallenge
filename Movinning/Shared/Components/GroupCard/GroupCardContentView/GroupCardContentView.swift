@@ -14,7 +14,7 @@ class GroupCardContentView: UIView, CustomView {
         didSet {
             titleLabel.text = team?.name
             detailLabel.text = team?.teamDescription
-            
+
             usersPhotoView.isHidden = team?.members?.count == 0 ? true : false
         }
     }

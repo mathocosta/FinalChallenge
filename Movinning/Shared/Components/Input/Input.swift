@@ -14,7 +14,7 @@ enum InputType {
 }
 
 class Input: UIView {
-    
+
     let type: InputType
 
     var label: String {

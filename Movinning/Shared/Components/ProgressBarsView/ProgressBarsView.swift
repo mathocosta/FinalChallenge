@@ -28,7 +28,7 @@ class ProgressBarsView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -45,24 +45,24 @@ extension ProgressBarsView: CodeView {
         addSubview(bar2)
         addSubview(bar3)
     }
-    
+
     func setupConstraints() {
         bar1.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bar1.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         bar1.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         bar1.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
-        
+
         bar2.topAnchor.constraint(equalTo: bar1.bottomAnchor, constant: 2).isActive = true
         bar2.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         bar2.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         bar2.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
-        
+
         bar3.topAnchor.constraint(equalTo: bar2.bottomAnchor, constant: 2).isActive = true
         bar3.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         bar3.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         bar3.heightAnchor.constraint(equalToConstant: BarView.height).isActive = true
     }
-    
+
     func setupAdditionalConfiguration() {
 
     }

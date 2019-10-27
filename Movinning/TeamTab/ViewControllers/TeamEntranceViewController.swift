@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamEntranceViewController: UIViewController, LoaderView {
-    
+
     var loadingView: LoadingView = {
         let view = LoadingView()
         return view
@@ -60,7 +60,7 @@ class TeamEntranceViewController: UIViewController, LoaderView {
             }
         }
     }
-    
+
     func onShowMembers() {
         guard let coordinator = coordinator else { return }
         coordinator.showTeamMembers(of: team)
