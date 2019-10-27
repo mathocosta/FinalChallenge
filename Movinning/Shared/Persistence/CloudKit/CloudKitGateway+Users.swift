@@ -111,6 +111,7 @@ extension CloudKitGateway {
         return publicDatabase.fetch(withRecordID: teamRecord.recordID).then {
             updatedTeamRecord -> Promise<(CKRecord, CKRecord)> in
 
+            // Adiciona as referências tanto no time quanto no usuário
             let membersReferences: [CKRecord.Reference]
             if let savedReferences = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference] {
                 membersReferences = savedReferences + [userRecord.reference()]
@@ -120,6 +121,11 @@ extension CloudKitGateway {
             updatedTeamRecord["users"] = membersReferences
 
             userRecord["team"] = updatedTeamRecord.reference()
+
+            // Atualiza o valor dos pontos
+            let teamPoints = updatedTeamRecord.value(forKey: "points") as? Int ?? 0
+            let userPoints = userRecord.value(forKey: "points") as? Int ?? 0
+            updatedTeamRecord["points"] = teamPoints + userPoints
 
             return Promise {
                 self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
@@ -140,6 +146,12 @@ extension CloudKitGateway {
                 let index = usersReferences.firstIndex(of: userRecord.reference()) {
                 usersReferences.remove(at: index)
                 updatedTeamRecord["users"] = usersReferences
+
+                if let teamPoints = updatedTeamRecord.value(forKey: "points") as? Int,
+                    let userPoints = userRecord.value(forKey: "points") as? Int {
+                    // Isso é para garantir de não ficar um número negativo nos pontos
+                    updatedTeamRecord["points"] = max(teamPoints - userPoints, 0)
+                }
 
                 return Promise {
                     self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
