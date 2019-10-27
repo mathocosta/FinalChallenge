@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Checa se o usuário não está logado, por agora, isso quer dizer que é
         // o primeiro acesso ao app
-        UserDefaults.standard.isFirstLogin = UserManager.getLoggedUser() == nil
+        UserDefaults.standard.userNeedToLogin = UserManager.getLoggedUser() == nil
 
         // Adiciona as subscriptions caso não existam
         if !application.isRegisteredForRemoteNotifications {

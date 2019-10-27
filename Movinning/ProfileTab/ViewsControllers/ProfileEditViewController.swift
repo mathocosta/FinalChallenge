@@ -58,7 +58,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
         if !userDefaults.isRegistrationComplete {
             userDefaults.isRegistrationComplete = true
             UserManager.changeGoals(for: user)
-            userDefaults.isFirstLogin = false
+            userDefaults.userNeedToLogin = false
         }
 
         self.startLoader()
