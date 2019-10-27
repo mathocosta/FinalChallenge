@@ -111,9 +111,13 @@ extension CloudKitGateway {
         return publicDatabase.fetch(withRecordID: teamRecord.recordID).then {
             updatedTeamRecord -> Promise<(CKRecord, CKRecord)> in
 
-            var usersReference = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference]
-            usersReference?.append(userRecord.reference())
-            updatedTeamRecord["users"] = usersReference
+            let membersReferences: [CKRecord.Reference]
+            if let savedReferences = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference] {
+                membersReferences = savedReferences + [userRecord.reference()]
+            } else {
+                membersReferences = [userRecord.reference()]
+            }
+            updatedTeamRecord["users"] = membersReferences
 
             userRecord["team"] = updatedTeamRecord.reference()
 
