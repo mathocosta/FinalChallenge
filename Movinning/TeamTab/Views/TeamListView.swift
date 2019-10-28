@@ -10,6 +10,15 @@ import UIKit
 
 class TeamListView: UIView {
 
+    var isLoading = false {
+        didSet {
+            resultsTableView.isHidden = isLoading
+            loadingLabel.isHidden = !isLoading
+            loadingActivityIndicator.isHidden = !isLoading
+            isLoading ? loadingActivityIndicator.startAnimating() : loadingActivityIndicator.stopAnimating()
+        }
+    }
+
     let resultsTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,15 +28,32 @@ class TeamListView: UIView {
         return tableView
     }()
 
-    let refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshControlValueChanged(_:)), for: .valueChanged)
-        refreshControl.attributedTitle = NSAttributedString(
-            string: "Fetching Weather Data ...",
-            attributes: nil
-        )
+    let loadingLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .textColor
+        label.textAlignment = .center
+        label.font = .body
+        label.text = NSLocalizedString("Loading", comment: "")
+        return label
+    }()
 
-        return refreshControl
+    let loadingActivityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.color = .textColor
+        activityIndicator.hidesWhenStopped = true
+
+        return activityIndicator
+    }()
+
+    lazy var loadingStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [loadingLabel, loadingActivityIndicator])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 20.0
+        return stackView
     }()
 
     override init(frame: CGRect = .zero) {
@@ -50,10 +76,16 @@ class TeamListView: UIView {
 // MARK: - CodeView
 extension TeamListView: CodeView {
     func buildViewHierarchy() {
+        addSubview(loadingStackView)
         addSubview(resultsTableView)
     }
 
     func setupConstraints() {
+        loadingStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        loadingStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        loadingStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        loadingStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+
         resultsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         resultsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         resultsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -61,6 +93,5 @@ extension TeamListView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
-//        resultsTableView.refreshControl = refreshControl
     }
 }

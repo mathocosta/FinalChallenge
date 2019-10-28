@@ -111,7 +111,6 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
-		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
 		5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
@@ -247,7 +246,6 @@
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
 		309A2DD42329177E002C5371 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
-		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
 		5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -749,7 +747,6 @@
 				2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */,
 				2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */,
 				5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */,
-				30E4F102233CF71F00DDC39C /* Array+ToSet.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1043,7 +1040,6 @@
 				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,
 				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
-				30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
 				57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */,
