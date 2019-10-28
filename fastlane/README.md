@@ -30,7 +30,15 @@ Build new patch version
 ```
 fastlane ios beta
 ```
-Push a new beta build to TestFlight
+Creating a new beta version
+
+Steps:
+
+1. Update build and version numbers
+
+2. Push a new beta build to TestFlight
+
+3. Update the repository
 
 ----
 
