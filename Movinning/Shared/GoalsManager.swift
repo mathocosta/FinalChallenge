@@ -109,7 +109,14 @@ class GoalsManager: NSObject {
     }
 
     static func userHasPreference(for goal: Goal) -> Bool {
-        return true
+        let service = HealthStoreService.type(forTag: goal.activityType)
+        for sport in HealthStoreService.allAllowedSports {
+            if sport.services().contains(service),
+                HealthStoreService.exerciseIntensity.recommend(goal) {
+                return true
+            }
+        }
+        return false
     }
 
     static func getRandomPile() -> [Int] {

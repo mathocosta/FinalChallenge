@@ -759,7 +759,7 @@
 	<key>58</key>
 	<dict>
 		<key>title</key>
-		<string>Do 1170 swimming strokes</string>
+		<string>Do 1170 swimming strokes in a single day</string>
 		<key>parameter</key>
 		<string>swimming</string>
 		<key>difficulty</key>

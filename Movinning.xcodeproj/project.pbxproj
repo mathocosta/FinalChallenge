@@ -110,8 +110,10 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
-		30B19CF923609E100096BB12 /* Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sports.swift */; };
 		30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */; };
+		30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sport.swift */; };
+		30B19CFF2361DB690096BB12 /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
+		30B19D012361E2C30096BB12 /* ExerciseTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseTime.swift */; };
 		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
 		57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF126D233CE52C00380A88 /* MovinningTests.swift */; };
@@ -242,8 +244,9 @@
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
 		309A2DD42329177E002C5371 /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
-		30B19CF823609E100096BB12 /* Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports.swift; sourceTree = "<group>"; };
+		30B19CF823609E100096BB12 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningSportTests.swift; sourceTree = "<group>"; };
+		30B19D002361E2C30096BB12 /* ExerciseTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTime.swift; sourceTree = "<group>"; };
 		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
 		57FF126B233CE52C00380A88 /* MovinningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovinningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,7 +339,8 @@
 				309A2DCC23267675002C5371 /* Goal.swift */,
 				303F5A96231E93AA0054587C /* UserManager.swift */,
 				309A2DD42329177E002C5371 /* TeamManager.swift */,
-				30B19CF823609E100096BB12 /* Sports.swift */,
+				30B19CF823609E100096BB12 /* Sport.swift */,
+				30B19D002361E2C30096BB12 /* ExerciseTime.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -969,6 +973,7 @@
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
 				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
+				30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
 				2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */,
@@ -1005,7 +1010,6 @@
 				30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
-				30B19CF923609E100096BB12 /* Sports.swift in Sources */,
 				2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */,
 				30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */,
 				27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */,
@@ -1021,6 +1025,7 @@
 				2B86B1E92331009C00688735 /* LoadingView.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
+				30B19D012361E2C30096BB12 /* ExerciseTime.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
 				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
@@ -1045,6 +1050,7 @@
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
 				3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */,
 				3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */,
+				30B19CFF2361DB690096BB12 /* HealthStoreService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1242,7 +1248,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1265,7 +1271,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

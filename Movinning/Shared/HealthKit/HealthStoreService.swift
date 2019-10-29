@@ -112,7 +112,8 @@ enum HealthStoreService: CaseIterable {
         return Set(types)
     }
 
-    static var allAllowedTypes: Set<HKObjectType> = []
+    static var allAllowedSports: Set<Sport> = Sport.allTypes
+    static var exerciseIntensity: ExerciseIntensity = .twoAndAHalfHours
 
     var unit: HKUnit {
         switch self {
