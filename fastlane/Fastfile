@@ -37,7 +37,7 @@ platform :ios do
   desc "3. Update the repository"
   lane :beta do |options|
     # Atualiza o número da build
-    build_number = Time.new.strftime("%d%m%Y")
+    build_number = Time.new.strftime("%d%m%Y%H%M")
     increment_build_number(
       build_number: build_number,
       xcodeproj: "Movinning.xcodeproj"
