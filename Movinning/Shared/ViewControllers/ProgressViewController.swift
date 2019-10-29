@@ -12,16 +12,16 @@ import HealthKit
 class ProgressViewController: UIViewController {
 
     private let user: User
-    private let profileView: ProgressView
+    private let progressView: ProgressView
 
-    weak var coordinator: ProfileTabCoordinator?
+    weak var coordinator: Coordinator?
 
     let centerView: UIView
 
     init(user: User, centerView: UIView) {
         self.user = user
         self.centerView = centerView
-        self.profileView = ProgressView(frame: .zero, centerView: centerView)
+        self.progressView = ProgressView(frame: .zero, centerView: centerView)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,14 +31,14 @@ class ProgressViewController: UIViewController {
     }
 
     override func loadView() {
-        view = profileView
+        view = progressView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = NSLocalizedString("Profile", comment: "")
-        profileView.onProfileDetails = showProfileEditForm
+//        progressView.onProfileDetails = showProfileEditForm
     }
 
     func setProgressBars() {
@@ -53,8 +53,8 @@ class ProgressViewController: UIViewController {
 
     func updateStatus(index: Int, goal: Goal) {
         let colors: [UIColor] = [.trackRed, .trackBlue, .trackOrange]
-        let bar = profileView.progressBars.bars[index]
-        let track = profileView.tracksView.tracks[index]
+        let bar = progressView.progressBars.bars[index]
+        let track = progressView.tracksView.tracks[index]
         let color = colors[index%colors.count]
         var didComplete = false
         GoalsManager.progress(for: user, on: goal) { (amount, required) in
@@ -77,8 +77,8 @@ class ProgressViewController: UIViewController {
     }
 
     // MARK: - Actions
-    func showProfileEditForm() {
-        coordinator?.showProfileEditViewController(for: user)
-    }
+//    func showProfileEditForm() {
+//        coordinator?.showProfileEditViewController(for: user)
+//    }
 
 }

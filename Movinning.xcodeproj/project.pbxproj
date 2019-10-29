@@ -59,6 +59,7 @@
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* LegendProgressView.swift */; };
 		2B7DC2B823229321009C3F54 /* LegendBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* LegendBarView.swift */; };
+		2B85FC632368674700478BCE /* UsersCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85FC622368674700478BCE /* UsersCloud.swift */; };
 		2B86B1E92331009C00688735 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1E82331009C00688735 /* LoadingView.swift */; };
 		2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1EA2331036C00688735 /* LoaderView.swift */; };
 		2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86B1ED233120B100688735 /* LoadingViewController.swift */; };
@@ -194,6 +195,7 @@
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* LegendProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendProgressView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* LegendBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendBarView.swift; sourceTree = "<group>"; };
+		2B85FC622368674700478BCE /* UsersCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCloud.swift; sourceTree = "<group>"; };
 		2B86B1E82331009C00688735 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		2B86B1EA2331036C00688735 /* LoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderView.swift; sourceTree = "<group>"; };
 		2B86B1ED233120B100688735 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -554,6 +556,14 @@
 			path = LegendBarView;
 			sourceTree = "<group>";
 		};
+		2B85FC612368673300478BCE /* UsersCloud */ = {
+			isa = PBXGroup;
+			children = (
+				2B85FC622368674700478BCE /* UsersCloud.swift */,
+			);
+			path = UsersCloud;
+			sourceTree = "<group>";
+		};
 		2B86B1E72331008500688735 /* LoadingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,6 +662,7 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				2B85FC612368673300478BCE /* UsersCloud */,
 				2BCD98CA2358969100D5B8F4 /* LegendProgressView */,
 				3006C54E2334FA0B00DA501B /* TrackView */,
 				2BF29589234F6B1D0017E3B2 /* GroupMemberListView */,
@@ -1048,6 +1059,7 @@
 				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,
 				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
+				2B85FC632368674700478BCE /* UsersCloud.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
 				57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */,

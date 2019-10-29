@@ -48,12 +48,11 @@ class ProgressView: UIView {
 
     }
 
-    var onProfileDetails: (() -> Void)?
-    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil) {
-        guard let onProfileDetails = onProfileDetails else { return }
-        onProfileDetails()
-    }
-
+//    var onProfileDetails: (() -> Void)?
+//    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil) {
+//        guard let onProfileDetails = onProfileDetails else { return }
+//        onProfileDetails()
+//    }
 }
 
 extension ProgressView: CodeView {
@@ -85,8 +84,8 @@ extension ProgressView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileDetailsTap(_:)))
-        centerView?.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileDetailsTap(_:)))
+//        centerView?.addGestureRecognizer(tapGesture)
     }
 
 }
