@@ -9,16 +9,19 @@
 import UIKit
 import HealthKit
 
-class ProfileViewController: UIViewController {
+class ProgressViewController: UIViewController {
 
     private let user: User
-    private let profileView: ProfileView
+    private let profileView: ProgressView
 
     weak var coordinator: ProfileTabCoordinator?
 
-    init(user: User) {
+    let centerView: UIView
+
+    init(user: User, centerView: UIView) {
         self.user = user
-        self.profileView = ProfileView()
+        self.centerView = centerView
+        self.profileView = ProgressView(frame: .zero, centerView: centerView)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -36,12 +39,6 @@ class ProfileViewController: UIViewController {
 
         title = NSLocalizedString("Profile", comment: "")
         profileView.onProfileDetails = showProfileEditForm
-        profileView.profileDetailsView.name = user.firstName ?? ""
-        profileView.profileDetailsView.level = Int(user.points)
-
-        if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
-            profileView.profileDetailsView.imageView.image = profileImage
-        }
     }
 
     func setProgressBars() {

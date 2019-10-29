@@ -52,8 +52,8 @@
 		27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9B94823593F2200E2B1F8 /* SessionError.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
-		2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProfileViewController.swift */; };
-		2B417FA02320006F002AD09D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9F2320006F002AD09D /* ProfileView.swift */; };
+		2B417F9E23200052002AD09D /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProgressViewController.swift */; };
+		2B417FA02320006F002AD09D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9F2320006F002AD09D /* ProgressView.swift */; };
 		2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */; };
 		2B6E354123229C520092A481 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E354023229C520092A481 /* Input.swift */; };
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
@@ -187,8 +187,8 @@
 		27F9B94823593F2200E2B1F8 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
-		2B417F9D23200052002AD09D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		2B417F9F2320006F002AD09D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2B417F9D23200052002AD09D /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		2B417F9F2320006F002AD09D /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
 		2B6E354023229C520092A481 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
@@ -331,6 +331,7 @@
 		275FE878231D3D33001695D2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				2BB0C2F523686134003A1E1A /* Views */,
 				2B86B1F1233123E800688735 /* Transitions */,
 				2B86B1EC2331208F00688735 /* ViewControllers */,
 				2BB47419232001470099D4EB /* Components */,
@@ -523,7 +524,6 @@
 		2B7DC2AE23228821009C3F54 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2B417F9F2320006F002AD09D /* ProfileView.swift */,
 				2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */,
 			);
 			path = Views;
@@ -532,7 +532,6 @@
 		2B7DC2AF23228825009C3F54 /* ViewsControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2B417F9D23200052002AD09D /* ProfileViewController.swift */,
 				2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */,
 			);
 			path = ViewsControllers;
@@ -566,6 +565,7 @@
 		2B86B1EC2331208F00688735 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2B417F9D23200052002AD09D /* ProgressViewController.swift */,
 				2B86B1ED233120B100688735 /* LoadingViewController.swift */,
 			);
 			path = ViewControllers;
@@ -639,6 +639,14 @@
 				2BA7B7CD233B919000134C6E /* UsersPhotoView.swift */,
 			);
 			path = UsersPhotoView;
+			sourceTree = "<group>";
+		};
+		2BB0C2F523686134003A1E1A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2B417F9F2320006F002AD09D /* ProgressView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		2BB47419232001470099D4EB /* Components */ = {
@@ -1008,7 +1016,7 @@
 				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
-				2B417F9E23200052002AD09D /* ProfileViewController.swift in Sources */,
+				2B417F9E23200052002AD09D /* ProgressViewController.swift in Sources */,
 				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
@@ -1025,7 +1033,7 @@
 				304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				2B6E354123229C520092A481 /* Input.swift in Sources */,
-				2B417FA02320006F002AD09D /* ProfileView.swift in Sources */,
+				2B417FA02320006F002AD09D /* ProgressView.swift in Sources */,
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				2797D628232D3F6E00A33470 /* FirstLoginCoordinator.swift in Sources */,
 				278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */,

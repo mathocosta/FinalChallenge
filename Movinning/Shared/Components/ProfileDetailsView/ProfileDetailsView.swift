@@ -21,6 +21,9 @@ class ProfileDetailsView: UIView {
             levelLabel.text = "\(level) "+NSLocalizedString("Points", comment: "")
         }
     }
+    
+    let user: User
+    let tapAction: ((User) -> Void)
 
     lazy var imageView: RoundedImageView = {
         let imageView = RoundedImageView()
@@ -51,17 +54,23 @@ class ProfileDetailsView: UIView {
         return label
     }()
 
-    init(frame: CGRect = .zero, name: String, level: Int) {
+    init(frame: CGRect = .zero, name: String, level: Int, user: User, action: @escaping (User) -> Void) {
         self.name = name
         self.level = level
-
+        self.user = user
+        self.tapAction = action
         super.init(frame: frame)
         setupView()
 
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:))))
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer? = nil) {
+        self.tapAction(self.user)
     }
 
 }

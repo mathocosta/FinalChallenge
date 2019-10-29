@@ -8,16 +8,11 @@
 
 import UIKit
 
-class ProfileView: UIView {
+class ProgressView: UIView {
 
     var progress: [Float] = []
-
-    lazy var profileDetailsView: ProfileDetailsView = {
-        let view = ProfileDetailsView(
-            frame: CGRect(x: 0, y: 0, width: 119, height: 130), name: "Paulo", level: 12)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    
+    var centerView: UIView?
 
     lazy var progressBars: LegendProgressView = {
         let view = LegendProgressView(frame: .zero, amount: 3)
@@ -31,7 +26,8 @@ class ProfileView: UIView {
         return view
     }()
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, centerView: UIView) {
+        self.centerView = centerView
         progress = Array(repeating: 0, count: 3)
         super.init(frame: frame)
         self.backgroundColor = .backgroundColor
@@ -60,20 +56,20 @@ class ProfileView: UIView {
 
 }
 
-extension ProfileView: CodeView {
+extension ProgressView: CodeView {
     func buildViewHierarchy() {
         addSubview(tracksView)
-        addSubview(profileDetailsView)
+        addSubview(centerView!)
         addSubview(progressBars)
     }
 
     func setupConstraints() {
         let screenBounds = UIScreen.main.bounds
 
-        profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileDetailsView.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
-        profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
-        profileDetailsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        centerView?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        centerView?.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
+        centerView?.widthAnchor.constraint(equalToConstant: 119).isActive = true
+        centerView?.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(
@@ -90,7 +86,7 @@ extension ProfileView: CodeView {
 
     func setupAdditionalConfiguration() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileDetailsTap(_:)))
-        profileDetailsView.addGestureRecognizer(tapGesture)
+        centerView?.addGestureRecognizer(tapGesture)
     }
 
 }
