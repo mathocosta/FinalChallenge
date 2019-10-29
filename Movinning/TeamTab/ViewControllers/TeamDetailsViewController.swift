@@ -61,7 +61,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
     }
 
     // MARK: - Actions
-    @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
+    @objc func quitTeamTapped(_ sender: UIBarButtonItem? = nil) {
         let alert = UIAlertController.okAlert(
             title: NSLocalizedString("Attention", comment: ""),
             message: NSLocalizedString("Leave team message", comment: "")
@@ -74,7 +74,10 @@ class TeamDetailsViewController: UIViewController, LoaderView {
                 self.coordinator?.showTeamList()
             }.catch(on: .main) { (error) in
                 self.stopLoader()
-                print(error.localizedDescription)
+                self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                                  message: NSLocalizedString("Try again", comment: "")) {
+                                    self.quitTeamTapped()
+                }
             }
         }
 

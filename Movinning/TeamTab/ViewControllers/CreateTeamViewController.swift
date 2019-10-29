@@ -37,7 +37,7 @@ class CreateTeamViewController: UIViewController {
         navigationItem.rightBarButtonItem = createBarButton
     }
 
-    @objc func createBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func createBarButtonTapped(_ sender: UIBarButtonItem? = nil) {
         guard let nameText = createTeamView.nameInput.inputTextField.text, !nameText.isEmpty else {
             let alert = UIAlertController.okAlert(
                 title: NSLocalizedString("Error", comment: ""),
@@ -62,7 +62,10 @@ class CreateTeamViewController: UIViewController {
         SessionManager.current.create(team: newTeam, with: loggedUser).done(on: .main) { _ in
             self.coordinator?.showDetails(of: newTeam)
         }.catch(on: .main) { error in
-            print(error.localizedDescription)
+            self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                              message: NSLocalizedString("Try again", comment: "")) {
+                                self.createBarButtonTapped()
+            }
         }
     }
 
