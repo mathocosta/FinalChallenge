@@ -35,6 +35,9 @@
 "Invalid Name Message" = "The field 'name' is required";
 "Invalid Email Title" = "Invalid email";
 "Invalid Email Message" = "The entered email is invalid";
+"Next" = "Next";
+"Skip" = "Skip All";
+"Get Started" = "Get Started";
 "Sugestions" = "Suggestions";
 "Attention" = "Attention";
 "Leave team message" = "Are you sure you want to leave the team?";
@@ -56,3 +59,5 @@
 "rugby" = "Rugby";
 "golf" = "Golf";
 "swimming" = "Swimming";
+"iCloud Auth Error" = "Check if you are logged to iCloud. We need that you are logged to iCloud to create your account.";
+"An Error has occured" = "An error has occured";
