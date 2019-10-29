@@ -10,6 +10,10 @@ import Foundation
 import CloudKit
 import PromiseKit
 
+extension Notification.Name {
+    static let userPointsDidChange = Notification.Name("SessionManager.userPointsDidChange")
+}
+
 class SessionManager {
 
     static let current = SessionManager()
@@ -21,6 +25,12 @@ class SessionManager {
         self.cloudKitGateway = CloudKitGateway(container:
             CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
         self.coreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)
+
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(uploadPoints(_:)),
+            name: .userPointsDidChange,
+            object: nil
+        )
     }
 
     // MARK: - User management
@@ -57,6 +67,18 @@ class SessionManager {
     /// está mais logado no dispositivo.
     func userIsLogged() -> Promise<Bool> {
         cloudKitGateway.userAccountAvailable()
+    }
+
+    @objc func uploadPoints(_ notification: Notification) {
+        guard let loggedUser = UserManager.getLoggedUser() else { return }
+        var recordsToUpdate = [loggedUser.ckRecord()]
+
+        if let userTeam = loggedUser.team {
+            recordsToUpdate.append(userTeam.ckRecord())
+        }
+
+        _ = cloudKitGateway.save(recordsToUpdate, in: cloudKitGateway.publicDatabase)
+            .done { _ in print("Pontos atualizados no servidor") }
     }
 
     // MARK: - Teams management

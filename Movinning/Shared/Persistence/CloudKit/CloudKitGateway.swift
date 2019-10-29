@@ -53,4 +53,8 @@ final class CloudKitGateway {
         database.add(operation)
     }
 
+    func save(_ records: [CKRecord], in database: CKDatabase) -> Promise<[CKRecord]> {
+        return Promise { save(records, in: database, completion: $0.resolve) }
+    }
+
 }
