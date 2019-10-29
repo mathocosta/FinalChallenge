@@ -136,15 +136,12 @@ class OnboardingViewController: UIViewController, LoaderView {
                 if let ckError = error as? CKError, ckError.code.rawValue == 4 {
                     errorMessageKey = "iCloud Internet Error"
                 }
-                print(error.localizedDescription)
+
                 self.stopLoader()
-
-                let alertController = UIAlertController.okAlert(
-                    title: NSLocalizedString("An Error has occured", comment: ""),
-                    message: NSLocalizedString(errorMessageKey, comment: "")
-                )
-
-                self.present(alertController, animated: true, completion: nil)
+                
+                self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                                  message: NSLocalizedString(errorMessageKey, comment: ""),
+                                  completion: nil)
             }
         case .addMoreInformation:
             self.stopLoader()

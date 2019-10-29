@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-
+    
     func fillSuperview(safeArea: Bool = true) {
         if !safeArea {
             anchor(top: superview?.topAnchor, leading: superview?.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor)
@@ -50,3 +50,4 @@ extension UIView {
     }
 
 }
+

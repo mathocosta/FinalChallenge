@@ -102,7 +102,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
             self.stopLoader()
             self.coordinator?.showProfileViewController(for: self.user)
         }.catch(on: .main) { (error) in
-            print(error.localizedDescription)
+            self.stopLoader()
+            self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                              message: NSLocalizedString("iCloud Auth Error", comment: ""),
+                              completion: nil)
         }
     }
 

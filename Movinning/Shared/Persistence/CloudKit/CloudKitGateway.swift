@@ -40,7 +40,8 @@ final class CloudKitGateway {
         let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
         operation.savePolicy = .changedKeys
         operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
-            if let error = error {
+            if let error = error as? CKError {
+
                 return completion(nil, error)
             }
 
