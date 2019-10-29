@@ -58,9 +58,9 @@ platform :ios do
     # Atualiza o repositório
     clean_build_artifacts
     commit_version_bump message: "Deploy da versão #{version_number} (#{build_number})."
-    if !git_tag_exists(tag: version_number)
-      add_git_tag tag: version_number
-    end
+    #if !git_tag_exists(tag: version_number)
+    #  add_git_tag tag: version_number
+    #end
     push_to_git_remote
 
   end

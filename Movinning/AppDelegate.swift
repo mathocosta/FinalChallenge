@@ -33,10 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications()
         }
 
-        let sessionManager = SessionManager.current
-        let loggedUser = UserManager.getLoggedUser()!
-        UserManager.add(points: 20, to: loggedUser)
-
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
