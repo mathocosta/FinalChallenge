@@ -46,8 +46,8 @@ final class TeamTabCoordinator: Coordinator {
     }
 
     func showTeamList() {
-        let viewController = TeamListViewController()
-        viewController.coordinator = self
+        let viewController = TeamRankingViewController()
+
 
         if navigationController.visibleViewController is TeamDetailsViewController {
             navigationController.setViewControllers([viewController], animated: true)
@@ -78,8 +78,10 @@ final class TeamTabCoordinator: Coordinator {
     }
 
     func showDetails(of team: Team) {
-        let viewController = TeamDetailsViewController(team: team)
-        viewController.coordinator = self
+//        let viewController = TeamDetailsViewController(team: team)
+//        viewController.coordinator = self
+        
+        let viewController = TeamRankingViewController()
 
         // É preciso resetar as view controllers quando fizer a criação ou entrar num novo time
         let visibleViewController = navigationController.visibleViewController
