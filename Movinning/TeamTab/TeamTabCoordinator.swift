@@ -101,4 +101,11 @@ final class TeamTabCoordinator: Coordinator {
             navigationController.pushViewController(viewController, animated: true)
         }
     }
+
+    func showTeamRanking() {
+        let viewController = TeamRankingViewController()
+        viewController.coordinator = self
+
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

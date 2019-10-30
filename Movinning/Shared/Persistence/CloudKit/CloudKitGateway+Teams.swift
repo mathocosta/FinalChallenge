@@ -53,7 +53,7 @@ extension CloudKitGateway {
             let usersRecordsIDs = usersReferences?.map { $0.recordID }
 
             let fetchOperation = CKFetchRecordsOperation(recordIDs: usersRecordsIDs ?? [])
-            fetchOperation.desiredKeys = ["id", "firstName", "photo"]
+            fetchOperation.desiredKeys = ["id", "firstName", "photo", "points"]
             fetchOperation.fetchRecordsCompletionBlock = seal.resolve
 
             publicDatabase.add(fetchOperation)

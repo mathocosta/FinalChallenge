@@ -10,6 +10,10 @@ import Foundation
 import CloudKit
 import PromiseKit
 
+extension Notification.Name {
+    static let userPointsDidChange = Notification.Name("SessionManager.userPointsDidChange")
+}
+
 class SessionManager {
 
     static let current = SessionManager()
@@ -21,6 +25,12 @@ class SessionManager {
         self.cloudKitGateway = CloudKitGateway(container:
             CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
         self.coreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)
+
+        NotificationCenter.default.addObserver(self,
+            selector: #selector(uploadPoints(_:)),
+            name: .userPointsDidChange,
+            object: nil
+        )
     }
 
     // MARK: - User management
@@ -57,6 +67,18 @@ class SessionManager {
     /// está mais logado no dispositivo.
     func userIsLogged() -> Promise<Bool> {
         cloudKitGateway.userAccountAvailable()
+    }
+
+    @objc func uploadPoints(_ notification: Notification) {
+        guard let loggedUser = UserManager.getLoggedUser() else { return }
+        var recordsToUpdate = [loggedUser.ckRecord()]
+
+        if let userTeam = loggedUser.team {
+            recordsToUpdate.append(userTeam.ckRecord())
+        }
+
+        _ = cloudKitGateway.save(recordsToUpdate, in: cloudKitGateway.publicDatabase)
+            .done { _ in print("Pontos atualizados no servidor") }
     }
 
     // MARK: - Teams management
@@ -108,6 +130,18 @@ class SessionManager {
             }
 
             return Promise.value(team)
+        }
+    }
+
+    func users(from team: Team, of user: User) -> Promise<[User]> {
+        return cloudKitGateway.team(of: user.ckRecord()).then {
+            teamRecord -> Promise<[CKRecord]> in
+            TeamManager.update(team: team, with: teamRecord.recordKeysAndValues())
+            return self.cloudKitGateway.users(from: teamRecord)
+        }.thenMap { userRecord -> Promise<User> in
+            Promise.value(UserManager.createUser(with: userRecord.recordKeysAndValues()))
+        }.map { users in
+            users.sorted(by: { $0.points > $1.points })
         }
     }
 
