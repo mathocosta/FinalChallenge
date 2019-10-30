@@ -23,7 +23,7 @@ class SessionManager {
 
     init() {
         self.cloudKitGateway = CloudKitGateway(container:
-            CKContainer(identifier: "iCloud.com.thalia.CloudKit-Study"))
+            CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
         self.coreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)
 
         NotificationCenter.default.addObserver(self,
@@ -130,6 +130,16 @@ class SessionManager {
             }
 
             return Promise.value(team)
+        }
+    }
+
+    func users(from team: Team, of user: User) -> Promise<[User]> {
+        return cloudKitGateway.team(of: user.ckRecord()).then {
+            teamRecord -> Promise<[CKRecord]> in
+            TeamManager.update(team: team, with: teamRecord.recordKeysAndValues())
+            return self.cloudKitGateway.users(from: teamRecord)
+        }.thenMap { userRecord -> Promise<User> in
+            Promise.value(UserManager.createUser(with: userRecord.recordKeysAndValues()))
         }
     }
 
