@@ -47,7 +47,7 @@ class TeamRankingViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .textColor
-        label.text = "232 points"
+        label.text = "232 \(NSLocalizedString("Points", comment: ""))"
         label.font = .itemDetail
         return label
     }()
