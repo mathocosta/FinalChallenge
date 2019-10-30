@@ -15,7 +15,7 @@ class ProgressViewController: UIViewController {
     private let progressView: ProgressView
     private let amount: Int
     private let hasRanking: Bool
-    
+
     weak var coordinator: Coordinator?
 
     let centerView: UIView

@@ -45,9 +45,9 @@ final class ProfileTabCoordinator: Coordinator {
             showProfileViewController(for: loggedUser)
         }
     }
-    
+
     func showRanking() {
-        
+
     }
 
     func showProfileViewController(for user: User) {
