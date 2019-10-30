@@ -58,7 +58,7 @@ final class ProfileTabCoordinator: Coordinator {
             view.imageView.image = profileImage
         }
 
-        let viewController = ProgressViewController(user: user, centerView: view)
+        let viewController = ProgressViewController(user: user, centerView: view, amount: 3)
         viewController.coordinator = self
 
         if navigationController.topViewController is ProfileEditViewController {

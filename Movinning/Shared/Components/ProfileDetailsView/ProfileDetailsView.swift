@@ -21,7 +21,7 @@ class ProfileDetailsView: UIView {
             levelLabel.text = "\(level) "+NSLocalizedString("Points", comment: "")
         }
     }
-    
+
     let user: User
     let tapAction: ((User) -> Void)
 
@@ -85,7 +85,7 @@ extension ProfileDetailsView: CodeView {
     func setupConstraints() {
         imageView.widthAnchor.constraint(equalToConstant: 119).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: 119).isActive = true
-        imageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: abs(frame.height-187-levelLabel.intrinsicContentSize.height)/2).isActive = true
         imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
 
         nameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 13).isActive = true

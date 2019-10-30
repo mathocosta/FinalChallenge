@@ -50,7 +50,7 @@ final class TeamTabCoordinator: Coordinator {
                               team: team,
                               action: showDetails)
         view.translatesAutoresizingMaskIntoConstraints = false
-        let viewController = ProgressViewController(user: user, centerView: view)
+        let viewController = ProgressViewController(user: user, centerView: view, amount: 0)
         viewController.coordinator = self
 
         if navigationController.visibleViewController is TeamDetailsViewController {

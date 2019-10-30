@@ -11,24 +11,24 @@ import UIKit
 class ProgressView: UIView {
 
     var progress: [Float] = []
-    
+
     var centerView: UIView?
 
     lazy var progressBars: LegendProgressView = {
-        let view = LegendProgressView(frame: .zero, amount: 3)
+        let view = LegendProgressView(frame: .zero, amount: progress.count)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     lazy var tracksView: ProgressTracksView = {
-        let view = ProgressTracksView(frame: .zero, amount: 3)
+        let view = ProgressTracksView(frame: .zero, amount: progress.count)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    init(frame: CGRect, centerView: UIView) {
+    init(frame: CGRect, centerView: UIView, amount: Int) {
         self.centerView = centerView
-        progress = Array(repeating: 0, count: 3)
+        progress = Array(repeating: 0, count: amount)
         super.init(frame: frame)
         self.backgroundColor = .backgroundColor
         setupView()
@@ -67,8 +67,10 @@ extension ProgressView: CodeView {
 
         centerView?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         centerView?.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
-        centerView?.widthAnchor.constraint(equalToConstant: 119).isActive = true
-        centerView?.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        centerView?.widthAnchor.constraint(equalTo: tracksView.widthAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
+        centerView?.heightAnchor.constraint(equalTo: tracksView.heightAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
+//        centerView?.widthAnchor.constraint(equalToConstant: 119).isActive = true
+//        centerView?.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(

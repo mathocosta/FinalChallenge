@@ -13,15 +13,16 @@ class ProgressViewController: UIViewController {
 
     private let user: User
     private let progressView: ProgressView
-
+    private let amount: Int
     weak var coordinator: Coordinator?
 
     let centerView: UIView
 
-    init(user: User, centerView: UIView) {
+    init(user: User, centerView: UIView, amount: Int) {
         self.user = user
         self.centerView = centerView
-        self.progressView = ProgressView(frame: .zero, centerView: centerView)
+        self.amount = amount
+        self.progressView = ProgressView(frame: .zero, centerView: centerView, amount: amount)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,7 +38,7 @@ class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("Profile", comment: "")
+        title = centerView is UsersCloud ? user.team?.name : NSLocalizedString("Profile", comment: "")
 //        progressView.onProfileDetails = showProfileEditForm
     }
 
@@ -52,6 +53,7 @@ class ProgressViewController: UIViewController {
     }
 
     func updateStatus(index: Int, goal: Goal) {
+        guard self.amount > 0 else { return }
         let colors: [UIColor] = [.trackRed, .trackBlue, .trackOrange]
         let bar = progressView.progressBars.bars[index]
         let track = progressView.tracksView.tracks[index]
