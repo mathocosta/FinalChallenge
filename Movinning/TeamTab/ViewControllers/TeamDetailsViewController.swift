@@ -72,7 +72,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
             SessionManager.current.remove(user: loggedUser, from: self.team).done(on: .main) { _ in
                 self.stopLoader()
                 self.coordinator?.showTeamList()
-            }.catch(on: .main) { (error) in
+            }.catch(on: .main) { _ in
                 self.stopLoader()
                 self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                                   message: NSLocalizedString("Try again", comment: "")) {

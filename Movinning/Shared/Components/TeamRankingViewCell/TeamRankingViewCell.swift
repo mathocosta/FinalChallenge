@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamRankingViewCell: UITableViewCell {
-    
+
     static var height: CGFloat = 60
 
     var profileImage: UIImage? {
@@ -17,7 +17,7 @@ class TeamRankingViewCell: UITableViewCell {
             profileImageView.image = profileImage
         }
     }
-    
+
     lazy var positionlabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class TeamRankingViewCell: UITableViewCell {
         imageView.image = UIImage(named: "avatar-placeholder") ?? UIImage()
         return imageView
     }()
-    
+
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +51,7 @@ class TeamRankingViewCell: UITableViewCell {
         label.font = .itemDetail
         return label
     }()
-        
+
     lazy var underlineView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -61,6 +61,8 @@ class TeamRankingViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
+        backgroundColor = .clear
         setupView()
     }
 
@@ -81,7 +83,8 @@ extension TeamRankingViewCell: CodeView {
     func setupConstraints() {
         positionlabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
         positionlabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 32).isActive = true
-        positionlabel.heightAnchor.constraint(equalToConstant: positionlabel.intrinsicContentSize.height).isActive = true
+        positionlabel.heightAnchor.constraint(
+            equalToConstant: positionlabel.intrinsicContentSize.height).isActive = true
         positionlabel.widthAnchor.constraint(equalToConstant: 38).isActive = true
 
         profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true

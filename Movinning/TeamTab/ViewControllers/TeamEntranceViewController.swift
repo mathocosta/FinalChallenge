@@ -54,7 +54,7 @@ class TeamEntranceViewController: UIViewController, LoaderView {
                 self.stopLoader()
                 // Retorna para a tela de abertura do time
                 self.coordinator?.showDetails(of: self.team)
-            }.catch(on: .main) { error in
+            }.catch(on: .main) { _ in
                 self.stopLoader()
                 self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                                   message: NSLocalizedString("Try again", comment: "")) {

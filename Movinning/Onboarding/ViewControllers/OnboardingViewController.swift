@@ -138,7 +138,7 @@ class OnboardingViewController: UIViewController, LoaderView {
                 }
 
                 self.stopLoader()
-                
+
                 self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                                   message: NSLocalizedString(errorMessageKey, comment: ""),
                                   completion: nil)

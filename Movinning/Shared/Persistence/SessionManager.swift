@@ -140,6 +140,8 @@ class SessionManager {
             return self.cloudKitGateway.users(from: teamRecord)
         }.thenMap { userRecord -> Promise<User> in
             Promise.value(UserManager.createUser(with: userRecord.recordKeysAndValues()))
+        }.map { users in
+            users.sorted(by: { $0.points > $1.points })
         }
     }
 

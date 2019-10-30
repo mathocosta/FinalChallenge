@@ -61,7 +61,7 @@ class CreateTeamViewController: UIViewController {
 
         SessionManager.current.create(team: newTeam, with: loggedUser).done(on: .main) { _ in
             self.coordinator?.showDetails(of: newTeam)
-        }.catch(on: .main) { error in
+        }.catch(on: .main) { _ in
             self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                               message: NSLocalizedString("Try again", comment: "")) {
                                 self.createBarButtonTapped()
