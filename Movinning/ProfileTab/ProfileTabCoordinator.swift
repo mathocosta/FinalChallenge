@@ -45,6 +45,10 @@ final class ProfileTabCoordinator: Coordinator {
             showProfileViewController(for: loggedUser)
         }
     }
+    
+    func showRanking() {
+        
+    }
 
     func showProfileViewController(for user: User) {
         let view = ProfileDetailsView(frame: CGRect(x: 0, y: 0, width: 119, height: 130),
@@ -58,7 +62,11 @@ final class ProfileTabCoordinator: Coordinator {
             view.imageView.image = profileImage
         }
 
-        let viewController = ProgressViewController(user: user, centerView: view, amount: 3)
+        let viewController = ProgressViewController(user: user,
+                                                    centerView: view,
+                                                    amount: 3,
+                                                    hasRanking: false,
+                                                    rankingAction: showRanking)
         viewController.coordinator = self
 
         if navigationController.topViewController is ProfileEditViewController {

@@ -14,15 +14,22 @@ class ProgressViewController: UIViewController {
     private let user: User
     private let progressView: ProgressView
     private let amount: Int
+    private let hasRanking: Bool
+    
     weak var coordinator: Coordinator?
 
     let centerView: UIView
 
-    init(user: User, centerView: UIView, amount: Int) {
+    init(user: User, centerView: UIView, amount: Int, hasRanking: Bool, rankingAction: @escaping (() -> Void)) {
         self.user = user
         self.centerView = centerView
         self.amount = amount
-        self.progressView = ProgressView(frame: .zero, centerView: centerView, amount: amount)
+        self.hasRanking = hasRanking
+        self.progressView = ProgressView(frame: .zero,
+                                         centerView: centerView,
+                                         amount: amount,
+                                         hasRanking: hasRanking,
+                                         rankingAction: rankingAction)
 
         super.init(nibName: nil, bundle: nil)
     }
