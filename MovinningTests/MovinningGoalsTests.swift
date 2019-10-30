@@ -122,7 +122,7 @@ class MovinningGoalsTest: XCTestCase {
             }
         }
     }
-    
+
     func test_goal_initWithoutGoalInfo() {
         let goal = Goal(id: 1, goalInfo: [:], userAmount: 1)
         XCTAssert(goal.title == "Sem título")
@@ -133,7 +133,7 @@ class MovinningGoalsTest: XCTestCase {
         XCTAssert(goal.activityType == "")
         XCTAssert(goal.activityCoeficient == 50.0)
     }
-    
+
     func test_goal_initWithAllInfo() {
         let goal = Goal(id: 100, title: "Um título", difficulty: .easy, rewardAmount: 100, activityType: "type", activityCoeficient: 50.0, dailyReset: true, amountOfUsers: 2)
         XCTAssert(goal.id == 100)

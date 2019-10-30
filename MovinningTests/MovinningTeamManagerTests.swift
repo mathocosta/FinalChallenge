@@ -12,7 +12,7 @@ import XCTest
 class MovinningTeamManagerTests: XCTestCase {
     var testUserA, testUserB, testUserC: User!
     var testTeam: Team!
-    
+
     override func setUp() {
         testUserA = User(context: CoreDataStore.context)
         testUserB = User(context: CoreDataStore.context)
@@ -63,7 +63,7 @@ class MovinningTeamManagerTests: XCTestCase {
         XCTAssert(testTeam.teamDescription == nil)
         XCTAssert(testTeam.city == nil)
         XCTAssert(testTeam.neighborhood == nil)
-        
+
         TeamManager.update(team: testTeam, with: [
             "name": "Time",
             "teamDescription": "É um time",

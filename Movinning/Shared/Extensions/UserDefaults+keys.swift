@@ -11,7 +11,7 @@ import Foundation
 extension UserDefaults {
 
     /// Flag que diz se é a primeira vez que o usuário entra no app
-    var isFirstLogin: Bool {
+    var userNeedToLogin: Bool {
         get { return bool(forKey: #function) }
         set { set(newValue, forKey: #function) }
     }

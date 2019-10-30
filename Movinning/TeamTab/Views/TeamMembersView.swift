@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamMembersView: UIView {
-    
+
     private let team: Team
 
     lazy var collectionView: UICollectionView = {

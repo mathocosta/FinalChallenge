@@ -9,7 +9,7 @@
 import UIKit
 
 class GroupMemberViewCell: UICollectionViewCell {
-    
+
     var member: User? {
         didSet {
             guard let member = member, let photo = member.photo else { return }

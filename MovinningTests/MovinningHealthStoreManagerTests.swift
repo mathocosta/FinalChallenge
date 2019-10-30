@@ -42,7 +42,7 @@ class MovinningHealthStoreManagerTests: XCTestCase {
             }
         }
     }
-    
+
     func test_healthstoremanager_samples() {
         manager.samples(of: testService) { (results) in
             switch results {

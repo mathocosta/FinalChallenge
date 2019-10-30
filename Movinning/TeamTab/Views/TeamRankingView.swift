@@ -1,30 +1,34 @@
 //
-//  TeamListView.swift
-//  FinalChallenge
+//  TeamRankingView.swift
+//  Movinning
 //
-//  Created by Matheus Oliveira Costa on 05/09/19.
+//  Created by Paulo José on 30/10/19.
 //  Copyright © 2019 The Rest of Us. All rights reserved.
 //
 
 import UIKit
 
-class TeamListView: UIView {
+class TeamRankingView: UIView {
+
+    weak var parentVC: TeamRankingViewController?
 
     var isLoading = false {
         didSet {
-            resultsTableView.isHidden = isLoading
+            tableView.isHidden = isLoading
             loadingLabel.isHidden = !isLoading
             loadingActivityIndicator.isHidden = !isLoading
             isLoading ? loadingActivityIndicator.startAnimating() : loadingActivityIndicator.stopAnimating()
         }
     }
 
-    let resultsTableView: UITableView = {
+    lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(GroupCardView.self, forCellReuseIdentifier: "GroupCardView")
-        tableView.separatorStyle = .none
         tableView.backgroundColor = .backgroundColor
+        tableView.separatorStyle = .none
+        tableView.delegate = self.parentVC
+        tableView.dataSource = self.parentVC
+        tableView.register(TeamRankingViewCell.self, forCellReuseIdentifier: String(describing: TeamRankingViewCell.self))
         return tableView
     }()
 
@@ -56,28 +60,22 @@ class TeamListView: UIView {
         return stackView
     }()
 
-    override init(frame: CGRect = .zero) {
+    init(frame: CGRect, parentVC: TeamRankingViewController) {
+        self.parentVC = parentVC
         super.init(frame: frame)
         setupView()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    var onRefreshControl: (() -> Void)?
-    @objc func refreshControlValueChanged(_ sender: UIRefreshControl) {
-        guard let onRefreshControl = onRefreshControl else { return }
-        onRefreshControl()
     }
 
 }
 
-// MARK: - CodeView
-extension TeamListView: CodeView {
+extension TeamRankingView: CodeView {
     func buildViewHierarchy() {
         addSubview(loadingStackView)
-        addSubview(resultsTableView)
+        addSubview(tableView)
     }
 
     func setupConstraints() {
@@ -86,10 +84,10 @@ extension TeamListView: CodeView {
         loadingStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         loadingStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
 
-        resultsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        resultsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        resultsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
-        resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
     func setupAdditionalConfiguration() {

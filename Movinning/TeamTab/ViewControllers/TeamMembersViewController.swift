@@ -13,7 +13,7 @@ class TeamMembersViewController: UIViewController {
     private let team: Team
 
     weak var coordinator: TeamTabCoordinator?
-    
+
     init(of team: Team) {
         self.team = team
         super.init(nibName: nil, bundle: nil)

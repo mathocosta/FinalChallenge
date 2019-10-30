@@ -70,7 +70,7 @@ final class TeamTabCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func showTeamMembers(of team: Team) -> Void {
+    func showTeamMembers(of team: Team) {
         let viewController = TeamMembersViewController(of: team)
         viewController.coordinator = self
 
@@ -89,5 +89,12 @@ final class TeamTabCoordinator: Coordinator {
         } else {
             navigationController.pushViewController(viewController, animated: true)
         }
+    }
+
+    func showTeamRanking() {
+        let viewController = TeamRankingViewController()
+        viewController.coordinator = self
+
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
