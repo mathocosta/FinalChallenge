@@ -9,16 +9,20 @@
 import UIKit
 import HealthKit
 
-class ProfileViewController: UIViewController {
+class ProgressViewController: UIViewController {
 
     private let user: User
-    private let profileView: ProfileView
+    private let progressView: ProgressView
+    private let amount: Int
+    weak var coordinator: Coordinator?
 
-    weak var coordinator: ProfileTabCoordinator?
+    let centerView: UIView
 
-    init(user: User) {
+    init(user: User, centerView: UIView, amount: Int) {
         self.user = user
-        self.profileView = ProfileView()
+        self.centerView = centerView
+        self.amount = amount
+        self.progressView = ProgressView(frame: .zero, centerView: centerView, amount: amount)
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -28,20 +32,14 @@ class ProfileViewController: UIViewController {
     }
 
     override func loadView() {
-        view = profileView
+        view = progressView
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = NSLocalizedString("Profile", comment: "")
-        profileView.onProfileDetails = showProfileEditForm
-        profileView.profileDetailsView.name = user.firstName ?? ""
-        profileView.profileDetailsView.level = Int(user.points)
-
-        if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
-            profileView.profileDetailsView.imageView.image = profileImage
-        }
+        title = centerView is UsersCloud ? user.team?.name : NSLocalizedString("Profile", comment: "")
+//        progressView.onProfileDetails = showProfileEditForm
     }
 
     func setProgressBars() {
@@ -55,9 +53,10 @@ class ProfileViewController: UIViewController {
     }
 
     func updateStatus(index: Int, goal: Goal) {
+        guard self.amount > 0 else { return }
         let colors: [UIColor] = [.trackRed, .trackBlue, .trackOrange]
-        let bar = profileView.progressBars.bars[index]
-        let track = profileView.tracksView.tracks[index]
+        let bar = progressView.progressBars.bars[index]
+        let track = progressView.tracksView.tracks[index]
         let color = colors[index%colors.count]
         var didComplete = false
         GoalsManager.progress(for: user, on: goal) { (amount, required) in
@@ -80,8 +79,8 @@ class ProfileViewController: UIViewController {
     }
 
     // MARK: - Actions
-    func showProfileEditForm() {
-        coordinator?.showProfileEditViewController(for: user)
-    }
+//    func showProfileEditForm() {
+//        coordinator?.showProfileEditViewController(for: user)
+//    }
 
 }

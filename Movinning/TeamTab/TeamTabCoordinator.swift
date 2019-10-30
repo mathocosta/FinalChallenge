@@ -39,10 +39,21 @@ final class TeamTabCoordinator: Coordinator {
             let loggedUser = UserManager.getLoggedUser() else { return }
 
         if let team = loggedUser.team {
-            showDetails(of: team)
+            showTeamProgress(for: team, user: loggedUser)
         } else {
             showTeamList()
         }
+    }
+
+    func showTeamProgress(for team: Team, user: User) { //TODO Quando houver metas em time, mudar para TEAM
+        let view = UsersCloud(frame: .zero,
+                              team: team,
+                              action: showDetails)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let viewController = ProgressViewController(user: user, centerView: view, amount: 0)
+        viewController.coordinator = self
+        
+        navigationController.setViewControllers([viewController], animated: true)
     }
 
     func showTeamList() {

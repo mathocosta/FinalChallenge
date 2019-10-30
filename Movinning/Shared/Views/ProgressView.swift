@@ -8,31 +8,27 @@
 
 import UIKit
 
-class ProfileView: UIView {
+class ProgressView: UIView {
 
     var progress: [Float] = []
 
-    lazy var profileDetailsView: ProfileDetailsView = {
-        let view = ProfileDetailsView(
-            frame: CGRect(x: 0, y: 0, width: 119, height: 130), name: "Paulo", level: 12)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    var centerView: UIView?
 
     lazy var progressBars: LegendProgressView = {
-        let view = LegendProgressView(frame: .zero, amount: 3)
+        let view = LegendProgressView(frame: .zero, amount: progress.count)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
     lazy var tracksView: ProgressTracksView = {
-        let view = ProgressTracksView(frame: .zero, amount: 3)
+        let view = ProgressTracksView(frame: .zero, amount: progress.count)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
 
-    override init(frame: CGRect) {
-        progress = Array(repeating: 0, count: 3)
+    init(frame: CGRect, centerView: UIView, amount: Int) {
+        self.centerView = centerView
+        progress = Array(repeating: 0, count: amount)
         super.init(frame: frame)
         self.backgroundColor = .backgroundColor
         setupView()
@@ -52,28 +48,29 @@ class ProfileView: UIView {
 
     }
 
-    var onProfileDetails: (() -> Void)?
-    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil) {
-        guard let onProfileDetails = onProfileDetails else { return }
-        onProfileDetails()
-    }
-
+//    var onProfileDetails: (() -> Void)?
+//    @objc func handleProfileDetailsTap(_ sender: UITapGestureRecognizer? = nil) {
+//        guard let onProfileDetails = onProfileDetails else { return }
+//        onProfileDetails()
+//    }
 }
 
-extension ProfileView: CodeView {
+extension ProgressView: CodeView {
     func buildViewHierarchy() {
         addSubview(tracksView)
-        addSubview(profileDetailsView)
+        addSubview(centerView!)
         addSubview(progressBars)
     }
 
     func setupConstraints() {
         let screenBounds = UIScreen.main.bounds
 
-        profileDetailsView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        profileDetailsView.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
-        profileDetailsView.widthAnchor.constraint(equalToConstant: 119).isActive = true
-        profileDetailsView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        centerView?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        centerView?.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
+        centerView?.widthAnchor.constraint(equalTo: tracksView.widthAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
+        centerView?.heightAnchor.constraint(equalTo: tracksView.heightAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
+//        centerView?.widthAnchor.constraint(equalToConstant: 119).isActive = true
+//        centerView?.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
         progressBars.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         progressBars.topAnchor.constraint(
@@ -89,8 +86,8 @@ extension ProfileView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileDetailsTap(_:)))
-        profileDetailsView.addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleProfileDetailsTap(_:)))
+//        centerView?.addGestureRecognizer(tapGesture)
     }
 
 }

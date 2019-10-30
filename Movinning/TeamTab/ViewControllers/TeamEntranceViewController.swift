@@ -53,7 +53,7 @@ class TeamEntranceViewController: UIViewController, LoaderView {
             SessionManager.current.add(user: loggedUser, to: team).done(on: .main) { _ in
                 self.stopLoader()
                 // Retorna para a tela de abertura do time
-                self.coordinator?.showDetails(of: self.team)
+                self.coordinator?.showTeamProgress(for: self.team, user: loggedUser)
             }.catch(on: .main) { _ in
                 self.stopLoader()
                 self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
