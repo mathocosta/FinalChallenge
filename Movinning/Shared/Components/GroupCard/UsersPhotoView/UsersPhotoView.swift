@@ -9,40 +9,38 @@
 import UIKit
 
 class UsersPhotoView: UIView {
+    var profileImages: [UIImage] = [] {
+        didSet {
+            for index in 0..<photoViews.count {
+                let view = photoViews[photoViews.count-index-1]
+                if index >= profileImages.count {
+                    view.isHidden = true
+                } else {
+                    view.image = profileImages[index]
+                }
+            }
+        }
+    }
 
-    lazy var photoView1: RoundedImageView = {
-        let imageView = RoundedImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "avatar-placeholder")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-
-    lazy var photoView2: RoundedImageView = {
-        let imageView = RoundedImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "avatar-placeholder")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-
-    lazy var photoView3: RoundedImageView = {
-        let imageView = RoundedImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "avatar-placeholder")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-
-    lazy var photoView4: RoundedImageView = {
-        let imageView = RoundedImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "avatar-placeholder")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
+    lazy var photoViews: [RoundedImageView] = {
+        var views: [RoundedImageView] = []
+        for _ in 0..<4 {
+            let imageView = RoundedImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.image = UIImage(named: "avatar-placeholder")
+            imageView.contentMode = .scaleAspectFill
+            views.append(imageView)
+        }
+        return views
     }()
 
     override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+
+    init(frame: CGRect, images: [UIImage]) {
+        profileImages = images
         super.init(frame: frame)
         setupView()
     }
@@ -55,32 +53,23 @@ class UsersPhotoView: UIView {
 
 extension UsersPhotoView: CodeView {
     func buildViewHierarchy() {
-        addSubview(photoView1)
-        addSubview(photoView2)
-        addSubview(photoView3)
-        addSubview(photoView4)
+        for view in photoViews {
+            addSubview(view)
+        }
     }
 
     func setupConstraints() {
-        photoView1.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        photoView1.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        photoView1.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        photoView1.heightAnchor.constraint(equalToConstant: 32).isActive = true
-
-        photoView2.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        photoView2.leftAnchor.constraint(equalTo: photoView1.rightAnchor, constant: -8).isActive = true
-        photoView2.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        photoView2.heightAnchor.constraint(equalToConstant: 32).isActive = true
-
-        photoView3.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        photoView3.leftAnchor.constraint(equalTo: photoView2.rightAnchor, constant: -8).isActive = true
-        photoView3.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        photoView3.heightAnchor.constraint(equalToConstant: 32).isActive = true
-
-        photoView4.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        photoView4.leftAnchor.constraint(equalTo: photoView3.rightAnchor, constant: -8).isActive = true
-        photoView4.widthAnchor.constraint(equalToConstant: 32).isActive = true
-        photoView4.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        for index in 0..<photoViews.count {
+            let view = photoViews[index]
+            view.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            view.widthAnchor.constraint(equalToConstant: 32).isActive = true
+            view.heightAnchor.constraint(equalToConstant: 32).isActive = true
+            if index == 0 {
+                view.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+            } else {
+                view.leftAnchor.constraint(equalTo: photoViews[index-1].rightAnchor, constant: -8).isActive = true
+            }
+        }
     }
 
     func setupAdditionalConfiguration() {

@@ -9,9 +9,9 @@
 import UIKit
 
 class TeamDetailsView: UIView {
-    
+
     var onShowMembers: (() -> Void)?
-    
+
     let team: Team
 
     // MARK: - Properties

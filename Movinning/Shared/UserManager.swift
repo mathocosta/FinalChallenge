@@ -36,6 +36,7 @@ class UserManager: NSObject {
             TeamManager.updateAmountOfPoints(for: team)
         }
         CoreDataStore.saveContext()
+        NotificationCenter.default.post(name: .userPointsDidChange, object: nil)
     }
 
     static func changeGoals(for user: User, at date: Date = Date()) {

@@ -46,11 +46,29 @@ final class ProfileTabCoordinator: Coordinator {
         }
     }
 
+    func showRanking() {
+
+    }
+
     func showProfileViewController(for user: User) {
-        let viewController = ProfileViewController(user: user)
+        let view = ProfileDetailsView(frame: CGRect(x: 0, y: 0, width: 119, height: 130),
+                                      name: user.firstName ?? "",
+                                      level: Int(user.points),
+                                      user: user,
+                                      action: showProfileEditViewController(for:))
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        if let imageData = user.photo, let profileImage = UIImage(data: imageData) {
+            view.imageView.image = profileImage
+        }
+
+        let viewController = ProgressViewController(user: user,
+                                                    centerView: view,
+                                                    amount: 3,
+                                                    hasRanking: false,
+                                                    rankingAction: showRanking)
         viewController.coordinator = self
 
-        // Essa checagem é para atualizar a view do perfil após alguma mudança na view de editar
         if navigationController.topViewController is ProfileEditViewController {
             navigationController.popViewController(animated: true)
             navigationController.setViewControllers([viewController], animated: false)

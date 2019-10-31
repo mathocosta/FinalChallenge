@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIView {
-    
+
     func fillSuperview(safeArea: Bool = true) {
         if !safeArea {
             anchor(top: superview?.topAnchor, leading: superview?.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor)
@@ -19,10 +19,10 @@ extension UIView {
                 superview?.safeAreaLayoutGuide.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.safeAreaLayoutGuide.trailingAnchor)
         }
     }
-    
+
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
-        
+
         if let top = top {
             topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
         }
@@ -42,11 +42,11 @@ extension UIView {
             heightAnchor.constraint(equalToConstant: size.height).isActive = true
         }
     }
-    
-    func addSubviews(in superview: UIView, views: UIView... )  {
+
+    func addSubviews(in superview: UIView, views: UIView... ) {
         views.forEach { view in
             superview.addSubview(view)
         }
     }
-    
+
 }

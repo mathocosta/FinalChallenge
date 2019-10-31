@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Checa se o usuário não está logado, por agora, isso quer dizer que é
         // o primeiro acesso ao app
-        UserDefaults.standard.isFirstLogin = UserManager.getLoggedUser() == nil
+        UserDefaults.standard.userNeedToLogin = UserManager.getLoggedUser() == nil
 
         // Adiciona as subscriptions caso não existam
         if !application.isRegisteredForRemoteNotifications {
@@ -36,11 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-//        if let window = self.window {
-//            window.rootViewController = OnboardingViewController()
-//            window.makeKeyAndVisible()
-//        }
         window?.makeKeyAndVisible()
         window?.rootViewController = appCoordinator?.rootViewController
         window?.backgroundColor = .backgroundColor
@@ -68,7 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if nextUpdateTime.compare(now) == .orderedAscending {
             UserManager.changeGoals(for: user, at: now)
         } else {
-
             GoalsManager.checkForCompletedGoals(for: user)
         }
     }

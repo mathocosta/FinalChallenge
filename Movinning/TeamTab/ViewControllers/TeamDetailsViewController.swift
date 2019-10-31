@@ -43,7 +43,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
         title = team.name
         teamDetailsView.teamTitleLabel.text = team.name ?? ""
-        
+
         var location = ""
         if let city = team.city, city != "" {
             location = "\(city)"
@@ -61,7 +61,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
     }
 
     // MARK: - Actions
-    @objc func quitTeamTapped(_ sender: UIBarButtonItem) {
+    @objc func quitTeamTapped(_ sender: UIBarButtonItem? = nil) {
         let alert = UIAlertController.okAlert(
             title: NSLocalizedString("Attention", comment: ""),
             message: NSLocalizedString("Leave team message", comment: "")
@@ -72,15 +72,18 @@ class TeamDetailsViewController: UIViewController, LoaderView {
             SessionManager.current.remove(user: loggedUser, from: self.team).done(on: .main) { _ in
                 self.stopLoader()
                 self.coordinator?.showTeamList()
-            }.catch(on: .main) { (error) in
+            }.catch(on: .main) { _ in
                 self.stopLoader()
-                print(error.localizedDescription)
+                self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                                  message: NSLocalizedString("Try again", comment: "")) {
+                                    self.quitTeamTapped()
+                }
             }
         }
 
         present(alert, animated: true, completion: nil)
     }
-    
+
     func onShowMembers() {
         guard let coordinator = coordinator else { return }
         coordinator.showTeamMembers(of: team)

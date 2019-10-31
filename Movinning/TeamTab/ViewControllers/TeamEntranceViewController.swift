@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamEntranceViewController: UIViewController, LoaderView {
-    
+
     var loadingView: LoadingView = {
         let view = LoadingView()
         return view
@@ -53,14 +53,17 @@ class TeamEntranceViewController: UIViewController, LoaderView {
             SessionManager.current.add(user: loggedUser, to: team).done(on: .main) { _ in
                 self.stopLoader()
                 // Retorna para a tela de abertura do time
-                self.coordinator?.showDetails(of: self.team)
-            }.catch(on: .main) { error in
-                print(error.localizedDescription)
+                self.coordinator?.showTeamProgress(for: self.team, user: loggedUser)
+            }.catch(on: .main) { _ in
                 self.stopLoader()
+                self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                                  message: NSLocalizedString("Try again", comment: "")) {
+                                    self.selectTeamForLoggedUser()
+                }
             }
         }
     }
-    
+
     func onShowMembers() {
         guard let coordinator = coordinator else { return }
         coordinator.showTeamMembers(of: team)

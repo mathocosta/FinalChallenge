@@ -13,7 +13,7 @@ class MovinningGoalPileTests: XCTestCase {
     var gp: GoalPile!
 
     override func setUp() {
-        gp = GoalPile(value: [0,2,5])
+        gp = GoalPile(value: [0, 2, 5])
     }
 
     override func tearDown() {

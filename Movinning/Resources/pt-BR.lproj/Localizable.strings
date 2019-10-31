@@ -27,7 +27,7 @@
 "HealthKit title" = "Dados de Saúde";
 "HealthKit authorization" = "Nós precisamos utilizar o HealthKit para poder verificar o quanto de atividade física você realizou para completar objetivos dentro da aplicação e ganhar pontos para si mesmo e para o seu grupo.";
 "iCloud title" = "Dados da conta iCloud";
-"iCloud authorization" = "Nós usamos os dados da sua conta iCloud para realizar o seu cadastro e permitir que você faça parte de grupos, para que você possa praticar junto com outras pessoas. além de permitir que você use o mesmo perfil em vários dispositivos.";
+"iCloud authorization" = "Nós usamos os dados da sua conta iCloud para realizar o seu cadastro e permitir que você faça parte de grupos, para que possa praticar junto com outras pessoas. Além de permitir que você use o mesmo perfil em vários dispositivos.";
 "Registration title" = "Complete seu cadastro!";
 "Complete registration" = "Seu cadastro foi realizado com sucesso! No entanto, você pode preencher o seu perfil com mais informações, caso deseje.";
 "Name Field Missing" = "Desculpa, mas é preciso de uma nome para o time. É o mínimo necessário";
@@ -44,6 +44,9 @@
 "Team members" = "Participantes";
 "Achievements" = "Conquistas";
 "See more" = "Ver mais";
+"Loading" = "Carregando";
 "An Error has occured" = "Ocorreu um erro";
+"Try again" = "Tente novamente";
+"Points" = "pontos";
 "iCloud Auth Error" = "Verifique se está logado ao iCloud. Precisamos que você esteja logado(a) para que possamos criar sua conta.";
 "iCloud Internet Error" = "Por favor, cheque sua conexão com a internet. É necessário para sincronizar seus dados com o servidor..";

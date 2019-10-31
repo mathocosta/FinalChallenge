@@ -27,7 +27,7 @@ class LegendProgressView: UIView {
 
 extension LegendProgressView: CodeView {
     func buildViewHierarchy() {
-        for _ in 1...amountOfBars {
+        for _ in 0..<amountOfBars {
             let view = LegendBarView(frame: .zero, progress: 0.8)
             view.translatesAutoresizingMaskIntoConstraints = false
             bars.append(view)

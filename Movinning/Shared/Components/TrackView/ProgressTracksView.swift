@@ -14,7 +14,7 @@ class ProgressTracksView: UIView {
 
     init(frame: CGRect, amount: Int) {
         super.init(frame: frame)
-        self.amountOfTracks = amount
+        self.amountOfTracks = amount == 0 ? 3 : amount
         setupView()
     }
 
@@ -30,7 +30,7 @@ class ProgressTracksView: UIView {
 
 extension ProgressTracksView: CodeView {
     func buildViewHierarchy() {
-        for _ in 1...amountOfTracks {
+        for _ in 0..<amountOfTracks {
             let view = TrackView(frame: .zero, color: .textColor)
             view.translatesAutoresizingMaskIntoConstraints = false
             tracks.append(view)

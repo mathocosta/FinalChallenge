@@ -39,10 +39,25 @@ final class TeamTabCoordinator: Coordinator {
             let loggedUser = UserManager.getLoggedUser() else { return }
 
         if let team = loggedUser.team {
-            showDetails(of: team)
+            showTeamProgress(for: team, user: loggedUser)
         } else {
             showTeamList()
         }
+    }
+
+    func showTeamProgress(for team: Team, user: User) { //TODO Quando houver metas em time, mudar para TEAM
+        let view = UsersCloud(frame: .zero,
+                              team: team,
+                              action: showDetails)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        let viewController = ProgressViewController(user: user,
+                                                    centerView: view,
+                                                    amount: 0,
+                                                    hasRanking: true,
+                                                    rankingAction: showTeamRanking)
+        viewController.coordinator = self
+
+        navigationController.setViewControllers([viewController], animated: true)
     }
 
     func showTeamList() {
@@ -70,7 +85,7 @@ final class TeamTabCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
 
-    func showTeamMembers(of team: Team) -> Void {
+    func showTeamMembers(of team: Team) {
         let viewController = TeamMembersViewController(of: team)
         viewController.coordinator = self
 
@@ -89,5 +104,12 @@ final class TeamTabCoordinator: Coordinator {
         } else {
             navigationController.pushViewController(viewController, animated: true)
         }
+    }
+
+    func showTeamRanking() {
+        let viewController = TeamRankingViewController()
+        viewController.coordinator = self
+
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
