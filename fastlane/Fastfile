@@ -53,7 +53,9 @@ platform :ios do
 
     # Build do app e envio para o testflight
     build_app(scheme: "Movinning")
-    upload_to_testflight
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
 
     # Atualiza o repositório
     clean_build_artifacts
