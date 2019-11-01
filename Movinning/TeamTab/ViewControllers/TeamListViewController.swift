@@ -15,6 +15,12 @@ class TeamListViewController: UIViewController {
     weak var coordinator: TeamTabCoordinator?
 
     private let teamListView: TeamListView
+    private var viewState: TeamListView.State {
+        get { teamListView.state }
+        set { teamListView.state = newValue }
+    }
+
+    private var stillHaveResults = true
 
     private var teams = [Team]()
     private var filteredTeams = [Team]()
@@ -57,15 +63,13 @@ class TeamListViewController: UIViewController {
 
         teamListView.resultsTableView.delegate = self
         teamListView.resultsTableView.dataSource = self
-        teamListView.onRefreshControl = updateTeamList
 
         let createTeamBarButton = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(createTeamBarButtonTapped(_:)))
         navigationItem.rightBarButtonItem = createTeamBarButton
         navigationItem.searchController = searchController
 
-        // TODO: Esse método está aqui apenas porque ainda não funciona corretamente,
-        // depois é para ser movido para a viewWillAppear
+        viewState = .firstQuery
         updateTeamList()
     }
 
@@ -74,18 +78,20 @@ class TeamListViewController: UIViewController {
     }
 
     private func updateTeamList() {
-        teamListView.isLoading = true
-        SessionManager.current.listTeams().done(on: .main) { [weak self] teams in
-            self?.teams.append(contentsOf: teams)
-            self?.teamListView.resultsTableView.reloadData()
-        }.catch(on: .main) { error in
-            print(error.localizedDescription)
-            self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
-                              message: NSLocalizedString("Try again", comment: "")) {
-                                self.updateTeamList()
+        if stillHaveResults {
+            SessionManager.current.listTeams(state: viewState).done(on: .main) { [weak self] operationResult in
+                let (updatedCursor, teams) = operationResult
+                self?.stillHaveResults = (updatedCursor != nil)
+                self?.teams.append(contentsOf: teams)
+            }.catch(on: .main) { [weak self] error in
+                print(error.localizedDescription)
+                self?.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                                  message: NSLocalizedString("Try again", comment: "")) {
+                                    self?.updateTeamList()
+                }
+            }.finally(on: .main) { [weak self] in
+                self?.viewState = .ready
             }
-        }.finally(on: .main) { [weak self] in
-            self?.teamListView.isLoading = false
         }
     }
 
@@ -154,6 +160,16 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
             selectedTeam = teams[indexPath.row]
         }
         coordinator?.showEntrance(of: selectedTeam)
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == teams.count - 1 {
+            cell.backgroundColor = .clear
+            cell.contentView.backgroundColor = .clear
+
+            viewState = .loadingMoreResults
+            updateTeamList()
+        }
     }
 }
 

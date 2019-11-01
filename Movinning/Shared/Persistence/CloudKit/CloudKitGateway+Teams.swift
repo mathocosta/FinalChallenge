@@ -37,7 +37,7 @@ extension CloudKitGateway {
                     seal.reject(operationError)
                 }
 
-                return seal.fulfill((cursor, fetchedRecords))
+                return seal.fulfill((nextCursor, fetchedRecords))
             }
 
             publicDatabase.add(queryOperation)
