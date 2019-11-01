@@ -8,7 +8,12 @@
 
 import UIKit
 
-class CreateTeamViewController: UIViewController {
+class CreateTeamViewController: UIViewController, LoaderView {
+
+    var loadingView: LoadingView = {
+        let view = LoadingView()
+        return view
+    }()
 
     private let createTeamView: CreateTeamView
 
@@ -59,9 +64,12 @@ class CreateTeamViewController: UIViewController {
             "neighborhood": neighborhoodText
         ])
 
+        startLoader()
         SessionManager.current.create(team: newTeam, with: loggedUser).done(on: .main) { _ in
+            self.stopLoader()
             self.coordinator?.showDetails(of: newTeam)
         }.catch(on: .main) { _ in
+            self.stopLoader()
             self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                               message: NSLocalizedString("Try again", comment: "")) {
                                 self.createBarButtonTapped()
