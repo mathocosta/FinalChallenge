@@ -45,7 +45,7 @@ class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = centerView is UsersCloud ? user.team?.name : NSLocalizedString("Profile", comment: "")
+        title = centerView is UsersCloudView ? user.team?.name : NSLocalizedString("Profile", comment: "")
 //        progressView.onProfileDetails = showProfileEditForm
     }
 

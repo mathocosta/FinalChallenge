@@ -59,7 +59,7 @@
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* LegendProgressView.swift */; };
 		2B7DC2B823229321009C3F54 /* LegendBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B723229321009C3F54 /* LegendBarView.swift */; };
-		2B85FC632368674700478BCE /* UsersCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85FC622368674700478BCE /* UsersCloud.swift */; };
+		2B85FC632368674700478BCE /* UsersCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85FC622368674700478BCE /* UsersCloudView.swift */; };
 		2B85FC6523687F5400478BCE /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85FC6423687F5400478BCE /* UIViewController+Alert.swift */; };
 		2B85FC702369AC1600478BCE /* TeamRankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85FC6F2369AC1600478BCE /* TeamRankingViewController.swift */; };
 		2B85FC722369AC2600478BCE /* TeamRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B85FC712369AC2600478BCE /* TeamRankingView.swift */; };
@@ -111,6 +111,10 @@
 		3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */; };
 		3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */; };
 		305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */; };
+		3064CF3A236C63270040220E /* UserPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF39236C63270040220E /* UserPreferencesView.swift */; };
+		3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */; };
+		3064CF41236C66020040220E /* UserPreferencesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */; };
+		3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -199,7 +203,7 @@
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* LegendProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendProgressView.swift; sourceTree = "<group>"; };
 		2B7DC2B723229321009C3F54 /* LegendBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendBarView.swift; sourceTree = "<group>"; };
-		2B85FC622368674700478BCE /* UsersCloud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCloud.swift; sourceTree = "<group>"; };
+		2B85FC622368674700478BCE /* UsersCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCloudView.swift; sourceTree = "<group>"; };
 		2B85FC6423687F5400478BCE /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		2B85FC6F2369AC1600478BCE /* TeamRankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingViewController.swift; sourceTree = "<group>"; };
 		2B85FC712369AC2600478BCE /* TeamRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRankingView.swift; sourceTree = "<group>"; };
@@ -251,6 +255,10 @@
 		3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalsManagerTests.swift; sourceTree = "<group>"; };
 		3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreManagerTests.swift; sourceTree = "<group>"; };
 		305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTests.swift; sourceTree = "<group>"; };
+		3064CF39236C63270040220E /* UserPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesView.swift; sourceTree = "<group>"; };
+		3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewController.swift; sourceTree = "<group>"; };
+		3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesCollectionViewCell.swift; sourceTree = "<group>"; };
+		3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferencesViewController+Delegate+DataSource.swift"; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -323,6 +331,7 @@
 		275FE861231D3664001695D2 /* Movinning */ = {
 			isa = PBXGroup;
 			children = (
+				3064CF34236C624F0040220E /* UserPreferences */,
 				2797D619232B2F6C00A33470 /* Resources */,
 				275FE878231D3D33001695D2 /* Shared */,
 				2B7DC2AD23228813009C3F54 /* ProfileTab */,
@@ -566,12 +575,12 @@
 			path = LegendBarView;
 			sourceTree = "<group>";
 		};
-		2B85FC612368673300478BCE /* UsersCloud */ = {
+		2B85FC612368673300478BCE /* UsersCloudView */ = {
 			isa = PBXGroup;
 			children = (
-				2B85FC622368674700478BCE /* UsersCloud.swift */,
+				2B85FC622368674700478BCE /* UsersCloudView.swift */,
 			);
-			path = UsersCloud;
+			path = UsersCloudView;
 			sourceTree = "<group>";
 		};
 		2B85FC732369AD0800478BCE /* TeamRankingViewCell */ = {
@@ -680,7 +689,7 @@
 		2BB47419232001470099D4EB /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				2B85FC612368673300478BCE /* UsersCloud */,
+				2B85FC612368673300478BCE /* UsersCloudView */,
 				2B85FC732369AD0800478BCE /* TeamRankingViewCell */,
 				2BCD98CA2358969100D5B8F4 /* LegendProgressView */,
 				3006C54E2334FA0B00DA501B /* TrackView */,
@@ -804,6 +813,33 @@
 			children = (
 				57479DB0235761F400C21D09 /* OnboardingViewController.swift */,
 				57479DB62359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3064CF34236C624F0040220E /* UserPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				3064CF36236C62620040220E /* ViewControllers */,
+				3064CF35236C625C0040220E /* Views */,
+			);
+			path = UserPreferences;
+			sourceTree = "<group>";
+		};
+		3064CF35236C625C0040220E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3064CF39236C63270040220E /* UserPreferencesView.swift */,
+				3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3064CF36236C62620040220E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */,
+				3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1033,6 +1069,7 @@
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
+				3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */,
 				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
@@ -1061,6 +1098,7 @@
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
+				3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
 				304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
@@ -1077,11 +1115,13 @@
 				27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */,
 				27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */,
 				278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */,
+				3064CF41236C66020040220E /* UserPreferencesCollectionViewCell.swift in Sources */,
 				275FE888231D4CBD001695D2 /* HealthStoreManager.swift in Sources */,
 				2BF29588234F5AF80017E3B2 /* GroupMemberViewCell.swift in Sources */,
+				3064CF3A236C63270040220E /* UserPreferencesView.swift in Sources */,
 				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
-				2B85FC632368674700478BCE /* UsersCloud.swift in Sources */,
+				2B85FC632368674700478BCE /* UsersCloudView.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
 				57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */,
@@ -1315,7 +1355,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010192040;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1323,7 +1363,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1340,7 +1380,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010192040;
-				DEVELOPMENT_TEAM = Y93JMM3H2T;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1348,7 +1388,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

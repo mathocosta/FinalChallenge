@@ -19,7 +19,10 @@ class OnboardingViewController: UIViewController, LoaderView {
     var beginningPage: Int?
     var movedToBeginningPage: Bool = false
 
-    let onboardingView: OnboardingView
+    let onboardingView: OnboardingView = {
+        let view = OnboardingView()
+        return view
+    }()
 
     lazy var content: [Onboard] = {
         var array = [Onboard]()
@@ -37,10 +40,8 @@ class OnboardingViewController: UIViewController, LoaderView {
         array.append(registration)
         return array
     }()
-
+    
     init() {
-        self.onboardingView = OnboardingView()
-
         super.init(nibName: nil, bundle: nil)
     }
 

@@ -1,5 +1,5 @@
 //
-//  UserClous.swift
+//  UserCloudView.swift
 //  Movinning
 //
 //  Created by Paulo José on 29/10/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsersCloud: UIView {
+class UsersCloudView: UIView {
     let team: Team
     let tapAction: (Team) -> Void
 
@@ -102,7 +102,7 @@ class UsersCloud: UIView {
     }
 }
 
-extension UsersCloud: CodeView {
+extension UsersCloudView: CodeView {
     func buildViewHierarchy() {
         for view in self.profileViews {
             addSubview(view)
@@ -125,21 +125,26 @@ extension UsersCloud: CodeView {
             if lineIndex == 0 || index == gridLimitIndex {
                 view.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
             } else if lineIndex % 2 == 1 {
-                view.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -offset*1.5*CGFloat((lineIndex+1)/2)).isActive = true
+                view.centerXAnchor.constraint(equalTo: centerXAnchor,
+                                              constant: -offset*1.5*CGFloat((lineIndex+1)/2)).isActive = true
             } else {
-                view.centerXAnchor.constraint(equalTo: centerXAnchor, constant: offset*1.5*CGFloat(lineIndex/2)).isActive = true
+                view.centerXAnchor.constraint(equalTo: centerXAnchor,
+                                              constant: offset*1.5*CGFloat(lineIndex/2)).isActive = true
             }
 
             if index == 0 {
                 if profileViews.count > 1 {
-                    view.topAnchor.constraint(equalTo: self.topAnchor, constant: (frame.height-gridHeight)/2).isActive = true
+                    view.topAnchor.constraint(equalTo: self.topAnchor,
+                                              constant: (frame.height-gridHeight)/2).isActive = true
                 } else {
                     view.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
                 }
             } else if lineIndex != 0 {
-                view.topAnchor.constraint(equalTo: profileViews[index-lineIndex].topAnchor, constant: offset*CGFloat((lineIndex+1)/2)).isActive = true
+                view.topAnchor.constraint(equalTo: profileViews[index-lineIndex].topAnchor,
+                                          constant: offset*CGFloat((lineIndex+1)/2)).isActive = true
             } else {
-                view.topAnchor.constraint(equalTo: profileViews[index-numberOfColumns].topAnchor, constant: size).isActive = true
+                view.topAnchor.constraint(equalTo: profileViews[index-numberOfColumns].topAnchor,
+                                          constant: size).isActive = true
             }
         }
     }
