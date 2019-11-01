@@ -91,3 +91,11 @@ class ProgressViewController: UIViewController {
 //    }
 
 }
+
+extension ProfileViewController: PointDisplayUpdater {
+    func didUpdate(newAmount: Int) {
+        DispatchQueue.main.async {
+            self.profileView.profileDetailsView.level = newAmount
+        }
+    }
+}
