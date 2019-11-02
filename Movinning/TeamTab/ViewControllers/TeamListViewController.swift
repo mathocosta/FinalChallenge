@@ -78,20 +78,18 @@ class TeamListViewController: UIViewController {
     }
 
     private func updateTeamList() {
-        if stillHaveResults {
-            SessionManager.current.listTeams(state: viewState).done(on: .main) { [weak self] operationResult in
-                let (updatedCursor, teams) = operationResult
-                self?.stillHaveResults = (updatedCursor != nil)
-                self?.teams.append(contentsOf: teams)
-            }.catch(on: .main) { [weak self] error in
-                print(error.localizedDescription)
-                self?.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
-                                  message: NSLocalizedString("Try again", comment: "")) {
-                                    self?.updateTeamList()
-                }
-            }.finally(on: .main) { [weak self] in
-                self?.viewState = .ready
+        SessionManager.current.listTeams(state: viewState).done(on: .main) { [weak self] operationResult in
+            let (updatedCursor, teams) = operationResult
+            self?.stillHaveResults = (updatedCursor != nil)
+            self?.teams.append(contentsOf: teams)
+        }.catch(on: .main) { [weak self] error in
+            print(error.localizedDescription)
+            self?.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                               message: NSLocalizedString("Try again", comment: "")) {
+                                self?.updateTeamList()
             }
+        }.finally(on: .main) { [weak self] in
+            self?.viewState = .ready
         }
     }
 
@@ -163,7 +161,7 @@ extension TeamListViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == teams.count - 1 {
+        if indexPath.row == teams.count - 1 && stillHaveResults {
             cell.backgroundColor = .clear
             cell.contentView.backgroundColor = .clear
 
