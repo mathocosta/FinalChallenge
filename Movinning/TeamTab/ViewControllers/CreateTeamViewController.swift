@@ -63,8 +63,11 @@ class CreateTeamViewController: UIViewController {
             self.coordinator?.showDetails(of: newTeam)
         }.catch(on: .main) { _ in
             self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
-                              message: NSLocalizedString("Try again", comment: "")) {
+                              message: NSLocalizedString("Try again", comment: ""),
+                              completion: {
                                 self.createBarButtonTapped()
+            }) {
+                print("Cancelado")
             }
         }
     }
