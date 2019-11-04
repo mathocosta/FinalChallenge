@@ -10,12 +10,33 @@ import UIKit
 
 class TeamListView: UIView {
 
-    var isLoading = false {
+    enum State {
+        case firstQuery
+        case loadingMoreResults
+        case ready
+    }
+
+    var state: State {
         didSet {
-            resultsTableView.isHidden = isLoading
-            loadingLabel.isHidden = !isLoading
-            loadingActivityIndicator.isHidden = !isLoading
-            isLoading ? loadingActivityIndicator.startAnimating() : loadingActivityIndicator.stopAnimating()
+            switch state {
+            case .firstQuery:
+                resultsTableView.isHidden = true
+                loadingLabel.isHidden = false
+                loadingActivityIndicator.isHidden = false
+                loadingActivityIndicator.startAnimating()
+            case .ready:
+                resultsTableView.isHidden = false
+                loadingLabel.isHidden = true
+                loadingActivityIndicator.stopAnimating()
+                resultsTableViewLoadingSpinner.stopAnimating()
+                resultsTableView.tableFooterView = UIView()
+                resultsTableView.tableFooterView?.isHidden = true
+                resultsTableView.reloadData()
+            case .loadingMoreResults:
+                resultsTableViewLoadingSpinner.startAnimating()
+                resultsTableView.tableFooterView?.isHidden = false
+                resultsTableView.tableFooterView = resultsTableViewLoadingSpinner
+            }
         }
     }
 
@@ -56,6 +77,16 @@ class TeamListView: UIView {
         return stackView
     }()
     
+
+    lazy var resultsTableViewLoadingSpinner: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.color = .textColor
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: resultsTableView.bounds.width, height: 70.0)
+        activityIndicator.hidesWhenStopped = true
+
+        return activityIndicator
+    }()
+
     let loadingLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -86,6 +117,7 @@ class TeamListView: UIView {
     }()
 
     override init(frame: CGRect = .zero) {
+        self.state = .firstQuery
         super.init(frame: frame)
         setupView()
     }

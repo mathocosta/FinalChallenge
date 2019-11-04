@@ -56,10 +56,10 @@ final class TeamTabCoordinator: Coordinator {
                                                     hasRanking: true,
                                                     rankingAction: showTeamRanking)
         viewController.coordinator = self
-        
+
         navigationController.setViewControllers([viewController], animated: true)
     }
-    
+
     func showTeamList() {
         let viewController = TeamListViewController()
         viewController.coordinator = self
