@@ -92,10 +92,11 @@ class ProgressViewController: UIViewController {
 
 }
 
-extension ProfileViewController: PointDisplayUpdater {
+extension ProgressViewController: PointDisplayUpdater {
     func didUpdate(newAmount: Int) {
         DispatchQueue.main.async {
-            self.profileView.profileDetailsView.level = newAmount
+            guard let profileView = self.centerView as? ProfileDetailsView else { return }
+            profileView.level = newAmount
         }
     }
 }

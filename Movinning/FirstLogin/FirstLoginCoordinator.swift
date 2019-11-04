@@ -17,6 +17,7 @@ class FirstLoginCoordinator: Coordinator {
 
     let navigationController: UINavigationController
     var onboardViewController: OnboardingViewController?
+    var userPreferencesViewController: UserPreferencesViewController?
 
     var didLoginEnded: (() -> Void)?
 
@@ -27,7 +28,9 @@ class FirstLoginCoordinator: Coordinator {
 
     func start() {
         let userDefaults = UserDefaults.standard
-        if !userDefaults.isHealthKitAuthorized {
+        if !userDefaults.chosenUserPreferences {
+            showUserPreferences()
+        } else if !userDefaults.isHealthKitAuthorized {
             showMessageView(for: 0)
         } else if !userDefaults.isCloudKitAuthorized {
             showMessageView(for: 1)
@@ -50,6 +53,8 @@ class FirstLoginCoordinator: Coordinator {
                     didLoginEnded()
                 })
             }
+        } else {
+            showMessageView(for: 0)
         }
     }
 
@@ -62,5 +67,14 @@ class FirstLoginCoordinator: Coordinator {
         } else {
             onboardViewController?.moveTo(page: contentTypeIndex)
         }
+    }
+
+    func showUserPreferences() {
+        if userPreferencesViewController == nil {
+            userPreferencesViewController = UserPreferencesViewController()
+            userPreferencesViewController?.coordinator = self
+        }
+        navigationController.pushViewController(userPreferencesViewController
+            ?? UserPreferencesViewController(), animated: true)
     }
 }

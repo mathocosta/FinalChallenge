@@ -115,6 +115,8 @@
 		3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */; };
 		3064CF41236C66020040220E /* UserPreferencesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */; };
 		3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */; };
+		3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
+		3064CF46237067CF0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -123,8 +125,6 @@
 		30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */; };
 		30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sport.swift */; };
 		30B19CFF2361DB690096BB12 /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
-		30B19D012361E2C30096BB12 /* ExerciseTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseTime.swift */; };
-		30E4F103233CF71F00DDC39C /* Array+ToSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F102233CF71F00DDC39C /* Array+ToSet.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
 		5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
@@ -271,8 +271,7 @@
 		30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+ReadPList.swift"; sourceTree = "<group>"; };
 		30B19CF823609E100096BB12 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
 		30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningSportTests.swift; sourceTree = "<group>"; };
-		30B19D002361E2C30096BB12 /* ExerciseTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTime.swift; sourceTree = "<group>"; };
-		30E4F102233CF71F00DDC39C /* Array+ToSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+ToSet.swift"; sourceTree = "<group>"; };
+		30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseIntensity.swift; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
 		5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -340,11 +339,11 @@
 		275FE861231D3664001695D2 /* Movinning */ = {
 			isa = PBXGroup;
 			children = (
-				3064CF34236C624F0040220E /* UserPreferences */,
 				2797D619232B2F6C00A33470 /* Resources */,
 				275FE878231D3D33001695D2 /* Shared */,
 				2B7DC2AD23228813009C3F54 /* ProfileTab */,
 				57479DA9235761AD00C21D09 /* Onboarding */,
+				3064CF34236C624F0040220E /* UserPreferences */,
 				278717F723207CF700A2A481 /* TeamTab */,
 				2797D620232D38E400A33470 /* FirstLogin */,
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
@@ -373,7 +372,7 @@
 				303F5A96231E93AA0054587C /* UserManager.swift */,
 				309A2DD42329177E002C5371 /* TeamManager.swift */,
 				30B19CF823609E100096BB12 /* Sport.swift */,
-				30B19D002361E2C30096BB12 /* ExerciseTime.swift */,
+				30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1070,6 +1069,7 @@
 				2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2B9E3FDC234CD3A200CBD497 /* AchievmentListView.swift in Sources */,
+				3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				57479DB72359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift in Sources */,
@@ -1155,7 +1155,6 @@
 				2B86B1E92331009C00688735 /* LoadingView.swift in Sources */,
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
-				30B19D012361E2C30096BB12 /* ExerciseTime.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
 				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
@@ -1172,6 +1171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */,
+				3064CF46237067CF0040220E /* ExerciseIntensity.swift in Sources */,
 				3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */,
 				3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */,
 				3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */,

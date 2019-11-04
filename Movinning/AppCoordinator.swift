@@ -36,11 +36,11 @@ final class AppCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        if UserDefaults.standard.userNeedToLogin {
+        guard !UserDefaults.standard.userNeedToLogin else {
             showFirstLoginFlow()
-        } else {
-            showMainFlow()
+            return
         }
+        showMainFlow()
     }
 
     func showFirstLoginFlow() {

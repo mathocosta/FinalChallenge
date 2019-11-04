@@ -40,7 +40,7 @@ class OnboardingViewController: UIViewController, LoaderView {
         array.append(registration)
         return array
     }()
-    
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }

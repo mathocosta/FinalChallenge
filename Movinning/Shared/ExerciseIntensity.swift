@@ -1,5 +1,5 @@
 //
-//  ExerciseTime.swift
+//  ExerciseIntensity.swift
 //  Movinning
 //
 //  Created by Martônio Júnior on 24/10/19.
@@ -9,12 +9,16 @@
 import Foundation
 import HealthKit
 
-enum ExerciseIntensity: Int {
+enum ExerciseIntensity: Int, CaseIterable {
     case halfHour = 30
     case oneHour = 60
     case oneAndAHalfHour = 90
     case twoHours = 120
     case twoAndAHalfHours = 150
+    
+    func amount() -> Int {
+        return self.rawValue
+    }
 
     func recommendedAmount(for service: HealthStoreService) -> Int {
         switch service.unit {
@@ -36,6 +40,47 @@ enum ExerciseIntensity: Int {
             break
         }
         return 0
+    }
+
+    static var allTypes: Set<ExerciseIntensity> {
+        let all = ExerciseIntensity.allCases
+        return Set(all)
+    }
+
+    func title() -> String {
+        return String(describing: self.rawValue)+"min"
+    }
+
+    func index() -> Int {
+        switch self {
+        case .halfHour:
+            return 0
+        case .oneHour:
+            return 1
+        case .oneAndAHalfHour:
+            return 2
+        case .twoHours:
+            return 3
+        case .twoAndAHalfHours:
+            return 4
+        }
+    }
+
+    static func intensity(for index: Int) -> ExerciseIntensity {
+        switch index {
+        case 0:
+            return .halfHour
+        case 1:
+            return .oneHour
+        case 2:
+            return .oneAndAHalfHour
+        case 3:
+            return .twoHours
+        case 4:
+            return .twoAndAHalfHours
+        default:
+            return .twoAndAHalfHours
+        }
     }
 
     func recommend(_ goal: Goal) -> Bool {

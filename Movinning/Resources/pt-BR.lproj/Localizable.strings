@@ -59,7 +59,7 @@
 "hockey" = "Hockey";
 "tennis" = "Tênis";
 "volleyball" = "Vôlei";
-"tableTennis" = "Tênis";
+"tableTennis" = "Tênis de Mesa";
 "basketball" = "Basquete";
 "baseball" = "Beisebol";
 "rugby" = "Rugby";
@@ -67,3 +67,5 @@
 "swimming" = "Natação";
 "iCloud Auth Error" = "Verifique se está logado ao iCloud. Precisamos que você esteja logado(a) para que possamos criar sua conta.";
 "An Error has occured" = "Ocorreu um erro";
+"User Preferences Title" = "Quais esportes você costuma praticar?";
+"Free Time" = "Quando tempo você dedica a praticar esportes toda semana? (Responda em minutos/dia)";
