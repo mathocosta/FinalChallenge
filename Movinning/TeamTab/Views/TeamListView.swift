@@ -25,9 +25,37 @@ class TeamListView: UIView {
         tableView.register(GroupCardView.self, forCellReuseIdentifier: "GroupCardView")
         tableView.separatorStyle = .none
         tableView.backgroundColor = .backgroundColor
+        tableView.isHidden = true
         return tableView
     }()
-
+    
+    let emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .itemTitleCondensed
+        label.textColor = .textColor
+        label.textAlignment = .center
+        label.text = "Vazio porra. carrega denovo"
+        return label
+    }()
+    
+    let emptyStateButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.textColor, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Try again", for: .normal)
+        return button
+    }()
+    
+    lazy var emptyStateStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [emptyStateLabel, emptyStateButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 20.0
+        return stackView
+    }()
+    
     let loadingLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -53,6 +81,7 @@ class TeamListView: UIView {
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
         stackView.spacing = 20.0
+        stackView.isHidden = true
         return stackView
     }()
 
@@ -78,6 +107,7 @@ extension TeamListView: CodeView {
     func buildViewHierarchy() {
         addSubview(loadingStackView)
         addSubview(resultsTableView)
+        addSubview(emptyStateStackView)
     }
 
     func setupConstraints() {
@@ -85,11 +115,18 @@ extension TeamListView: CodeView {
         loadingStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         loadingStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         loadingStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        emptyStateStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        emptyStateStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        emptyStateStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        emptyStateStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
 
         resultsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
         resultsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         resultsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        
     }
 
     func setupAdditionalConfiguration() {
