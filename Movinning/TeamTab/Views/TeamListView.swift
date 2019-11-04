@@ -14,6 +14,7 @@ class TeamListView: UIView {
         case firstQuery
         case loadingMoreResults
         case ready
+        case error
     }
 
     var state: State {
@@ -21,12 +22,14 @@ class TeamListView: UIView {
             switch state {
             case .firstQuery:
                 resultsTableView.isHidden = true
-                loadingLabel.isHidden = false
+                loadingStackView.isHidden = false
+                emptyStateStackView.isHidden = true
                 loadingActivityIndicator.isHidden = false
                 loadingActivityIndicator.startAnimating()
             case .ready:
                 resultsTableView.isHidden = false
-                loadingLabel.isHidden = true
+                loadingStackView.isHidden = true
+                emptyStateStackView.isHidden = true
                 loadingActivityIndicator.stopAnimating()
                 resultsTableViewLoadingSpinner.stopAnimating()
                 resultsTableView.tableFooterView = UIView()
@@ -35,7 +38,13 @@ class TeamListView: UIView {
             case .loadingMoreResults:
                 resultsTableViewLoadingSpinner.startAnimating()
                 resultsTableView.tableFooterView?.isHidden = false
+                emptyStateStackView.isHidden = true
                 resultsTableView.tableFooterView = resultsTableViewLoadingSpinner
+            case .error:
+                resultsTableView.isHidden = true
+                loadingStackView.isHidden = true
+                emptyStateStackView.isHidden = false
+                loadingActivityIndicator.isHidden = true
             }
         }
     }
@@ -53,21 +62,22 @@ class TeamListView: UIView {
     let emptyStateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .itemTitleCondensed
+        label.font = .sectionTitle
         label.textColor = .textColor
         label.textAlignment = .center
-        label.text = "Vazio porra. carrega denovo"
+        label.text = NSLocalizedString("An Error has occured", comment: "")
         return label
     }()
-    
+
     let emptyStateButton: UIButton = {
         let button = UIButton()
         button.setTitleColor(.textColor, for: .normal)
+        button.titleLabel?.font = .action
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Try again", for: .normal)
+        button.setTitle(NSLocalizedString("Try again", comment: ""), for: .normal)
         return button
     }()
-    
+
     lazy var emptyStateStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [emptyStateLabel, emptyStateButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +86,6 @@ class TeamListView: UIView {
         stackView.spacing = 20.0
         return stackView
     }()
-    
 
     lazy var resultsTableViewLoadingSpinner: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .gray)
@@ -131,7 +140,12 @@ class TeamListView: UIView {
         guard let onRefreshControl = onRefreshControl else { return }
         onRefreshControl()
     }
-
+    
+    var onTryAgain: (() -> Void)?
+    @objc func handleTryAgainButton(_ sender: UITapGestureRecognizer? = nil) {
+        guard let onTryAgain = onTryAgain else { return }
+        onTryAgain()
+    }
 }
 
 // MARK: - CodeView
@@ -162,5 +176,6 @@ extension TeamListView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
+          emptyStateButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTryAgainButton(_:))))
     }
 }

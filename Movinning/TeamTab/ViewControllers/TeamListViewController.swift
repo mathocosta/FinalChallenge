@@ -53,6 +53,7 @@ class TeamListViewController: UIViewController {
     }
 
     override func loadView() {
+        self.teamListView.onTryAgain = self.updateTeamList
         view = teamListView
     }
 
@@ -89,7 +90,7 @@ class TeamListViewController: UIViewController {
                               completion: {
                                 self.updateTeamList()
             }) {
-                print("Cancelado")
+                self.teamListView.state = .error
             }
         }.finally(on: .main) { [weak self] in
             self?.viewState = .ready
