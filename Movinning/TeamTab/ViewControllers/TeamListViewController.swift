@@ -85,6 +85,7 @@ class TeamListViewController: UIViewController {
             self?.teams.append(contentsOf: teams)
             self?.teamListView.resultsTableView.reloadData()
         }.catch(on: .main) { error in
+            self.teamListView.state = .error
             self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                               message: NSLocalizedString("Try again", comment: ""),
                               completion: {
@@ -92,7 +93,7 @@ class TeamListViewController: UIViewController {
                                 self.teamListView.state = .firstQuery
             }) {
                 self.teamListView.state = .error
-            }
+           }
         }.finally(on: .main) { [weak self] in
             self?.viewState = .ready
         }

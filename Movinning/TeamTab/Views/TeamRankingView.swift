@@ -16,14 +16,16 @@ class TeamRankingView: UIView {
         case error
     }
 
-    var state: State {
+    var state: State = .firstQuery {
         didSet {
             switch state {
             case .firstQuery:
                 loadingStackView.isHidden = false
                 emptyStateStackView.isHidden = true
-                loadingActivityIndicator.isHidden = false
                 loadingActivityIndicator.startAnimating()
+                loadingActivityIndicator.isHidden = false
+                loadingLabel.isHidden = false
+                tableView.isHidden = true
             case .ready:
                 tableView.isHidden = false
                 emptyStateStackView.isHidden = true
@@ -34,20 +36,12 @@ class TeamRankingView: UIView {
                 tableView.isHidden = true
                 emptyStateStackView.isHidden = false
                 loadingStackView.isHidden = true
+                loadingActivityIndicator.stopAnimating()
             }
         }
     }
 
     weak var parentVC: TeamRankingViewController?
-
-    var isLoading = false {
-        didSet {
-            tableView.isHidden = isLoading
-            loadingLabel.isHidden = !isLoading
-            loadingActivityIndicator.isHidden = !isLoading
-            isLoading ? loadingActivityIndicator.startAnimating() : loadingActivityIndicator.stopAnimating()
-        }
-    }
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -132,8 +126,8 @@ class TeamRankingView: UIView {
 
 extension TeamRankingView: CodeView {
     func buildViewHierarchy() {
-        addSubview(loadingStackView)
         addSubview(emptyStateStackView)
+        addSubview(loadingStackView)
         addSubview(tableView)
     }
 
