@@ -89,6 +89,7 @@ class TeamListViewController: UIViewController {
                               message: NSLocalizedString("Try again", comment: ""),
                               completion: {
                                 self.updateTeamList()
+                                self.teamListView.state = .firstQuery
             }) {
                 self.teamListView.state = .error
             }

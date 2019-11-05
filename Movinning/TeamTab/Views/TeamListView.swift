@@ -62,7 +62,7 @@ class TeamListView: UIView {
     let emptyStateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .sectionTitle
+        label.font = .body
         label.textColor = .textColor
         label.textAlignment = .center
         label.text = NSLocalizedString("An Error has occured", comment: "")
@@ -83,7 +83,7 @@ class TeamListView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fillProportionally
         stackView.axis = .vertical
-        stackView.spacing = 20.0
+        stackView.spacing = 10.0
         return stackView
     }()
 
@@ -144,6 +144,7 @@ class TeamListView: UIView {
     var onTryAgain: (() -> Void)?
     @objc func handleTryAgainButton(_ sender: UITapGestureRecognizer? = nil) {
         guard let onTryAgain = onTryAgain else { return }
+        self.state = .firstQuery
         onTryAgain()
     }
 }

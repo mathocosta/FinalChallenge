@@ -105,7 +105,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
             self.stopLoader()
             self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
                               message: NSLocalizedString("iCloud Auth Error", comment: ""),
-                              completion: nil)
+                              completion: {})
         }
     }
 
