@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserPreferencesTableViewCell: UITableViewCell {
+class UserPreferencesCollectionViewCell: UICollectionViewCell {
     var sport: Sport? {
         didSet {
             guard let sport = sport else { return }
@@ -36,8 +36,8 @@ class UserPreferencesTableViewCell: UITableViewCell {
     }()
 
     // MARK: - Lifecycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         layer.borderColor = UIColor.fadedRed.cgColor
         layer.borderWidth = 2
         layer.cornerRadius = frame.height / 2
@@ -54,7 +54,7 @@ class UserPreferencesTableViewCell: UITableViewCell {
     }
 }
 
-extension UserPreferencesTableViewCell: CodeView {
+extension UserPreferencesCollectionViewCell: CodeView {
     func buildViewHierarchy() {
         addSubview(titleLabel)
     }

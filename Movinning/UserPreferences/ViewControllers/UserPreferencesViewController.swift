@@ -43,10 +43,10 @@ class UserPreferencesViewController: UIViewController, LoaderView {
         super.viewDidLoad()
         view = preferencesView
         preferencesView.onNextPage = confirmUserPreferences
-        preferencesView.tableView.delegate = self
-        preferencesView.tableView.dataSource = self
-        preferencesView.tableView.register(UserPreferencesTableViewCell.self,
-                                                forCellReuseIdentifier: "UserPreferencesCollectionViewCell")
+        preferencesView.collectionView.delegate = self
+        preferencesView.collectionView.dataSource = self
+        preferencesView.collectionView.register(UserPreferencesCollectionViewCell.self,
+                                                forCellWithReuseIdentifier: "UserPreferencesCollectionViewCell")
     }
 
     // MARK: - Actions

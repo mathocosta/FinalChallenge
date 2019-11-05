@@ -46,11 +46,13 @@ class UserPreferencesView: UIView {
         return label
     }()
 
-    lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.backgroundColor = .clear
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
+    lazy var collectionView: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .vertical
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collectionView.backgroundColor = .clear
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        return collectionView
     }()
 
     lazy var confirmButton: UIButton = {
@@ -89,7 +91,7 @@ extension UserPreferencesView: CodeView {
         addSubview(textTimeLabel)
         addSubview(timeSegmentedControl)
         addSubview(textSportsLabel)
-        addSubview(tableView)
+        addSubview(collectionView)
         addSubview(confirmButton)
     }
 
@@ -109,11 +111,11 @@ extension UserPreferencesView: CodeView {
         textSportsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
         textSportsLabel.heightAnchor.constraint(equalToConstant: 52).isActive = true
 
-        tableView.topAnchor.constraint(equalTo: textSportsLabel.bottomAnchor, constant: 16).isActive = true
-        tableView.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
+        collectionView.topAnchor.constraint(equalTo: textSportsLabel.bottomAnchor, constant: 16).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
 
-        confirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16).isActive = true
+        confirmButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16).isActive = true
         confirmButton.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
         confirmButton.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
         confirmButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
