@@ -30,12 +30,10 @@ class FirstLoginCoordinator: Coordinator {
 
     func start() {
         let userDefaults = UserDefaults.standard
-        if !userDefaults.chosenUserPreferences {
-            if let coordinator = self.childCoordinators?.first as? UserPreferencesCoordinator {
-                coordinator.start()
-            }
-        } else if !userDefaults.isHealthKitAuthorized {
+        if !userDefaults.isHealthKitAuthorized {
             showMessageView(for: 0)
+        } else if !userDefaults.chosenUserPreferences {
+            showUserPreferences()
         } else if !userDefaults.isCloudKitAuthorized {
             showMessageView(for: 1)
         } else if !userDefaults.isRegistrationComplete {
@@ -61,6 +59,13 @@ class FirstLoginCoordinator: Coordinator {
             showMessageView(for: 0)
         }
     }
+    
+    func showUserPreferences() {
+        if let coordinator = self.childCoordinators?.first as? UserPreferencesCoordinator {
+            coordinator.start()
+        }
+    }
+
 
     func showMessageView(for contentTypeIndex: Int) {
         if onboardViewController == nil {

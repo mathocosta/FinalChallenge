@@ -28,8 +28,8 @@ final class UserPreferencesCoordinator: Coordinator {
     }
 
     func redirectToNextScreen() {
-        navigationController.navigationBar.isHidden = false
         if rootViewController is ProfileEditViewController {
+            navigationController.navigationBar.isHidden = false
             self.navigationController.popViewController(animated: true)
         } else if let rootViewController = rootViewController as? OnboardingViewController {
             self.navigationController.popViewController(animated: true)

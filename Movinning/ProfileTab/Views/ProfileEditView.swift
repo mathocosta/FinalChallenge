@@ -135,8 +135,8 @@ extension ProfileEditView: CodeView {
     func setupConstraints() {
         preferencesButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         preferencesButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        preferencesButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        preferencesButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        preferencesButton.widthAnchor.constraint(equalToConstant: 42).isActive = true
+        preferencesButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
 
         editProfileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         profileImageConstrait = editProfileImage.topAnchor.constraint(

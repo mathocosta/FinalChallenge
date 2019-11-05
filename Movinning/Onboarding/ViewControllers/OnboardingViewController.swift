@@ -110,22 +110,8 @@ class OnboardingViewController: UIViewController, LoaderView {
 
         switch onboard.contentType {
         case .healthKitAuthorization:
-            let healthStoreManager = HealthStoreManager()
-            healthStoreManager.requestAuthorization { [weak self] (result) in
-                switch result {
-                case .success(let isAuthorized):
-                    userDefaults.isHealthKitAuthorized = isAuthorized
-                    DispatchQueue.main.async {
-                        self?.stopLoader()
-                        self?.coordinator?.showNextScreen()
-                    }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.stopLoader()
-                        print(error.localizedDescription)
-                    }
-                }
-            }
+            self.stopLoader()
+            coordinator?.showUserPreferences()
         case .cloudKitAuthorization:
             SessionManager.current.loginUser().done(on: .main) { _ in
                 print("Success on login")

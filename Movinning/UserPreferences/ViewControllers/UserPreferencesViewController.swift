@@ -8,7 +8,12 @@
 
 import UIKit
 
-class UserPreferencesViewController: UIViewController {
+class UserPreferencesViewController: UIViewController, LoaderView {
+    var loadingView: LoadingView {
+        let view = LoadingView()
+        return view
+    }
+
     var sports: [Sport] = Array(Sport.allTypes).sorted { (s1, s2) -> Bool in
         return s1.name() < s2.name()
     }
@@ -52,6 +57,7 @@ class UserPreferencesViewController: UIViewController {
         UserDefaults.standard.practiceTime = amountOfTime
         HealthStoreService.allAllowedSports = selectedSports.count == 0 ? Sport.allTypes : Set(selectedSports)
         HealthStoreService.exerciseIntensity = amountOfTime
+        self.startLoader()
         let healthStoreManager = HealthStoreManager()
         healthStoreManager.requestAuthorization { [weak self] (result) in
             switch result {
@@ -59,9 +65,11 @@ class UserPreferencesViewController: UIViewController {
                 UserDefaults.standard.isHealthKitAuthorized = isAuthorized
                 DispatchQueue.main.async {
                     self?.coordinator?.redirectToNextScreen()
+                    self?.stopLoader()
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
+                    self?.stopLoader()
                     print(error.localizedDescription)
                 }
             }
