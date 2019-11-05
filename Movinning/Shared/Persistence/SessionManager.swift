@@ -21,6 +21,8 @@ class SessionManager {
     private let cloudKitGateway: CloudKitGateway
     private let coreDataGateway: CoreDataGateway
 
+    private var listTeamsOperationCursor: CKQueryOperation.Cursor?
+
     init() {
         self.cloudKitGateway = CloudKitGateway(container:
             CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
@@ -118,8 +120,17 @@ class SessionManager {
         }.then { _ in self.removeSubscriptions() }
     }
 
-    func listTeams() -> Promise<[Team]> {
-        return cloudKitGateway.listTeams().map({ $0.1 }).thenMap { teamRecord in
+    func listTeams(state: TeamListView.State) -> Promise<(CKQueryOperation.Cursor?, [Team])> {
+        var listTeamsPromise = cloudKitGateway.listTeams()
+        if state == .loadingMoreResults {
+            listTeamsPromise = cloudKitGateway.listTeams(cursor: listTeamsOperationCursor)
+        }
+
+        return listTeamsPromise.then({ queryResult -> Promise<[CKRecord]> in
+            let (actualCursor, records) = queryResult
+            self.listTeamsOperationCursor = actualCursor
+            return Promise.value(records)
+        }).thenMap { teamRecord in
             self.cloudKitGateway.users(from: teamRecord).map({ (teamRecord, $0) })
         }.thenMap { results -> Promise<Team> in
             let (teamRecord, usersRecords) = results
@@ -130,6 +141,8 @@ class SessionManager {
             }
 
             return Promise.value(team)
+        }.then { teams in
+            return Promise.value((self.listTeamsOperationCursor, teams))
         }
     }
 
