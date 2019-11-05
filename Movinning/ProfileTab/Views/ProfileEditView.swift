@@ -20,7 +20,7 @@ class ProfileEditView: UIView {
 
     lazy var preferencesButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "avatar-placeholder"), for: .normal)
+        button.setImage(UIImage(named: "settings"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePreferencesTap(_:))))
         return button
