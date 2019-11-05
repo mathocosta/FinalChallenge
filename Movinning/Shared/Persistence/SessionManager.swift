@@ -25,7 +25,7 @@ class SessionManager {
 
     init() {
         self.cloudKitGateway = CloudKitGateway(container:
-            CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay.paulo"))
+            CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
         self.coreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)
 
         NotificationCenter.default.addObserver(self,
