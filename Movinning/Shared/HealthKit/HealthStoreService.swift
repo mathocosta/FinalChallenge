@@ -112,8 +112,15 @@ enum HealthStoreService: CaseIterable {
         return Set(types)
     }
 
-    static var allAllowedSports: Set<Sport> = Sport.allTypes
-    static var exerciseIntensity: ExerciseIntensity = .twoAndAHalfHours
+    static var allAllowedSports: Set<Sport> = {
+        guard let sports = UserDefaults.standard.userPreferences else { return Sport.allTypes }
+        return Set(sports)
+    }()
+
+    static var exerciseIntensity: ExerciseIntensity = {
+        guard let intensity = UserDefaults.standard.practiceTime else { return .twoAndAHalfHours }
+        return intensity
+    }()
 
     var unit: HKUnit {
         switch self {

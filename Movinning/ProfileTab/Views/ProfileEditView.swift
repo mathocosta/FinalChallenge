@@ -18,6 +18,14 @@ class ProfileEditView: UIView {
         return imageView
     }()
 
+    lazy var preferencesButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "avatar-placeholder"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePreferencesTap(_:))))
+        return button
+    }()
+
     lazy var firstNameInput: Input = {
         let input = Input(frame: .zero, label: NSLocalizedString("First Name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
@@ -93,6 +101,12 @@ class ProfileEditView: UIView {
         onEditProfileImage()
     }
 
+    var preferencesAction: (() -> Void)?
+    @objc func handlePreferencesTap(_ sender: UITapGestureRecognizer? = nil) {
+        guard let preferencesAction = preferencesAction else { return }
+        preferencesAction()
+    }
+
     @objc func keyboardWillShow(_ notification: Notification) {
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             self.profileImageConstrait?.constant = -32
@@ -110,6 +124,7 @@ class ProfileEditView: UIView {
 
 extension ProfileEditView: CodeView {
     func buildViewHierarchy() {
+        addSubview(preferencesButton)
         addSubview(editProfileImage)
         addSubview(firstNameInput)
         addSubview(lastNameInput)
@@ -118,6 +133,11 @@ extension ProfileEditView: CodeView {
     }
 
     func setupConstraints() {
+        preferencesButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        preferencesButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        preferencesButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        preferencesButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+
         editProfileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         profileImageConstrait = editProfileImage.topAnchor.constraint(
             equalTo: self.layoutMarginsGuide.topAnchor, constant: 38)

@@ -15,7 +15,7 @@ enum ExerciseIntensity: Int, CaseIterable {
     case oneAndAHalfHour = 90
     case twoHours = 120
     case twoAndAHalfHours = 150
-    
+
     func amount() -> Int {
         return self.rawValue
     }

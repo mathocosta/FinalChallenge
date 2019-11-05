@@ -50,6 +50,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
         profileEditView.onSaveProfile = saveButtonTapped
+        profileEditView.preferencesAction = showSelectPreferences
     }
 
     // MARK: - Actions
@@ -120,6 +121,10 @@ class ProfileEditViewController: UIViewController, LoaderView {
     private func validateEmail(candidate: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: candidate)
+    }
+
+    @objc private func showSelectPreferences() {
+        coordinator?.showUserPreferences()
     }
 }
 

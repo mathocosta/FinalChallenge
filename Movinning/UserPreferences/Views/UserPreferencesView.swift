@@ -53,9 +53,9 @@ class UserPreferencesView: UIView {
         return tableView
     }()
 
-    lazy var nextButton: UIButton = {
+    lazy var confirmButton: UIButton = {
         let button = UIButton()
-        button.setTitle(NSLocalizedString("Next", comment: ""), for: UIControl.State.normal)
+        button.setTitle(NSLocalizedString("Confirm", comment: ""), for: UIControl.State.normal)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(nextButtonTapped), for: UIControl.Event.touchUpInside)
         button.setTitleColor(.fadedRed, for: UIControl.State.normal)
@@ -90,7 +90,7 @@ extension UserPreferencesView: CodeView {
         addSubview(timeSegmentedControl)
         addSubview(textSportsLabel)
         addSubview(tableView)
-        addSubview(nextButton)
+        addSubview(confirmButton)
     }
 
     func setupConstraints() {
@@ -113,11 +113,11 @@ extension UserPreferencesView: CodeView {
         tableView.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
 
-        nextButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16).isActive = true
-        nextButton.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
-        nextButton.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
-        nextButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        confirmButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 16).isActive = true
+        confirmButton.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
+        confirmButton.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
+        confirmButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
+        confirmButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
     }
 
     func setupAdditionalConfiguration() {

@@ -9,7 +9,9 @@
 import UIKit
 
 class UserPreferencesViewController: UIViewController {
-    var sports: [Sport] = Array(Sport.allTypes)
+    var sports: [Sport] = Array(Sport.allTypes).sorted { (s1, s2) -> Bool in
+        return s1.name() < s2.name()
+    }
     var selectedSports: [Sport] = []
 
     // MARK: - Properties
@@ -18,7 +20,7 @@ class UserPreferencesViewController: UIViewController {
         return view
     }()
 
-    var coordinator: FirstLoginCoordinator?
+    var coordinator: UserPreferencesCoordinator?
 
     // MARK: - Lifecycle
 
@@ -50,6 +52,19 @@ class UserPreferencesViewController: UIViewController {
         UserDefaults.standard.practiceTime = amountOfTime
         HealthStoreService.allAllowedSports = selectedSports.count == 0 ? Sport.allTypes : Set(selectedSports)
         HealthStoreService.exerciseIntensity = amountOfTime
-        coordinator?.showNextScreen()
+        let healthStoreManager = HealthStoreManager()
+        healthStoreManager.requestAuthorization { [weak self] (result) in
+            switch result {
+            case .success(let isAuthorized):
+                UserDefaults.standard.isHealthKitAuthorized = isAuthorized
+                DispatchQueue.main.async {
+                    self?.coordinator?.redirectToNextScreen()
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }

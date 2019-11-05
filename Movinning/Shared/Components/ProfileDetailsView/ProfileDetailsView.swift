@@ -50,7 +50,7 @@ class ProfileDetailsView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         label.textColor = .textColor
-        label.text = "Nível \(level)"
+        label.text = "\(level) "+NSLocalizedString("Points", comment: "")
         return label
     }()
 
