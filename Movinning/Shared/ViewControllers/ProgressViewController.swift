@@ -46,7 +46,6 @@ class ProgressViewController: UIViewController {
         super.viewDidLoad()
 
         title = centerView is UsersCloudView ? user.team?.name : NSLocalizedString("Profile", comment: "")
-//        progressView.onProfileDetails = showProfileEditForm
     }
 
     func setProgressBars() {
@@ -85,10 +84,34 @@ class ProgressViewController: UIViewController {
         setProgressBars()
     }
 
-    // MARK: - Actions
-//    func showProfileEditForm() {
-//        coordinator?.showProfileEditViewController(for: user)
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        // Isso convoca usuários a atualizarem suas preferências se não tiverem sido feitas ainda.
+        let defaults = UserDefaults.standard
+        if let profileCoordinator = coordinator as? ProfileTabCoordinator, !defaults.hasChosenUserPreferences {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Choose your preferences", comment: ""),
+                message: NSLocalizedString("Choose your preferences message", comment: ""),
+                preferredStyle: .alert
+            )
+
+            let confirmAction = UIAlertAction(title: "Ok", style: .default) { _ in
+                UserDefaults.standard.hasChosenUserPreferences = true
+                profileCoordinator.showProfileEditViewController(for: self.user)
+                profileCoordinator.showUserPreferences()
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+                UserDefaults.standard.hasChosenUserPreferences = true
+                alertController.dismiss(animated: true) {
+                    defaults.hasChosenUserPreferences = true
+                }
+            }
+
+            alertController.addAction(confirmAction)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true, completion: nil)
+        }
+    }
 
 }
 

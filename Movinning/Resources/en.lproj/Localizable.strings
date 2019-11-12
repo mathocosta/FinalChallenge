@@ -70,3 +70,6 @@
 "User Preferences Title" = "What sports are you into?";
 "Free Time" = "How much time do you dedicate to sports every week? (answer in minutes/day)";
 "Confirm" = "Confirm";
+"Edit user preferences" = "Edit your preferences";
+"Choose your preferences" = "Choose your preferences";
+"Choose your preferences message" = "No preferences have been selected in your profile yet. They are used to generate the goals in the best possible way for you. Do you want to select now?";

@@ -23,9 +23,6 @@ class OnboardingCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         navigationController.navigationBar.isHidden = true
-//        self.childCoordinators = [
-//            UserPreferencesCoordinator(navigationController: navigationController)
-//        ]
     }
 
     func start() {
@@ -63,6 +60,7 @@ class OnboardingCoordinator: Coordinator {
     func showUserPreferences() {
         let viewController = UserPreferencesViewController()
         viewController.coordinator = self
+        viewController.title = NSLocalizedString("Choose your preferences", comment: "")
         navigationController.pushViewController(viewController, animated: true)
     }
 

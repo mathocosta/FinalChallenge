@@ -90,6 +90,7 @@ final class ProfileTabCoordinator: Coordinator {
     func showUserPreferences() {
         let viewController = UserPreferencesViewController()
         viewController.coordinator = self
+        viewController.title = NSLocalizedString("Edit user preferences", comment: "")
         navigationController.pushViewController(viewController, animated: true)
     }
 
