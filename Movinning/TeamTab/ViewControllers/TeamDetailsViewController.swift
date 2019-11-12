@@ -75,8 +75,11 @@ class TeamDetailsViewController: UIViewController, LoaderView {
             }.catch(on: .main) { _ in
                 self.stopLoader()
                 self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
-                                  message: NSLocalizedString("Try again", comment: "")) {
+                                  message: NSLocalizedString("Try again", comment: ""),
+                                  completion: {
                                     self.quitTeamTapped()
+                }) {
+                    print("Cancelado")
                 }
             }
         }

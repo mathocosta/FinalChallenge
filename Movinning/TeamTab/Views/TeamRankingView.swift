@@ -9,17 +9,39 @@
 import UIKit
 
 class TeamRankingView: UIView {
+    
+    enum State {
+        case firstQuery
+        case ready
+        case error
+    }
 
-    weak var parentVC: TeamRankingViewController?
-
-    var isLoading = false {
+    var state: State = .firstQuery {
         didSet {
-            tableView.isHidden = isLoading
-            loadingLabel.isHidden = !isLoading
-            loadingActivityIndicator.isHidden = !isLoading
-            isLoading ? loadingActivityIndicator.startAnimating() : loadingActivityIndicator.stopAnimating()
+            switch state {
+            case .firstQuery:
+                loadingStackView.isHidden = false
+                emptyStateStackView.isHidden = true
+                loadingActivityIndicator.startAnimating()
+                loadingActivityIndicator.isHidden = false
+                loadingLabel.isHidden = false
+                tableView.isHidden = true
+            case .ready:
+                tableView.isHidden = false
+                emptyStateStackView.isHidden = true
+                loadingStackView.isHidden = true
+                loadingActivityIndicator.stopAnimating()
+                tableView.reloadData()
+            case .error:
+                tableView.isHidden = true
+                emptyStateStackView.isHidden = false
+                loadingStackView.isHidden = true
+                loadingActivityIndicator.stopAnimating()
+            }
         }
     }
+
+    weak var parentVC: TeamRankingViewController?
 
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -59,10 +81,40 @@ class TeamRankingView: UIView {
         stackView.spacing = 20.0
         return stackView
     }()
+    
+    let emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .body
+        label.textColor = .textColor
+        label.textAlignment = .center
+        label.text = NSLocalizedString("An Error has occured", comment: "")
+        return label
+    }()
+
+    let emptyStateButton: UIButton = {
+        let button = UIButton()
+        button.setTitleColor(.textColor, for: .normal)
+        button.titleLabel?.font = .action
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle(NSLocalizedString("Try again", comment: ""), for: .normal)
+        return button
+    }()
+
+    lazy var emptyStateStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [emptyStateLabel, emptyStateButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillProportionally
+        stackView.axis = .vertical
+        stackView.spacing = 10.0
+        return stackView
+    }()
 
     init(frame: CGRect, parentVC: TeamRankingViewController) {
         self.parentVC = parentVC
+        self.state = .firstQuery
         super.init(frame: frame)
+        self.backgroundColor = .backgroundColor
         setupView()
     }
 
@@ -74,6 +126,7 @@ class TeamRankingView: UIView {
 
 extension TeamRankingView: CodeView {
     func buildViewHierarchy() {
+        addSubview(emptyStateStackView)
         addSubview(loadingStackView)
         addSubview(tableView)
     }
@@ -83,6 +136,11 @@ extension TeamRankingView: CodeView {
         loadingStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         loadingStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         loadingStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        
+        emptyStateStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
+        emptyStateStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        emptyStateStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        emptyStateStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
 
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true

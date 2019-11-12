@@ -35,20 +35,21 @@ class TeamRankingViewController: UIViewController {
         guard let loggedUser = UserManager.getLoggedUser(),
             let userTeam = loggedUser.team else { return }
 
-        teamRankingView?.isLoading = true
+        teamRankingView?.state = .firstQuery
         SessionManager.current.users(from: userTeam, of: loggedUser).done(on: .main) {
             [weak self] users in
             self?.users.append(contentsOf: users)
-            self?.teamRankingView?.tableView.reloadData()
+            self?.teamRankingView?.state = .ready
         }.catch(on: .main) { error in
-            print(error.localizedDescription)
-            self.presentAlert(
-                with: NSLocalizedString("An Error has occured", comment: ""),
-                message: NSLocalizedString("Try again", comment: ""),
-                completion: self.loadUsers
-            )
+            self.teamRankingView?.state = .error
+            self.presentAlert(with: NSLocalizedString("An Error has occured", comment: ""),
+                              message: "Try again", completion: {
+                                self.teamRankingView?.state = .firstQuery
+                                self.loadUsers()
+            }) {
+                self.teamRankingView?.state = .error
+            }
         }.finally(on: .main) { [weak self] in
-            self?.teamRankingView?.isLoading = false
         }
     }
 }
