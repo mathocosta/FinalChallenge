@@ -9,7 +9,9 @@
 import UIKit
 
 final class UserPreferencesCoordinator: Coordinator {
-    var rootViewController: UIViewController
+    var rootViewController: UIViewController {
+        return navigationController
+    }
     var childCoordinators: [Coordinator]?
     var userPreferencesViewController: UserPreferencesViewController?
 
@@ -18,12 +20,10 @@ final class UserPreferencesCoordinator: Coordinator {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.navigationController.modalPresentationStyle = .fullScreen
-        self.rootViewController = self.navigationController.topViewController ?? UIViewController()
     }
 
     func start() {
         navigationController.navigationBar.isHidden = true
-        self.rootViewController = self.navigationController.topViewController ?? UIViewController()
         showUserPreferencesController()
     }
 
@@ -39,7 +39,7 @@ final class UserPreferencesCoordinator: Coordinator {
 
     func showUserPreferencesController() {
         let viewController = UserPreferencesViewController()
-        viewController.coordinator = self
+//        viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
     }
 }

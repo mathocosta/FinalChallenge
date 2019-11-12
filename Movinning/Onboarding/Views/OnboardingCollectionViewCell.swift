@@ -53,7 +53,7 @@ class OnboardingCollectionViewCell: UICollectionViewCell {
         return label
     }()
 
-    public var assetOpition: OnboardingAssetsOption? {
+    public var assetOpition: OnboardingMessageViewContent.AssetsOption? {
         didSet {
            setupViews()
         }

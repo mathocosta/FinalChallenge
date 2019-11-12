@@ -9,30 +9,28 @@
 import UIKit
 
 class UserPreferencesViewController: UIViewController, LoaderView {
+    // MARK: - Properties
     var loadingView: LoadingView {
         let view = LoadingView()
         return view
     }
 
-    var sports: [Sport] = Array(Sport.allTypes).sorted { (s1, s2) -> Bool in
-        return s1.name() < s2.name()
-    }
-    var selectedSports: [Sport] = []
+    var sports: [Sport] = Array(Sport.allTypes).sorted { $0.localizedName < $1.localizedName }
 
-    // MARK: - Properties
+    lazy var selectedSports: [Sport] = {
+        return UserDefaults.standard.userPreferences
+    }()
+
     lazy var preferencesView: UserPreferencesView = {
         let view = UserPreferencesView()
         return view
     }()
 
-    var coordinator: UserPreferencesCoordinator?
+    var coordinator: Coordinator?
 
     // MARK: - Lifecycle
-
     init() {
         super.init(nibName: nil, bundle: nil)
-        guard let preferredSports = UserDefaults.standard.userPreferences else { return }
-        selectedSports = preferredSports
     }
 
     required init?(coder: NSCoder) {
@@ -52,7 +50,7 @@ class UserPreferencesViewController: UIViewController, LoaderView {
     // MARK: - Actions
     func confirmUserPreferences() {
         let amountOfTime = ExerciseIntensity.intensity(for: preferencesView.timeSegmentedControl.selectedSegmentIndex)
-        UserDefaults.standard.chosenUserPreferences = true
+        UserDefaults.standard.hasChosenUserPreferences = true
         UserDefaults.standard.userPreferences = selectedSports
         UserDefaults.standard.practiceTime = amountOfTime
         HealthStoreService.allAllowedSports = selectedSports.count == 0 ? Sport.allTypes : Set(selectedSports)
@@ -64,8 +62,15 @@ class UserPreferencesViewController: UIViewController, LoaderView {
             case .success(let isAuthorized):
                 UserDefaults.standard.isHealthKitAuthorized = isAuthorized
                 DispatchQueue.main.async {
-                    self?.coordinator?.redirectToNextScreen()
                     self?.stopLoader()
+
+                    if let onboardingCoordinator = self?.coordinator as? OnboardingCoordinator {
+                        onboardingCoordinator.popUserPreferences()
+                    }
+
+                    if let profileTabCoordinator = self?.coordinator as? ProfileTabCoordinator {
+                        profileTabCoordinator.popUserPreferences()
+                    }
                 }
             case .failure(let error):
                 DispatchQueue.main.async {

@@ -8,10 +8,15 @@
 
 import Foundation
 
-enum MessageViewContent {
+enum OnboardingMessageViewContent {
     case healthKitAuthorization
     case cloudKitAuthorization
     case addMoreInformation
+
+    enum AssetsOption: String {
+        case animation
+        case image
+    }
 
     var title: String {
         switch self {
@@ -33,5 +38,17 @@ enum MessageViewContent {
         case .addMoreInformation:
             return NSLocalizedString("Complete registration", comment: "")
         }
+    }
+
+    var assetName: String {
+        switch self {
+        case .healthKitAuthorization: return "onboarding-healthkit"
+        case .cloudKitAuthorization: return "onboarding-cloudkit"
+        case .addMoreInformation: return "onboarding-userdata"
+        }
+    }
+
+    var assetKind: AssetsOption {
+        return .image
     }
 }

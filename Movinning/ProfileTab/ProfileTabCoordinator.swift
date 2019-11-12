@@ -88,9 +88,13 @@ final class ProfileTabCoordinator: Coordinator {
     }
 
     func showUserPreferences() {
-        if let coordinator = self.childCoordinators?.first as? UserPreferencesCoordinator {
-            coordinator.start()
-        }
+        let viewController = UserPreferencesViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func popUserPreferences() {
+        navigationController.popViewController(animated: true)
     }
 
 }

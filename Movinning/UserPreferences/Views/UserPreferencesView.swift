@@ -21,16 +21,18 @@ class UserPreferencesView: UIView {
     }()
 
     lazy var timeSegmentedControl: UISegmentedControl = {
-        let items = ExerciseIntensity.allTypes.sorted(by: { (e1, e2) -> Bool in
-            return e1.index() < e2.index()
-        }).map { (time) -> String in
-            return time.title()
-        }
-        let time = UserDefaults.standard.practiceTime ?? ExerciseIntensity.twoAndAHalfHours
+        let items = ExerciseIntensity.allTypes.sorted(by: { $0.rawValue > $1.rawValue }).map { $0.title() }
+        let time = UserDefaults.standard.practiceTime
         let control = UISegmentedControl(items: items)
         control.backgroundColor = .fadedRed
-        control.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.textColor], for: .selected)
-        control.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.backgroundColor], for: .normal)
+        control.setTitleTextAttributes([
+            .foregroundColor: UIColor.textColor,
+            .font: UIFont.itemDetail
+        ], for: .selected)
+        control.setTitleTextAttributes([
+            .foregroundColor: UIColor.backgroundColor,
+            .font: UIFont.itemDetail
+        ], for: .normal)
         control.selectedSegmentIndex = time.index()
         control.translatesAutoresizingMaskIntoConstraints = false
         return control
@@ -59,7 +61,7 @@ class UserPreferencesView: UIView {
         let button = UIButton()
         button.setTitle(NSLocalizedString("Confirm", comment: ""), for: UIControl.State.normal)
         button.backgroundColor = .clear
-        button.addTarget(self, action: #selector(nextButtonTapped), for: UIControl.Event.touchUpInside)
+        button.addTarget(self, action: #selector(nextButtonTapped(_:)), for: UIControl.Event.touchUpInside)
         button.setTitleColor(.fadedRed, for: UIControl.State.normal)
         button.setTitleColor(.textColor, for: UIControl.State.highlighted)
         button.titleLabel?.font = .action
@@ -96,19 +98,21 @@ extension UserPreferencesView: CodeView {
     }
 
     func setupConstraints() {
-        textTimeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 32).isActive = true
-        textTimeLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        textTimeLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        textTimeLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 32).isActive = true
+        textTimeLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        textTimeLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
         textTimeLabel.heightAnchor.constraint(equalToConstant: 68).isActive = true
 
         timeSegmentedControl.topAnchor.constraint(equalTo: textTimeLabel.bottomAnchor, constant: 16).isActive = true
-        timeSegmentedControl.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        timeSegmentedControl.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        timeSegmentedControl.leftAnchor.constraint(
+            equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        timeSegmentedControl.rightAnchor.constraint(
+            equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
         timeSegmentedControl.heightAnchor.constraint(equalToConstant: 32).isActive = true
 
         textSportsLabel.topAnchor.constraint(equalTo: timeSegmentedControl.bottomAnchor, constant: 16).isActive = true
-        textSportsLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
-        textSportsLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        textSportsLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16).isActive = true
+        textSportsLabel.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -16).isActive = true
         textSportsLabel.heightAnchor.constraint(equalToConstant: 52).isActive = true
 
         collectionView.topAnchor.constraint(equalTo: textSportsLabel.bottomAnchor, constant: 16).isActive = true
@@ -118,7 +122,7 @@ extension UserPreferencesView: CodeView {
         confirmButton.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 16).isActive = true
         confirmButton.leftAnchor.constraint(equalTo: textSportsLabel.leftAnchor).isActive = true
         confirmButton.rightAnchor.constraint(equalTo: textSportsLabel.rightAnchor).isActive = true
-        confirmButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16).isActive = true
+        confirmButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16).isActive = true
         confirmButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
     }
 

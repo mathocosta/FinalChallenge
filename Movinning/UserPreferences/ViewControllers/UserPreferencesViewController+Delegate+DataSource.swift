@@ -8,14 +8,14 @@
 
 import UIKit
 
-extension UserPreferencesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension UserPreferencesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sports.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = preferencesView.collectionView.dequeueReusableCell(
+        guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "UserPreferencesCollectionViewCell",
             for: indexPath) as? UserPreferencesCollectionViewCell else {
             return UICollectionViewCell()
@@ -27,7 +27,7 @@ extension UserPreferencesViewController: UICollectionViewDelegate, UICollectionV
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = preferencesView.collectionView.dequeueReusableCell(
+        guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "UserPreferencesCollectionViewCell", for: indexPath)
             as? UserPreferencesCollectionViewCell else { return }
         let sport = sports[indexPath.row]
@@ -49,14 +49,10 @@ extension UserPreferencesViewController: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: preferencesView.collectionView.frame.height / 2.1, height: 50)
+        return CGSize(width: collectionView.frame.height / 2.1, height: 50)
     }
+}
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
+extension UserPreferencesViewController: UICollectionViewDelegateFlowLayout {
 
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-
-    }
 }

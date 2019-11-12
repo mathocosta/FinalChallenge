@@ -20,9 +20,9 @@ class ProfileEditView: UIView {
 
     lazy var preferencesButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "settings"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handlePreferencesTap(_:))))
+        button.setImage(UIImage(named: "settings"), for: .normal)
+        button.addTarget(self, action: #selector(preferencesButtonTapped(_:)), for: .touchUpInside)
         return button
     }()
 
@@ -101,10 +101,9 @@ class ProfileEditView: UIView {
         onEditProfileImage()
     }
 
-    var preferencesAction: (() -> Void)?
-    @objc func handlePreferencesTap(_ sender: UITapGestureRecognizer? = nil) {
-        guard let preferencesAction = preferencesAction else { return }
-        preferencesAction()
+    var onEditPreferences: (() -> Void)?
+    @objc func preferencesButtonTapped(_ sender: UIButton) {
+        onEditPreferences?()
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -135,8 +134,8 @@ extension ProfileEditView: CodeView {
     func setupConstraints() {
         preferencesButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         preferencesButton.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        preferencesButton.widthAnchor.constraint(equalToConstant: 42).isActive = true
-        preferencesButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
+        preferencesButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        preferencesButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
         editProfileImage.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         profileImageConstrait = editProfileImage.topAnchor.constraint(

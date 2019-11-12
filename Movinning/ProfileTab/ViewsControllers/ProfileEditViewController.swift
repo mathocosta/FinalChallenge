@@ -50,7 +50,7 @@ class ProfileEditViewController: UIViewController, LoaderView {
         profileEditView.onLogout = logoutUser
         profileEditView.onEditProfileImage = showImagePicker
         profileEditView.onSaveProfile = saveButtonTapped
-        profileEditView.preferencesAction = showSelectPreferences
+        profileEditView.onEditPreferences = showSelectPreferences
     }
 
     // MARK: - Actions

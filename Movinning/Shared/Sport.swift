@@ -26,6 +26,10 @@ enum Sport: String, CaseIterable {
     case golf
     case swimming
 
+    var localizedName: String {
+        return NSLocalizedString(rawValue, comment: "")
+    }
+
     func services() -> [HealthStoreService] {
         switch self {
         case .walking:
@@ -64,10 +68,6 @@ enum Sport: String, CaseIterable {
     static var allTypes: Set<Sport> {
         let all = Sport.allCases
         return Set(all)
-    }
-
-    func name() -> String {
-        return NSLocalizedString(self.rawValue, comment: "")
     }
 
     static func permissions(for sports: Set<Sport>) -> Set<HKObjectType> {

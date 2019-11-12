@@ -9,17 +9,17 @@
 import UIKit
 
 class UserPreferencesCollectionViewCell: UICollectionViewCell {
-    var sport: Sport? {
+    var sport: Sport! {
         didSet {
             guard let sport = sport else { return }
-            titleLabel.text = NSLocalizedString(sport.name(), comment: "")
+            titleLabel.text = sport.localizedName
         }
     }
 
     var toggled: Bool = false {
         didSet {
-            self.backgroundColor = toggled ? UIColor.fadedRed : UIColor.backgroundColor
-            self.titleLabel.textColor = toggled ? UIColor.backgroundColor : UIColor.textColor
+            self.backgroundColor = toggled ? .fadedRed : .backgroundColor
+            self.titleLabel.textColor = toggled ? .backgroundColor : .textColor
         }
     }
 
@@ -36,7 +36,7 @@ class UserPreferencesCollectionViewCell: UICollectionViewCell {
     }()
 
     // MARK: - Lifecycle
-    override init(frame: CGRect) {
+    override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         layer.borderColor = UIColor.fadedRed.cgColor
         layer.borderWidth = 2

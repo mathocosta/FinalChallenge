@@ -15,7 +15,7 @@ class OnboardingViewController: UIViewController, LoaderView {
         return view
     }()
 
-    weak var coordinator: FirstLoginCoordinator?
+    weak var coordinator: OnboardingCoordinator?
     var beginningPage: Int?
     var movedToBeginningPage: Bool = false
 
@@ -24,22 +24,7 @@ class OnboardingViewController: UIViewController, LoaderView {
         return view
     }()
 
-    lazy var content: [Onboard] = {
-        var array = [Onboard]()
-        let healthKit: Onboard = Onboard(contentType: .healthKitAuthorization,
-                                        assetName: "Artboard",
-                                        assetKind: .image)
-        let iCloud: Onboard = Onboard(contentType: .cloudKitAuthorization,
-                                         assetName: "Artboard2",
-                                         assetKind: .image)
-        let registration: Onboard = Onboard(contentType: .addMoreInformation,
-                                      assetName: "Artboard3",
-                                      assetKind: .image)
-        array.append(healthKit)
-        array.append(iCloud)
-        array.append(registration)
-        return array
-    }()
+    var content: [OnboardingMessageViewContent] = [.healthKitAuthorization, .cloudKitAuthorization, .addMoreInformation]
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -108,7 +93,7 @@ class OnboardingViewController: UIViewController, LoaderView {
         let onboard = content[index]
         self.startLoader()
 
-        switch onboard.contentType {
+        switch onboard {
         case .healthKitAuthorization:
             self.stopLoader()
             coordinator?.showUserPreferences()

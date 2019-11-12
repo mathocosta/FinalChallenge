@@ -38,10 +38,8 @@
 		2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D61A232BBDD300A33470 /* CreateTeamViewController.swift */; };
 		2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D61C232BBDE300A33470 /* CreateTeamView.swift */; };
 		2797D61F232D315200A33470 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2797D61E232D315200A33470 /* CloudKit.framework */; };
-		2797D624232D3B7800A33470 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D623232D3B7800A33470 /* MessageView.swift */; };
-		2797D626232D3F3900A33470 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D625232D3F3900A33470 /* MessageViewController.swift */; };
-		2797D628232D3F6E00A33470 /* FirstLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D627232D3F6E00A33470 /* FirstLoginCoordinator.swift */; };
-		2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D629232D480600A33470 /* MessageViewContent.swift */; };
+		2797D628232D3F6E00A33470 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D627232D3F6E00A33470 /* OnboardingCoordinator.swift */; };
+		2797D62A232D480600A33470 /* OnboardingMessageViewContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D629232D480600A33470 /* OnboardingMessageViewContent.swift */; };
 		2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D62B232D76A100A33470 /* CKRecordExtension.swift */; };
 		27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */; };
 		27EE5A4A233051DB009E2D6B /* Movinning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27EE5A47233051DB009E2D6B /* Movinning.xcdatamodeld */; };
@@ -130,7 +128,6 @@
 		5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
 		57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */; };
-		57479DB52359E1C300C21D09 /* Onboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB42359E1C300C21D09 /* Onboard.swift */; };
 		57479DB72359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB62359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift */; };
 		57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF126D233CE52C00380A88 /* MovinningTests.swift */; };
 		57FF127C233CE53D00380A88 /* MovinningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FF127B233CE53D00380A88 /* MovinningUITests.swift */; };
@@ -186,10 +183,8 @@
 		2797D61A232BBDD300A33470 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
 		2797D61C232BBDE300A33470 /* CreateTeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamView.swift; sourceTree = "<group>"; };
 		2797D61E232D315200A33470 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		2797D623232D3B7800A33470 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		2797D625232D3F3900A33470 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		2797D627232D3F6E00A33470 /* FirstLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginCoordinator.swift; sourceTree = "<group>"; };
-		2797D629232D480600A33470 /* MessageViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewContent.swift; sourceTree = "<group>"; };
+		2797D627232D3F6E00A33470 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		2797D629232D480600A33470 /* OnboardingMessageViewContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingMessageViewContent.swift; sourceTree = "<group>"; };
 		2797D62B232D76A100A33470 /* CKRecordExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKRecordExtension.swift; sourceTree = "<group>"; };
 		27C56E5B231EADB0009CCAAB /* HealthStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreService.swift; sourceTree = "<group>"; };
 		27EE5A48233051DB009E2D6B /* FinalChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FinalChallenge.xcdatamodel; sourceTree = "<group>"; };
@@ -278,7 +273,6 @@
 		5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
-		57479DB42359E1C300C21D09 /* Onboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboard.swift; sourceTree = "<group>"; };
 		57479DB62359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnboardCollectionViewDelegate&DataSource.swift"; sourceTree = "<group>"; };
 		57FF126B233CE52C00380A88 /* MovinningTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovinningTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57FF126D233CE52C00380A88 /* MovinningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningTests.swift; sourceTree = "<group>"; };
@@ -347,7 +341,6 @@
 				57479DA9235761AD00C21D09 /* Onboarding */,
 				3064CF34236C624F0040220E /* UserPreferences */,
 				278717F723207CF700A2A481 /* TeamTab */,
-				2797D620232D38E400A33470 /* FirstLogin */,
 				275FE862231D3664001695D2 /* AppDelegate.swift */,
 				275FE87F231D3DD2001695D2 /* AppCoordinator.swift */,
 				275FE871231D3666001695D2 /* Info.plist */,
@@ -470,33 +463,6 @@
 				27EE5A6C23306325009E2D6B /* InfoPlist.strings */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		2797D620232D38E400A33470 /* FirstLogin */ = {
-			isa = PBXGroup;
-			children = (
-				2797D622232D38F700A33470 /* ViewControllers */,
-				2797D621232D38F200A33470 /* Views */,
-				2797D627232D3F6E00A33470 /* FirstLoginCoordinator.swift */,
-				2797D629232D480600A33470 /* MessageViewContent.swift */,
-			);
-			path = FirstLogin;
-			sourceTree = "<group>";
-		};
-		2797D621232D38F200A33470 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				2797D623232D3B7800A33470 /* MessageView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		2797D622232D38F700A33470 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				2797D625232D3F3900A33470 /* MessageViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		2797D62F232E730500A33470 /* CloudKit */ = {
@@ -862,7 +828,8 @@
 			children = (
 				304F352A235DFAB5005F4900 /* ViewControllers */,
 				304F3529235DFAAF005F4900 /* Views */,
-				57479DB42359E1C300C21D09 /* Onboard.swift */,
+				2797D629232D480600A33470 /* OnboardingMessageViewContent.swift */,
+				2797D627232D3F6E00A33470 /* OnboardingCoordinator.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1097,7 +1064,6 @@
 				2B85FC752369AD5500478BCE /* TeamRankingViewCell.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
-				57479DB52359E1C300C21D09 /* Onboard.swift in Sources */,
 				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
 				30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
@@ -1105,7 +1071,6 @@
 				2B417F9E23200052002AD09D /* ProgressViewController.swift in Sources */,
 				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
-				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */,
 				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
@@ -1122,9 +1087,9 @@
 				2B6E354123229C520092A481 /* Input.swift in Sources */,
 				2B417FA02320006F002AD09D /* ProgressView.swift in Sources */,
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
-				2797D628232D3F6E00A33470 /* FirstLoginCoordinator.swift in Sources */,
+				2797D628232D3F6E00A33470 /* OnboardingCoordinator.swift in Sources */,
 				278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */,
-				2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */,
+				2797D62A232D480600A33470 /* OnboardingMessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				2B85FC6523687F5400478BCE /* UIViewController+Alert.swift in Sources */,
 				278718052320849900A2A481 /* TeamEntranceView.swift in Sources */,
@@ -1162,7 +1127,6 @@
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
 				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
-				2797D626232D3F3900A33470 /* MessageViewController.swift in Sources */,
 				2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */,
 				27C56E5C231EADB0009CCAAB /* HealthStoreService.swift in Sources */,
 				2BA7B7CE233B919000134C6E /* UsersPhotoView.swift in Sources */,
@@ -1376,7 +1340,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010192040;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1384,7 +1348,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1402,7 +1366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3010192040;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = U3BJSYBS9R;
+				DEVELOPMENT_TEAM = Y93JMM3H2T;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1410,7 +1374,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning-4";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

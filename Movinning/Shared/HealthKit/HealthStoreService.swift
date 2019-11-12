@@ -9,7 +9,7 @@
 import Foundation
 import HealthKit
 
-enum HealthStoreService: CaseIterable {
+enum HealthStoreService: String, CaseIterable {
     case stepCount
     case distanceWalkingRunning
     case soccer
@@ -113,13 +113,17 @@ enum HealthStoreService: CaseIterable {
     }
 
     static var allAllowedSports: Set<Sport> = {
-        guard let sports = UserDefaults.standard.userPreferences else { return Sport.allTypes }
+        let sports = UserDefaults.standard.userPreferences
+
+        if sports.count == 0 {
+            return Sport.allTypes
+        }
+
         return Set(sports)
     }()
 
     static var exerciseIntensity: ExerciseIntensity = {
-        guard let intensity = UserDefaults.standard.practiceTime else { return .twoAndAHalfHours }
-        return intensity
+        return UserDefaults.standard.practiceTime
     }()
 
     var unit: HKUnit {
@@ -185,41 +189,6 @@ enum HealthStoreService: CaseIterable {
 
 extension HealthStoreService {
     static func type(forTag tag: String) -> HealthStoreService {
-        switch tag {
-        case "stepCount":
-            return .stepCount
-        case "distanceWalkingRunning":
-            return .distanceWalkingRunning
-        case "soccer":
-            return .soccer
-        case "cycling":
-            return .cycling
-        case "functionalTraining":
-            return .functionalTraining
-        case "traditionalTraining":
-            return .traditionalTraining
-        case "cricket":
-            return .cricket
-        case "hockey":
-            return .hockey
-        case "tennis":
-            return .tennis
-        case "volleyball":
-            return .volleyball
-        case "tableTennis":
-            return .tableTennis
-        case "basketball":
-            return .basketball
-        case "baseball":
-            return .baseball
-        case "rugby":
-            return .rugby
-        case "golf":
-            return .golf
-        case "swimming":
-            return .swimming
-        default:
-            return .stepCount
-        }
+        return HealthStoreService(rawValue: tag) ?? .stepCount
     }
 }
