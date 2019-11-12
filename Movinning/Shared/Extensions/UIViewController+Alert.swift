@@ -16,9 +16,9 @@ extension UIViewController {
             completion()
             alert.dismiss(animated: true, completion: nil)
         }
-        
+
         if (cancel != nil) {
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .destructive) { (action) in
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .destructive) { (_) in
                 cancel?()
             }
             alert.addAction(cancelAction)

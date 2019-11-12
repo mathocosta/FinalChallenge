@@ -66,7 +66,7 @@ extension UserDefaults {
             return sportPreferences ?? []
         }
         set {
-            let stringPreferences = newValue.map{ $0.rawValue }
+            let stringPreferences = newValue.map { $0.rawValue }
             set(stringPreferences, forKey: #function)
         }
     }

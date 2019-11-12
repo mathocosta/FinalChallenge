@@ -49,7 +49,6 @@ class TeamRankingViewController: UIViewController {
             }) {
                 self.teamRankingView?.state = .error
             }
-        }.finally(on: .main) { [weak self] in
         }
     }
 }

@@ -11,14 +11,14 @@ import XCTest
 class MovinningSportTests: XCTestCase {
 
     override func setUp() {
-        
+
     }
 
     override func tearDown() {
-        
+
     }
 
     func test_sport_serviceForSport() {
-        
+
     }
 }

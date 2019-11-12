@@ -60,7 +60,7 @@ class OnboardingCoordinator: Coordinator {
         }
     }
 
-    func showUserPreferences() {        
+    func showUserPreferences() {
         let viewController = UserPreferencesViewController()
         viewController.coordinator = self
         navigationController.pushViewController(viewController, animated: true)
