@@ -85,7 +85,7 @@ enum ExerciseIntensity: Int, CaseIterable {
 
     func recommend(_ goal: Goal) -> Bool {
         let service = HealthStoreService.type(forTag: goal.activityType)
-        let recommendedAmount = HealthStoreService.exerciseIntensity.recommendedAmount(for: service)
+        let recommendedAmount = self.recommendedAmount(for: service)
             * (goal.dailyReset ? 1 : 7)
         return goal.requiredAmount() <= recommendedAmount
     }
