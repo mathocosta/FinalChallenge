@@ -18,6 +18,8 @@
 "Profile" = "Perfil";
 "Teams" = "Times";
 "Name" = "Nome";
+"First name" = "Nome";
+"Last name" = "Sobrenome";
 "Description" = "Descrição";
 "City" = "Cidade";
 "Neighborhood" = "Bairro";

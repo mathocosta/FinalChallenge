@@ -27,14 +27,14 @@ class ProfileEditView: UIView {
     }()
 
     lazy var firstNameInput: Input = {
-        let input = Input(frame: .zero, label: NSLocalizedString("First Name", comment: ""))
+        let input = Input(frame: .zero, label: NSLocalizedString("First name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input
     }()
 
     lazy var lastNameInput: Input = {
-        let input = Input(frame: .zero, label: NSLocalizedString("Last Name", comment: ""))
+        let input = Input(frame: .zero, label: NSLocalizedString("Last name", comment: ""))
         input.translatesAutoresizingMaskIntoConstraints = false
         input.inputTextField.keyboardType = .alphabet
         return input

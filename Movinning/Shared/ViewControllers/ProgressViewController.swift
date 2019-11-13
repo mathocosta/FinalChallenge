@@ -94,13 +94,13 @@ class ProgressViewController: UIViewController {
                 preferredStyle: .alert
             )
 
-            let confirmAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            let confirmAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
                 UserDefaults.standard.hasChosenUserPreferences = true
                 profileCoordinator.showProfileEditViewController(for: self.user)
                 profileCoordinator.showUserPreferences()
             }
 
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
                 UserDefaults.standard.hasChosenUserPreferences = true
                 alertController.dismiss(animated: true) {
                     defaults.hasChosenUserPreferences = true

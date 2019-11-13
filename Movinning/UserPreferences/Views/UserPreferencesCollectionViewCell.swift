@@ -63,7 +63,7 @@ extension UserPreferencesCollectionViewCell: CodeView {
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -16).isActive = true
         titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, constant: -16).isActive = true
+        titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
 
     func setupAdditionalConfiguration() {

@@ -32,9 +32,6 @@ final class ProfileTabCoordinator: Coordinator {
             image: UIImage(named: "profile-unselected"),
             selectedImage: UIImage(named: "profile-selected")
         )
-        self.childCoordinators = [
-            UserPreferencesCoordinator(navigationController: navigationController)
-        ]
     }
 
     func start() {

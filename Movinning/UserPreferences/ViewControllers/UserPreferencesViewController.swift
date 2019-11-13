@@ -55,15 +55,12 @@ class UserPreferencesViewController: UIViewController, LoaderView {
         UserDefaults.standard.practiceTime = amountOfTime
         HealthStoreService.allAllowedSports = selectedSports.count == 0 ? Sport.allTypes : Set(selectedSports)
         HealthStoreService.exerciseIntensity = amountOfTime
-        self.startLoader()
         let healthStoreManager = HealthStoreManager()
         healthStoreManager.requestAuthorization { [weak self] (result) in
             switch result {
             case .success(let isAuthorized):
                 UserDefaults.standard.isHealthKitAuthorized = isAuthorized
                 DispatchQueue.main.async {
-                    self?.stopLoader()
-
                     if let onboardingCoordinator = self?.coordinator as? OnboardingCoordinator {
                         onboardingCoordinator.popUserPreferences()
                     }
