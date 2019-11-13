@@ -115,7 +115,6 @@
 		3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */; };
 		3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
 		3064CF46237067CF0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
-		3064CF48237197070040220E /* UserPreferencesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF47237197070040220E /* UserPreferencesCoordinator.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
@@ -260,7 +259,6 @@
 		3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewController.swift; sourceTree = "<group>"; };
 		3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesCollectionViewCell.swift; sourceTree = "<group>"; };
 		3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserPreferencesViewController+Delegate+DataSource.swift"; sourceTree = "<group>"; };
-		3064CF47237197070040220E /* UserPreferencesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesCoordinator.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -800,7 +798,6 @@
 			children = (
 				3064CF36236C62620040220E /* ViewControllers */,
 				3064CF35236C625C0040220E /* Views */,
-				3064CF47237197070040220E /* UserPreferencesCoordinator.swift */,
 			);
 			path = UserPreferences;
 			sourceTree = "<group>";
@@ -1042,7 +1039,6 @@
 				3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
-				3064CF48237197070040220E /* UserPreferencesCoordinator.swift in Sources */,
 				57479DB72359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift in Sources */,
 				2BF2958B234F6B310017E3B2 /* GroupMemberListView.swift in Sources */,
 				3006C5622338F79D00DA501B /* RoundedView.swift in Sources */,

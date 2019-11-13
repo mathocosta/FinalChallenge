@@ -18,6 +18,8 @@
 "Profile" = "Profile";
 "Teams" = "Teams";
 "Name" = "Name";
+"First name" = "First Name";
+"Last name" = "Last name";
 "Description" = "Description";
 "City" = "City";
 "Neighborhood" = "Neighborhood";
@@ -32,7 +34,7 @@
 "Complete registration" = "Your registration was a success! However, you can also fill your profile with more information, if you're interested.";
 "Name Field Missing" = "Sorry, but it takes a name for the team. It is the minimum necessary";
 "Invalid Name Title" = "Invalid Name";
-"Invalid Name Message" = "The field 'name' is required";
+"Invalid Name Message" = "The field 'first name' is required";
 "Invalid Email Title" = "Invalid email";
 "Invalid Email Message" = "The entered email is invalid";
 "Next" = "Next";
@@ -48,7 +50,7 @@
 "walking" = "Walking";
 "running" = "Running";
 "soccer" = "Soccer";
-"cycling" = "Ciclismo";
+"cycling" = "Cycling";
 "training" = "Training";
 "cricket" = "Cricket";
 "hockey" = "Hockey";
