@@ -46,7 +46,7 @@ final class TeamTabCoordinator: Coordinator {
     }
 
     func showTeamProgress(for team: Team, user: User) { //TODO Quando houver metas em time, mudar para TEAM
-        let view = UsersCloud(frame: .zero,
+        let view = UsersCloudView(frame: .zero,
                               team: team,
                               action: showDetails)
         view.translatesAutoresizingMaskIntoConstraints = false

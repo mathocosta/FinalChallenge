@@ -9,7 +9,7 @@
 import UIKit
 
 class TeamRankingView: UIView {
-    
+
     enum State {
         case firstQuery
         case ready
@@ -81,7 +81,7 @@ class TeamRankingView: UIView {
         stackView.spacing = 20.0
         return stackView
     }()
-    
+
     let emptyStateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +136,7 @@ extension TeamRankingView: CodeView {
         loadingStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         loadingStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         loadingStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        
+
         emptyStateStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         emptyStateStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         emptyStateStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true

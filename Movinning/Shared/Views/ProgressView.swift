@@ -88,8 +88,10 @@ extension ProgressView: CodeView {
 
         centerView?.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         centerView?.centerYAnchor.constraint(equalTo: tracksView.centerYAnchor).isActive = true
-        centerView?.widthAnchor.constraint(equalTo: tracksView.widthAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
-        centerView?.heightAnchor.constraint(equalTo: tracksView.heightAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
+        centerView?.widthAnchor.constraint(
+            equalTo: tracksView.widthAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
+        centerView?.heightAnchor.constraint(
+            equalTo: tracksView.heightAnchor, constant: -16*CGFloat(tracksView.amountOfTracks)-32).isActive = true
 //        centerView?.widthAnchor.constraint(equalToConstant: 119).isActive = true
 //        centerView?.heightAnchor.constraint(equalToConstant: 180).isActive = true
 
@@ -105,7 +107,7 @@ extension ProgressView: CodeView {
         tracksView.widthAnchor.constraint(equalToConstant: screenBounds.width-105).isActive = true
         tracksView.heightAnchor.constraint(equalToConstant: screenBounds.height * 0.55).isActive = true
 
-        if (hasRanking) {
+        if hasRanking {
             rankingButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
             rankingButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
             rankingButton.widthAnchor.constraint(equalToConstant: 51).isActive = true

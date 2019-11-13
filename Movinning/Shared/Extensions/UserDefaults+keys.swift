@@ -51,4 +51,37 @@ extension UserDefaults {
         get { return value(forKey: #function) as? Date }
         set { set(newValue, forKey: #function) }
     }
+
+    /// Flag que diz se o usuário preencheu suas preferências
+    var hasChosenUserPreferences: Bool {
+        get { return bool(forKey: #function) }
+        set { set(newValue, forKey: #function) }
+    }
+
+    /// Preferências escolhidas pelo usuário
+    var userPreferences: [Sport] {
+        get {
+            let stringPreferences = value(forKey: #function) as? [String]
+            let sportPreferences = stringPreferences?.compactMap(Sport.init)
+            return sportPreferences ?? []
+        }
+        set {
+            let stringPreferences = newValue.map { $0.rawValue }
+            set(stringPreferences, forKey: #function)
+        }
+    }
+
+    /// Preferências escolhidas pelo usuário
+    var practiceTime: ExerciseIntensity {
+        get {
+            if let intValue = value(forKey: #function) as? Int {
+                return ExerciseIntensity(rawValue: intValue) ?? .twoAndAHalfHours
+            }
+            return .twoAndAHalfHours
+        }
+        set {
+            let intValue = newValue.amount()
+            set(intValue, forKey: #function)
+        }
+    }
 }

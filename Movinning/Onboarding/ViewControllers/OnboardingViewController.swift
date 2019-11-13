@@ -15,32 +15,18 @@ class OnboardingViewController: UIViewController, LoaderView {
         return view
     }()
 
-    weak var coordinator: FirstLoginCoordinator?
+    weak var coordinator: OnboardingCoordinator?
     var beginningPage: Int?
     var movedToBeginningPage: Bool = false
 
-    let onboardingView: OnboardingView
-
-    lazy var content: [Onboard] = {
-        var array = [Onboard]()
-        let healthKit: Onboard = Onboard(contentType: .healthKitAuthorization,
-                                        assetName: "Artboard",
-                                        assetKind: .image)
-        let iCloud: Onboard = Onboard(contentType: .cloudKitAuthorization,
-                                         assetName: "Artboard2",
-                                         assetKind: .image)
-        let registration: Onboard = Onboard(contentType: .addMoreInformation,
-                                      assetName: "Artboard3",
-                                      assetKind: .image)
-        array.append(healthKit)
-        array.append(iCloud)
-        array.append(registration)
-        return array
+    let onboardingView: OnboardingView = {
+        let view = OnboardingView()
+        return view
     }()
 
-    init() {
-        self.onboardingView = OnboardingView()
+    var content: [OnboardingMessageViewContent] = [.healthKitAuthorization, .cloudKitAuthorization, .addMoreInformation]
 
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -107,24 +93,10 @@ class OnboardingViewController: UIViewController, LoaderView {
         let onboard = content[index]
         self.startLoader()
 
-        switch onboard.contentType {
+        switch onboard {
         case .healthKitAuthorization:
-            let healthStoreManager = HealthStoreManager()
-            healthStoreManager.requestAuthorization { [weak self] (result) in
-                switch result {
-                case .success(let isAuthorized):
-                    userDefaults.isHealthKitAuthorized = isAuthorized
-                    DispatchQueue.main.async {
-                        self?.stopLoader()
-                        self?.coordinator?.showNextScreen()
-                    }
-                case .failure(let error):
-                    DispatchQueue.main.async {
-                        self?.stopLoader()
-                        print(error.localizedDescription)
-                    }
-                }
-            }
+            self.stopLoader()
+            coordinator?.showUserPreferences()
         case .cloudKitAuthorization:
             SessionManager.current.loginUser().done(on: .main) { _ in
                 print("Success on login")

@@ -10,13 +10,8 @@ import UIKit
 
 class OnboardingView: UIView {
     var currentPage: Int {
-        get {
-            return self.pageControl.currentPage
-        }
-
-        set(newValue) {
-            self.pageControl.currentPage = newValue
-        }
+        get { return self.pageControl.currentPage }
+        set { self.pageControl.currentPage = newValue }
     }
 
     // MARK: - Properties
@@ -136,9 +131,9 @@ extension OnboardingView: CodeView {
         pageControl.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
 
         buttonsStackView.topAnchor.constraint(equalTo: pageControl.bottomAnchor).isActive = true
-        buttonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        buttonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        buttonsStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        buttonsStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        buttonsStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        buttonsStackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 
     func setupAdditionalConfiguration() {

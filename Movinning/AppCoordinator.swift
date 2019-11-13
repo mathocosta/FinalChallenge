@@ -11,7 +11,7 @@ import UIKit
 final class AppCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator]?
 
-    var firstLoginCoordinator: FirstLoginCoordinator?
+    var firstLoginCoordinator: OnboardingCoordinator?
 
     var rootViewController: UIViewController {
         return tabBarController
@@ -36,17 +36,17 @@ final class AppCoordinator: NSObject, Coordinator {
     }
 
     func start() {
-        if UserDefaults.standard.userNeedToLogin {
+        guard !UserDefaults.standard.userNeedToLogin else {
             showFirstLoginFlow()
-        } else {
-            showMainFlow()
+            return
         }
+        showMainFlow()
     }
 
     func showFirstLoginFlow() {
         let navigationController = UINavigationController()
         navigationController.modalPresentationStyle = .fullScreen
-        firstLoginCoordinator = FirstLoginCoordinator(navigationController: navigationController)
+        firstLoginCoordinator = OnboardingCoordinator(navigationController: navigationController)
         firstLoginCoordinator?.start()
         firstLoginCoordinator?.didLoginEnded = { [weak self] in
             self?.showMainFlow()

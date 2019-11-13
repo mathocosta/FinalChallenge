@@ -8,6 +8,6 @@
 
 import Foundation
 
-//protocol PointDisplayUpdater {
-//    func didUpdate(newAmount: Int)
-//}
+protocol PointDisplayUpdater {
+    func didUpdate(newAmount: Int)
+}

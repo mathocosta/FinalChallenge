@@ -8,9 +8,10 @@
 
 import UIKit
 
-extension OnboardingViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension OnboardingViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = onboardingView.collectionView.dequeueReusableCell(withReuseIdentifier:
             "OnboardingCollectionViewCell", for: indexPath) as? OnboardingCollectionViewCell
             else {return UICollectionViewCell()}
@@ -22,7 +23,7 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
         }
 
         cell.titleLabel.text = content[indexPath.row].title
-        cell.descriptionTextView.text = content[indexPath.row].description
+        cell.descriptionTextView.text = content[indexPath.row].message
         cell.setImage(name: content[indexPath.row].assetName)
 
         return cell
@@ -32,11 +33,15 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
         return content.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
 
@@ -64,3 +69,5 @@ extension OnboardingViewController: UICollectionViewDataSource, UICollectionView
         }
     }
 }
+
+extension OnboardingViewController: UICollectionViewDelegateFlowLayout {}

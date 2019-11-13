@@ -58,7 +58,7 @@ class TeamListView: UIView {
         tableView.isHidden = true
         return tableView
     }()
-    
+
     let emptyStateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +140,7 @@ class TeamListView: UIView {
         guard let onRefreshControl = onRefreshControl else { return }
         onRefreshControl()
     }
-    
+
     var onTryAgain: (() -> Void)?
     @objc func handleTryAgainButton(_ sender: UITapGestureRecognizer? = nil) {
         guard let onTryAgain = onTryAgain else { return }
@@ -162,7 +162,7 @@ extension TeamListView: CodeView {
         loadingStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         loadingStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         loadingStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
-        
+
         emptyStateStackView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true
         emptyStateStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
         emptyStateStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
@@ -172,8 +172,7 @@ extension TeamListView: CodeView {
         resultsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
         resultsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         resultsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
-        
+
     }
 
     func setupAdditionalConfiguration() {

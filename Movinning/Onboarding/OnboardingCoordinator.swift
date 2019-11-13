@@ -1,5 +1,5 @@
 //
-//  FirstLoginCoordinator.swift
+//  OnboardingCoordinator.swift
 //  FinalChallenge
 //
 //  Created by Matheus Oliveira Costa on 14/09/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstLoginCoordinator: Coordinator {
+class OnboardingCoordinator: Coordinator {
     var childCoordinators: [Coordinator]?
 
     var rootViewController: UIViewController {
@@ -29,6 +29,8 @@ class FirstLoginCoordinator: Coordinator {
         let userDefaults = UserDefaults.standard
         if !userDefaults.isHealthKitAuthorized {
             showMessageView(for: 0)
+        } else if !userDefaults.hasChosenUserPreferences {
+            showUserPreferences()
         } else if !userDefaults.isCloudKitAuthorized {
             showMessageView(for: 1)
         } else if !userDefaults.isRegistrationComplete {
@@ -39,7 +41,7 @@ class FirstLoginCoordinator: Coordinator {
     func showNextScreen() {
         if let onboardViewController = onboardViewController {
             let currentPage = onboardViewController.onboardingView.currentPage
-            let contentType = onboardViewController.content[currentPage].contentType
+            let contentType = onboardViewController.content[currentPage]
             if contentType == .healthKitAuthorization {
                 showMessageView(for: 1)
             } else if contentType == .cloudKitAuthorization {
@@ -50,7 +52,21 @@ class FirstLoginCoordinator: Coordinator {
                     didLoginEnded()
                 })
             }
+        } else {
+            showMessageView(for: 0)
         }
+    }
+
+    func showUserPreferences() {
+        let viewController = UserPreferencesViewController()
+        viewController.coordinator = self
+        viewController.title = NSLocalizedString("Choose your preferences", comment: "")
+        navigationController.pushViewController(viewController, animated: true)
+    }
+
+    func popUserPreferences() {
+        navigationController.popViewController(animated: true)
+        showNextScreen()
     }
 
     func showMessageView(for contentTypeIndex: Int) {

@@ -14,7 +14,7 @@ class RoundedImageView: UIImageView, RoundedViewProtocol {
         super.layoutSubviews()
         self.setRounded()
         self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.systemBlue.cgColor
+        self.layer.borderColor = UIColor.trackBlue.cgColor
     }
 
 }

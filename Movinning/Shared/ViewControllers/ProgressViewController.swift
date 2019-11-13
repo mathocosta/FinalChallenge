@@ -45,8 +45,7 @@ class ProgressViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = centerView is UsersCloud ? user.team?.name : NSLocalizedString("Profile", comment: "")
-//        progressView.onProfileDetails = showProfileEditForm
+        title = centerView is UsersCloudView ? user.team?.name : NSLocalizedString("Profile", comment: "")
     }
 
     func setProgressBars() {
@@ -85,9 +84,42 @@ class ProgressViewController: UIViewController {
         setProgressBars()
     }
 
-    // MARK: - Actions
-//    func showProfileEditForm() {
-//        coordinator?.showProfileEditViewController(for: user)
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        // Isso convoca usuários a atualizarem suas preferências se não tiverem sido feitas ainda.
+        let defaults = UserDefaults.standard
+        if let profileCoordinator = coordinator as? ProfileTabCoordinator, !defaults.hasChosenUserPreferences {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("Choose your preferences", comment: ""),
+                message: NSLocalizedString("Choose your preferences message", comment: ""),
+                preferredStyle: .alert
+            )
 
+            let confirmAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default) { _ in
+                UserDefaults.standard.hasChosenUserPreferences = true
+                profileCoordinator.showProfileEditViewController(for: self.user)
+                profileCoordinator.showUserPreferences()
+            }
+
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
+                UserDefaults.standard.hasChosenUserPreferences = true
+                alertController.dismiss(animated: true) {
+                    defaults.hasChosenUserPreferences = true
+                }
+            }
+
+            alertController.addAction(confirmAction)
+            alertController.addAction(cancelAction)
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+
+}
+
+extension ProgressViewController: PointDisplayUpdater {
+    func didUpdate(newAmount: Int) {
+        DispatchQueue.main.async {
+            guard let profileView = self.centerView as? ProfileDetailsView else { return }
+            profileView.level = newAmount
+        }
+    }
 }
