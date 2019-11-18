@@ -6,9 +6,9 @@
 //  Copyright © 2019 The Rest of Us. All rights reserved.
 //
 
-@testable import Movinning
 import XCTest
 import HealthKit
+@testable import Movinning
 
 class MovinningHealthStoreManagerTests: XCTestCase {
     var manager: HealthStoreManager!
@@ -22,6 +22,10 @@ class MovinningHealthStoreManagerTests: XCTestCase {
     override func tearDown() {}
 
     func test_healthstoremanager_quantitySumToday() {
+        guard let testService = testService else {
+            XCTAssert(false)
+            return
+        }
         manager.quantitySumToday(of: testService) { (results) in
             switch results {
             case .success(let statistics):
@@ -33,6 +37,10 @@ class MovinningHealthStoreManagerTests: XCTestCase {
     }
 
     func test_healthstoremanager_quantitySumSinceLastHour() {
+        guard let testService = testService else {
+            XCTAssert(false)
+            return
+        }
         manager.quantitySumSinceLastHour(of: testService) { (results) in
             switch results {
             case .success(let statistics):
@@ -44,6 +52,10 @@ class MovinningHealthStoreManagerTests: XCTestCase {
     }
 
     func test_healthstoremanager_samples() {
+        guard let testService = testService else {
+            XCTAssert(false)
+            return
+        }
         manager.samples(of: testService) { (results) in
             switch results {
             case .success(let samples):
