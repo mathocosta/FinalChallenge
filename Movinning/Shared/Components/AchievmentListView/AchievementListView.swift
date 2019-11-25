@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievmentListView: UIView {
+class AchievementListView: UIView {
 
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -26,17 +26,25 @@ class AchievmentListView: UIView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(
-            AchievmentItemViewCell.self,
-            forCellWithReuseIdentifier: String(describing: AchievmentItemViewCell.self))
+            AchievementItemViewCell.self,
+            forCellWithReuseIdentifier: String(describing: AchievementItemViewCell.self))
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         return collectionView
     }()
 
+    public convenience init(frame: CGRect, direction: UICollectionView.ScrollDirection) {
+        self.init(frame: frame)
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = direction
+        }
+
+        setupView()
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
     }
 
     required init?(coder: NSCoder) {
@@ -45,7 +53,7 @@ class AchievmentListView: UIView {
 
 }
 
-extension AchievmentListView: CodeView {
+extension AchievementListView: CodeView {
     func buildViewHierarchy() {
         addSubview(titleLabel)
         addSubview(collectionView)
@@ -60,30 +68,36 @@ extension AchievmentListView: CodeView {
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 14).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 172).isActive = true
+        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
 
     func setupAdditionalConfiguration() {
     }
 }
 
-extension AchievmentListView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AchievementListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: AchievmentItemViewCell.self), for: indexPath)
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+            String(describing: AchievementItemViewCell.self), for: indexPath)
         return cell
     }
 }
 
-extension AchievmentListView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: AchievmentItemViewCell.width, height: AchievmentItemViewCell.height)
+extension AchievementListView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: AchievementItemViewCell.width, height: AchievementItemViewCell.height)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 32
     }
 }

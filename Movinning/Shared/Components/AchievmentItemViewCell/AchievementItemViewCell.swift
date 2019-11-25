@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AchievmentItemViewCell: UICollectionViewCell {
+class AchievementItemViewCell: UICollectionViewCell {
 
     static let height: CGFloat = 172
     static let width: CGFloat = 130
@@ -40,7 +40,7 @@ class AchievmentItemViewCell: UICollectionViewCell {
 
 }
 
-extension AchievmentItemViewCell: CodeView {
+extension AchievementItemViewCell: CodeView {
     func buildViewHierarchy() {
         addSubview(iconImageView)
         addSubview(label)
