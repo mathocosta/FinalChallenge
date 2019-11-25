@@ -125,7 +125,6 @@
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
 		5731F2DB238565F7001E797D /* AchievementsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731F2DA238565F7001E797D /* AchievementsTabCoordinator.swift */; };
 		5731F2DD23856813001E797D /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731F2DC23856813001E797D /* AchievementsViewController.swift */; };
-		5731F2E02385713F001E797D /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731F2DF2385713F001E797D /* AchievementsView.swift */; };
 		5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
 		57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */; };
@@ -273,7 +272,6 @@
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
 		5731F2DA238565F7001E797D /* AchievementsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTabCoordinator.swift; sourceTree = "<group>"; };
 		5731F2DC23856813001E797D /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
-		5731F2DF2385713F001E797D /* AchievementsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsView.swift; sourceTree = "<group>"; };
 		5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -686,7 +684,6 @@
 				2B636714233CDAB300CFC7B9 /* CustomTextView */,
 				2BA7B7C4233A567100134C6E /* GroupCard */,
 				2B86B1E72331008500688735 /* LoadingView */,
-				5731F2DE238570E2001E797D /* AchievementsView */,
 				2B6E353F23229C080092A481 /* Input */,
 				2B7DC2B3232291C8009C3F54 /* ProgressBarsView */,
 				2BB4741A232001550099D4EB /* ProfileDetailsView */,
@@ -831,34 +828,18 @@
 		5731F2D723856492001E797D /* AchivementsTab */ = {
 			isa = PBXGroup;
 			children = (
-				5731F2D8238564B8001E797D /* Views */,
 				5731F2D923856503001E797D /* ViewsControllers */,
 				5731F2DA238565F7001E797D /* AchievementsTabCoordinator.swift */,
 			);
 			path = AchivementsTab;
 			sourceTree = "<group>";
 		};
-		5731F2D8238564B8001E797D /* Views */ = {
+		5731F2D923856503001E797D /* ViewsControllers */ = {
 			isa = PBXGroup;
 			children = (
 				5731F2DC23856813001E797D /* AchievementsViewController.swift */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		5731F2D923856503001E797D /* ViewsControllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
 			path = ViewsControllers;
-			sourceTree = "<group>";
-		};
-		5731F2DE238570E2001E797D /* AchievementsView */ = {
-			isa = PBXGroup;
-			children = (
-				5731F2DF2385713F001E797D /* AchievementsView.swift */,
-			);
-			path = AchievementsView;
 			sourceTree = "<group>";
 		};
 		57479DA9235761AD00C21D09 /* Onboarding */ = {
@@ -1097,7 +1078,6 @@
 				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
 				3006C56A233A5C7C00DA501B /* RoundedEditImageView.swift in Sources */,
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
-				5731F2E02385713F001E797D /* AchievementsView.swift in Sources */,
 				5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
 				5731F2DB238565F7001E797D /* AchievementsTabCoordinator.swift in Sources */,

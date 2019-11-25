@@ -37,24 +37,14 @@ final class AchievementsTabCoordinator: Coordinator {
     func start() {
         guard navigationController.topViewController == nil,
             let loggedUser = UserManager.getLoggedUser() else { return }
-
-        if !UserDefaults.standard.isRegistrationComplete
-            && UserDefaults.standard.isCloudKitAuthorized {
             showAchievementsViewController(for: loggedUser)
         }
-    }
-
-    func showRanking() {
-
-    }
 
     func showAchievementsViewController(for user: User) {
-        let view = AchievementListView(frame: CGRect(x: 0, y: 0, width: 119, height: 130))
+        let view = AchievementListView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
         view.translatesAutoresizingMaskIntoConstraints = false
-
-//        let viewController = AchievementsViewController(coder: <#NSCoder#>)
-//        navigationController.pushViewController(viewController, animated: true)
-//
+        let viewController = AchievementsViewController(user: user)
+        navigationController.pushViewController(viewController, animated: true)
 
         }
 }
