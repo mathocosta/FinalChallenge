@@ -114,15 +114,7 @@
 		3064CF41236C66020040220E /* UserPreferencesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */; };
 		3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */; };
 		3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
-<<<<<<< HEAD
-		3064CF46237067CF0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
-		3064CF55237C3FB80040220E /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
-		3064CF57237C3FC90040220E /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
-		3064CF59237C42E20040220E /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
-		3064CF5E2382B5E60040220E /* AchievementTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF5D2382B5E60040220E /* AchievementTabCoordinator.swift */; };
-=======
 		3064CF4A237C1D360040220E /* MovinningExerciseIntensityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF49237C1D360040220E /* MovinningExerciseIntensityTests.swift */; };
->>>>>>> 48644396610ea3e6f53e47539ed2f62cbff26385
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
 		309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCE23268E27002C5371 /* GoalPile.swift */; };
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
