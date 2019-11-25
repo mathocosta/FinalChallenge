@@ -110,6 +110,9 @@
 		3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */; };
 		3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */; };
 		305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */; };
+		30614326238BFFF5002082F4 /* MovinningAchievementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30614325238BFFF5002082F4 /* MovinningAchievementTests.swift */; };
+		30614328238C0007002082F4 /* MovinningRankingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30614327238C0007002082F4 /* MovinningRankingTests.swift */; };
+		3061432A238C001A002082F4 /* MovinningAchievementManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30614329238C001A002082F4 /* MovinningAchievementManagerTests.swift */; };
 		3064CF3A236C63270040220E /* UserPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF39236C63270040220E /* UserPreferencesView.swift */; };
 		3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */; };
 		3064CF41236C66020040220E /* UserPreferencesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */; };
@@ -261,6 +264,9 @@
 		3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalsManagerTests.swift; sourceTree = "<group>"; };
 		3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreManagerTests.swift; sourceTree = "<group>"; };
 		305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTests.swift; sourceTree = "<group>"; };
+		30614325238BFFF5002082F4 /* MovinningAchievementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningAchievementTests.swift; sourceTree = "<group>"; };
+		30614327238C0007002082F4 /* MovinningRankingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningRankingTests.swift; sourceTree = "<group>"; };
+		30614329238C001A002082F4 /* MovinningAchievementManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningAchievementManagerTests.swift; sourceTree = "<group>"; };
 		3064CF39236C63270040220E /* UserPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesView.swift; sourceTree = "<group>"; };
 		3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewController.swift; sourceTree = "<group>"; };
 		3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -863,6 +869,9 @@
 				3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */,
 				30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */,
 				3064CF49237C1D360040220E /* MovinningExerciseIntensityTests.swift */,
+				30614325238BFFF5002082F4 /* MovinningAchievementTests.swift */,
+				30614327238C0007002082F4 /* MovinningRankingTests.swift */,
+				30614329238C001A002082F4 /* MovinningAchievementManagerTests.swift */,
 			);
 			path = MovinningTests;
 			sourceTree = "<group>";
@@ -1160,12 +1169,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */,
+				3061432A238C001A002082F4 /* MovinningAchievementManagerTests.swift in Sources */,
 				3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */,
 				3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */,
+				30614326238BFFF5002082F4 /* MovinningAchievementTests.swift in Sources */,
 				3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */,
 				305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */,
 				30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */,
 				3064CF4A237C1D360040220E /* MovinningExerciseIntensityTests.swift in Sources */,
+				30614328238C0007002082F4 /* MovinningRankingTests.swift in Sources */,
 				57FF126E233CE52C00380A88 /* MovinningTests.swift in Sources */,
 				3054F04A235C9B2E00D7342F /* MovinningUserManagerTests.swift in Sources */,
 				3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */,

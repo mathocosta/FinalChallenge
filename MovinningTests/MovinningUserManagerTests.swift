@@ -55,8 +55,8 @@ class MovinningUserManagerTests: XCTestCase {
         XCTAssert(testUser.points == 500)
     }
 
-    func test_usermanager_getLoggedUser() {
-        let user = UserManager.getLoggedUser()
-        XCTAssert(user != nil)
-    }
+//    func test_usermanager_getLoggedUser() {
+//        let user = UserManager.getLoggedUser()
+//        XCTAssert(user != nil)
+//    }
 }
