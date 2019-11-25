@@ -82,4 +82,24 @@ enum Sport: String, CaseIterable {
         }
         return Set(permissions)
     }
+
+    func achievementValue() -> Int {
+        for service in services() {
+            switch service.unit {
+            case HKUnit.count():
+                if service == .stepCount {
+                    return 10000
+                } else if service == .swimming {
+                    return 1000
+                }
+            case HKUnit.meter():
+                return 2000
+            case HKUnit.minute():
+                return 120
+            default:
+                break
+            }
+        }
+        return 0
+    }
 }

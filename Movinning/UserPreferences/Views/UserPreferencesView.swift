@@ -21,7 +21,7 @@ class UserPreferencesView: UIView {
     }()
 
     lazy var timeSegmentedControl: UISegmentedControl = {
-        let items = ExerciseIntensity.allTypes.sorted(by: { $0.rawValue > $1.rawValue }).map { $0.title() }
+        let items = ExerciseIntensity.allTypes.sorted(by: { $0.rawValue < $1.rawValue }).map { $0.title() }
         let time = UserDefaults.standard.practiceTime
         let control = UISegmentedControl(items: items)
         control.backgroundColor = .fadedRed
