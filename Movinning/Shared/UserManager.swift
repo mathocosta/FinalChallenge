@@ -56,6 +56,11 @@ class UserManager: NSObject {
         user.points = (info["points"] as? Int32) ?? 0
         user.goalPile = GoalPile(value: [])
         user.currentGoals = GoalPile(value: [])
+        if let data = info["achievements"] as? Data {
+            user.achievements = try? JSONDecoder().decode(GoalPile.self, from: data)
+        } else {
+            user.achievements = GoalPile(value: [])
+        }
 
         if let imageData = info["photo"] as? Data {
             user.photo = imageData

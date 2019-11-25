@@ -15,11 +15,11 @@ enum Ranking: String {
     case maniac
     case champion
     case lunatic
-    
+
     func tierName() -> String {
         return NSLocalizedString(self.rawValue, comment: "")
     }
-    
+
     func rankingValue() -> Int {
         switch self {
         case .fan:

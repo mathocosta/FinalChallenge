@@ -28,6 +28,7 @@ extension User: CKManagedObject {
         record["lastName"] = lastName
         record["email"] = email
         record["points"] = points
+        record["achievements"] = try? JSONEncoder().encode(achievements)
 
         if let photo = photo, let profileImage = UIImage(data: photo) {
             record["photo"] = ckAsset(of: profileImage)
