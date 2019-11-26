@@ -43,4 +43,39 @@ extension CALayer {
         layer.addSublayer(trackLayer)
         layer.addSublayer(sliceLayer)
     }
+
+    static func createMovinningActivityIndicator(in view: UIView) {
+        let layer = view.layer
+        layer.sublayers = []
+        let path = UIBezierPath.createLogoPath(for: CGRect(x: 0, y: 0, width: 64, height: 64))
+
+        let logoLayer = CAShapeLayer()
+        logoLayer.fillColor = UIColor.clear.cgColor
+        logoLayer.strokeColor = UIColor.fadedRed.cgColor
+        logoLayer.lineWidth = CGFloat(TrackView.strokeWidth)
+        logoLayer.lineJoin = .round
+        logoLayer.lineCap = .round
+        logoLayer.path = path
+
+        let pathAnimationStart = CABasicAnimation(keyPath: "strokeStart")
+        pathAnimationStart.fromValue = 0
+        pathAnimationStart.toValue = 1
+        pathAnimationStart.duration = 1
+        pathAnimationStart.beginTime = CACurrentMediaTime() + 0.3
+        pathAnimationStart.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        pathAnimationStart.autoreverses = false
+        pathAnimationStart.repeatCount = .infinity
+
+        let pathAnimationEnd = CABasicAnimation(keyPath: "strokeEnd")
+        pathAnimationEnd.fromValue = 0
+        pathAnimationEnd.toValue = 1
+        pathAnimationEnd.duration = 1
+        pathAnimationEnd.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        pathAnimationEnd.autoreverses = false
+        pathAnimationEnd.repeatCount = .infinity
+
+        logoLayer.add(pathAnimationStart, forKey: "lineStart")
+        logoLayer.add(pathAnimationEnd, forKey: "lineEnd")
+        layer.addSublayer(logoLayer)
+    }
 }

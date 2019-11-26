@@ -19,12 +19,12 @@ extension LoaderView {
 
         loadingView.frame = window.frame
         window.addSubview(loadingView)
-        loadingView.activityIndicatorView.startAnimating()
+//        loadingView.activityIndicatorView.startAnimating()
     }
 
     func stopLoader() {
         DispatchQueue.main.async {
-            self.loadingView.activityIndicatorView.stopAnimating()
+//            self.loadingView.activityIndicatorView.stopAnimating()
             self.loadingView.removeFromSuperview()
         }
     }
