@@ -9,6 +9,7 @@
 import UIKit
 
 class AchievementListView: UIView {
+    var user: User?
 
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -36,6 +37,7 @@ class AchievementListView: UIView {
 
     public convenience init(frame: CGRect, direction: UICollectionView.ScrollDirection) {
         self.init(frame: frame)
+        self.user = UserManager.getLoggedUser()
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = direction
         }
@@ -77,7 +79,8 @@ extension AchievementListView: CodeView {
 
 extension AchievementListView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let user = user else { return 0 }
+        return AchievementManager.completedAchievements(of: user).count
     }
 
     func collectionView(_ collectionView: UICollectionView,
