@@ -49,33 +49,42 @@ class ProgressViewController: UIViewController {
     }
 
     func setProgressBars() {
-        let currentGoals = GoalsManager.currentTimedGoals(of: user).sorted { (g1, g2) -> Bool in
-            return g1.id < g2.id
-        }
+        let goals = centerView is UsersCloudView ? GoalsManager.teamGoals(for: user)
+            : GoalsManager.currentTimedGoals(of: user)
+        let currentGoals = goals.sorted { return $0.id < $1.id }
 
         for (index, goal) in currentGoals.enumerated() {
-            self.updateStatus(index: index, goal: goal)
+            self.updateProgress(index: index, goal: goal)
         }
     }
 
-    func updateStatus(index: Int, goal: Goal) {
+    func updateProgress(index: Int, goal: Goal) {
         guard self.amount > 0 else { return }
-        let colors: [UIColor] = [.trackRed, .trackBlue, .trackOrange]
-        let bar = progressView.progressBars.bars[index]
-        let track = progressView.tracksView.tracks[index]
-        let color = colors[index%colors.count]
-        var didComplete = false
-        GoalsManager.progress(for: user, on: goal) { (amount, required) in
-            DispatchQueue.main.async {
-                guard !didComplete else { return }
-                didComplete = amount > required
-                let progress = CGFloat(didComplete ? 1.0 : amount / required)
-                let text = didComplete
-                ? "Complete" : String.init(format: "%.0f/%.0f", amount, required)
-                bar.setGoal(title: goal.title, color: color, progressText: text)
-                track.trackColor = color
-                track.progress = progress
+        if centerView is UsersCloudView, let team = user.team {
+            GoalsManager.progress(for: team, on: goal) { (amount, required) in
+                self.updateStatus(index: index, goal: goal, amount: amount, required: required)
             }
+        } else if centerView is ProfileDetailsView {
+            GoalsManager.progress(for: user, on: goal) { (amount, required) in
+                self.updateStatus(index: index, goal: goal, amount: amount, required: required)
+            }
+        }
+    }
+
+    func updateStatus(index: Int, goal: Goal, amount: Double, required: Double) {
+        DispatchQueue.main.async {
+            let colors: [UIColor] = [.trackRed, .trackBlue, .trackOrange]
+            let bar = self.progressView.progressBars.bars[index]
+            let track = self.progressView.tracksView.tracks[index]
+            let color = colors[index%colors.count]
+            var didComplete = false
+            didComplete = amount > required
+            let progress = CGFloat(didComplete ? 1.0 : amount / required)
+            let text = didComplete
+            ? "Complete" : String.init(format: "%.0f/%.0f", amount, required)
+            bar.setGoal(title: goal.title, color: color, progressText: text)
+            track.trackColor = color
+            track.progress = progress
         }
     }
 

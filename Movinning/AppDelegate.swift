@@ -65,6 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             GoalsManager.checkForCompletedGoals(for: user)
         }
+
+        GoalsManager.updateGroupGoalsProgress(for: user)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

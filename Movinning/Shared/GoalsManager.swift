@@ -43,11 +43,11 @@ class GoalsManager: NSObject {
         return goals
     }
 
-    static func getGoals(withIDs ids: [Int]) -> [Goal] {
+    static func getGoals(withIDs ids: [Int], amountOfUsers: Int = 1) -> [Goal] {
         let resultsData = GoalsManager.getGoalData(withIDs: ids)
         let goals: [Goal] = resultsData.map { (arg) -> Goal in
             let (key, value) = arg
-            return Goal(id: Int(key) ?? -1, goalInfo: value, userAmount: 1)
+            return Goal(id: Int(key) ?? -1, goalInfo: value, userAmount: amountOfUsers)
         }
         return goals
     }

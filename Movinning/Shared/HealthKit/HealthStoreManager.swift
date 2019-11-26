@@ -87,12 +87,12 @@ final class HealthStoreManager {
         quantitySum(from: startOfDay, of: service, completion: completion)
     }
 
-    func quantitySumSinceLastHour(
+    func quantitySumSinceLastUpdate(
         of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
-        let calendar = Calendar.current
         let now = Date()
-        let lastHour = calendar.date(byAdding: .hour, value: -1, to: now)
-        quantitySum(from: lastHour, of: service, completion: completion)
+        let lastUpdate = self.lastUpdateTime
+        quantitySum(from: lastUpdate, of: service, completion: completion)
+        self.lastUpdateTime = now
     }
 
     func quantitySumThisWeekPerDay(of service: HealthStoreService, completion: @escaping(([HKStatistics]) -> Void)) {
