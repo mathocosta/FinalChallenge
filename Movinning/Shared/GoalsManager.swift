@@ -111,21 +111,28 @@ class GoalsManager: NSObject {
     static func userHasPreference(for goal: Goal) -> Bool {
         let service = HealthStoreService.type(forTag: goal.activityType)
         for sport in HealthStoreService.allAllowedSports {
-            if sport.services().contains(service),
-                HealthStoreService.exerciseIntensity.recommend(goal) {
+            if sport.services().contains(service) {
                 return true
             }
         }
         return false
     }
+    
+    static func userHasTime(for goal: Goal) -> Bool {
+       return HealthStoreService.exerciseIntensity.recommend(goal)
+    }
 
     static func getRandomPile() -> [Int] {
-        var randomPile: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
-        randomPile = randomPile.filter({ (ri) -> Bool in
+        let allGoals: [Int] = Array(0..<GoalsManager.amountOfGoals()).shuffled()
+        let randomPile = allGoals.filter({ (ri) -> Bool in
             let goal = Goal(id: ri, forAmountofPeople: 1)
             return GoalsManager.userHasPreference(for: goal)
         })
-        return randomPile
+        let filteredPile: [Int] = randomPile.filter({ (ri) -> Bool in
+            let goal = Goal(id: ri, forAmountofPeople: 1)
+            return GoalsManager.userHasTime(for: goal)
+        })
+        return filteredPile.count < 3 ? randomPile : filteredPile
     }
 
     static func selectNewTimedGoals(fromPile goalPile: GoalPile) -> [Int] {
