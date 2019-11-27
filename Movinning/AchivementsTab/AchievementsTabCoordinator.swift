@@ -37,14 +37,13 @@ final class AchievementsTabCoordinator: Coordinator {
     func start() {
         guard navigationController.topViewController == nil,
             let loggedUser = UserManager.getLoggedUser() else { return }
-            showAchievementsViewController(for: loggedUser)
-        }
+        showAchievementsViewController(for: loggedUser)
+    }
 
     func showAchievementsViewController(for user: User) {
         let view = AchievementListView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
         view.translatesAutoresizingMaskIntoConstraints = false
         let viewController = AchievementsViewController(user: user)
         navigationController.pushViewController(viewController, animated: true)
-
-        }
+    }
 }
