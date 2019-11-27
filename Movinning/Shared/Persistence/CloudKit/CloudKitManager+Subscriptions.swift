@@ -11,7 +11,7 @@ import CloudKit
 import PromiseKit
 
 // MARK: - Subscriptions
-extension CloudKitGateway {
+extension CloudKitManager {
 
     func subscriptionForUpdates(recordType: CKRecord.RecordType, objectUUID: String) -> CKQuerySubscription {
         let subscription = CKQuerySubscription(

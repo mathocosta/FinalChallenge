@@ -18,15 +18,16 @@ class SessionManager {
 
     static let current = SessionManager()
 
-    private let cloudKitGateway: CloudKitGateway
+    private let cloudKitManager: OnlinePersistenceGateway
     private let coreDataGateway: CoreDataGateway
 
     private var listTeamsOperationCursor: CKQueryOperation.Cursor?
 
-    init() {
-        self.cloudKitGateway = CloudKitGateway(container:
-            CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay"))
-        self.coreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)
+    init(cloudKitManager: OnlinePersistenceGateway = CloudKitManager(container: CKContainer(identifier: "iCloud.academy.the-rest-of-us.Splay")),
+         coreDataGateway: CoreDataGateway = CoreDataGateway(viewContext: CoreDataStore.context)) {
+
+        self.cloudKitManager = cloudKitManager
+        self.coreDataGateway = coreDataGateway
 
         NotificationCenter.default.addObserver(self,
             selector: #selector(uploadPoints(_:)),
@@ -38,7 +39,7 @@ class SessionManager {
     // MARK: - User management
     func loginUser() -> Promise<Bool> {
         return userIsLogged().then { _ in
-            self.cloudKitGateway.fetchInitialData().then { records -> Promise<Bool> in
+            self.cloudKitManager.fetchInitialData().then { records -> Promise<Bool> in
                 let (userRecord, teamRecord) = records
                 let user = UserManager.createUser(with: userRecord.recordKeysAndValues())
 
@@ -56,7 +57,7 @@ class SessionManager {
 
     func updateRegister(of user: User) -> Promise<Bool> {
         let userRecord = user.ckRecord()
-        return cloudKitGateway.update(userRecord: userRecord).then { updatedRecord -> Promise<Bool> in
+        return cloudKitManager.update(userRecord: userRecord).then { updatedRecord -> Promise<Bool> in
             let recordMetadata = updatedRecord.recordMetadata()
             UserManager.update(recordMetadata: recordMetadata, of: user)
 
@@ -68,7 +69,7 @@ class SessionManager {
     /// `true` quer dizer que está logado e pode continuar, no contrário, o usuário não
     /// está mais logado no dispositivo.
     func userIsLogged() -> Promise<Bool> {
-        cloudKitGateway.userAccountAvailable()
+        cloudKitManager.userAccountAvailable()
     }
 
     @objc func uploadPoints(_ notification: Notification) {
@@ -79,7 +80,7 @@ class SessionManager {
             recordsToUpdate.append(userTeam.ckRecord())
         }
 
-        _ = cloudKitGateway.save(recordsToUpdate, in: cloudKitGateway.publicDatabase)
+        _ = cloudKitManager.save(recordsToUpdate)
             .done { _ in print("Pontos atualizados no servidor") }
     }
 
@@ -87,7 +88,7 @@ class SessionManager {
     func updateLocallyTeam(of user: User) -> Promise<Bool> {
         guard let userTeam = user.team else { return Promise(error: SessionError.userDontHaveTeam) }
         let userRecord = user.ckRecord()
-        return cloudKitGateway.team(of: userRecord).then { (teamRecord) -> Promise<Bool> in
+        return cloudKitManager.team(of: userRecord).then { (teamRecord) -> Promise<Bool> in
             let teamRecordInfo = teamRecord.recordKeysAndValues()
             TeamManager.update(team: userTeam, with: teamRecordInfo)
             return self.coreDataGateway.save(userTeam)
@@ -95,7 +96,7 @@ class SessionManager {
     }
 
     func add(user: User, to team: Team) -> Promise<Bool> {
-        return self.cloudKitGateway.add(userRecord: user.ckRecord(), to: team.ckRecord()).then {
+        return self.cloudKitManager.add(userRecord: user.ckRecord(), to: team.ckRecord()).then {
             results -> Promise<Bool> in
             let (updatedUserRecord, updatedTeamRecord) = results
             UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
@@ -112,7 +113,7 @@ class SessionManager {
         let userRecord = user.ckRecord()
         let teamRecord = team.ckRecord()
 
-        return cloudKitGateway.remove(userRecord: userRecord, from: teamRecord).then {
+        return cloudKitManager.remove(userRecord: userRecord, from: teamRecord).then {
             updatedUserRecord -> Promise<Bool> in
             team.removeFromMembers(user)
             UserManager.update(recordMetadata: updatedUserRecord.recordMetadata(), of: user)
@@ -121,9 +122,9 @@ class SessionManager {
     }
 
     func listTeams(state: TeamListView.State) -> Promise<(CKQueryOperation.Cursor?, [Team])> {
-        var listTeamsPromise = cloudKitGateway.listTeams()
+        var listTeamsPromise = cloudKitManager.listTeams(cursor: nil)
         if state == .loadingMoreResults {
-            listTeamsPromise = cloudKitGateway.listTeams(cursor: listTeamsOperationCursor)
+            listTeamsPromise = cloudKitManager.listTeams(cursor: listTeamsOperationCursor)
         }
 
         return listTeamsPromise.then({ queryResult -> Promise<[CKRecord]> in
@@ -131,7 +132,7 @@ class SessionManager {
             self.listTeamsOperationCursor = actualCursor
             return Promise.value(records)
         }).thenMap { teamRecord in
-            self.cloudKitGateway.users(from: teamRecord).map({ (teamRecord, $0) })
+            self.cloudKitManager.users(from: teamRecord).map({ (teamRecord, $0) })
         }.thenMap { results -> Promise<Team> in
             let (teamRecord, usersRecords) = results
             let team = TeamManager.createTeam(with: teamRecord.recordKeysAndValues())
@@ -147,10 +148,10 @@ class SessionManager {
     }
 
     func users(from team: Team, of user: User) -> Promise<[User]> {
-        return cloudKitGateway.team(of: user.ckRecord()).then {
+        return cloudKitManager.team(of: user.ckRecord()).then {
             teamRecord -> Promise<[CKRecord]> in
             TeamManager.update(team: team, with: teamRecord.recordKeysAndValues())
-            return self.cloudKitGateway.users(from: teamRecord)
+            return self.cloudKitManager.users(from: teamRecord)
         }.thenMap { userRecord -> Promise<User> in
             Promise.value(UserManager.createUser(with: userRecord.recordKeysAndValues()))
         }.map { users in
@@ -162,7 +163,7 @@ class SessionManager {
         let teamRecord = team.ckRecord()
         let userRecord = user.ckRecord()
 
-        return cloudKitGateway.create(teamRecord: teamRecord, withCreator: userRecord).then {
+        return cloudKitManager.create(teamRecord: teamRecord, withCreator: userRecord).then {
             updatedRecords -> Promise<Bool> in
 
             let (updatedTeamRecord, updatedUserRecord) = updatedRecords
@@ -180,12 +181,12 @@ class SessionManager {
             return Promise(error: SessionError.missingTeamIdentifier)
         }
         print("Adicionando subscriptions para time: \(teamUUID)")
-        let subscription = cloudKitGateway.subscriptionForUpdates(recordType: "Teams", objectUUID: teamUUID)
+        let subscription = cloudKitManager.subscriptionForUpdates(recordType: "Teams", objectUUID: teamUUID)
 
-        return cloudKitGateway.save([subscription])
+        return cloudKitManager.save([subscription], andRemove: nil)
     }
 
     func removeSubscriptions() -> Promise<Bool> {
-        cloudKitGateway.removeSubscriptions()
+        cloudKitManager.removeSubscriptions()
     }
 }

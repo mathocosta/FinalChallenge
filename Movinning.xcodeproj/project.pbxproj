@@ -23,14 +23,14 @@
 		276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47323219D6A00EA75C6 /* TeamListViewController.swift */; };
 		276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276FD47523219D7B00EA75C6 /* TeamListView.swift */; };
 		278717EE231F0AD200A2A481 /* CoreDataGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717ED231F0AD200A2A481 /* CoreDataGateway.swift */; };
-		278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717EF231F224F00A2A481 /* CloudKitGateway.swift */; };
+		278717F0231F224F00A2A481 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717EF231F224F00A2A481 /* CloudKitManager.swift */; };
 		278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F3232001D600A2A481 /* CKManagedObject.swift */; };
 		278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F52320027F00A2A481 /* User+CKManagedObject.swift */; };
 		278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717F823207D7900A2A481 /* TeamTabCoordinator.swift */; };
 		278718052320849900A2A481 /* TeamEntranceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278718042320849900A2A481 /* TeamEntranceView.swift */; };
 		27871807232084A900A2A481 /* TeamEntranceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27871806232084A900A2A481 /* TeamEntranceViewController.swift */; };
-		278A03F123411DFD00AF1840 /* CloudKitGateway+Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */; };
-		278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */; };
+		278A03F123411DFD00AF1840 /* CloudKitManager+Teams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A03F023411DFD00AF1840 /* CloudKitManager+Teams.swift */; };
+		278A03F323411EB700AF1840 /* CloudKitManager+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278A03F223411EB700AF1840 /* CloudKitManager+Users.swift */; };
 		278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FA23207FC300A2A481 /* TeamDetailsViewController.swift */; };
 		278F829A2322A67200F55372 /* TeamDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278717FE23207FEA00A2A481 /* TeamDetailsView.swift */; };
 		2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2797D615232B1A8800A33470 /* UserDefaults+keys.swift */; };
@@ -48,13 +48,16 @@
 		27EE5A5923305DB9009E2D6B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A5B23305DB9009E2D6B /* Localizable.strings */; };
 		27EE5A6A23306325009E2D6B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A6C23306325009E2D6B /* InfoPlist.strings */; };
 		27EE5A7023306590009E2D6B /* Goals.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27EE5A7223306590009E2D6B /* Goals.plist */; };
-		27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */; };
+		27F581E2234CB3BD0051E6B3 /* CloudKitManager+Subscriptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F581E1234CB3BD0051E6B3 /* CloudKitManager+Subscriptions.swift */; };
 		27F9B94923593F2200E2B1F8 /* SessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F9B94823593F2200E2B1F8 /* SessionError.swift */; };
 		2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */; };
 		2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */; };
+		2B260749237AD8A60036375D /* OnlinePersistenceGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B260748237AD8A60036375D /* OnlinePersistenceGateway.swift */; };
+		2B26074B237AD9010036375D /* LocalPersistenceGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B26074A237AD9010036375D /* LocalPersistenceGateway.swift */; };
 		2B417F9E23200052002AD09D /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9D23200052002AD09D /* ProgressViewController.swift */; };
 		2B417FA02320006F002AD09D /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B417F9F2320006F002AD09D /* ProgressView.swift */; };
 		2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */; };
+		2B66EC8C237ADEB100398D23 /* CloudKitMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B66EC8B237ADEB100398D23 /* CloudKitMock.swift */; };
 		2B6E354123229C520092A481 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E354023229C520092A481 /* Input.swift */; };
 		2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */; };
 		2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B7DC2B423229255009C3F54 /* LegendProgressView.swift */; };
@@ -160,7 +163,7 @@
 		276FD47323219D6A00EA75C6 /* TeamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListViewController.swift; sourceTree = "<group>"; };
 		276FD47523219D7B00EA75C6 /* TeamListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamListView.swift; sourceTree = "<group>"; };
 		278717ED231F0AD200A2A481 /* CoreDataGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataGateway.swift; sourceTree = "<group>"; };
-		278717EF231F224F00A2A481 /* CloudKitGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitGateway.swift; sourceTree = "<group>"; };
+		278717EF231F224F00A2A481 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 		278717F3232001D600A2A481 /* CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CKManagedObject.swift; sourceTree = "<group>"; };
 		278717F52320027F00A2A481 /* User+CKManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CKManagedObject.swift"; sourceTree = "<group>"; };
 		278717F823207D7900A2A481 /* TeamTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTabCoordinator.swift; sourceTree = "<group>"; };
@@ -169,8 +172,8 @@
 		278718042320849900A2A481 /* TeamEntranceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceView.swift; sourceTree = "<group>"; };
 		27871806232084A900A2A481 /* TeamEntranceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamEntranceViewController.swift; sourceTree = "<group>"; };
 		278A03E6233CF4CD00AF1840 /* Movinning.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Movinning.entitlements; sourceTree = "<group>"; };
-		278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Teams.swift"; sourceTree = "<group>"; };
-		278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Users.swift"; sourceTree = "<group>"; };
+		278A03F023411DFD00AF1840 /* CloudKitManager+Teams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Teams.swift"; sourceTree = "<group>"; };
+		278A03F223411EB700AF1840 /* CloudKitManager+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Users.swift"; sourceTree = "<group>"; };
 		2797D615232B1A8800A33470 /* UserDefaults+keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+keys.swift"; sourceTree = "<group>"; };
 		2797D617232B29EA00A33470 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2797D61A232BBDD300A33470 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
@@ -188,13 +191,16 @@
 		27EE5A6B23306325009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		27EE5A732330659E009E2D6B /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "pt-BR"; path = "pt-BR.lproj/Goals.plist"; sourceTree = "<group>"; };
 		27EE5A74233065A9009E2D6B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Goals.plist; sourceTree = "<group>"; };
-		27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitGateway+Subscriptions.swift"; sourceTree = "<group>"; };
+		27F581E1234CB3BD0051E6B3 /* CloudKitManager+Subscriptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CloudKitManager+Subscriptions.swift"; sourceTree = "<group>"; };
 		27F9B94823593F2200E2B1F8 /* SessionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionError.swift; sourceTree = "<group>"; };
 		2B07B47423229AFF00EBE9F7 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		2B07B47623229B0E00EBE9F7 /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		2B260748237AD8A60036375D /* OnlinePersistenceGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinePersistenceGateway.swift; sourceTree = "<group>"; };
+		2B26074A237AD9010036375D /* LocalPersistenceGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalPersistenceGateway.swift; sourceTree = "<group>"; };
 		2B417F9D23200052002AD09D /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		2B417F9F2320006F002AD09D /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		2B66EC8B237ADEB100398D23 /* CloudKitMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitMock.swift; sourceTree = "<group>"; };
 		2B6E354023229C520092A481 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
 		2B7DC2B023228855009C3F54 /* ProfileTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabCoordinator.swift; sourceTree = "<group>"; };
 		2B7DC2B423229255009C3F54 /* LegendProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegendProgressView.swift; sourceTree = "<group>"; };
@@ -481,10 +487,12 @@
 		2797D62F232E730500A33470 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				278717EF231F224F00A2A481 /* CloudKitGateway.swift */,
-				278A03F023411DFD00AF1840 /* CloudKitGateway+Teams.swift */,
-				278A03F223411EB700AF1840 /* CloudKitGateway+Users.swift */,
-				27F581E1234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift */,
+				278717EF231F224F00A2A481 /* CloudKitManager.swift */,
+				278A03F023411DFD00AF1840 /* CloudKitManager+Teams.swift */,
+				278A03F223411EB700AF1840 /* CloudKitManager+Users.swift */,
+				27F581E1234CB3BD0051E6B3 /* CloudKitManager+Subscriptions.swift */,
+				2B260748237AD8A60036375D /* OnlinePersistenceGateway.swift */,
+				2B26074A237AD9010036375D /* LocalPersistenceGateway.swift */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -513,6 +521,22 @@
 				2B636715233CDB2A00CFC7B9 /* CustomTextView.swift */,
 			);
 			path = CustomTextView;
+			sourceTree = "<group>";
+		};
+		2B66EC89237ADE9700398D23 /* PersistenceTests */ = {
+			isa = PBXGroup;
+			children = (
+				2B66EC8A237ADEA100398D23 /* Mocks */,
+			);
+			path = PersistenceTests;
+			sourceTree = "<group>";
+		};
+		2B66EC8A237ADEA100398D23 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2B66EC8B237ADEB100398D23 /* CloudKitMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		2B6E353F23229C080092A481 /* Input */ = {
@@ -821,6 +845,7 @@
 		57FF126C233CE52C00380A88 /* MovinningTests */ = {
 			isa = PBXGroup;
 			children = (
+				2B66EC89237ADE9700398D23 /* PersistenceTests */,
 				3054F043235C9B2E00D7342F /* MovinningGoalPileTests.swift */,
 				3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */,
 				3054F046235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift */,
@@ -1032,7 +1057,7 @@
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
-				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
+				278717F0231F224F00A2A481 /* CloudKitManager.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */,
 				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
@@ -1054,21 +1079,23 @@
 				2797D624232D3B7800A33470 /* MessageView.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */,
-				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
+				27F581E2234CB3BD0051E6B3 /* CloudKitManager+Subscriptions.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
 				2B9E3FDF234CD60F00CBD497 /* AchievmentItemViewCell.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
+				2B26074B237AD9010036375D /* LocalPersistenceGateway.swift in Sources */,
 				2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */,
 				304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
+				2B260749237AD8A60036375D /* OnlinePersistenceGateway.swift in Sources */,
 				2B6E354123229C520092A481 /* Input.swift in Sources */,
 				2B417FA02320006F002AD09D /* ProgressView.swift in Sources */,
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				2797D628232D3F6E00A33470 /* FirstLoginCoordinator.swift in Sources */,
-				278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */,
+				278A03F323411EB700AF1840 /* CloudKitManager+Users.swift in Sources */,
 				2797D62A232D480600A33470 /* MessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
 				2B85FC6523687F5400478BCE /* UIViewController+Alert.swift in Sources */,
@@ -1095,7 +1122,7 @@
 				2797D616232B1A8800A33470 /* UserDefaults+keys.swift in Sources */,
 				2B85FC722369AC2600478BCE /* TeamRankingView.swift in Sources */,
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
-				278A03F123411DFD00AF1840 /* CloudKitGateway+Teams.swift in Sources */,
+				278A03F123411DFD00AF1840 /* CloudKitManager+Teams.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataStore.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
@@ -1119,6 +1146,7 @@
 			files = (
 				3054F049235C9B2E00D7342F /* MovinningTeamManagerTests.swift in Sources */,
 				3054F04B235C9B2E00D7342F /* MovinningHealthStoreServiceTests.swift in Sources */,
+				2B66EC8C237ADEB100398D23 /* CloudKitMock.swift in Sources */,
 				3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */,
 				3054F048235C9B2E00D7342F /* MovinningGoalPileTests.swift in Sources */,
 				305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */,

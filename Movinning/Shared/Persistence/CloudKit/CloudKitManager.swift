@@ -11,7 +11,7 @@ import CloudKit
 import PromiseKit
 import PMKCloudKit
 
-final class CloudKitGateway {
+final class CloudKitManager: OnlinePersistenceGateway {
 
     let container: CKContainer
     let publicDatabase: CKDatabase
@@ -34,7 +34,6 @@ final class CloudKitGateway {
     ///   - completion: Callback para ser executado quando a operação finalizar
     func save(
         _ records: [CKRecord],
-        in database: CKDatabase,
         completion: @escaping ([CKRecord]?, Error?) -> Void
     ) {
         let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
@@ -50,11 +49,11 @@ final class CloudKitGateway {
                 return completion(savedRecords, nil)
             }
         }
-        database.add(operation)
+        publicDatabase.add(operation)
     }
 
-    func save(_ records: [CKRecord], in database: CKDatabase) -> Promise<[CKRecord]> {
-        return Promise { save(records, in: database, completion: $0.resolve) }
+    func save(_ records: [CKRecord]) -> Promise<[CKRecord]> {
+        return Promise { save(records, completion: $0.resolve) }
     }
 
 }

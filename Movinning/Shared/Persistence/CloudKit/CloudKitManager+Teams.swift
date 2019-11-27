@@ -11,7 +11,7 @@ import CloudKit
 import PromiseKit
 
 // MARK: - Gerenciamento dos times
-extension CloudKitGateway {
+extension CloudKitManager {
 
     /// Faz uma consulta pelos times salvos na database. Pode receber como parâmetro o
     /// `CKQueryOperation.Cursor` da consulta passada para continuar caso seja necessário.
@@ -82,7 +82,7 @@ extension CloudKitGateway {
         userRecord["team"] = teamRecord.reference()
 
         return Promise {
-            save([teamRecord, userRecord], in: publicDatabase, completion: $0.resolve)
+            save([teamRecord, userRecord], completion: $0.resolve)
         }.then { updatedRecords -> Promise<(CKRecord, CKRecord)> in
             let updatedTeamRecord = updatedRecords[0]
             let updatedUserRecord = updatedRecords[1]

@@ -12,7 +12,7 @@ import PromiseKit
 import PMKCloudKit
 
 // MARK: - Gerenciamento dos dados dos usuários
-extension CloudKitGateway {
+extension CloudKitManager {
 
     /// Checa se tem usuário logado no device
     func userAccountAvailable() -> Promise<Bool> {
@@ -104,7 +104,7 @@ extension CloudKitGateway {
     /// Esse método atualiza o `CKRecord` de um usuário.
     /// - Parameter userRecord: Record do usuário para ser salvo
     func update(userRecord: CKRecord) -> Promise<CKRecord> {
-        return Promise { save([userRecord], in: publicDatabase, completion: $0.resolve) }.firstValue
+        return Promise { save([userRecord], completion: $0.resolve) }.firstValue
     }
 
     func add(userRecord: CKRecord, to teamRecord: CKRecord) -> Promise<(CKRecord, CKRecord)> {
@@ -128,7 +128,7 @@ extension CloudKitGateway {
             updatedTeamRecord["points"] = teamPoints + userPoints
 
             return Promise {
-                self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
+                self.save([userRecord, updatedTeamRecord], completion: $0.resolve)
             }.map({ ($0[0], $0[1]) })
         }
     }
@@ -154,7 +154,7 @@ extension CloudKitGateway {
                 }
 
                 return Promise {
-                    self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
+                    self.save([userRecord, updatedTeamRecord], completion: $0.resolve)
                 }.firstValue
             } else {
                 return self.update(userRecord: userRecord)
