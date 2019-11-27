@@ -83,7 +83,7 @@ extension GoalsManager {
     }
 
     static func updateGroupGoalsProgress(for user: User) {
-        SessionManager.current.updateLocallyTeam(of: user).done  { _ in
+        SessionManager.current.updateLocallyTeam(of: user).done { _ in
             guard let team = user.team, var values = team.teamProgress?.value else { return }
             let goals = GoalsManager.teamGoals(for: user)
             let group = DispatchGroup()

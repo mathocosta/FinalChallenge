@@ -20,14 +20,16 @@ extension Team: CKManagedObject {
             record = CKRecord(recordType: "Teams")
         }
 
+        let arrayModel: [Int] = [5, 7, 9]
+
         record["id"] = id?.uuidString
         record["name"] = name
         record["points"] = points
         record["teamDescription"] = teamDescription
         record["city"] = city
         record["neighborhood"] = neighborhood
-        record["progress"] = teamProgress?.value ?? []
-        record["goals"] = goals?.value ?? []
+        record["progress"] = teamProgress?.value ?? arrayModel
+        record["goals"] = goals?.value ?? arrayModel
 
         if let photo = photo, let profileImage = UIImage(data: photo) {
             record["photo"] = ckAsset(of: profileImage)

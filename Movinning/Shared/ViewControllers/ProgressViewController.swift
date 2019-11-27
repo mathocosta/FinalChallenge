@@ -61,9 +61,8 @@ class ProgressViewController: UIViewController {
     func updateProgress(index: Int, goal: Goal) {
         guard self.amount > 0 else { return }
         if centerView is UsersCloudView, let team = user.team {
-            GoalsManager.progress(for: team, on: goal) { (amount, required) in
-                self.updateStatus(index: index, goal: goal, amount: amount, required: required)
-            }
+            guard let teamProgress = team.teamProgress else { return }
+            self.updateStatus(index: index, goal: goal, amount: Double(teamProgress.value[index]), required: Double(goal.requiredAmount()))
         } else if centerView is ProfileDetailsView {
             GoalsManager.progress(for: user, on: goal) { (amount, required) in
                 self.updateStatus(index: index, goal: goal, amount: amount, required: required)
