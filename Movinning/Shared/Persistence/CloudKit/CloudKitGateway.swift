@@ -34,10 +34,11 @@ final class CloudKitGateway {
     ///   - completion: Callback para ser executado quando a operação finalizar
     func save(
         _ records: [CKRecord],
+        andDelete recordsToDelete: [CKRecord.ID]? = nil,
         in database: CKDatabase,
         completion: @escaping ([CKRecord]?, Error?) -> Void
     ) {
-        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
+        let operation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: recordsToDelete)
         operation.savePolicy = .changedKeys
         operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
             if let error = error as? CKError {
@@ -53,8 +54,8 @@ final class CloudKitGateway {
         database.add(operation)
     }
 
-    func save(_ records: [CKRecord], in database: CKDatabase) -> Promise<[CKRecord]> {
-        return Promise { save(records, in: database, completion: $0.resolve) }
+    func save(_ records: [CKRecord], andDelete recordsToDelete: [CKRecord.ID]? = nil) -> Promise<[CKRecord]> {
+        return Promise { save(records, andDelete: recordsToDelete, in: publicDatabase, completion: $0.resolve) }
     }
 
 }
