@@ -37,8 +37,7 @@ class TeamDetailsView: UIView {
         label.font = .bodySmall
         label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
-        // TODO: Remover
-        label.text = "\(team.points) points"
+        label.text = "\(team.points) "+NSLocalizedString("Points", comment: "")
         return label
     }()
 
