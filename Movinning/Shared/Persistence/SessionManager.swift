@@ -79,7 +79,7 @@ class SessionManager {
             recordsToUpdate.append(userTeam.ckRecord())
         }
 
-        _ = cloudKitGateway.save(recordsToUpdate, in: cloudKitGateway.publicDatabase)
+        _ = cloudKitGateway.save(recordsToUpdate)
             .done { _ in print("Pontos atualizados no servidor") }
     }
 
@@ -88,7 +88,7 @@ class SessionManager {
         guard let loggedUser = UserManager.getLoggedUser(),
             let userTeam = loggedUser.team else { return }
 
-        _ = cloudKitGateway.save([userTeam.ckRecord()], in: cloudKitGateway.publicDatabase)
+        _ = cloudKitGateway.save([userTeam.ckRecord()])
             .done { _ in print("Time atualizado no servidor") }
     }
 
