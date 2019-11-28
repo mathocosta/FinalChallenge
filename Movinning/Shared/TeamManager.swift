@@ -36,6 +36,18 @@ class TeamManager: NSObject {
         team.city = info["city"] as? String
         team.neighborhood = info["neighborhood"] as? String
 
+        if let goals = info["goals"] as? [Int] {
+            team.goals = ArrayPile(value: goals)
+        } else {
+            team.goals = ArrayPile(value: [])
+        }
+
+        if let progress = info["progress"] as? [Int] {
+            team.teamProgress = ArrayPile(value: progress)
+        } else {
+            team.teamProgress = ArrayPile(value: Array(repeating: 0, count: team.goals?.value.count ?? 0))
+        }
+
         if let imageData = info["photo"] as? Data {
             team.photo = imageData
         }
@@ -70,6 +82,14 @@ class TeamManager: NSObject {
 
         if let updatedRecordMetadata = info["recordMetadata"] as? Data {
             team.recordMetadata = updatedRecordMetadata
+        }
+
+        if let updatedProgress = info["progress"] as? [Int] {
+            team.teamProgress = ArrayPile(value: updatedProgress)
+        }
+
+        if let updatedGoals = info["goals"] as? [Int] {
+            team.goals = ArrayPile(value: updatedGoals)
         }
     }
 

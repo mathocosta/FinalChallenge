@@ -74,4 +74,49 @@ extension GoalsManager {
         }
         return 0
     }
+
+    static func teamGoals(for user: User) -> [Goal] {
+        guard let team = user.team,
+            let goalIDs = team.goals?.value,
+            let amountOfMembers = team.members?.count else { return [] }
+        return getGoals(withIDs: Array(goalIDs), amountOfUsers: amountOfMembers)
+    }
+
+    static func updateGroupGoalsProgress(for user: User) {
+        SessionManager.current.updateLocallyTeam(of: user).done { _ in
+            guard let team = user.team, var values = team.teamProgress?.value else { return }
+            let goals = GoalsManager.teamGoals(for: user)
+            let group = DispatchGroup()
+            for index in 0..<goals.count {
+                let goal = goals[index]
+                guard HealthStoreService.allAllowedSports.contains(where: {
+                    return $0.services().contains(where: {
+                        return $0 == HealthStoreService.type(forTag: goal.activityType)
+                    })
+                }) else {
+                    continue
+                }
+                group.enter()
+                progress(for: team, on: goal) { (progress, _)  in
+                    values[index] += Int(progress)
+                    group.leave()
+                }
+            }
+            group.notify(queue: .main) {
+                team.teamProgress = ArrayPile(value: values)
+                CoreDataStore.saveContext()
+                SessionManager.current.updateUsersTeam()
+            }
+        }
+    }
+
+    static func progress(for team: Team, on goal: Goal, completion: @escaping ((Double, Double) -> Void)) {
+        guard UserManager.getLoggedUser()?.team == team else { return }
+        let manager = HealthStoreManager()
+        let serviceType = HealthStoreService.type(forTag: goal.activityType)
+        manager.quantitySumSinceLastUpdate(of: serviceType) { (results) in
+            let amount = GoalsManager.progressAmount(results, for: serviceType)
+            completion(amount, Double(goal.requiredAmount()))
+        }
+    }
 }

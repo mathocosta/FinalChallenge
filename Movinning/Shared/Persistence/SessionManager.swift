@@ -83,6 +83,15 @@ class SessionManager {
             .done { _ in print("Pontos atualizados no servidor") }
     }
 
+    /// Atualiza o time depois de adicionar os progressos do usuário
+    @objc func updateUsersTeam() {
+        guard let loggedUser = UserManager.getLoggedUser(),
+            let userTeam = loggedUser.team else { return }
+
+        _ = cloudKitGateway.save([userTeam.ckRecord()], in: cloudKitGateway.publicDatabase)
+            .done { _ in print("Time atualizado no servidor") }
+    }
+
     // MARK: - Teams management
     func updateLocallyTeam(of user: User) -> Promise<Bool> {
         guard let userTeam = user.team else { return Promise(error: SessionError.userDontHaveTeam) }

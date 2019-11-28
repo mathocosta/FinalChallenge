@@ -52,7 +52,7 @@ final class TeamTabCoordinator: Coordinator {
         view.translatesAutoresizingMaskIntoConstraints = false
         let viewController = ProgressViewController(user: user,
                                                     centerView: view,
-                                                    amount: 0,
+                                                    amount: 3,
                                                     hasRanking: true,
                                                     rankingAction: showTeamRanking)
         viewController.coordinator = self
