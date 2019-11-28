@@ -41,8 +41,8 @@ final class AchievementsTabCoordinator: Coordinator {
     }
 
     func showAchievementsViewController(for user: User) {
-        let view = AchievementListView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
-        view.translatesAutoresizingMaskIntoConstraints = false
+//        let view = AchievementListView(frame: CGRect(x: 0, y: 0, width: 375, height: 667))
+//        view.translatesAutoresizingMaskIntoConstraints = false
         let viewController = AchievementsViewController(user: user)
         navigationController.pushViewController(viewController, animated: true)
     }

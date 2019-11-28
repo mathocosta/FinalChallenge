@@ -11,8 +11,10 @@ import UIKit
 
 class AchievementsViewController: UIViewController {
 
-    private let achievementsList: AchievementListView
+    private var achievementsList: AchievementListView?
     private let user: User
+    private var achievements: [Achievement]
+    private var sports: [Sport]
 
     weak var coordinator: AchievementsTabCoordinator?
 
@@ -21,14 +23,18 @@ class AchievementsViewController: UIViewController {
     }
 
     init(user: User) {
+        self.achievements = AchievementManager.getAllPossibleAchievements()
         self.user = user
-        self.achievementsList = AchievementListView(frame: .zero, direction: .vertical)
+        self.sports = Array(Sport.allTypes)
         super.init(nibName: nil, bundle: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.achievementsList = AchievementListView(frame: .zero, direction: .vertical, parentVC: self)
         self.view = achievementsList
+
         SessionManager.current.updateRegister(of: user).done(on: .main) { _ in
             self.coordinator?.showAchievementsViewController(for: self.user)
         }.catch(on: .main) { (_) in
@@ -41,3 +47,62 @@ class AchievementsViewController: UIViewController {
     }
 
 }
+
+extension AchievementsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return AchievementManager.completedAchievements(of: user).count
+        let sport = sports[section]
+
+        let achievmentsWithSport = achievements.filter { (achievement) -> Bool in
+            return achievement.achievementType == sport
+        }
+
+        return achievmentsWithSport.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let sport = sports[indexPath.section]
+
+        let achievmentsWithSport = achievements.filter { (achievement) -> Bool in
+            return achievement.achievementType == sport
+        }
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+            String(describing: AchievementItemViewCell.self), for: indexPath) as? AchievementItemViewCell
+        cell?.label.text = NSLocalizedString(achievmentsWithSport[indexPath.row].getTitle(), comment: "")
+        return cell ?? UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
+            sectionHeader.backgroundColor = .red
+            return sectionHeader
+        default:
+            return UICollectionReusableView()
+        }
+        
+    }
+}
+
+extension AchievementsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: AchievementItemViewCell.width, height: AchievementItemViewCell.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 32
+    }
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sports.count
+    }
+}
+

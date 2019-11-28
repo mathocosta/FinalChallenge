@@ -10,7 +10,7 @@ import UIKit
 
 class AchievementItemViewCell: UICollectionViewCell {
 
-    static let height: CGFloat = 172
+    static let height: CGFloat = 192
     static let width: CGFloat = 130
 
     lazy var iconImageView: UIImageView = {
@@ -21,11 +21,14 @@ class AchievementItemViewCell: UICollectionViewCell {
     }()
 
     lazy var label: UILabel = {
-        let label = UILabel()
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .bodySmall
         label.textColor = .textColor
-        label.text = "Corredor"
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.text = "Corredor Corredor Corredor Corredor Corredor Corredor Corredor Corredor"
+        label.sizeToFit()
         return label
     }()
 
@@ -54,7 +57,9 @@ extension AchievementItemViewCell: CodeView {
 
         label.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 16).isActive = true
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        label.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        label.heightAnchor.constraint(equalToConstant: label.bounds.height).isActive = true
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+
     }
 
     func setupAdditionalConfiguration() {

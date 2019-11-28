@@ -10,6 +10,8 @@ import UIKit
 
 class AchievementListView: UIView {
     var user: User?
+    
+    var parentVC: AchievementsViewController
 
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -24,8 +26,8 @@ class AchievementListView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.delegate = parentVC
+        collectionView.dataSource = parentVC
         collectionView.register(
             AchievementItemViewCell.self,
             forCellWithReuseIdentifier: String(describing: AchievementItemViewCell.self))
@@ -35,9 +37,10 @@ class AchievementListView: UIView {
         return collectionView
     }()
 
-    public convenience init(frame: CGRect, direction: UICollectionView.ScrollDirection) {
-        self.init(frame: frame)
+    public convenience init(frame: CGRect, direction: UICollectionView.ScrollDirection, parentVC: AchievementsViewController) {
+        self.init(frame: frame, parentVC: parentVC)
         self.user = UserManager.getLoggedUser()
+        self.parentVC = parentVC
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = direction
         }
@@ -45,7 +48,8 @@ class AchievementListView: UIView {
         setupView()
     }
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, parentVC: AchievementsViewController) {
+        self.parentVC = parentVC
         super.init(frame: frame)
     }
 
@@ -74,33 +78,5 @@ extension AchievementListView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
-    }
-}
-
-extension AchievementListView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let user = user else { return 0 }
-        return AchievementManager.completedAchievements(of: user).count
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            String(describing: AchievementItemViewCell.self), for: indexPath)
-        return cell
-    }
-}
-
-extension AchievementListView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: AchievementItemViewCell.width, height: AchievementItemViewCell.height)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 32
     }
 }
