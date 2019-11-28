@@ -26,4 +26,23 @@ extension UIBezierPath {
         path.addArc(withCenter: higherAnchor, radius: halfWidth, startAngle: 0, endAngle: 3*halfPi, clockwise: false)
         return path.cgPath
     }
+
+    static func createLogoPath(for frame: CGRect) -> CGPath {
+        let path = UIBezierPath()
+        let halfHeight = frame.height / 2
+        let halfWidth = frame.width / 2
+        let lowerY = frame.height * 0.8
+        let lowerAnchor = CGPoint(x: halfWidth*0.75, y: halfHeight)
+        let higherAnchor = CGPoint(x: halfWidth*1.4, y: halfHeight*0.4)
+
+        path.move(to: CGPoint(x: -halfWidth*10, y: lowerY))
+        path.addLine(to: CGPoint(x: halfWidth*0.5, y: lowerY))
+        path.addLine(to: lowerAnchor)
+        path.addLine(to: CGPoint(x: halfWidth, y: lowerY))
+        path.addLine(to: higherAnchor)
+        path.addLine(to: CGPoint(x: halfWidth*1.8, y: lowerY))
+        path.addLine(to: CGPoint(x: halfWidth*10, y: lowerY))
+
+        return path.cgPath
+    }
 }

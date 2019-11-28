@@ -17,16 +17,22 @@ class LoadingView: UIView {
         return view
     }()
 
-    lazy var activityIndicatorView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView()
+//    lazy var activityIndicatorView: UIActivityIndicatorView = {
+//        let view = UIActivityIndicatorView()
+//        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.color = .textColor
+//        return view
+//    }()
+
+    lazy var movinningAnimationLogo: UIView = {
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.color = .textColor
         return view
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        activityIndicatorView.startAnimating()
+//        activityIndicatorView.startAnimating()
 //        setupView()
     }
 
@@ -36,13 +42,15 @@ class LoadingView: UIView {
 
     override func layoutSubviews() {
         setupView()
+        CALayer.createMovinningActivityIndicator(in: movinningAnimationLogo)
     }
 }
 
 extension LoadingView: CodeView {
     func buildViewHierarchy() {
         addSubview(backdropView)
-        addSubview(activityIndicatorView)
+//        addSubview(activityIndicatorView)
+        addSubview(movinningAnimationLogo)
     }
 
     func setupConstraints() {
@@ -51,11 +59,18 @@ extension LoadingView: CodeView {
         backdropView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         backdropView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
 
-        activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//        activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+
+        movinningAnimationLogo.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        movinningAnimationLogo.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        movinningAnimationLogo.widthAnchor.constraint(equalToConstant: 64).isActive = true
+        movinningAnimationLogo.heightAnchor.constraint(equalToConstant: 64).isActive = true
+
     }
 
     func setupAdditionalConfiguration() {
+
     }
 
 }
