@@ -22,4 +22,25 @@ extension UIAlertController {
 
         return alert
     }
+
+    static func cancelAlert(title: String, message: String, whenConfirm: (() -> Void)? = nil) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("OK", comment: "Default Action"),
+            style: .default,
+            handler: { _ in
+                alert.dismiss(animated: true, completion: whenConfirm)
+            }
+        ))
+        alert.addAction(UIAlertAction(
+            title: NSLocalizedString("Cancel", comment: "Default Action"),
+            style: .destructive,
+            handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
+            }
+        ))
+
+        return alert
+    }
 }
