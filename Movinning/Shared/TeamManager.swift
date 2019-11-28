@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CloudKit
 
 class TeamManager: NSObject {
     @discardableResult
@@ -39,7 +40,7 @@ class TeamManager: NSObject {
         if let goals = info["goals"] as? [Int] {
             team.goals = ArrayPile(value: goals)
         } else {
-            team.goals = ArrayPile(value: [])
+            team.goals = ArrayPile(value: [1, 6, 13])
         }
 
         if let progress = info["progress"] as? [Int] {
