@@ -81,7 +81,9 @@ extension TeamMembersView: UICollectionViewDelegateFlowLayout {
         return CGSize(width: GroupMemberViewCell.width, height: GroupMemberViewCell.height)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 49
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 32
     }
 }

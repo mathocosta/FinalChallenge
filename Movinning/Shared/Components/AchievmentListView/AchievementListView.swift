@@ -10,7 +10,7 @@ import UIKit
 
 class AchievementListView: UIView {
     var user: User?
-    
+
     var parentVC: AchievementsViewController
 
     lazy var titleLabel: UILabel = {
@@ -34,6 +34,7 @@ class AchievementListView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        collectionView.register(AchievementHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
         return collectionView
     }()
 
