@@ -12,6 +12,7 @@ class GroupMemberListView: UIView {
 
     var members: [User]? {
         didSet {
+            emptyGroupImage.isHidden = members?.count != 0
             emptyGroupLabel.isHidden = members?.count != 0
         }
     }
@@ -38,6 +39,14 @@ class GroupMemberListView: UIView {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.isScrollEnabled = false
         return collectionView
+    }()
+    
+    lazy var emptyGroupImage: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(named: "Empty Group")
+        view.contentMode = .scaleAspectFill
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     lazy var emptyGroupLabel: UILabel = {
@@ -66,6 +75,7 @@ extension GroupMemberListView: CodeView {
     func buildViewHierarchy() {
         addSubview(titleLabel)
         addSubview(collectionView)
+        addSubview(emptyGroupImage)
         addSubview(emptyGroupLabel)
     }
 
@@ -74,12 +84,17 @@ extension GroupMemberListView: CodeView {
         titleLabel.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
-        emptyGroupLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
-        emptyGroupLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -18).isActive = true
+        
+        emptyGroupImage.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        emptyGroupImage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -18).isActive = true
+        emptyGroupImage.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        emptyGroupImage.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        
+        emptyGroupLabel.topAnchor.constraint(equalTo: emptyGroupImage.bottomAnchor, constant: -32).isActive = true
+        emptyGroupLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         emptyGroupLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         emptyGroupLabel.heightAnchor.constraint(equalToConstant: 200).isActive = true
-
+        
         collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 14).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
