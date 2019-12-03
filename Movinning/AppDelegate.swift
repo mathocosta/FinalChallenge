@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotifications()
         }
 
+        if UserDefaults.standard.firstTimeOpened == nil {
+            UserDefaults.standard.firstTimeOpened = Date()
+        }
+
         appCoordinator = AppCoordinator(tabBarController: UITabBarController())
 
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -53,7 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let calendar = Calendar(identifier: .gregorian)
 
         guard let user = UserManager.getLoggedUser() else { return }
-
+        if UserDefaults.standard.firstTimeOpened == nil {
+            UserDefaults.standard.firstTimeOpened = Date()
+        }
         guard let lastUpdateTime = UserDefaults.standard.goalUpdateTime,
             let nextUpdateTime = calendar.getNextUpdateTime(from: lastUpdateTime) else {
                 UserManager.changeGoals(for: user)
@@ -66,6 +72,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GoalsManager.checkForCompletedGoals(for: user)
         }
 
+        if user.achievements == nil {
+            user.achievements = GoalPile(value: [])
+            CoreDataStore.saveContext()
+        }
+        AchievementManager.checkForCompletedAchievements(for: user)
         GoalsManager.updateGroupGoalsProgress(for: user)
     }
 

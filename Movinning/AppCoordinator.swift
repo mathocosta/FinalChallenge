@@ -23,7 +23,8 @@ final class AppCoordinator: NSObject, Coordinator {
         self.tabBarController = tabBarController
         self.childCoordinators = [
             ProfileTabCoordinator(navigationController: UINavigationController()),
-            TeamTabCoordinator(navigationController: UINavigationController())
+            TeamTabCoordinator(navigationController: UINavigationController()),
+            AchievementsTabCoordinator(navigationController: UINavigationController())
         ]
 
         super.init()

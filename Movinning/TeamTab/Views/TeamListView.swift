@@ -176,6 +176,7 @@ extension TeamListView: CodeView {
     }
 
     func setupAdditionalConfiguration() {
-          emptyStateButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTryAgainButton(_:))))
+          emptyStateButton.addGestureRecognizer(UITapGestureRecognizer(target: self,
+                                                                       action: #selector(handleTryAgainButton(_:))))
     }
 }

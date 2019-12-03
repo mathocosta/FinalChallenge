@@ -10,21 +10,21 @@ import Foundation
 import HealthKit
 
 enum Sport: String, CaseIterable {
-    case walking
-    case running
-    case soccer
-    case cycling
-    case training
-    case cricket
-    case hockey
-    case tennis
-    case volleyball
-    case tableTennis
-    case basketball
-    case baseball
-    case rugby
-    case golf
-    case swimming
+    case walking = "walking"
+    case running = "running"
+    case soccer = "soccer"
+    case cycling = "cycling"
+    case training = "training"
+    case cricket = "cricket"
+    case hockey = "hockey"
+    case tennis = "tennis"
+    case volleyball = "volleyball"
+    case tableTennis = "tableTennis"
+    case basketball = "basketball"
+    case baseball = "baseball"
+    case rugby = "rugby"
+    case golf = "golf"
+    case swimming = "swimming"
 
     var localizedName: String {
         return NSLocalizedString(rawValue, comment: "")
@@ -81,5 +81,25 @@ enum Sport: String, CaseIterable {
             }
         }
         return Set(permissions)
+    }
+
+    func achievementValue() -> Int {
+        for service in services() {
+            switch service.unit {
+            case HKUnit.count():
+                if service == .stepCount {
+                    return 10000
+                } else if service == .swimming {
+                    return 1000
+                }
+            case HKUnit.meter():
+                return 2000
+            case HKUnit.minute():
+                return 120
+            default:
+                break
+            }
+        }
+        return 0
     }
 }

@@ -182,6 +182,7 @@ class GoalsManager: NSObject {
         }
 
         user.currentGoals = GoalPile(value: Set(chosenGoals))
+        CoreDataStore.saveContext()
         UserDefaults.standard.goalUpdateTime = date
         return chosenGoals
     }

@@ -13,24 +13,39 @@ class Achievement {
     var ranking: Ranking
     var achievementType: Sport
     var image: UIImage
-    
+
     init(id: Int, achievementInfo: [String: Any]) {
         self.id = id
         self.ranking = Ranking(rawValue: achievementInfo["ranking"] as? String ?? "") ?? .fan
-        self.achievementType = Sport(rawValue: achievementInfo["sport"] as? String ?? "") ?? .walking
-        self.image = UIImage(named: achievementInfo["image"] as? String ?? "") ?? UIImage()
+        self.achievementType = Sport(rawValue: achievementInfo["type"] as? String ?? "") ?? .walking
+        self.image = UIImage(named: "avatar-placeholder") ?? UIImage()
+        // UIImage(named: achievementInfo["image"] as? String ?? "") ?? UIImage()
     }
-    
+
     convenience init(id: Int) {
         let achievementInfo = AchievementManager.getAchievementInfo(withID: id)
         self.init(id: id, achievementInfo: achievementInfo)
     }
-    
-    func getTitle() {
-        
+
+    func getTag() -> String {
+        var type = self.achievementType.rawValue
+        var ranking = self.ranking.rawValue
+        type.capitalizeFirstLetter()
+        ranking.capitalizeFirstLetter()
+        return type+" "+ranking
     }
-    
-    func getDescription() {
-        
+
+    func getTitle() -> String {
+        let tag = getTag()
+        return NSLocalizedString(tag+" Title", comment: "")
+    }
+
+    func getDescription() -> String {
+        let tag = getTag()
+        return NSLocalizedString(tag+" Description", comment: "")
+    }
+
+    func requiredAmount() -> Int {
+        return ranking.rankingValue() * achievementType.achievementValue()
     }
 }

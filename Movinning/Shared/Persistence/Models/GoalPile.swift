@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class GoalPile: NSObject, NSCoding {
+public class GoalPile: NSObject, NSCoding, Encodable, Decodable {
     let value: Set<Int>
     let markedValues: Set<Int>
 

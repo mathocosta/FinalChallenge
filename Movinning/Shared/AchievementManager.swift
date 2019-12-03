@@ -18,14 +18,17 @@ class AchievementManager {
     }
 
     static func achievementsToComplete(of user: User) -> [Achievement] {
-        guard let achievements = user.achievements?.unmarkedGoals()
-            else { return [] }
-        let results = getAchievements(withIDs: Array(achievements))
+        var results = getAllPossibleAchievements()
+        if let achievements = user.achievements?.value {
+            results = results.filter {
+                return !achievements.contains($0.id)
+            }
+        }
         return results
     }
 
     static func completedAchievements(of user: User) -> [Achievement] {
-        guard let currentGoals = user.achievements?.markedValues
+        guard let currentGoals = user.achievements?.value
             else { return [] }
         let results = getAchievements(withIDs: Array(currentGoals))
         return results
@@ -38,6 +41,10 @@ class AchievementManager {
         return results
     }
 
+    static func getAllPossibleAchievements() -> [Achievement] {
+        return getAchievements(withIDs: Array(0...numberOfAchievements() - 1))
+    }
+
     static func getAchievements(withIDs ids: [Int]) -> [Achievement] {
         let resultsData = AchievementManager.getAchievementData(withIDs: ids)
         let achievements: [Achievement] = resultsData.map { (arg) -> Achievement in
@@ -48,10 +55,10 @@ class AchievementManager {
     }
 
     static func markCompleted(achievement: Achievement, from user: User) {
-        guard let achievements = user.achievements, !achievements.markedValues.contains(achievement.id) else {
+        guard let achievements = user.achievements, !achievements.value.contains(achievement.id) else {
             return
         }
-        user.currentGoals = achievements.mark(achievement.id)
+        user.achievements = achievements.add(achievement.id)
     }
 
     static func getAllAchievementInfo() -> [String: [String: Any]] {
