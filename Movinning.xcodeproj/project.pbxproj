@@ -117,9 +117,6 @@
 		3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */; };
 		3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
 		3064CF4A237C1D360040220E /* MovinningExerciseIntensityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF49237C1D360040220E /* MovinningExerciseIntensityTests.swift */; };
-		3064CF55237C3FB80040220E /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
-		3064CF57237C3FC90040220E /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
-		3064CF59237C42E20040220E /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
 		306BA11A238566AC00667958 /* Achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 306BA119238566AC00667958 /* Achievements.plist */; };
 		306BA1242386A83600667958 /* String+Capitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306BA1232386A83600667958 /* String+Capitalization.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
@@ -127,6 +124,9 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
+		30B0A74D2396AACC00E187A9 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
+		30B0A74E2396AADE00E187A9 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
+		30B0A74F2396AAE400E187A9 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
 		30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */; };
 		30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sport.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
@@ -276,7 +276,6 @@
 		3064CF58237C42E20040220E /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		306BA119238566AC00667958 /* Achievements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
 		306BA1232386A83600667958 /* String+Capitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Capitalization.swift"; sourceTree = "<group>"; };
-		3064CF5D2382B5E60040220E /* AchievementTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTabCoordinator.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -1088,6 +1087,7 @@
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2B9E3FDC234CD3A200CBD497 /* AchievementListView.swift in Sources */,
 				3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */,
+				30B0A74F2396AAE400E187A9 /* Ranking.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				57479DB72359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift in Sources */,
@@ -1098,8 +1098,10 @@
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
+				30B0A74D2396AACC00E187A9 /* AchievementManager.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */,
+				30B0A74E2396AADE00E187A9 /* Achievement.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */,
 				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
@@ -1390,7 +1392,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2711191041;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1398,7 +1400,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinningg";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1416,7 +1418,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2711191041;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 7ZRHSKUH65;
+				DEVELOPMENT_TEAM = U3BJSYBS9R;
 				INFOPLIST_FILE = Movinning/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1424,7 +1426,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinningg";
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.rest-of-us.Movinning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
