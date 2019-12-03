@@ -61,7 +61,8 @@ class CreateTeamViewController: UIViewController, LoaderView {
             "name": nameText,
             "teamDescription": descriptionText,
             "city": cityText,
-            "neighborhood": neighborhoodText
+            "neighborhood": neighborhoodText,
+            "points": loggedUser.points
         ])
 
         startLoader()

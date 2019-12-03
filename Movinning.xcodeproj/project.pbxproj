@@ -110,6 +110,7 @@
 		3054F04C235C9B2E00D7342F /* MovinningGoalsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */; };
 		3054F04E235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */; };
 		305ABC36234CBF5300FB118B /* MovinningGoalsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */; };
+		3061432C238D47BB002082F4 /* ArrayPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3061432B238D47BB002082F4 /* ArrayPile.swift */; };
 		3064CF3A236C63270040220E /* UserPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF39236C63270040220E /* UserPreferencesView.swift */; };
 		3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */; };
 		3064CF41236C66020040220E /* UserPreferencesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */; };
@@ -264,6 +265,7 @@
 		3054F047235C9B2E00D7342F /* MovinningGoalsManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovinningGoalsManagerTests.swift; sourceTree = "<group>"; };
 		3054F04D235CCEAA00D7342F /* MovinningHealthStoreManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningHealthStoreManagerTests.swift; sourceTree = "<group>"; };
 		305ABC35234CBF5300FB118B /* MovinningGoalsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningGoalsTests.swift; sourceTree = "<group>"; };
+		3061432B238D47BB002082F4 /* ArrayPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayPile.swift; sourceTree = "<group>"; };
 		3064CF39236C63270040220E /* UserPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesView.swift; sourceTree = "<group>"; };
 		3064CF3B236C633F0040220E /* UserPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewController.swift; sourceTree = "<group>"; };
 		3064CF40236C66020040220E /* UserPreferencesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 		3064CF58237C42E20040220E /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		306BA119238566AC00667958 /* Achievements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
 		306BA1232386A83600667958 /* String+Capitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Capitalization.swift"; sourceTree = "<group>"; };
+		3064CF5D2382B5E60040220E /* AchievementTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTabCoordinator.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -465,6 +468,7 @@
 		278F829B2326881000F55372 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3061432B238D47BB002082F4 /* ArrayPile.swift */,
 				309A2DCE23268E27002C5371 /* GoalPile.swift */,
 				278717F52320027F00A2A481 /* User+CKManagedObject.swift */,
 				276FD4712321726100EA75C6 /* Team+CKManagedObject.swift */,
@@ -1111,7 +1115,6 @@
 				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
 				30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */,
 				303F5A8D231D617E0054587C /* Calendar+GetUpdateTimes.swift in Sources */,
-				3064CF57237C3FC90040220E /* Ranking.swift in Sources */,
 				2797D61B232BBDD300A33470 /* CreateTeamViewController.swift in Sources */,
 				2B417F9E23200052002AD09D /* ProgressViewController.swift in Sources */,
 				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
@@ -1134,6 +1137,7 @@
 				2B417FA02320006F002AD09D /* ProgressView.swift in Sources */,
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				2797D628232D3F6E00A33470 /* OnboardingCoordinator.swift in Sources */,
+				3061432C238D47BB002082F4 /* ArrayPile.swift in Sources */,
 				278A03F323411EB700AF1840 /* CloudKitGateway+Users.swift in Sources */,
 				2797D62A232D480600A33470 /* OnboardingMessageViewContent.swift in Sources */,
 				275FE87D231D3D6D001695D2 /* Coordinator.swift in Sources */,
@@ -1150,7 +1154,6 @@
 				2B636716233CDB2A00CFC7B9 /* CustomTextView.swift in Sources */,
 				278717F923207D7900A2A481 /* TeamTabCoordinator.swift in Sources */,
 				2B85FC632368674700478BCE /* UsersCloudView.swift in Sources */,
-				3064CF55237C3FB80040220E /* Achievement.swift in Sources */,
 				276FD47423219D6A00EA75C6 /* TeamListViewController.swift in Sources */,
 				3006C54C2334F51400DA501B /* CALayer+CustomShapes.swift in Sources */,
 				57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */,
@@ -1173,7 +1176,6 @@
 				303F5A97231E93AA0054587C /* UserManager.swift in Sources */,
 				275FE87B231D3D46001695D2 /* CodeView.swift in Sources */,
 				309A2DD52329177E002C5371 /* TeamManager.swift in Sources */,
-				3064CF59237C42E20040220E /* AchievementManager.swift in Sources */,
 				3006C5542334FF2900DA501B /* UIBezierPath+TrackOutline.swift in Sources */,
 				309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */,
 				2BCD98CD235896CD00D5B8F4 /* BarView.swift in Sources */,

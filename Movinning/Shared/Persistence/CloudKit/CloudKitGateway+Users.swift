@@ -145,17 +145,23 @@ extension CloudKitGateway {
             if var usersReferences = updatedTeamRecord.value(forKey: "users") as? [CKRecord.Reference],
                 let index = usersReferences.firstIndex(of: userRecord.reference()) {
                 usersReferences.remove(at: index)
-                updatedTeamRecord["users"] = usersReferences
 
-                if let teamPoints = updatedTeamRecord.value(forKey: "points") as? Int,
-                    let userPoints = userRecord.value(forKey: "points") as? Int {
-                    // Isso é para garantir de não ficar um número negativo nos pontos
-                    updatedTeamRecord["points"] = max(teamPoints - userPoints, 0)
+                let operation: Promise<[CKRecord]>
+                // Checa se o time está vazio para ser deletado
+                if usersReferences.count == 0 {
+                    operation = self.save([userRecord], andDelete: [teamRecord.recordID])
+                } else {
+                    updatedTeamRecord["users"] = usersReferences
+                    if let teamPoints = updatedTeamRecord.value(forKey: "points") as? Int,
+                        let userPoints = userRecord.value(forKey: "points") as? Int {
+                        // Isso é para garantir de não ficar um número negativo nos pontos
+                        updatedTeamRecord["points"] = max(teamPoints - userPoints, 0)
+                    }
+
+                    operation = self.save([userRecord, updatedTeamRecord])
                 }
 
-                return Promise {
-                    self.save([userRecord, updatedTeamRecord], in: self.publicDatabase, completion: $0.resolve)
-                }.firstValue
+                return operation.firstValue
             } else {
                 return self.update(userRecord: userRecord)
             }

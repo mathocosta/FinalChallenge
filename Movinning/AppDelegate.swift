@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             CoreDataStore.saveContext()
         }
         AchievementManager.checkForCompletedAchievements(for: user)
+        GoalsManager.updateGroupGoalsProgress(for: user)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

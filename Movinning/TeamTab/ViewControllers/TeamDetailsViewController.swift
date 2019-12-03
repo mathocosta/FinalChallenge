@@ -62,7 +62,7 @@ class TeamDetailsViewController: UIViewController, LoaderView {
 
     // MARK: - Actions
     @objc func quitTeamTapped(_ sender: UIBarButtonItem? = nil) {
-        let alert = UIAlertController.okAlert(
+        let alert = UIAlertController.cancelAlert(
             title: NSLocalizedString("Attention", comment: ""),
             message: NSLocalizedString("Leave team message", comment: "")
         ) {

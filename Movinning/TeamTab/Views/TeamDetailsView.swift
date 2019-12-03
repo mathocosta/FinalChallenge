@@ -37,8 +37,7 @@ class TeamDetailsView: UIView {
         label.font = .bodySmall
         label.textColor = .textColor
         label.translatesAutoresizingMaskIntoConstraints = false
-        // TODO: Remover
-        label.text = "\(team.points) points"
+        label.text = "\(team.points) "+NSLocalizedString("Points", comment: "")
         return label
     }()
 
@@ -72,7 +71,7 @@ class TeamDetailsView: UIView {
 
 //    lazy var seeMoreAchievmentsLabel: UIButton = {
 //        let button = UIButton(type: .system)
-//        button.setTitle("Ver mais", for: .normal)
+//        button.setTitle("See more" = "Ver mais";, for: .normal)
 //        button.setTitleColor(.textColor, for: .normal)
 //        button.titleLabel?.font = .body
 //        button.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +81,7 @@ class TeamDetailsView: UIView {
 
     lazy var seeMoreMembersLabel: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Ver mais", for: .normal)
+        button.setTitle(NSLocalizedString("See more", comment: ""), for: .normal)
         button.setTitleColor(.textColor, for: .normal)
         button.titleLabel?.font = .body
         button.translatesAutoresizingMaskIntoConstraints = false
