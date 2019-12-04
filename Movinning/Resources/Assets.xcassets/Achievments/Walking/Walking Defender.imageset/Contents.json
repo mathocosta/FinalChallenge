@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Ping Pong Bronze.png",
+      "filename" : "Walking Defender.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Ping Pong Bronze@2x.png",
+      "filename" : "Walking Defender@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Ping Pong Bronze@3x.png",
+      "filename" : "Walking Defender@3x.png",
       "scale" : "3x"
     }
   ],

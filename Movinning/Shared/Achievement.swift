@@ -12,14 +12,14 @@ class Achievement {
     var id: Int
     var ranking: Ranking
     var achievementType: Sport
-    var image: UIImage
+    var image: UIImage {
+        return UIImage(named: getTag())!
+    }
 
     init(id: Int, achievementInfo: [String: Any]) {
         self.id = id
         self.ranking = Ranking(rawValue: achievementInfo["ranking"] as? String ?? "") ?? .fan
         self.achievementType = Sport(rawValue: achievementInfo["type"] as? String ?? "") ?? .walking
-        self.image = UIImage(named: "avatar-placeholder") ?? UIImage()
-        // UIImage(named: achievementInfo["image"] as? String ?? "") ?? UIImage()
     }
 
     convenience init(id: Int) {

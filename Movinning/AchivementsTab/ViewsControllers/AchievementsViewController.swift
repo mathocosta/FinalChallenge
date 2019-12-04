@@ -69,9 +69,12 @@ extension AchievementsViewController: UICollectionViewDelegate, UICollectionView
             return achievement.achievementType == sport
         }
 
+        let achievement = achievmentsWithSport[indexPath.row]
+
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             String(describing: AchievementItemViewCell.self), for: indexPath) as? AchievementItemViewCell
-        cell?.label.text = NSLocalizedString(achievmentsWithSport[indexPath.row].getTitle(), comment: "")
+        cell?.label.text = NSLocalizedString(achievement.getTitle(), comment: "")
+        cell?.iconImageView.image = achievement.image
         return cell ?? UICollectionViewCell()
     }
 
