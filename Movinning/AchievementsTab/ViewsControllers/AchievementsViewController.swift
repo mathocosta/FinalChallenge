@@ -19,6 +19,9 @@ class AchievementsViewController: UIViewController {
 
     weak var coordinator: AchievementsTabCoordinator?
 
+    private lazy var achievementsBySport = AchievementManager.achievementsBySport()
+    private lazy var sports = Sport.allCases
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,7 +32,6 @@ class AchievementsViewController: UIViewController {
         }
         self.completedAchievements = AchievementManager.completedAchievements(of: user)
         self.user = user
-        self.sports = Sport.allCases
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -57,23 +59,15 @@ extension AchievementsViewController: UICollectionViewDelegate, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let sport = sports[section]
-
-        let achievementsWithSport = achievements.filter { (achievement) -> Bool in
-            return achievement.achievementType == sport
-        }
-
-        return achievementsWithSport.count
+        return achievementsBySport[sport]?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
         let sport = sports[indexPath.section]
-
-        let achievmentsWithSport = achievements.filter { (achievement) -> Bool in
-            return achievement.achievementType == sport
-        }
-
-        let achievement = achievmentsWithSport[indexPath.row]
+        let sportAchievements = achievementsBySport[sport]
+        let achievement = sportAchievements?[indexPath.row]
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             String(describing: AchievementItemViewCell.self), for: indexPath) as? AchievementItemViewCell
@@ -108,12 +102,11 @@ extension AchievementsViewController: UICollectionViewDelegate, UICollectionView
                 return UICollectionReusableView()
             }
             let sport = sports[indexPath.section]
-            let achievementsWithSport = achievements.filter { (achievement) -> Bool in
-                return achievement.achievementType == sport
-            }
+            let sportAchievements = achievementsBySport[sport]
+            let achievement = sportAchievements?[indexPath.row]
 
             sectionHeader.backgroundColor = .groupTableViewBackground
-            sectionHeader.label.text = achievementsWithSport[indexPath.row].achievementType.localizedName
+            sectionHeader.label.text = achievement?.achievementType.localizedName
 
             return sectionHeader
         default:
@@ -126,7 +119,7 @@ extension AchievementsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width/3, height: self.view.frame.width/1.5)
+        return CGSize(width: self.view.frame.width/3, height: 160.0)
     }
 
     func collectionView(_ collectionView: UICollectionView,

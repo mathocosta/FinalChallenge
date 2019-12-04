@@ -42,7 +42,7 @@ final class CloudKitGateway {
         operation.savePolicy = .changedKeys
         operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
             if let error = error as? CKError {
-
+                print(error)
                 return completion(nil, error)
             }
 
