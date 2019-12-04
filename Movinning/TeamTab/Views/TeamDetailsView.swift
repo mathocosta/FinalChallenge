@@ -75,7 +75,8 @@ class TeamDetailsView: UIView {
 //        button.setTitleColor(.textColor, for: .normal)
 //        button.titleLabel?.font = .body
 //        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(seeMoreAchievmentsTapped(_:))))
+//        button.addGestureRecognizer(UITapGestureRecognizer(target: self,
+//    action: #selector(seeMoreAchievmentsTapped(_:))))
 //        return button
 //    }()
 
@@ -172,7 +173,8 @@ extension TeamDetailsView: CodeView {
 //        conquistasView.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
 //        conquistasView.heightAnchor.constraint(equalToConstant: 259).isActive = true
 
-//        seeMoreAchievmentsLabel.topAnchor.constraint(equalTo: conquistasView.bottomAnchor, constant: 8).isActive = true
+//        seeMoreAchievmentsLabel.topAnchor.constraint(equalTo: conquistasView.bottomAnchor,
+//        constant: 8).isActive = true
 //        seeMoreAchievmentsLabel.rightAnchor.constraint(equalTo: contentView.layoutMarginsGuide.rightAnchor).isActive = true
 //        seeMoreAchievmentsLabel.heightAnchor.constraint(equalToConstant: seeMoreAchievmentsLabel.intrinsicContentSize.height).isActive = true
 

@@ -46,7 +46,8 @@ extension GroupCardView: CodeView {
         groupCardContentView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4).isActive = true
         groupCardContentView.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
         groupCardContentView.rightAnchor.constraint(equalTo: self.layoutMarginsGuide.rightAnchor).isActive = true
-        groupCardContentView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4).isActive = true
+        groupCardContentView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor,
+                                                     constant: -4).isActive = true
     }
 
     func setupAdditionalConfiguration() {

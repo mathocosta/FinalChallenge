@@ -17,7 +17,8 @@ class GroupCardContentView: UIView, CustomView {
             usersPhotoView.isHidden = team?.members?.count == 0 ? true : false
             guard let images = team?.members?.map({ (member) -> UIImage in
                 guard let user = member as? User, let photoData = user.photo,
-                    let image = UIImage(data: photoData) else { return UIImage(named: "avatar-placeholder") ?? UIImage() }
+                    let image = UIImage(data: photoData) else {
+                        return UIImage(named: "avatar-placeholder") ?? UIImage() }
                 return image
             }) else { return }
             usersPhotoView.profileImages = images

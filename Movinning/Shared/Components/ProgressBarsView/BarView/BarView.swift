@@ -48,7 +48,8 @@ class BarView: UIView {
     }
 
     override func layoutSubviews() {
-        progressBar.rightAnchor.constraint(equalTo: backgroundBar.rightAnchor, constant: (self.bounds.width * progress) - self.bounds.width).isActive = true
+        progressBar.rightAnchor.constraint(equalTo: backgroundBar.rightAnchor,
+                                           constant: (self.bounds.width * progress) - self.bounds.width).isActive = true
 
         backgroundBar.layer.masksToBounds = true
         backgroundBar.layer.cornerRadius = 5

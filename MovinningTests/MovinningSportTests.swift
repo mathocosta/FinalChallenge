@@ -72,14 +72,14 @@ class MovinningSportTests: XCTestCase {
             XCTAssert(permissionsB.contains(typeC))
         }
     }
-    
+
     func test_sport_localizedName() {
         XCTAssert(Sport.walking.localizedName == NSLocalizedString("walking", comment: ""))
         XCTAssert(Sport.running.localizedName == NSLocalizedString("running", comment: ""))
         XCTAssert(Sport.cycling.localizedName == NSLocalizedString("cycling", comment: ""))
         XCTAssert(Sport.rugby.localizedName == NSLocalizedString("rugby", comment: ""))
     }
-    
+
     func test_sport_allTypes() {
         XCTAssert(Sport.allTypes == Set(Sport.allCases))
     }

@@ -34,11 +34,14 @@ class AchievementListView: UIView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        collectionView.register(AchievementHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
+        collectionView.register(AchievementHeaderCollectionReusableView.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "Header")
         return collectionView
     }()
 
-    public convenience init(frame: CGRect, direction: UICollectionView.ScrollDirection, parentVC: AchievementsViewController) {
+    public convenience init(frame: CGRect, direction: UICollectionView.ScrollDirection,
+                            parentVC: AchievementsViewController) {
         self.init(frame: frame, parentVC: parentVC)
         self.user = UserManager.getLoggedUser()
         self.parentVC = parentVC

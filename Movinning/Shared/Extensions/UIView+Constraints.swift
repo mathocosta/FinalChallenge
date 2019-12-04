@@ -13,14 +13,25 @@ extension UIView {
 
     func fillSuperview(safeArea: Bool = true) {
         if !safeArea {
-            anchor(top: superview?.topAnchor, leading: superview?.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.trailingAnchor)
+            anchor(top: superview?.topAnchor,
+                   leading: superview?.leadingAnchor,
+                   bottom: superview?.bottomAnchor,
+                   trailing: superview?.trailingAnchor)
         } else {
-            anchor(top: superview?.safeAreaLayoutGuide.topAnchor, leading:
-                superview?.safeAreaLayoutGuide.leadingAnchor, bottom: superview?.bottomAnchor, trailing: superview?.safeAreaLayoutGuide.trailingAnchor)
+            anchor(top: superview?.safeAreaLayoutGuide.topAnchor,
+                   leading:
+                superview?.safeAreaLayoutGuide.leadingAnchor,
+                   bottom: superview?.bottomAnchor,
+                   trailing: superview?.safeAreaLayoutGuide.trailingAnchor)
         }
     }
 
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
+    func anchor(top: NSLayoutYAxisAnchor?,
+                leading: NSLayoutXAxisAnchor?,
+                bottom: NSLayoutYAxisAnchor?,
+                trailing: NSLayoutXAxisAnchor?,
+                padding: UIEdgeInsets = .zero,
+                size: CGSize = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
 
         if let top = top {
