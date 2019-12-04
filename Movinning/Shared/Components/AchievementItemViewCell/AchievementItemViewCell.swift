@@ -10,9 +10,6 @@ import UIKit
 
 class AchievementItemViewCell: UICollectionViewCell {
 
-    static let height: CGFloat = 192
-    static let width: CGFloat = 130
-
     lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "AchievmentIcon")
@@ -21,8 +18,7 @@ class AchievementItemViewCell: UICollectionViewCell {
     }()
 
     lazy var label: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0,
-                                          width: UIScreen.main.bounds.width,
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width,
                                           height: CGFloat.greatestFiniteMagnitude))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .bodySmall
@@ -52,14 +48,14 @@ extension AchievementItemViewCell: CodeView {
     }
 
     func setupConstraints() {
-        iconImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        iconImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
         iconImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        iconImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
-        iconImageView.heightAnchor.constraint(equalToConstant: 134).isActive = true
+        iconImageView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -16).isActive = true
+        iconImageView.heightAnchor.constraint(equalTo: iconImageView.widthAnchor).isActive = true
 
         label.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 16).isActive = true
         label.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        label.heightAnchor.constraint(equalToConstant: label.bounds.height).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         label.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
 
     }

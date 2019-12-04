@@ -13,15 +13,6 @@ class AchievementListView: UIView {
 
     var parentVC: AchievementsViewController
 
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .textColor
-        label.font = .sectionTitle
-        label.text = NSLocalizedString("Achievements", comment: "")
-        return label
-    }()
-
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -65,17 +56,11 @@ class AchievementListView: UIView {
 
 extension AchievementListView: CodeView {
     func buildViewHierarchy() {
-        addSubview(titleLabel)
         addSubview(collectionView)
     }
 
     func setupConstraints() {
-        titleLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        titleLabel.leftAnchor.constraint(equalTo: self.layoutMarginsGuide.leftAnchor).isActive = true
-        titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
-        collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 14).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true

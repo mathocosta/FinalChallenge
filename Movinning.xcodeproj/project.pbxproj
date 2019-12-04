@@ -127,6 +127,9 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
+		30B0A74D2396AACC00E187A9 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
+		30B0A74E2396AADE00E187A9 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
+		30B0A74F2396AAE400E187A9 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
 		30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */; };
 		30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sport.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };

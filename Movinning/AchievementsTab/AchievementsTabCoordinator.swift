@@ -28,7 +28,7 @@ final class AchievementsTabCoordinator: Coordinator {
             NSAttributedString.Key.font: UIFont.sectionTitle
         ]
         self.navigationController.tabBarItem = UITabBarItem(
-            title: "Achievements",
+            title: NSLocalizedString("Achievements", comment: ""),
             image: UIImage(named: "achievement-unselected"),
             selectedImage: UIImage(named: "achievement-selected")
         )
