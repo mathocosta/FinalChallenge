@@ -14,6 +14,7 @@ class AchievementsViewController: UIViewController {
     private var achievementsList: AchievementListView?
     private let user: User
     private var achievements: [Achievement]
+    private var completedAchievements: [Achievement]
     private var sports: [Sport]
 
     weak var coordinator: AchievementsTabCoordinator?
@@ -26,6 +27,7 @@ class AchievementsViewController: UIViewController {
         self.achievements = AchievementManager.getAllPossibleAchievements().sorted { a1, a2 in
             return a1.id < a2.id
         }
+        self.completedAchievements = AchievementManager.completedAchievements(of: user)
         self.user = user
         self.sports = Sport.allCases
         super.init(nibName: nil, bundle: nil)
@@ -76,7 +78,15 @@ extension AchievementsViewController: UICollectionViewDelegate, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             String(describing: AchievementItemViewCell.self), for: indexPath) as? AchievementItemViewCell
         cell?.label.text = NSLocalizedString(achievement.getTitle(), comment: "")
-        cell?.iconImageView.image = achievement.image
+        cell?.label.textColor = .textColor
+        let completed = completedAchievements.contains(where: { return $0.id == achievement.id })
+        if !completed {
+            let tintableImage = achievement.image.withRenderingMode(.alwaysTemplate)
+            cell?.iconImageView.image = tintableImage
+            cell?.iconImageView.tintColor = .lightGray
+        } else {
+            cell?.iconImageView.image = achievement.image
+        }
         return cell ?? UICollectionViewCell()
     }
 

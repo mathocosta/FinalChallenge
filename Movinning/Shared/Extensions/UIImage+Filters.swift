@@ -11,19 +11,19 @@ import UIKit
 
 extension UIImage {
     func noSaturation() -> UIImage {
-        let currentImage = self
+        dynamic let currentImage = self
         guard let startImage = CIImage(image: currentImage) else { return UIImage() }
-        var context = CIContext()
-        var filter = CIFilter(name: "CIColorMonochrome")
-        filter.setValue(startImage, for: kCIInputImageKey)
-        filter.setValue(UIColor.gray.ciColor, for: kCIInputColorKey)
-        filter.setValue(1.0, for: kCIInputIntensityKey)
+        let context = CIContext()
+        let filter = CIFilter(name: "CIColorMonochrome")
+        filter?.setValue(startImage, forKey: "inputImage")
+        filter?.setValue(CIColor(cgColor: UIColor.gray.cgColor), forKey: "inputColor")
+        filter?.setValue(1.0, forKey: "inputIntensity")
 
-        guard let image = filter.outputImage else { return }
+        guard let image = filter?.outputImage else { return UIImage() }
         if let cgimg = context.createCGImage(image, from: image.extent) {
             let processedImage = UIImage(cgImage: cgimg)
             return processedImage
         }
-        return image
+        return UIImage()
     }
 }
