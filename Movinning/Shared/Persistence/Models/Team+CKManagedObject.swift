@@ -26,8 +26,8 @@ extension Team: CKManagedObject {
         record["teamDescription"] = teamDescription
         record["city"] = city
         record["neighborhood"] = neighborhood
-        record["progress"] = teamProgress?.value ?? [0, 0, 0]
-        record["goals"] = goals?.value ?? [1, 6, 13]
+        record["currentGoalsProgress"] = teamProgress?.value ?? [0, 0, 0]
+        record["goalsIndices"] = goals?.value ?? [1, 6, 13]
 
         if let photo = photo, let profileImage = UIImage(data: photo) {
             record["photo"] = ckAsset(of: profileImage)

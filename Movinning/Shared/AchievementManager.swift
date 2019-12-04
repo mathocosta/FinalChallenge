@@ -45,6 +45,18 @@ class AchievementManager {
         return getAchievements(withIDs: Array(0...numberOfAchievements() - 1))
     }
 
+    static func achievementsBySport() -> [Sport: [Achievement]] {
+        let sports = Sport.allCases
+        let achievements = getAllPossibleAchievements()
+
+        var result: [Sport: [Achievement]] = [:]
+        sports.forEach { sport in
+            result[sport] = achievements.filter({ $0.achievementType == sport })
+        }
+
+        return result
+    }
+
     static func getAchievements(withIDs ids: [Int]) -> [Achievement] {
         let resultsData = AchievementManager.getAchievementData(withIDs: ids)
         let achievements: [Achievement] = resultsData.map { (arg) -> Achievement in

@@ -36,13 +36,13 @@ class TeamManager: NSObject {
         team.city = info["city"] as? String
         team.neighborhood = info["neighborhood"] as? String
 
-        if let goals = info["goals"] as? [Int] {
+        if let goals = info["currentGoals"] as? [Int] {
             team.goals = ArrayPile(value: goals)
         } else {
             team.goals = ArrayPile(value: [1, 6, 13])
         }
 
-        if let progress = info["progress"] as? [Int] {
+        if let progress = info["currentGoalsProgress"] as? [Int] {
             team.teamProgress = ArrayPile(value: progress)
         } else {
             team.teamProgress = ArrayPile(value: Array(repeating: 0, count: team.goals?.value.count ?? 0))

@@ -13,6 +13,11 @@
 		27126A352397D19700DB7C72 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
 		27126A362397D1A800DB7C72 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
 		273D233F2327E0AC003147DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* SessionManager.swift */; };
+		275A795C2397EC900032D9EF /* AchievementHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275A795A2397EC8F0032D9EF /* AchievementHeaderCollectionReusableView.swift */; };
+		275A795D2397EC900032D9EF /* AchievementItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275A795B2397EC8F0032D9EF /* AchievementItemViewCell.swift */; };
+		275A795F2397ECC70032D9EF /* AchievementsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275A795E2397ECC70032D9EF /* AchievementsTabCoordinator.swift */; };
+		275A79612397ECD20032D9EF /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275A79602397ECD20032D9EF /* AchievementsViewController.swift */; };
+		275A79632397ECFA0032D9EF /* AchievementListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275A79622397ECFA0032D9EF /* AchievementListView.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
 		275FE870231D3666001695D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86E231D3666001695D2 /* LaunchScreen.storyboard */; };
@@ -76,8 +81,6 @@
 		2B86F08023390A73005BE690 /* UIFont+customFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */; };
 		2B86F08223390BF2005BE690 /* Oswald-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2B86F08123390BF2005BE690 /* Oswald-Light.ttf */; };
 		2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */; };
-		2B9E3FDC234CD3A200CBD497 /* AchievementListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDB234CD3A200CBD497 /* AchievementListView.swift */; };
-		2B9E3FDF234CD60F00CBD497 /* AchievementItemViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9E3FDE234CD60F00CBD497 /* AchievementItemViewCell.swift */; };
 		2BA7B7C3233A4DFD00134C6E /* UIColor+customColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */; };
 		2BA7B7C6233A568E00134C6E /* GroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C5233A568E00134C6E /* GroupCardView.swift */; };
 		2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BA7B7C7233A572F00134C6E /* CustomView.swift */; };
@@ -127,15 +130,9 @@
 		309A2DD32327BD40002C5371 /* GoalsManager+GoalProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */; };
 		309A2DD52329177E002C5371 /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DD42329177E002C5371 /* TeamManager.swift */; };
 		30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30A20F8023228EB9005003A8 /* Bundle+ReadPList.swift */; };
-		30B0A74D2396AACC00E187A9 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
-		30B0A74E2396AADE00E187A9 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
-		30B0A74F2396AAE400E187A9 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
 		30B19CFB2361BEB80096BB12 /* MovinningSportTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */; };
 		30B19CFE2361DAC30096BB12 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19CF823609E100096BB12 /* Sport.swift */; };
 		30E4F105233CFF4500DDC39C /* PointDisplayUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */; };
-		5731F2DB238565F7001E797D /* AchievementsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731F2DA238565F7001E797D /* AchievementsTabCoordinator.swift */; };
-		5731F2DD23856813001E797D /* AchievementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5731F2DC23856813001E797D /* AchievementsViewController.swift */; };
-		57343D4123954F5000206F91 /* AchievementHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57343D4023954F5000206F91 /* AchievementHeaderCollectionReusableView.swift */; };
 		5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */; };
 		57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB0235761F400C21D09 /* OnboardingViewController.swift */; };
 		57479DB32359E19A00C21D09 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */; };
@@ -163,6 +160,11 @@
 
 /* Begin PBXFileReference section */
 		273D233E2327E0AC003147DF /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		275A795A2397EC8F0032D9EF /* AchievementHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AchievementHeaderCollectionReusableView.swift; path = Movinning/Shared/Components/AchievementItemViewCell/AchievementHeaderCollectionReusableView.swift; sourceTree = SOURCE_ROOT; };
+		275A795B2397EC8F0032D9EF /* AchievementItemViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AchievementItemViewCell.swift; path = Movinning/Shared/Components/AchievementItemViewCell/AchievementItemViewCell.swift; sourceTree = SOURCE_ROOT; };
+		275A795E2397ECC70032D9EF /* AchievementsTabCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AchievementsTabCoordinator.swift; path = Movinning/AchievementsTab/AchievementsTabCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		275A79602397ECD20032D9EF /* AchievementsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AchievementsViewController.swift; path = Movinning/AchievementsTab/ViewsControllers/AchievementsViewController.swift; sourceTree = SOURCE_ROOT; };
+		275A79622397ECFA0032D9EF /* AchievementListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AchievementListView.swift; path = Movinning/Shared/Components/AchievementListView/AchievementListView.swift; sourceTree = SOURCE_ROOT; };
 		275FE85F231D3664001695D2 /* Movinning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movinning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		275FE862231D3664001695D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		275FE86C231D3666001695D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -231,8 +233,6 @@
 		2B86F07F23390A73005BE690 /* UIFont+customFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+customFonts.swift"; sourceTree = "<group>"; };
 		2B86F08123390BF2005BE690 /* Oswald-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Oswald-Light.ttf"; sourceTree = "<group>"; };
 		2B9E3FD8234CB51B00CBD497 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
-		2B9E3FDB234CD3A200CBD497 /* AchievementListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListView.swift; sourceTree = "<group>"; };
-		2B9E3FDE234CD60F00CBD497 /* AchievementItemViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementItemViewCell.swift; sourceTree = "<group>"; };
 		2BA7B7C2233A4DFD00134C6E /* UIColor+customColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+customColors.swift"; sourceTree = "<group>"; };
 		2BA7B7C5233A568E00134C6E /* GroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCardView.swift; sourceTree = "<group>"; };
 		2BA7B7C7233A572F00134C6E /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -288,9 +288,6 @@
 		30B19CFA2361BEB80096BB12 /* MovinningSportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovinningSportTests.swift; sourceTree = "<group>"; };
 		30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseIntensity.swift; sourceTree = "<group>"; };
 		30E4F104233CFF4500DDC39C /* PointDisplayUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointDisplayUpdater.swift; sourceTree = "<group>"; };
-		5731F2DA238565F7001E797D /* AchievementsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsTabCoordinator.swift; sourceTree = "<group>"; };
-		5731F2DC23856813001E797D /* AchievementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsViewController.swift; sourceTree = "<group>"; };
-		57343D4023954F5000206F91 /* AchievementHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		5739F77F235CCB5C00B69D11 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		57479DB0235761F400C21D09 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		57479DB22359E19A00C21D09 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -644,7 +641,7 @@
 		2B9E3FDA234CD37D00CBD497 /* AchievmentListView */ = {
 			isa = PBXGroup;
 			children = (
-				2B9E3FDB234CD3A200CBD497 /* AchievementListView.swift */,
+				275A79622397ECFA0032D9EF /* AchievementListView.swift */,
 			);
 			path = AchievmentListView;
 			sourceTree = "<group>";
@@ -652,8 +649,8 @@
 		2B9E3FDD234CD5DC00CBD497 /* AchievmentItemViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				2B9E3FDE234CD60F00CBD497 /* AchievementItemViewCell.swift */,
-				57343D4023954F5000206F91 /* AchievementHeaderCollectionReusableView.swift */,
+				275A795A2397EC8F0032D9EF /* AchievementHeaderCollectionReusableView.swift */,
+				275A795B2397EC8F0032D9EF /* AchievementItemViewCell.swift */,
 			);
 			path = AchievmentItemViewCell;
 			sourceTree = "<group>";
@@ -856,7 +853,7 @@
 			isa = PBXGroup;
 			children = (
 				5731F2D923856503001E797D /* ViewsControllers */,
-				5731F2DA238565F7001E797D /* AchievementsTabCoordinator.swift */,
+				275A795E2397ECC70032D9EF /* AchievementsTabCoordinator.swift */,
 			);
 			path = AchivementsTab;
 			sourceTree = "<group>";
@@ -864,7 +861,7 @@
 		5731F2D923856503001E797D /* ViewsControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5731F2DC23856813001E797D /* AchievementsViewController.swift */,
+				275A79602397ECD20032D9EF /* AchievementsViewController.swift */,
 			);
 			path = ViewsControllers;
 			sourceTree = "<group>";
@@ -1080,15 +1077,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275A79632397ECFA0032D9EF /* AchievementListView.swift in Sources */,
 				306BA1242386A83600667958 /* String+Capitalization.swift in Sources */,
 				2BA7B7C6233A568E00134C6E /* GroupCardView.swift in Sources */,
 				309A2DCF23268E27002C5371 /* GoalPile.swift in Sources */,
 				278F829A2322A67200F55372 /* TeamDetailsView.swift in Sources */,
 				278F82992322A67200F55372 /* TeamDetailsViewController.swift in Sources */,
-				5731F2DD23856813001E797D /* AchievementsViewController.swift in Sources */,
 				2797D61D232BBDE300A33470 /* CreateTeamView.swift in Sources */,
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
-				2B9E3FDC234CD3A200CBD497 /* AchievementListView.swift in Sources */,
 				3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */,
 				27126A362397D1A800DB7C72 /* Ranking.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
@@ -1104,6 +1100,7 @@
 				27126A342397D17100DB7C72 /* AchievementManager.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */,
+				275A795C2397EC900032D9EF /* AchievementHeaderCollectionReusableView.swift in Sources */,
 				27126A352397D19700DB7C72 /* Achievement.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */,
@@ -1112,9 +1109,9 @@
 				2B86B1EE233120B100688735 /* LoadingViewController.swift in Sources */,
 				5739F780235CCB5C00B69D11 /* UIView+Constraints.swift in Sources */,
 				275FE880231D3DD2001695D2 /* AppCoordinator.swift in Sources */,
-				5731F2DB238565F7001E797D /* AchievementsTabCoordinator.swift in Sources */,
 				2BDAE2B9235DDEB3002DBE84 /* TeamMembersViewController.swift in Sources */,
 				2B85FC752369AD5500478BCE /* TeamRankingViewCell.swift in Sources */,
+				275A795F2397ECC70032D9EF /* AchievementsTabCoordinator.swift in Sources */,
 				2797D618232B29EA00A33470 /* ImagePicker.swift in Sources */,
 				30A20F8123228EB9005003A8 /* Bundle+ReadPList.swift in Sources */,
 				2B86B1EB2331036C00688735 /* LoaderView.swift in Sources */,
@@ -1125,11 +1122,11 @@
 				276FD4722321726100EA75C6 /* Team+CKManagedObject.swift in Sources */,
 				303F5A8F231D619F0054587C /* PointManager.swift in Sources */,
 				2B86B1F52331252B00688735 /* LoadingViewPopTransition.swift in Sources */,
+				275A79612397ECD20032D9EF /* AchievementsViewController.swift in Sources */,
 				2B7DC2B523229255009C3F54 /* LegendProgressView.swift in Sources */,
 				27F581E2234CB3BD0051E6B3 /* CloudKitGateway+Subscriptions.swift in Sources */,
 				3006C5522334FD7200DA501B /* CGRect+Center.swift in Sources */,
 				3006C5562336E9CD00DA501B /* ProgressTracksView.swift in Sources */,
-				2B9E3FDF234CD60F00CBD497 /* AchievementItemViewCell.swift in Sources */,
 				2797D62C232D76A100A33470 /* CKRecordExtension.swift in Sources */,
 				2BCD98C9235895AE00D5B8F4 /* ProgressBarsView.swift in Sources */,
 				2BB4741C232001A40099D4EB /* ProfileDetailsView.swift in Sources */,
@@ -1138,7 +1135,6 @@
 				304F352C235DFAEB005F4900 /* OnboardingView.swift in Sources */,
 				275FE863231D3664001695D2 /* AppDelegate.swift in Sources */,
 				2B6E354123229C520092A481 /* Input.swift in Sources */,
-				57343D4123954F5000206F91 /* AchievementHeaderCollectionReusableView.swift in Sources */,
 				2B417FA02320006F002AD09D /* ProgressView.swift in Sources */,
 				2B07B47723229B0E00EBE9F7 /* ProfileEditView.swift in Sources */,
 				2797D628232D3F6E00A33470 /* OnboardingCoordinator.swift in Sources */,
@@ -1174,6 +1170,7 @@
 				276FD47623219D7B00EA75C6 /* TeamListView.swift in Sources */,
 				278A03F123411DFD00AF1840 /* CloudKitGateway+Teams.swift in Sources */,
 				275FE886231D3ECE001695D2 /* CoreDataStore.swift in Sources */,
+				275A795D2397EC900032D9EF /* AchievementItemViewCell.swift in Sources */,
 				304386152386B2DC00586D18 /* AchievementManager+Progress.swift in Sources */,
 				304398A3231FD2E80024568D /* GoalsManager.swift in Sources */,
 				309A2DCD23267675002C5371 /* Goal.swift in Sources */,
