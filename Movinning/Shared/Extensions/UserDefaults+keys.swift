@@ -84,7 +84,7 @@ extension UserDefaults {
             set(intValue, forKey: #function)
         }
     }
-    
+
     /// Primeira vez que o usuário abriu o aplicativo
     var firstTimeOpened: Date? {
         get { return value(forKey: #function) as? Date }

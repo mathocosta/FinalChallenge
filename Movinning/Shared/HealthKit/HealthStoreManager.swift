@@ -52,7 +52,10 @@ final class HealthStoreManager {
     ///   - service: Case do `HealthStoreService` para configurar a query
     ///   - completion: Callback para ser executado após a consulta
     func quantitySum(
-        from startDate: Date?, to endDate: Date = Date(), of service: HealthStoreService, completion: @escaping(ResultHandler<HKStatistics>)) {
+        from startDate: Date?,
+        to endDate: Date = Date(),
+        of service: HealthStoreService,
+        completion: @escaping(ResultHandler<HKStatistics>)) {
 
         guard let sampleType = service.type as? HKQuantityType else { return }
 

@@ -135,7 +135,14 @@ class MovinningGoalsTest: XCTestCase {
     }
 
     func test_goal_initWithAllInfo() {
-        let goal = Goal(id: 100, title: "Um título", difficulty: .easy, rewardAmount: 100, activityType: "type", activityCoeficient: 50.0, dailyReset: true, amountOfUsers: 2)
+        let goal = Goal(id: 100,
+                        title: "Um título",
+                        difficulty: .easy,
+                        rewardAmount: 100,
+                        activityType: "type",
+                        activityCoeficient: 50.0,
+                        dailyReset: true,
+                        amountOfUsers: 2)
         XCTAssert(goal.id == 100)
         XCTAssert(goal.title == "Um título")
         XCTAssert(goal.difficulty == .easy)

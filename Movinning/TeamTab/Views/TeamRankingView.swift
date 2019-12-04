@@ -50,7 +50,8 @@ class TeamRankingView: UIView {
         tableView.separatorStyle = .none
         tableView.delegate = self.parentVC
         tableView.dataSource = self.parentVC
-        tableView.register(TeamRankingViewCell.self, forCellReuseIdentifier: String(describing: TeamRankingViewCell.self))
+        tableView.register(TeamRankingViewCell.self,
+                           forCellReuseIdentifier: String(describing: TeamRankingViewCell.self))
         return tableView
     }()
 

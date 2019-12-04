@@ -18,7 +18,8 @@ class TeamMembersView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(GroupMemberViewCell.self, forCellWithReuseIdentifier: String(describing: GroupMemberViewCell.self))
+        collectionView.register(GroupMemberViewCell.self,
+                                forCellWithReuseIdentifier: String(describing: GroupMemberViewCell.self))
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = .backgroundColor
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)

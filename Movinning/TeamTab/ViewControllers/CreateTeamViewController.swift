@@ -74,7 +74,7 @@ class CreateTeamViewController: UIViewController, LoaderView {
                               message: NSLocalizedString("Try again", comment: ""),
                               completion: {
                                 self.createBarButtonTapped()
-            }) {
+            }){
                 print("Cancelado")
             }
         }

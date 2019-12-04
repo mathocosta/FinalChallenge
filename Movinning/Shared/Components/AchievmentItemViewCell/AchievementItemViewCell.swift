@@ -21,7 +21,9 @@ class AchievementItemViewCell: UICollectionViewCell {
     }()
 
     lazy var label: UILabel = {
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: CGFloat.greatestFiniteMagnitude))
+        let label = UILabel(frame: CGRect(x: 0, y: 0,
+                                          width: UIScreen.main.bounds.width,
+                                          height: CGFloat.greatestFiniteMagnitude))
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .bodySmall
         label.textColor = .textColor
