@@ -13,7 +13,7 @@ class AchievementHeaderCollectionReusableView: UICollectionReusableView {
     lazy var label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .bodySmall
+        label.font = .sectionTitle
         label.textColor = .textColor
         label.sizeToFit()
         return label
@@ -21,6 +21,7 @@ class AchievementHeaderCollectionReusableView: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .backgroundColor
         setupView()
     }
 
@@ -35,9 +36,10 @@ extension AchievementHeaderCollectionReusableView: CodeView {
     }
 
     func setupConstraints() {
-        label.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
-        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 7*16).isActive = true
+        label.topAnchor.constraint(equalTo: self.topAnchor, constant: 8).isActive = true
+        label.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8).isActive = true
+        label.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8).isActive = true
+        label.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8).isActive = true
     }
 
     func setupAdditionalConfiguration() {

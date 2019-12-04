@@ -23,9 +23,11 @@ class AchievementsViewController: UIViewController {
     }
 
     init(user: User) {
-        self.achievements = AchievementManager.getAllPossibleAchievements()
+        self.achievements = AchievementManager.getAllPossibleAchievements().sorted { a1, a2 in
+            return a1.id < a2.id
+        }
         self.user = user
-        self.sports = Array(Sport.allTypes)
+        self.sports = Sport.allCases
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,8 +36,8 @@ class AchievementsViewController: UIViewController {
 
         self.achievementsList = AchievementListView(frame: .zero, direction: .vertical, parentVC: self)
         self.view = achievementsList
-        
-
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.topItem?.title = NSLocalizedString("Achievements", comment: "")
         SessionManager.current.updateRegister(of: user).done(on: .main) { _ in
             self.coordinator?.showAchievementsViewController(for: self.user)
         }.catch(on: .main) { (_) in
@@ -50,9 +52,8 @@ class AchievementsViewController: UIViewController {
 }
 
 extension AchievementsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return AchievementManager.completedAchievements(of: user).count
         let sport = sports[section]
 
         let achievementsWithSport = achievements.filter { (achievement) -> Bool in
@@ -79,16 +80,17 @@ extension AchievementsViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 100, height: 100)
+        return CGSize(width: self.view.frame.width, height: 64)
     }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
 
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             guard let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                                      withReuseIdentifier: "Header",
-                                                                                      for: indexPath) as? AchievementHeaderCollectionReusableView else {
+                    withReuseIdentifier: "Header", for: indexPath) as?
+                AchievementHeaderCollectionReusableView else {
                 return UICollectionReusableView()
             }
             let sport = sports[indexPath.section]
@@ -97,7 +99,7 @@ extension AchievementsViewController: UICollectionViewDelegate, UICollectionView
             }
 
             sectionHeader.backgroundColor = .groupTableViewBackground
-            sectionHeader.label.text = NSLocalizedString(achievementsWithSport[indexPath.row].getTag(), comment: "")
+            sectionHeader.label.text = achievementsWithSport[indexPath.row].achievementType.localizedName
 
             return sectionHeader
         default:
@@ -110,7 +112,7 @@ extension AchievementsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: AchievementItemViewCell.width, height: AchievementItemViewCell.height)
+        return CGSize(width: self.view.frame.width/3, height: self.view.frame.width/1.5)
     }
 
     func collectionView(_ collectionView: UICollectionView,
@@ -118,7 +120,7 @@ extension AchievementsViewController: UICollectionViewDelegateFlowLayout {
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 32
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 16
     }
