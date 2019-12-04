@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		270EE7C72350AAE100BBCEE7 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C62350AAE100BBCEE7 /* PromiseKit */; };
 		270EE7CA2356072300BBCEE7 /* PMKCloudKit in Frameworks */ = {isa = PBXBuildFile; productRef = 270EE7C92356072300BBCEE7 /* PMKCloudKit */; };
+		27126A342397D17100DB7C72 /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
+		27126A352397D19700DB7C72 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
+		27126A362397D1A800DB7C72 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
 		273D233F2327E0AC003147DF /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273D233E2327E0AC003147DF /* SessionManager.swift */; };
 		275FE863231D3664001695D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FE862231D3664001695D2 /* AppDelegate.swift */; };
 		275FE86D231D3666001695D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275FE86C231D3666001695D2 /* Assets.xcassets */; };
@@ -117,9 +120,6 @@
 		3064CF43236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF42236C6B860040220E /* UserPreferencesViewController+Delegate+DataSource.swift */; };
 		3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B19D002361E2C30096BB12 /* ExerciseIntensity.swift */; };
 		3064CF4A237C1D360040220E /* MovinningExerciseIntensityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF49237C1D360040220E /* MovinningExerciseIntensityTests.swift */; };
-		3064CF55237C3FB80040220E /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF54237C3FB80040220E /* Achievement.swift */; };
-		3064CF57237C3FC90040220E /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF56237C3FC90040220E /* Ranking.swift */; };
-		3064CF59237C42E20040220E /* AchievementManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3064CF58237C42E20040220E /* AchievementManager.swift */; };
 		306BA11A238566AC00667958 /* Achievements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 306BA119238566AC00667958 /* Achievements.plist */; };
 		306BA1242386A83600667958 /* String+Capitalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306BA1232386A83600667958 /* String+Capitalization.swift */; };
 		309A2DCD23267675002C5371 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309A2DCC23267675002C5371 /* Goal.swift */; };
@@ -276,7 +276,6 @@
 		3064CF58237C42E20040220E /* AchievementManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementManager.swift; sourceTree = "<group>"; };
 		306BA119238566AC00667958 /* Achievements.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Achievements.plist; sourceTree = "<group>"; };
 		306BA1232386A83600667958 /* String+Capitalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Capitalization.swift"; sourceTree = "<group>"; };
-		3064CF5D2382B5E60040220E /* AchievementTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementTabCoordinator.swift; sourceTree = "<group>"; };
 		309A2DCC23267675002C5371 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		309A2DCE23268E27002C5371 /* GoalPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPile.swift; sourceTree = "<group>"; };
 		309A2DD22327BD40002C5371 /* GoalsManager+GoalProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GoalsManager+GoalProgress.swift"; sourceTree = "<group>"; };
@@ -1088,6 +1087,7 @@
 				2B7DC2B123228855009C3F54 /* ProfileTabCoordinator.swift in Sources */,
 				2B9E3FDC234CD3A200CBD497 /* AchievementListView.swift in Sources */,
 				3064CF45237067CC0040220E /* ExerciseIntensity.swift in Sources */,
+				27126A362397D1A800DB7C72 /* Ranking.swift in Sources */,
 				2BA7B7C8233A572F00134C6E /* CustomView.swift in Sources */,
 				2B07B47523229AFF00EBE9F7 /* ProfileEditViewController.swift in Sources */,
 				57479DB72359E20E00C21D09 /* OnboardCollectionViewDelegate&DataSource.swift in Sources */,
@@ -1098,8 +1098,10 @@
 				273D233F2327E0AC003147DF /* SessionManager.swift in Sources */,
 				278717F62320027F00A2A481 /* User+CKManagedObject.swift in Sources */,
 				57479DB1235761F400C21D09 /* OnboardingViewController.swift in Sources */,
+				27126A342397D17100DB7C72 /* AchievementManager.swift in Sources */,
 				278717F0231F224F00A2A481 /* CloudKitGateway.swift in Sources */,
 				3064CF3C236C633F0040220E /* UserPreferencesViewController.swift in Sources */,
+				27126A352397D19700DB7C72 /* Achievement.swift in Sources */,
 				278717F4232001D600A2A481 /* CKManagedObject.swift in Sources */,
 				2BDAE2B7235DDE64002DBE84 /* TeamMembersView.swift in Sources */,
 				2B9E3FD9234CB51B00CBD497 /* CustomButtonView.swift in Sources */,
