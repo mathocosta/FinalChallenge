@@ -13,7 +13,6 @@ class AchievementsViewController: UIViewController {
 
     private var achievementsList: AchievementListView?
     private let user: User
-    private var achievements: [Achievement]
     private var completedAchievements: [Achievement]
 
     weak var coordinator: AchievementsTabCoordinator?
@@ -26,9 +25,6 @@ class AchievementsViewController: UIViewController {
     }
 
     init(user: User) {
-        self.achievements = AchievementManager.getAllPossibleAchievements().sorted { a1, a2 in
-            return a1.id < a2.id
-        }
         self.completedAchievements = AchievementManager.completedAchievements(of: user)
         self.user = user
         super.init(nibName: nil, bundle: nil)
@@ -118,7 +114,7 @@ extension AchievementsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width/3, height: 160.0)
+        return CGSize(width: self.view.frame.width/3, height: 200.0)
     }
 
     func collectionView(_ collectionView: UICollectionView,

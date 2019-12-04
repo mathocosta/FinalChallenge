@@ -25,6 +25,7 @@ class AchievementItemViewCell: UICollectionViewCell {
         label.textColor = .textColor
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
         label.text = "Corredor Corredor Corredor Corredor Corredor Corredor Corredor Corredor"
         label.sizeToFit()
         return label
