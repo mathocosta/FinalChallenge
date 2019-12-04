@@ -58,10 +58,10 @@ extension AchievementListView: CodeView {
     }
 
     func setupConstraints() {
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 14).isActive = true
+        collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
         collectionView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         collectionView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
 
     func setupAdditionalConfiguration() {
